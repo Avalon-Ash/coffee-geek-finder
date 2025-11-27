@@ -1,0 +1,30 @@
+{
+  "project": {
+    "title": "咖啡狂器具搜尋器",
+    "version": "v42.0",
+    "item_name_tw": "咖啡器材"
+  },
+  "ui_labels": {
+    "header_title": "COFFEE GEEK",
+    "search_placeholder": "搜尋器材 / 讓 AI 擴充...",
+    "capacity_label": "容量/尺寸",
+    "feature_label_map": {
+      "磨": "刀盤/機制",
+      "壺": "壺嘴/控溫",
+      "濾": "結構/流速",
+      "秤": "反應/特性",
+      "壓": "壓力機制"
+    }
+  },
+  "ai_prompts": {
+    "search_system": "你是一位頂尖的咖啡器材數據生成師。",
+    "search_prompt_schema": "Schema: {\"brand\":\"String (TW)\",\"model\":\"String (TW)\",\"type\":\"String (TW)\",\"material\":\"String (TW)\",\"capacity\":\"String (TW)\",\"feature\":\"String (TW)\",\"priceLevel\":\"String ($$$)\",\"verdict\":\"String (TW)\",\"pros\":[\"String (TW)\"],\"cons\":[\"String (TW)\"],\"sentiment\":[{\"name\":\"Tag (TW)\",\"value\":Number,\"color\":\"String (#hex)\"}]}. Return ONLY JSON.",
+    "review_title": "AI 毒舌評論",
+    "review_prompt_system": "你是一位極度毒舌且專業的咖啡器材評論家，請使用 Markdown 格式，並且必須使用繁體中文。",
+    "recipe_title": "AI 沖煮建議",
+    "recipe_prompt_system": "你是一位頂尖的咖啡師，請使用 Markdown 表格來呈現沖煮參數，所有文字必須是繁體中文。"
+  },
+  "db_config": {
+    "manifest_file": "./db_manifest.json"
+  }
+}
