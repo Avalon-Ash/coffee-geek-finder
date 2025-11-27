@@ -41,6 +41,17 @@
         .mkd table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.9em; }
         .mkd th, .mkd td { border: 1px solid #444; padding: 0.5em; text-align: left; }
         .mkd th { background-color: #222; color: #facc15; }
+
+        /* 修正點 1: 確保 modal-root 節點自身擁有最高層級和固定定位 */
+        #modal-root {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999; /* 比 GlobalModal 內部的 9001 更高，確保它在最上層 */
+            pointer-events: none; /* 預設不擋滑鼠事件，讓 GlobalModal 內部元件控制 */
+        }
     </style>
 </head>
 <body>
@@ -156,7 +167,7 @@
                 search: "m21 21-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z",
                 cloud: "M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242",
                 upload: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12",
-                settings: "M12.22 2h-.44a2 2 0 0 1-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l-.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z",
+                settings: "M12.22 2h-.44a2 2 0 0 1-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l-.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l-.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z",
                 plus: "M12 5v14M5 12h14",
                 trash: "M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2",
                 download: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3",
@@ -175,26 +186,39 @@
 
         // --- 5. Shared Modal Component (Global Root) ---
         const GlobalModal = () => {
-            const [modal, setModal] = useState({ open: false, title: "", content: "", loading: false, type: "" });
+            // 新增 iconName 欄位用於非載入狀態的 Icon 顯示
+            const [modal, setModal] = useState({ open: false, title: "", content: "", loading: false, type: "", iconName: "msg" });
             
             useEffect(() => {
-                const listener = (data) => setModal(data);
+                // 修正點 2: 當 Modal 關閉時，將 iconName 重設為預設值
+                const listener = (data) => setModal(prev => {
+                    if (data.open === false) {
+                        return { ...prev, open: false, iconName: "msg" };
+                    }
+                    return {...prev, ...data};
+                });
                 eventBus.on('SHOW_MODAL', listener);
                 return () => eventBus.listeners['SHOW_MODAL'] = eventBus.listeners['SHOW_MODAL'].filter(l => l !== listener);
             }, []);
 
             if (!modal.open) return null;
 
+            // 根據狀態設定 Icon 和顏色
+            // 修正點 3: 如果是 loading, 則忽略 iconName，只顯示 refresh icon
+            const currentIcon = modal.loading ? "refresh" : (modal.iconName || "msg");
+            const iconColor = modal.iconName === 'close' ? 'text-red-500' : (modal.iconName === 'settings' ? 'text-yellow-500' : 'text-yellow-500');
+
             return (
                 <div className="fixed inset-0 z-[9001] flex items-center justify-center bg-black/80 p-4" onClick={()=>!modal.loading && setModal({open:false})}>
-                    <div className="bg-[#18181b] border border-[#27272a] rounded-xl w-full max-w-2xl max-h-[80vh] flex flex-col overflow-hidden" onClick={e=>e.stopPropagation()}>
+                    {/* 修正點 4: 增加 min-h-[12rem] 確保 Modal Box 最小高度可見 */}
+                    <div className="bg-[#18181b] border border-[#27272a] rounded-xl w-full max-w-2xl min-h-[12rem] max-h-[80vh] flex flex-col overflow-hidden" onClick={e=>e.stopPropagation()}>
                         <div className="p-4 border-b border-[#27272a] bg-[#0c0c0c] flex justify-between items-center shrink-0">
-                            <h3 className="font-bold text-yellow-500 flex items-center gap-2">
-                                <Icon n={modal.loading?"refresh":"msg"} c={`w-5 h-5 ${modal.loading?"spin":""}`}/> {modal.title}
+                            <h3 className={`font-bold ${iconColor} flex items-center gap-2`}>
+                                <Icon n={currentIcon} c={`w-5 h-5 ${modal.loading?"spin":""}`}/> {modal.title}
                             </h3>
                             <button onClick={()=>setModal({open:false})} className="text-gray-500 hover:text-white text-xl"><Icon n="close" c="w-5 h-5"/></button>
                         </div>
-                        {/* 修正點：在 loading 狀態下，加入明確的文字提示，確保使用者不會誤認為只是黑屏 */}
+                        {/* 修正點 5: 確保 loading 提示清晰可見 */}
                         <div className="p-6 overflow-y-auto text-gray-300 mkd">
                             {modal.loading ? (
                                 <div className="flex flex-col items-center py-10">
@@ -534,7 +558,7 @@
                 });
             };
 
-            // 修正點：將 alert 替換為 GlobalModal 呼叫
+            // 修正點：將 alert 替換為 GlobalModal 呼叫，並設定 iconName 為 msg
             const handleFileImport = async (e) => {
                 const files = Array.from(e.target.files);
                 if(!files.length) return;
@@ -553,9 +577,9 @@
                 
                 if(flatItems.length > 0) {
                     handleImport(flatItems);
-                    eventBus.emit('SHOW_MODAL', { open: true, title: "匯入成功", content: `成功匯入 ${flatItems.length} 個咖啡器具項目。`, loading: false, type: "success" });
+                    eventBus.emit('SHOW_MODAL', { open: true, title: "匯入成功", content: `成功匯入 ${flatItems.length} 個咖啡器具項目。`, loading: false, type: "success", iconName: "msg" });
                 } else {
-                    eventBus.emit('SHOW_MODAL', { open: true, title: "匯入失敗", content: "找不到有效的 JSON 資料。", loading: false, type: "error" });
+                    eventBus.emit('SHOW_MODAL', { open: true, title: "匯入失敗", content: "找不到有效的 JSON 資料。", loading: false, type: "error", iconName: "close" });
                 }
                 e.target.value = null;
             };
@@ -564,7 +588,11 @@
             const handleWebSearch = async (e) => {
                 if (e) e.preventDefault();
                 if(!query.trim()) return; 
-                if(!apiKey) return setKeyModal(true);
+                // 修正點 6: API Key 檢查，沒有 Key 則直接開 ApiKeyModal 並 return
+                if(!apiKey) {
+                    setKeyModal(true);
+                    return; 
+                }
 
                 // --- CRITICAL: Immediate UI Update via setTimeout(0) ---
                 setTimeout(async () => {
@@ -596,7 +624,8 @@
                         setSearchResults(newItems);
                         
                     } catch (err) { 
-                        eventBus.emit('SHOW_MODAL', { open: true, title: "網頁搜尋失敗", content: `錯誤訊息: ${err.message}`, loading: false }); 
+                        // 修正點：設定 iconName 為 close
+                        eventBus.emit('SHOW_MODAL', { open: true, title: "網頁搜尋失敗", content: `錯誤訊息: ${err.message}`, loading: false, iconName: "close" }); 
                     }
                 }, 0); 
             };
@@ -613,11 +642,16 @@
             };
 
             const handleAI = (mode, item, extra) => {
-                if(!apiKey) return setKeyModal(true);
+                // 修正點 7: API Key 檢查，沒有 Key 則直接開 ApiKeyModal 並 return
+                if(!apiKey) {
+                    setKeyModal(true);
+                    return;
+                }
 
                 // --- CRITICAL: Immediate UI Update via setTimeout(0) ---
                 setTimeout(async () => {
                     const initialTitle = mode === 'snark' ? `AI 毒舌評論: ${item.model}` : `AI 沖煮建議: ${item.model}`;
+                    // 修正點：載入時不設定 iconName，使用預設的 refresh
                     eventBus.emit('SHOW_MODAL', { open: true, title: initialTitle, content: "", loading: true, type: mode });
                     
                     let prompt = "";
@@ -650,9 +684,11 @@
                         
                         if (!text) throw new Error("AI 回傳了空白內容");
                         
-                        eventBus.emit('SHOW_MODAL', { open: true, title: initialTitle, content: text, loading: false, type: mode });
+                        // 修正點：成功時設定 iconName 為 msg (對話框)
+                        eventBus.emit('SHOW_MODAL', { open: true, title: initialTitle, content: text, loading: false, type: mode, iconName: "msg" });
                     } catch (err) { 
-                        eventBus.emit('SHOW_MODAL', { open: true, title: "AI 呼叫失敗", content: `錯誤訊息: ${err.message}`, loading: false, type: mode });
+                        // 修正點：失敗時設定 iconName 為 close (紅叉)
+                        eventBus.emit('SHOW_MODAL', { open: true, title: "AI 呼叫失敗", content: `錯誤訊息: ${err.message}`, loading: false, type: mode, iconName: "close" });
                     }
                 }, 0);
             };
@@ -672,7 +708,8 @@
                     setApiKey(key);
                     setKeyModal(false);
                 } else {
-                    eventBus.emit('SHOW_MODAL', { open: true, title: "錯誤", content: "無效的 API Key。", loading: false, type: "error" });
+                    // 修正點：設定 iconName 為 close
+                    eventBus.emit('SHOW_MODAL', { open: true, title: "錯誤", content: "無效的 API Key。", loading: false, type: "error", iconName: "close" });
                 }
             };
 
