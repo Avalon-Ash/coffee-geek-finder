@@ -3,17 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Geek Finder v5.0 | AI 穩定重構版</title>
+    <title>Coffee Geek Finder v46 | 數據核心穩定版</title>
     
     <!-- Dependencies -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     
     <style>
-        /* 全局與滾動條樣式 */
+        /* 全域樣式與 UX 提升 */
         body { background-color: #0c0c0c; color: #e5e5e5; font-family: system-ui, -apple-system, sans-serif; overflow-x: hidden; }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0c0c0c; }
@@ -25,142 +24,90 @@
         .spin { animation: spin 1s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         
-        /* 網格佈局 */
+        /* Tetris Grid 響應式佈局 */
         .tetris-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            grid-auto-rows: auto; 
             grid-auto-flow: dense; 
             gap: 1.5rem; 
         }
-
-        /* Markdown 樣式 */
-        .mkd h1, .mkd h2, .mkd h3 { color: #facc15; font-weight: 700; margin-top: 1em; margin-bottom: 0.5em; border-bottom: 1px solid #333; padding-bottom: 0.3em; }
-        .mkd ul { list-style: disc; padding-left: 1.5em; color: #a8a29e; margin-bottom: 1em; }
-        .mkd li { margin-bottom: 0.2em; }
-        .mkd strong { color: #fff; font-weight: 600; }
-        .mkd p { margin-bottom: 0.8em; line-height: 1.6; }
-        .mkd table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.9em; }
-        .mkd th, .mkd td { border: 1px solid #444; padding: 0.5em; text-align: left; }
-        .mkd th { background-color: #222; color: #facc15; }
-        .mkd code { background-color: #27272a; color: #facc15; padding: 0.1em 0.3em; border-radius: 4px; }
     </style>
 </head>
 <body>
-    <!-- 整個應用程式使用單一根節點 -->
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect, useMemo, useCallback, useRef } = React;
+        const { useState, useEffect, useMemo, useCallback } = React;
 
-        // --- 1. Configuration ---
-        const CFG = {
-            LS_KEY: "CGF_DB_V5_STABLE", 
-            API_MODEL: "gemini-2.5-flash", // 使用穩定模型
-            MANIFEST_FILE: "./db_manifest.json" 
+        // --- 1. Constants & Config ---
+        const CONSTANTS = {
+            LS_KEY: "CGF_DB_V46_FIXED", // 變更版本號，強制刷新本地存儲
+            CONFIG_FILE: "./project_config.json",
+            DEFAULT_MANIFEST: "./db_manifest.json"
         };
 
-        // --- 2. Logic Layer (IO & Utilities) ---
-        const IO = {
-            get: (k) => { try { return localStorage.getItem(k); } catch { return null; } },
-            set: (k, v) => { try { localStorage.setItem(k, v); return true; } catch { return false; } },
-            del: (k) => { try { localStorage.removeItem(k); } catch {} },
+        // --- 2. Utilities (Pure Functions) ---
+        const Utils = {
+            getLS: (k) => { try { return localStorage.getItem(k); } catch { return null; } },
+            setLS: (k, v) => { try { localStorage.setItem(k, v); return true; } catch { return false; } },
+            delLS: (k) => { try { localStorage.removeItem(k); } catch {} },
             
-            genId: (list) => {
-                if (!Array.isArray(list) || list.length === 0) return Date.now();
-                return list.reduce((max, item) => Math.max(max, Number(item.id) || 0), 0) + 1;
-            },
+            genId: () => Date.now() + Math.floor(Math.random() * 1000000),
 
-            enrich: (raw) => {
-                if (!raw || typeof raw !== 'object') {
-                    return null;
-                }
-                const p = { ...raw };
-                p.id = p.id || Date.now() + Math.random(); 
-                p.brand = String(p.brand || "Unknown");
-                p.model = String(p.model || "Unknown Model");
-                p.type = String(p.type || "Equipment");
-                p.priceLevel = String(p.priceLevel || "$");
-                p.capacity = String(p.capacity || "N/A");
-                p.feature = String(p.feature || "");
-                p.pros = Array.isArray(p.pros) ? p.pros : [];
-                p.cons = Array.isArray(p.cons) ? p.cons : [];
-                p.sentiment = Array.isArray(p.sentiment) ? p.sentiment : [{ name: "N/A", value: 100, color: "#555" }];
-                p.verdict = p.verdict || "No verdict available.";
-
-                return p;
-            },
+            enrich: (raw) => ({
+                id: raw.id || Utils.genId(),
+                brand: String(raw.brand || "Unknown"),
+                model: String(raw.model || "Unknown Model"),
+                type: String(raw.type || "Equipment"),
+                priceLevel: String(raw.priceLevel || "$"),
+                capacity: String(raw.capacity || "N/A"),
+                feature: String(raw.feature || ""),
+                pros: Array.isArray(raw.pros) ? raw.pros : [],
+                cons: Array.isArray(raw.cons) ? raw.cons : [],
+                sentiment: Array.isArray(raw.sentiment) ? raw.sentiment : [{ name: "N/A", value: 100, color: "#555" }],
+                verdict: raw.verdict || "No verdict available."
+            }),
 
             parseJSON: (text) => {
                 if (!text) return null;
                 try {
                     const clean = text.replace(/```json|```/g, '').trim();
-                    let jsonText = clean;
-                    
-                    const bracketMatch = clean.match(/\[.*\]/s);
-                    const braceMatch = clean.match(/\{.*\}/s);
-                    
-                    if (bracketMatch) {
-                        jsonText = bracketMatch[0];
-                    } else if (braceMatch) {
-                        jsonText = braceMatch[0];
-                    }
-
-                    const parsed = JSON.parse(jsonText);
+                    const parsed = JSON.parse(clean);
                     return Array.isArray(parsed) ? parsed : [parsed];
-
                 } catch (e) {
+                    console.error("JSON Parse Error:", e);
                     return null;
                 }
             },
 
+            // Tetris 佈局演算法
             getSpanClass: (item) => {
                 let score = 0;
-                const pros = item.pros || [];
-                const cons = item.cons || [];
-                const len = (item.verdict || "").length;
-                if (pros.length + cons.length >= 5) score += 2;
+                if ((item.pros?.length || 0) + (item.cons?.length || 0) >= 5) score += 2;
                 if (item.priceLevel === "$$$$$") score += 2;
-                else if (item.priceLevel === "$$$$") score += 1;
-                if (len > 25) score += 1;
-                const hash = Math.floor(Math.random() * 3); 
+                if ((item.verdict || "").length > 25) score += 1;
+                
+                const pseudoRandom = (item.id % 3); 
                 
                 if (score >= 4) return "col-span-1 md:col-span-2 row-span-2"; 
-                if (score === 3) return hash === 0 ? "col-span-1 md:col-span-2 row-span-1" : "col-span-1 row-span-2";
+                if (score === 3) return pseudoRandom === 0 ? "col-span-1 md:col-span-2 row-span-1" : "col-span-1 row-span-2";
                 return "col-span-1 row-span-1";
             },
 
-            getFeatureLabel: (type) => {
-                const t = (type || "").toLowerCase();
-                if(t.includes("磨") || t.includes("grinder")) return "刀盤";
-                if(t.includes("濾") || t.includes("壺") || t.includes("filter")) return "結構";
-                if(t.includes("秤") || t.includes("scale")) return "特性";
-                if(t.includes("壓") || t.includes("press")) return "機制";
-                return "特點";
-            },
-
             proxyUrl: (url) => {
-                const driveRegex = /\/file\/d\/([a-zA-Z0-9_-]+)\//;
-                const match = url.match(driveRegex);
-                if (match && match[1]) {
-                    // 使用 allorigins 代理服務以避免 CORS 問題
-                    return `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${match[1]}`)}`;
-                }
-                return url;
+                const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)\//);
+                return match ? `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${match[1]}`)}` : url;
             }
         };
 
-        // --- 3. Icons (Lucide-like SVG paths) ---
+        // --- 3. Icons (SVG) ---
         const Icon = ({ n, c = "w-4 h-4" }) => {
             const paths = {
                 search: "m21 21-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z",
                 cloud: "M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242",
                 upload: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12",
-                settings: "M12.22 2h-.44a2 2 0 0 1-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l-.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z",
-                plus: "M12 5v14M5 12h14",
                 trash: "M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2",
                 download: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3",
-                msg: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z",
                 chef: "M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 9.08 0A5.11 5.11 0 0 1 18.59 6 4 4 0 0 1 20 13.87V21H6Z M6 17h14",
                 scale: "M6 20h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z M12 14v4 M12 2v4",
                 tag: "M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z M7 7h.01",
@@ -168,689 +115,387 @@
                 up: "M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3",
                 down: "M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3",
                 refresh: "M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16",
-                close: "M18 6 6 18 M6 6 18 18",
-                key: "M15 9l-3 3-2 2M15 9l4-4M15 9l-3-3M6.5 13.5l-3 3-3-3 3-3 3 3z"
+                close: "M18 6 6 18 M6 6 18 18"
             };
             return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}><path d={paths[n] || ""}/></svg>;
         };
 
-        // --- 4. Modals (Pure JSX Components) ---
+        // --- 4. Components ---
 
-        // 通用 Modal Wrapper
-        const ModalWrapper = ({ title, onClose, children, loading = false, maxWidth = 'max-w-2xl' }) => (
-            <div className="fixed inset-0 z-[9000] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" onClick={loading ? undefined : onClose}>
-                <div className={`bg-[#18181b] border border-[#27272a] rounded-xl w-full ${maxWidth} max-h-[90vh] flex flex-col shadow-2xl overflow-hidden`} onClick={e=>e.stopPropagation()}>
-                    <div className="p-4 border-b border-[#27272a] bg-[#0c0c0c] flex justify-between items-center shrink-0">
-                        <h3 className="font-bold text-yellow-500 flex items-center gap-2">
-                            <Icon n={loading ? "refresh" : "msg"} c={`w-5 h-5 ${loading ? "spin" : ""}`}/> {title}
-                        </h3>
-                        <button onClick={onClose} disabled={loading} className="text-gray-500 hover:text-white text-xl p-1 transition-colors">
-                            <Icon n="close" c="w-5 h-5"/>
-                        </button>
-                    </div>
-                    {children}
-                </div>
-            </div>
-        );
-
-        // AI 評論和錯誤顯示專用 Modal
-        const AIMessageModal = ({ show, title, content, loading, onClose }) => {
-            if (!show) return null;
-            return (
-                <ModalWrapper title={title} loading={loading} onClose={onClose} maxWidth="max-w-3xl">
-                    <div className="p-6 overflow-y-auto text-gray-300 mkd flex-grow">
-                        {loading ? (
-                            <div className="flex flex-col items-center py-10">
-                                <div className="w-10 h-10 border-4 border-yellow-600 border-t-transparent rounded-full spin"></div>
-                                <p className="mt-4 text-sm text-gray-400">AI 正在努力生成中...</p>
-                            </div>
-                        ) : (
-                            <div dangerouslySetInnerHTML={{__html: marked.parse(content || "沒有內容。")}} />
-                        )}
-                    </div>
-                </ModalWrapper>
-            );
-        };
-
-        const ApiKeyModal = ({ show, onClose, onSave, initialKey }) => {
-            const [key, setKey] = useState(initialKey);
-            const [error, setError] = useState("");
-            
-            const handleSave = () => {
-                if (!key || key.trim().length < 10) { 
-                    setError("API Key 長度不足或無效。");
-                    return;
-                }
-                onSave(key.trim());
-            };
-
-            if (!show) return null;
-
-            return (
-                <ModalWrapper title="設定 Gemini API Key" onClose={onClose} maxWidth="max-w-sm">
-                    <div className="p-6 flex-grow flex flex-col">
-                        <p className="text-sm text-gray-400 mb-4">API Key 用於啟動 **AI 搜尋**和 **AI 評論/建議**功能。</p>
-                        <input 
-                            type="password" 
-                            value={key} 
-                            onChange={e => {setKey(e.target.value); setError("");}} 
-                            placeholder="請貼上您的 Gemini API Key" 
-                            className="w-full bg-black border border-[#3f3f46] rounded p-3 text-white mb-4 focus:border-yellow-600 focus:outline-none"
-                        />
-                        {error && <p className="text-rose-400 text-sm mb-4">{error}</p>}
-                    </div>
-                    <div className="p-4 border-t border-[#27272a] bg-[#18181b] flex justify-end gap-3 shrink-0">
-                        <button onClick={onClose} className="px-4 py-2 text-gray-400 hover:text-white text-sm transition">取消</button>
-                        <button onClick={handleSave} className="px-4 py-2 bg-yellow-600 hover:bg-yellow-500 text-black font-bold rounded text-sm transition">儲存</button>
-                    </div>
-                </ModalWrapper>
-            );
-        };
-
-        const CloudImportModal = ({ show, onClose, onImport }) => {
-            const [url, setUrl] = useState("");
-            const [loading, setLoading] = useState(false);
-            const [error, setError] = useState("");
-
-            const handleImportClick = async () => {
-                if (!url.trim()) return setError("請輸入有效的網址。");
-                setLoading(true);
-                setError("");
-                
-                const fetchUrl = IO.proxyUrl(url.trim());
-                const finalUrl = url.trim().startsWith("http") ? fetchUrl : url.trim();
-
-                try {
-                    const res = await fetch(finalUrl);
-                    if (!res.ok) throw new Error(`HTTP 錯誤碼: ${res.status}`);
-                    
-                    const text = await res.text();
-                    const json = IO.parseJSON(text);
-
-                    if (!json || json.length === 0) throw new Error("無效或空的 JSON 資料。");
-                    
-                    onImport(json);
-                    onClose();
-                } catch (err) {
-                    setError(`匯入失敗: ${err.message}`);
-                } finally { setLoading(false); }
-            };
-
-            if (!show) return null;
-
-            return (
-                <ModalWrapper title="雲端匯入 (JSON)" onClose={onClose} maxWidth="max-w-md" loading={loading}>
-                    <div className="p-6 flex-grow flex flex-col">
-                        <p className="text-sm text-gray-400 mb-4">請貼上 JSON 檔案的 URL (例如 Google Drive 分享連結)。</p>
-                        <input 
-                            type="text" 
-                            value={url} 
-                            onChange={e=>setUrl(e.target.value)} 
-                            placeholder="貼上 URL..." 
-                            className="w-full bg-black border border-[#3f3f46] rounded p-3 text-white text-sm mb-2 focus:border-blue-500 focus:outline-none"
-                            disabled={loading}
-                        />
-                        {error && <p className="text-rose-400 text-sm mb-4 bg-rose-900/20 p-2 rounded border border-rose-800">{error}</p>}
-                    </div>
-                    <div className="p-4 border-t border-[#27272a] bg-[#18181b] flex justify-end gap-2 shrink-0">
-                        <button onClick={onClose} disabled={loading} className="px-4 py-2 text-gray-400 hover:text-white text-sm transition">取消</button>
-                        <button onClick={handleImportClick} disabled={loading || !url.trim()} className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded text-sm transition flex items-center gap-2">
-                            {loading && <Icon n="refresh" c="w-4 h-4 spin"/>} 匯入
-                        </button>
-                    </div>
-                </ModalWrapper>
-            );
-        };
-
-        const SearchResultModal = ({ show, results, onClose, onAdd }) => {
-            if (!show || !results) return null;
-            return (
-                <ModalWrapper title={`AI 網頁搜尋結果 (${results.length} 項)`} onClose={onClose} maxWidth="max-w-4xl">
-                    <div className="p-6 overflow-y-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bg-[#0c0c0c] flex-grow">
-                        {results.map(item => (
-                            <div key={item.id} className="bg-[#1f1f22] border border-[#27272a] rounded-lg p-4 flex flex-col gap-2 hover:border-yellow-600/50">
-                                <div className="flex justify-between">
-                                    <span className="text-xs text-yellow-500 font-bold">{item.brand}</span>
-                                    <span className="text-xs text-gray-400">{item.type}</span>
-                                </div>
-                                <h4 className="text-base font-bold text-white mb-2">{item.model}</h4>
-                                <p className="text-sm text-gray-400 italic line-clamp-2">"{item.verdict}"</p>
-                                <ul className="text-xs text-gray-500 mt-2 space-y-1">
-                                    <li>價格: <span className="text-yellow-500 font-mono">{item.priceLevel}</span></li>
-                                    <li>容量: <span className="text-gray-300">{item.capacity}</span></li>
-                                </ul>
-                                <button 
-                                    onClick={() => onAdd(item)}
-                                    className="mt-4 w-full py-2 bg-emerald-900/30 text-emerald-400 border border-emerald-800 rounded hover:bg-emerald-900/50 text-sm flex items-center justify-center gap-2 transition"
-                                >
-                                    <Icon n="plus" c="w-3 h-3"/> 加入資料庫
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                </ModalWrapper>
-            );
-        };
-
-        // --- 5. Product Card Component (with AI buttons) ---
-        
+        // PieChart 保留 React.memo
         const PieChart = React.memo(({ data }) => {
             if(!data || !data.length) return null;
             const total = data.reduce((s, i) => s + (i.value || 0), 0);
-            const items = data.map(i => ({...i, percent: (i.value || 0) / total}));
             let cumulativePercent = 0;
+            
             return (
                 <svg viewBox="-1.1 -1.1 2.2 2.2" className="w-full h-full -rotate-90">
-                    {items.map((slice, i) => {
+                    {data.map((slice, i) => {
+                        const percent = (slice.value || 0) / total;
                         const start = cumulativePercent;
-                        const end = start + slice.percent;
+                        const end = start + percent;
                         cumulativePercent = end;
+                        
                         const [sx, sy] = [Math.cos(2*Math.PI*start), Math.sin(2*Math.PI*start)];
                         const [ex, ey] = [Math.cos(2*Math.PI*end), Math.sin(2*Math.PI*end)];
-                        const large = slice.percent > 0.5 ? 1 : 0;
+                        const large = percent > 0.5 ? 1 : 0;
                         const d = `M ${sx} ${sy} A 1 1 0 ${large} 1 ${ex} ${ey} L ${ex*0.65} ${ey*0.65} A 0.65 0.65 0 ${large} 0 ${sx*0.65} ${sy*0.65} Z`;
+                        
                         return <path key={i} d={d} fill={slice.color} stroke="#18181b" strokeWidth="0.02" className="hover:opacity-80 transition-opacity"/>;
                     })}
                 </svg>
             );
         });
 
-        const Card = React.memo(({ item, spanClass, onAI }) => {
-            const [menuOpen, setMenuOpen] = useState(false);
-            if (!item) return null;
-
-            const isHuge = spanClass.includes('row-span-2') && spanClass.includes('col-span-2');
+        // Card 組件：保持純粹，依賴 props 觸發渲染
+        const Card = ({ item, spanClass, configLabels }) => {
             const isBig = spanClass.includes('row-span-2') || spanClass.includes('col-span-2');
-            
+            const isHuge = spanClass.includes('row-span-2') && spanClass.includes('col-span-2');
+
+            // 根據設定檔動態決定 Feature Label
+            const getDynamicFeatureLabel = (type) => {
+                if (configLabels?.feature_label_map) {
+                    const normalizedType = type.toLowerCase();
+                    for (const [key, label] of Object.entries(configLabels.feature_label_map)) {
+                        if (normalizedType.includes(key) || type.includes(key)) return label;
+                    }
+                }
+                return "特點";
+            };
+
+            const searchUrl = (platform) => {
+                const q = encodeURIComponent(`${item.brand} ${item.model}`);
+                return platform === 'shopee' ? `https://shopee.tw/search?keyword=${q}` : `https://www.momoshop.com.tw/search/searchShop.jsp?keyword=${q}`;
+            };
+
             const typo = {
                 brand: isHuge ? "text-lg font-black tracking-[0.2em]" : "text-xs font-bold tracking-widest",
                 title: isHuge ? "text-5xl md:text-6xl mt-2 mb-4" : (isBig ? "text-3xl mt-1 mb-2" : "text-xl"),
                 verdict: isHuge ? "text-base" : (isBig ? "text-base" : "text-sm"),
                 listText: isHuge ? "text-base" : "text-xs",
-                btn: isHuge ? "text-sm py-2.5" : "text-xs py-2",
-                featLabel: isHuge ? "text-sm" : "text-xs",
-                feat: isHuge ? "text-lg" : "text-sm"
-            };
-
-            const searchUrl = (type) => {
-                const q = encodeURIComponent(`${item.brand || ''} ${item.model || ''}`);
-                return type === 'shopee' ? `https://shopee.tw/search?keyword=${q}` : `https://www.momoshop.com.tw/search/searchShop.jsp?keyword=${q}`;
-            };
-
-            const handleImageSearch = () => {
-                const q = encodeURIComponent(`${item.brand || ''} ${item.model || ''} ${item.type || ''}`);
-                window.open(`https://www.google.com/search?tbm=isch&q=${q}`, '_blank');
             };
 
             return (
-                <div className={`bg-[#18181b] border border-[#27272a] rounded-xl p-5 flex flex-col gap-3 hover:border-yellow-600/50 hover:shadow-2xl transition-all duration-300 relative h-full group ${spanClass}`}>
+                <div className={`bg-[#18181b] border border-[#27272a] rounded-xl p-5 flex flex-col gap-3 hover:border-yellow-600/50 hover:shadow-2xl transition-all duration-300 h-full group ${spanClass}`}>
                     <div className="flex justify-between items-start">
                         <div className="min-w-0 pr-2 flex-1">
                             <span className={`text-yellow-500 uppercase block truncate ${typo.brand}`}>{item.brand}</span>
                             <h3 className={`font-bold text-gray-100 leading-none truncate ${typo.title}`}>{item.model}</h3>
                             <div className="flex gap-2 mt-2">
-                                <span className="flex items-center gap-1 bg-[#27272a] text-gray-400 px-2 py-1 rounded border border-[#3f3f46] text-xs">
-                                    <Icon n="tag" c="w-3 h-3"/> {item.type}
-                                </span>
-                                <span className="flex items-center gap-1 bg-[#27272a] text-gray-400 px-2 py-1 rounded border border-[#3f3f46] text-xs">
-                                    <Icon n="scale" c="w-3 h-3"/> {item.capacity}
-                                </span>
+                                <span className="flex items-center gap-1 bg-[#27272a] text-gray-400 px-2 py-1 rounded border border-[#3f3f46] text-xs"><Icon n="tag" c="w-3 h-3"/> {item.type}</span>
+                                <span className="flex items-center gap-1 bg-[#27272a] text-gray-400 px-2 py-1 rounded border border-[#3f3f46] text-xs"><Icon n="scale" c="w-3 h-3"/> {item.capacity}</span>
                             </div>
                         </div>
-                        <button onClick={handleImageSearch} className="flex items-center gap-1 bg-[#27272a] hover:bg-[#3f3f46] text-gray-400 hover:text-white px-2 py-1.5 rounded border border-[#3f3f46] transition-colors flex-shrink-0" title="Image Search">
-                            <Icon n="image" c="w-4 h-4"/>
-                            <span className={isBig ? "text-xs ml-1" : "hidden"}>圖片</span>
+                        <button onClick={() => window.open(`https://www.google.com/search?tbm=isch&q=${encodeURIComponent(item.brand + ' ' + item.model)}`, '_blank')} className="flex items-center gap-1 bg-[#27272a] hover:bg-[#3f3f46] text-gray-400 hover:text-white px-2 py-1.5 rounded border border-[#3f3f46] transition-colors flex-shrink-0" title="圖片搜尋">
+                            <Icon n="image" c="w-4 h-4"/><span className={isBig ? "text-xs ml-1" : "hidden"}>圖</span>
                         </button>
                     </div>
 
                     <div className="bg-[#27272a]/50 p-3 rounded border-l-4 border-yellow-600 flex flex-col gap-1">
                         <div className="flex justify-between items-center text-xs font-bold tracking-wider text-gray-500 mb-1">
-                            <span>GEEK VERDICT</span>
+                            <span>VERDICT</span>
                             <span className="text-yellow-500 font-mono text-base">{item.priceLevel}</span>
                         </div>
                         <p className={`text-gray-300 italic leading-relaxed ${typo.verdict}`}>"{item.verdict}"</p>
                     </div>
 
                     <div className={`grid grid-cols-2 gap-4 flex-grow ${isBig ? 'overflow-auto' : 'overflow-hidden'}`}>
-                        <div>
-                            <span className={`text-emerald-500 font-bold block tracking-wide flex items-center gap-1 mb-1 ${typo.listText}`}>
-                                <Icon n="up" c="w-3 h-3"/> 優點
-                            </span>
-                            <ul className={`space-y-1 text-gray-400 ${typo.listText}`}>
-                                {item.pros.slice(0, isHuge ? 8 : 3).map((p,i)=><li key={i} className="flex items-start"><span className="mr-1.5 text-emerald-500/50">•</span><span className="truncate">{p}</span></li>)}
-                            </ul>
-                        </div>
-                        <div>
-                            <span className={`text-rose-500 font-bold block tracking-wide flex items-center gap-1 mb-1 ${typo.listText}`}>
-                                <Icon n="down" c="w-3 h-3"/> 缺點
-                            </span>
-                            <ul className={`space-y-1 text-gray-400 ${typo.listText}`}>
-                                {item.cons.slice(0, isHuge ? 8 : 3).map((c,i)=><li key={i} className="flex items-start"><span className="mr-1.5 text-rose-500/50">•</span><span className="truncate">{c}</span></li>)}
-                            </ul>
-                        </div>
+                        {[ 
+                            { color: "text-emerald-500", icon: "up", label: "優點", list: item.pros },
+                            { color: "text-rose-500", icon: "down", label: "缺點", list: item.cons }
+                        ].map((grp, idx) => (
+                            <div key={idx}>
+                                <span className={`${grp.color} font-bold block tracking-wide flex items-center gap-1 mb-1 ${typo.listText}`}><Icon n={grp.icon} c="w-3 h-3"/> {grp.label}</span>
+                                <ul className={`space-y-1 text-gray-400 ${typo.listText}`}>
+                                    {grp.list.slice(0, isHuge ? 8 : 3).map((t,i)=><li key={i} className="truncate flex items-center"><span className={`mr-1.5 ${grp.color}/50`}>•</span>{t}</li>)}
+                                </ul>
+                            </div>
+                        ))}
                     </div>
 
                     <div className="flex items-center justify-between border-t border-[#27272a] pt-3 mt-auto">
-                        <div className={`${isHuge ? 'w-16 h-16' : 'w-12 h-12'} relative flex-shrink-0 mr-4`}>
-                            <PieChart data={item.sentiment} />
-                        </div>
+                        <div className={`${isHuge ? 'w-16 h-16' : 'w-12 h-12'} relative flex-shrink-0 mr-4`}><PieChart data={item.sentiment} /></div>
                         <div className="flex flex-col items-end">
-                            <span className={`text-gray-500 uppercase font-bold ${typo.featLabel}`}>{IO.getFeatureLabel(item.type)}</span>
-                            <span className={`text-gray-200 font-mono border border-[#3f3f46] bg-[#27272a] px-2 py-0.5 rounded ${typo.feat}`}>{item.feature || "N/A"}</span>
+                            <span className={`text-gray-500 uppercase font-bold ${isHuge ? "text-sm" : "text-xs"}`}>{getDynamicFeatureLabel(item.type)}</span>
+                            <span className={`text-gray-200 font-mono border border-[#3f3f46] bg-[#27272a] px-2 py-0.5 rounded ${isHuge ? "text-lg" : "text-sm"}`}>{item.feature || "N/A"}</span>
                         </div>
                     </div>
 
-                    <div className="grid grid-cols-2 gap-2 mt-2">
-                        {/* AI 功能按鈕 */}
-                        <button onClick={()=>onAI('snark', item)} className={`flex items-center justify-center gap-1 bg-indigo-900/20 text-indigo-300 border border-indigo-500/30 rounded hover:bg-indigo-900/40 transition ${typo.btn}`}>
-                            <Icon n="msg" c="w-3 h-3"/> {isHuge ? 'AI 毒舌評論' : '評論'}
-                        </button>
-                        <div className="relative">
-                            <button onClick={()=>setMenuOpen(!menuOpen)} className={`w-full flex items-center justify-center gap-1 bg-emerald-900/20 text-emerald-300 border border-emerald-500/30 rounded hover:bg-emerald-900/40 transition ${typo.btn}`}>
-                                <Icon n="chef" c="w-3 h-3"/> {isHuge ? '沖煮建議' : '建議'}
-                            </button>
-                            {menuOpen && (
-                                <div className="absolute bottom-full left-0 w-full mb-1 bg-[#27272a] border border-[#3f3f46] rounded shadow-xl z-20 flex flex-col overflow-hidden">
-                                    {['淺焙','中焙','深焙'].map(r => (
-                                        <button key={r} onClick={()=>{onAI('recipe', item, r); setMenuOpen(false)}} className="px-3 py-2 text-left text-xs text-gray-300 hover:bg-[#3f3f46] hover:text-white transition">{r}</button>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                        {/* 市場連結 */}
-                        <a href={searchUrl('shopee')} target="_blank" className={`col-span-1 flex items-center justify-center gap-1 bg-[#ee4d2d] text-white font-bold rounded hover:opacity-90 transition ${typo.btn}`}>Shopee</a>
-                        <a href={searchUrl('momo')} target="_blank" className={`col-span-1 flex items-center justify-center gap-1 bg-[#d63086] text-white font-bold rounded hover:opacity-90 transition ${typo.btn}`}>MOMO</a>
+                    <div className="grid grid-cols-2 gap-2 mt-2 text-xs font-bold text-white">
+                        <a href={searchUrl('shopee')} target="_blank" className="bg-[#ee4d2d] py-2 rounded hover:opacity-90 transition flex justify-center items-center gap-1">Shopee</a>
+                        <a href={searchUrl('momo')} target="_blank" className="bg-[#d63086] py-2 rounded hover:opacity-90 transition flex justify-center items-center gap-1">MOMO</a>
                     </div>
                 </div>
             );
-        });
+        };
 
-        
-        // --- 6. Main App Component ---
+        // 雲端匯入 Modal
+        const CloudImportModal = ({ show, onClose, onImport }) => {
+            const [url, setUrl] = useState("");
+            const [loading, setLoading] = useState(false);
+            const [error, setError] = useState("");
+
+            if (!show) return null;
+
+            const handleRun = async () => {
+                if (!url.trim()) return setError("請輸入網址");
+                setLoading(true); setError("");
+                try {
+                    const res = await fetch(Utils.proxyUrl(url.trim()));
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    const json = Utils.parseJSON(await res.text());
+                    if (!Array.isArray(json) || !json.length) throw new Error("無效資料");
+                    onImport(json);
+                    onClose();
+                } catch (e) { setError(e.message); } finally { setLoading(false); }
+            };
+
+            return (
+                <div className="fixed inset-0 z-[9000] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" onClick={loading ? null : onClose}>
+                    <div className="bg-[#18181b] border border-[#27272a] rounded-xl w-full max-w-md shadow-2xl overflow-hidden" onClick={e=>e.stopPropagation()}>
+                        <div className="p-4 border-b border-[#27272a] bg-[#0c0c0c] flex justify-between items-center"><h3 className="font-bold text-yellow-500 flex items-center gap-2"><Icon n="cloud"/> 雲端匯入</h3></div>
+                        <div className="p-6">
+                            <input value={url} onChange={e=>setUrl(e.target.value)} placeholder="貼上 JSON URL..." className="w-full bg-black border border-[#3f3f46] rounded p-3 text-white text-sm mb-2 focus:border-blue-500 focus:outline-none" disabled={loading}/>
+                            {error && <p className="text-rose-400 text-sm mt-2">{error}</p>}
+                        </div>
+                        <div className="p-4 border-t border-[#27272a] flex justify-end gap-2">
+                            <button onClick={onClose} disabled={loading} className="px-4 py-2 text-gray-400 text-sm">取消</button>
+                            <button onClick={handleRun} disabled={loading} className="px-4 py-2 bg-blue-600 text-white rounded text-sm flex items-center gap-2">{loading && <Icon n="refresh" c="spin w-4 h-4"/>} 匯入</button>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
+        // --- 5. Main App ---
         const App = () => {
             const [db, setDb] = useState([]);
+            const [config, setConfig] = useState(null);
             const [loading, setLoading] = useState(true);
             const [query, setQuery] = useState("");
-            const [filters, setFilters] = useState({ brand: "All", type: "All", capacity: "All" });
+            // filters 只有 brand 和 type
+            const [filters, setFilters] = useState({ brand: "All", type: "All" });
+            const [modalOpen, setModalOpen] = useState(false);
+
+            // 使用 useCallback 包裝狀態更新函數，確保其穩定性
+            const handleQueryChange = useCallback(e => setQuery(e.target.value), []);
+            const handleFilterChange = useCallback((key, value) => setFilters(prev => ({ ...prev, [key]: value })), []);
             
-            // 統一的 Modal 狀態管理
-            const [modal, setModal] = useState({
-                aiMessage: { open: false, title: '', content: '', loading: false },
-                key: false,
-                cloudImport: false,
-                searchResults: null, 
-            });
-            // 讀取/初始化 API Key
-            const [apiKey, setApiKey] = useState(IO.get("GEMINI_KEY") || "");
+            const handleImport = useCallback((newData) => {
+                setDb(prev => {
+                    const existingIds = new Set(prev.map(i => i.id));
+                    const imported = newData.map(Utils.enrich).filter(x=>x);
+                    const unique = imported.map(i => ({ 
+                        ...i, 
+                        id: existingIds.has(i.id) ? Utils.genId() : i.id 
+                    }));
+                    return [...unique, ...prev];
+                });
+            }, []);
+
+            const handleFile = async (e) => {
+                const files = Array.from(e.target.files);
+                if (!files.length) return;
+                const contents = await Promise.all(files.map(f => new Promise(res => {
+                    const r = new FileReader();
+                    r.onload = ev => res(Utils.parseJSON(ev.target.result));
+                    r.readAsText(f);
+                })));
+                const flat = contents.flat().filter(x => x);
+                if (flat.length) alert(`成功匯入 ${flat.length} 筆資料。`);
+                else alert("未找到有效的 JSON 資料。");
+                if (flat.length) handleImport(flat);
+                e.target.value = null;
+            };
 
 
-            // --- Core Logic: DB Loading & Persistence ---
+            // 數據初始化 (useEffect) - 確保在第一次渲染前完成所有異步操作
             useEffect(() => {
                 const init = async () => {
-                    const local = IO.get(CFG.LS_KEY);
+                    setLoading(true);
                     let initialData = [];
 
-                    if(local) {
+                    // 1. 嘗試讀取 LocalStorage
+                    const local = Utils.getLS(CONSTANTS.LS_KEY);
+                    if (local) {
                         try {
-                            const parsed = JSON.parse(local);
-                            if(Array.isArray(parsed) && parsed.length) {
-                                initialData = parsed.map(IO.enrich).filter(x=>x);
+                            const parsed = Utils.parseJSON(local);
+                            if (parsed && parsed.length) {
+                                initialData = parsed.map(Utils.enrich).filter(x=>x);
+                                setDb(initialData);
                             }
-                        } catch (e) {
-                            IO.del(CFG.LS_KEY); 
-                        }
+                        } catch { Utils.delLS(CONSTANTS.LS_KEY); }
                     }
 
+                    // 2. 載入 Config (用於 UI 顯示)
+                    let cfg = {};
+                    try {
+                        const cfgRes = await fetch(CONSTANTS.CONFIG_FILE);
+                        cfg = cfgRes.ok ? await cfgRes.json() : {};
+                        setConfig(cfg);
+                    } catch (e) {
+                        console.warn("Config load failed:", e);
+                    }
+
+                    // 3. 如果本地儲存為空，執行 Manifest 載入
                     if (initialData.length === 0) {
                         try {
-                            const manifestRes = await fetch(CFG.MANIFEST_FILE);
-                            if (!manifestRes.ok) throw new Error(`Manifest HTTP ${manifestRes.status}`);
-                            
+                            const manifestPath = cfg?.db_config?.manifest_file || CONSTANTS.DEFAULT_MANIFEST;
+                            const manifestRes = await fetch(manifestPath);
+                            if (!manifestRes.ok) throw new Error("Manifest Not Found");
                             const manifest = await manifestRes.json();
-                            const filesToLoad = manifest.files || [];
 
-                            const promises = filesToLoad.map(file => 
-                                fetch(file).then(res => res.ok ? res.json() : [])
-                            );
-                            const results = await Promise.allSettled(promises);
-                            const validData = results
+                            const files = manifest.files || [];
+                            const results = await Promise.allSettled(files.map(f => fetch(f).then(r => r.json())));
+                            
+                            const mergedData = results
                                 .filter(r => r.status === 'fulfilled')
                                 .map(r => r.value)
                                 .flat()
-                                .map(IO.enrich)
+                                .map(Utils.enrich)
                                 .filter(x => x);
 
-                            if(validData.length > 0) {
-                                initialData = validData;
-                                IO.set(CFG.LS_KEY, JSON.stringify(validData));
+                            if (mergedData.length) {
+                                setDb(mergedData);
+                                Utils.setLS(CONSTANTS.LS_KEY, JSON.stringify(mergedData));
                             }
                         } catch (e) {
+                            console.warn("Manifest/File load failed:", e);
                         }
-                    }
-
-                    setDb(initialData);
+                    } 
+                    
                     setLoading(false);
                 };
                 init();
             }, []);
 
-            // Persist DB changes to localStorage
-            useEffect(() => {
-                if(db.length > 0) IO.set(CFG.LS_KEY, JSON.stringify(db));
+            // 資料庫變更時同步到 LS (僅用於備份)
+            useEffect(() => { 
+                if (db.length) Utils.setLS(CONSTANTS.LS_KEY, JSON.stringify(db)); 
+            }, [db]);
+
+            // 核心篩選邏輯 (使用 useMemo 確保性能和數據穩定性)
+            const filteredData = useMemo(() => {
+                const q = query.toLowerCase().trim();
+                let res = db;
+
+                // 1. 下拉選單篩選
+                if (filters.brand !== "All") res = res.filter(i => i.brand === filters.brand);
+                if (filters.type !== "All") res = res.filter(i => i.type === filters.type);
+
+                // 2. 文本搜尋過濾 (絕對嚴格過濾)
+                if (q.length > 0) {
+                    res = res.filter(item => {
+                        // 包含所有可搜尋的文本欄位，包括 capacity
+                        const searchableFields = [item.brand, item.model, item.type, item.verdict, item.feature, item.capacity];
+                        
+                        // 只要有一個欄位包含 q，就保留該項目
+                        return searchableFields.some(val => (val || "").toLowerCase().includes(q));
+                    });
+                }
+                
+                return res;
+            }, [db, filters, query]); 
+
+            // 下拉選單選項
+            const options = useMemo(() => {
+                const getOpts = (key) => ["All", ...new Set(db.map(i => i[key]))].sort();
+                return { 
+                    brand: getOpts("brand"), 
+                    type: getOpts("type"), 
+                };
             }, [db]);
 
 
-            // --- Handlers ---
+            // UI 渲染變量
+            const currentVersion = config?.project?.version || "v46";
+            const headerTitle = config?.ui_labels?.header_title || "COFFEE GEEK";
+            const searchPlaceholder = config?.ui_labels?.search_placeholder?.split('/')[0].trim() || "搜尋器材...";
 
-            const handleImport = (newData) => {
-                if(!newData || !Array.isArray(newData)) return;
-                setDb(prev => {
-                    const ids = new Set(prev.map(i => i.id));
-                    const unique = newData.map(IO.enrich).filter(x => x).map(i => ({
-                        ...i,
-                        id: ids.has(i.id) ? IO.genId(prev) + Math.random() : i.id 
-                    }));
-                    if(unique.length === 0) return prev;
-                    return [...unique, ...prev];
-                });
-                setModal(p => ({...p, cloudImport: false}));
-            };
-            
-            const handleKeySave = (key) => {
-                if (key && key.trim().length > 10) { 
-                    IO.set("GEMINI_KEY", key);
-                    setApiKey(key);
-                    setModal(p => ({...p, key: false}));
-                } else {
-                    setModal(p => ({...p, aiMessage: { open: true, title: 'API Key 錯誤', content: '無效的 API Key，請檢查長度。', loading: false }}));
-                }
-            };
-            
-            const handleFileImport = async (e) => {
-                const files = Array.from(e.target.files);
-                if(!files.length) return;
-                
-                const readPromises = files.map(file => new Promise(resolve => {
-                    const r = new FileReader();
-                    r.onload = evt => {
-                        try { resolve(IO.parseJSON(evt.target.result)); } 
-                        catch { resolve([]); }
-                    };
-                    r.readAsText(file);
-                }));
+            if (loading && !db.length) return <div className="min-h-screen bg-[#0c0c0c] flex items-center justify-center"><div className="w-12 h-12 border-4 border-yellow-600 rounded-full spin border-t-transparent"></div></div>;
 
-                const rawResults = await Promise.all(readPromises);
-                const flatItems = rawResults.flat().filter(x=>x); 
-                
-                if(flatItems.length > 0) {
-                    handleImport(flatItems);
-                    alert(`成功匯入 ${flatItems.length} 個項目。`);
-                } else {
-                    alert("未找到有效的資料。");
-                }
-                e.target.value = null;
-            };
-
-            const addItemFromSearch = (item) => {
-                const newItem = { ...item, id: IO.genId(db) + Math.random() };
-                handleImport([newItem]);
-                setModal(p => ({
-                    ...p, 
-                    searchResults: p.searchResults.filter(i => i !== item)
-                }));
-            };
-
-            // AI Web Search 執行
-            const handleWebSearch = async (e) => {
-                if (e) e.preventDefault();
-                if(!query.trim()) return; 
-                // 檢查 Key
-                if(!apiKey) return setModal(p => ({...p, key: true}));
-
-                setModal(p => ({...p, aiMessage: { open: true, title: "AI 網頁搜尋中...", content: "正在透過 Google 搜尋並格式化數據...", loading: true }}));
-                
-                const prompt = `Search coffee gear: "${query}". Return a JSON ARRAY of max 5 items. The schema must be: {"brand":"String (TW)","model":"String (TW)","type":"String (TW)","material":"String (TW)","capacity":"String (TW)","feature":"String (TW)","priceLevel":"String ($$$)","verdict":"String (TW)","pros":["String (TW)"],"cons":["String (TW)"],"sentiment":[{"name":"Tag (TW)","value":Number,"color":"String (#hex)"}]}. Return ONLY the JSON ARRAY, nothing else.`;
-                
-                try {
-                    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${CFG.API_MODEL}:generateContent?key=${apiKey}`, {
-                        method: 'POST', headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({ 
-                            contents: [{ parts: [{ text: prompt }] }], 
-                            tools: [{"google_search":{}}], 
-                            config: { temperature: 0.2 },
-                            systemInstruction: { parts: [{ text: "You are a professional coffee equipment data generator. You MUST ONLY return the requested JSON ARRAY object. Ensure all strings (brand, model, type, material, capacity, feature, verdict, pros, cons, sentiment names) are in Traditional Chinese, except priceLevel ($$$) and color (#hex)." }] } 
-                        })
-                    });
-                    
-                    if (!res.ok) {
-                        const errData = await res.json();
-                        throw new Error(errData.error?.message || `HTTP ${res.status}`);
-                    }
-                    
-                    const data = await res.json();
-                    const jsonStr = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                    const parsed = IO.parseJSON(jsonStr);
-                    
-                    if(!parsed || parsed.length === 0) throw new Error("AI 無法產生有效的 JSON 資料或找不到相關結果。");
-
-                    const newItems = parsed.map(i => ({...IO.enrich(i), id: IO.genId(db) + Math.random() }));
-                    
-                    setModal(p => ({...p, aiMessage: { open: false }, searchResults: newItems}));
-                    
-                } catch (err) { 
-                    setModal(p => ({...p, aiMessage: { open: true, title: "AI 網頁搜尋失敗", content: `**錯誤訊息:** ${err.message}`, loading: false }})); 
-                }
-            };
-            
-            // AI 評論/建議執行
-            const handleAI = async (mode, item, extra) => {
-                // 檢查 Key
-                if(!apiKey) return setModal(p => ({...p, key: true}));
-
-                const initialTitle = mode === 'snark' ? `AI 毒舌評論: ${item.model}` : `AI 沖煮建議: ${item.model}`;
-                
-                setModal(p => ({...p, aiMessage: { open: true, title: initialTitle, content: "正在請求 AI 服務...", loading: true }}));
-                
-                let prompt = "";
-                let systemInstruction = "";
-
-                if(mode === 'snark') {
-                    prompt = `請用繁體中文、幽默毒舌但專業的語氣評論 ${item.brand} ${item.model} (${item.type}，特點: ${item.feature})。請根據以下事實進行諷刺: 優點: ${item.pros.join(', ')}，缺點: ${item.cons.join(', ')}。指出它的致命缺點，並告訴我它適合什麼樣的受害者(使用者)。`;
-                    systemInstruction = "你是一位極度毒舌、科學理性務實且具備適度幽默的專業咖啡器材評論家，所有內容必須使用繁體中文和 Markdown 格式。";
-                } else if (mode === 'recipe') {
-                    prompt = `針對 ${item.brand} ${item.model} (${item.type}，特點: ${item.feature})，提供一份適合沖煮「${extra}」烘焙豆的具體沖煮參數建議。內容必須包含: 沖煮總時長、粉水比、研磨度、水溫、注水手法及總注水克數。所有內容請以 Markdown 表格呈現。`;
-                    systemInstruction = "你是一位頂尖的咖啡師，請以科學理性務實的語氣，使用 Markdown 表格來呈現沖煮參數，所有文字必須是繁體中文。";
-                }
-                
-                try {
-                    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${CFG.API_MODEL}:generateContent?key=${apiKey}`, {
-                        method: 'POST', headers: {'Content-Type': 'application/json'},
-                        body: JSON.stringify({ 
-                            contents: [{ parts: [{ text: prompt }] }],
-                            config: { temperature: 0.8 }, 
-                            systemInstruction: { parts: [{ text: systemInstruction }] }
-                        })
-                    });
-                    
-                    if (!res.ok) {
-                        const errData = await res.json();
-                        throw new Error(errData.error?.message || `HTTP ${res.status}`);
-                    }
-                    
-                    const data = await res.json();
-                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                    
-                    if (!text) throw new Error("AI 未能產生回應。");
-                    
-                    setModal(p => ({...p, aiMessage: { open: true, title: initialTitle, content: text, loading: false }}));
-                } catch (err) { 
-                    setModal(p => ({...p, aiMessage: { open: true, title: "AI 呼叫失敗", content: `**錯誤訊息:** ${err.message}`, loading: false }}));
-                }
-            };
-
-
-            // 本地資料篩選邏輯 (Local Search)
-            const filteredData = useMemo(() => {
-                let res = db;
-                if (filters.brand !== "All") res = res.filter(i => i.brand === filters.brand);
-                if (filters.type !== "All") res = res.filter(i => i.type === filters.type);
-                if (filters.capacity !== "All") res = res.filter(i => i.capacity === filters.capacity);
-                
-                if (query.trim()) {
-                    const q = query.toLowerCase();
-                    res = res.filter(i => 
-                        (i.brand || "").toLowerCase().includes(q) || 
-                        (i.model || "").toLowerCase().includes(q) || 
-                        (i.type || "").toLowerCase().includes(q) ||
-                        (i.verdict || "").toLowerCase().includes(q) ||
-                        (i.feature || "").toLowerCase().includes(q)
-                    );
-                }
-                return res;
-            }, [db, filters, query]);
-
-            const options = useMemo(() => ({
-                brand: ["All", ...new Set(db.map(i => i.brand))].sort(),
-                type: ["All", ...new Set(db.map(i => i.type))].sort(),
-                capacity: ["All", ...new Set(db.map(i => i.capacity))].sort()
-            }), [db]);
-
-
-            // --- UI: Renders ---
-            
-            if(loading && db.length === 0) {
-                 return <div className="min-h-screen bg-[#0c0c0c] flex items-center justify-center"><div className="w-12 h-12 border-4 border-yellow-600 rounded-full spin border-t-transparent"></div></div>;
-            }
-
-            if (db.length === 0) {
-                return (
-                    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-[#0c0c0c] text-center space-y-10 fade-in">
-                        <div className="space-y-4">
-                            <div className="w-24 h-24 bg-gradient-to-br from-yellow-600 to-yellow-800 rounded-full flex items-center justify-center mx-auto border-4 border-[#27272a] shadow-2xl">
-                                <Icon n="chef" c="w-12 h-12 text-white"/>
-                            </div>
-                            <h1 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">COFFEE GEEK</h1>
-                            <p className="text-gray-400 tracking-[0.3em] text-xs uppercase">裝備資料庫管理員</p>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
-                            <label className="group cursor-pointer bg-[#18181b] border border-[#27272a] p-8 rounded-2xl hover:border-yellow-600/50 hover:bg-[#1f1f22] transition-all duration-300 flex flex-col items-center gap-4 shadow-lg">
-                                <div className="p-4 bg-[#27272a] rounded-full group-hover:bg-yellow-900/20 transition-colors">
-                                    <Icon n="upload" c="w-8 h-8 text-yellow-500"/>
-                                </div>
-                                <div><h3 className="text-xl font-bold text-white mb-1">匯入本地 JSON</h3><p className="text-xs text-gray-500">選擇多個 JSON 檔案</p></div>
-                                <input type="file" multiple accept=".json" className="hidden" onChange={handleFileImport}/>
-                            </label>
-                            <button onClick={()=>setModal(p=>({...p, cloudImport: true}))} className="group cursor-pointer bg-[#18181b] border border-[#27272a] p-8 rounded-2xl hover:border-blue-600/50 hover:bg-[#1f1f22] transition-all duration-300 flex flex-col items-center gap-4 shadow-lg">
-                                <div className="p-4 bg-[#27272a] rounded-full group-hover:bg-blue-900/20 transition-colors">
-                                    <Icon n="cloud" c="w-8 h-8 text-blue-500"/>
-                                </div>
-                                <div><h3 className="text-xl font-bold text-white mb-1">從雲端匯入 (URL)</h3><p className="text-xs text-gray-500">載入 JSON 檔案的網址</p></div>
-                            </button>
-                        </div>
-                        <div className="text-xs text-gray-600 font-mono pt-10">v5.0 | AI 穩定重構版</div>
-                        <CloudImportModal 
-                            show={modal.cloudImport}
-                            onClose={()=>setModal(p=>({...p, cloudImport: false}))} 
-                            onImport={handleImport} 
-                        />
+            if (!db.length) return (
+                <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-[#0c0c0c] text-center fade-in">
+                    <div className="mb-10 text-white">
+                        <div className="w-24 h-24 bg-gradient-to-br from-yellow-600 to-yellow-800 rounded-full flex items-center justify-center mx-auto border-4 border-[#27272a] shadow-2xl mb-4"><Icon n="chef" c="w-12 h-12"/></div>
+                        <h1 className="text-5xl font-black">{headerTitle}</h1>
+                        <p className="text-gray-400 tracking-[0.3em] text-xs uppercase mt-2">資料庫是空的，請匯入資料</p>
                     </div>
-                );
-            }
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
+                        <label className="cursor-pointer bg-[#18181b] border border-[#27272a] p-8 rounded-2xl hover:border-yellow-600/50 flex flex-col items-center gap-4 shadow-lg transition">
+                            <Icon n="upload" c="w-8 h-8 text-yellow-500"/>
+                            <div><h3 className="font-bold text-white">本地匯入 JSON</h3></div>
+                            <input type="file" multiple accept=".json" className="hidden" onChange={handleFile}/>
+                        </label>
+                        <button onClick={()=>setModalOpen(true)} className="bg-[#18181b] border border-[#27272a] p-8 rounded-2xl hover:border-blue-600/50 flex flex-col items-center gap-4 shadow-lg transition">
+                            <Icon n="cloud" c="w-8 h-8 text-blue-500"/>
+                            <div><h3 className="font-bold text-white">雲端匯入 URL</h3></div>
+                        </button>
+                    </div>
+                    <div className="text-xs text-gray-600 font-mono pt-10">版本: {currentVersion} | 總計: 0 項</div>
+                    <CloudImportModal show={modalOpen} onClose={()=>setModalOpen(false)} onImport={handleImport}/>
+                </div>
+            );
 
             return (
-                <div className="min-h-screen bg-[#0c0c0c] pb-20 fade-in text-base">
+                <div className="min-h-screen bg-[#0c0c0c] pb-20 fade-in">
                     <nav className="sticky top-0 z-40 bg-[#0c0c0c]/90 backdrop-blur border-b border-[#27272a] px-4 py-3 shadow-lg">
                         <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
                             <div className="flex items-center gap-2 flex-shrink-0">
-                                <span className="bg-yellow-500 text-black px-2 py-0.5 rounded font-black text-xs">V5.0</span>
-                                <h1 className="font-bold text-gray-100 tracking-tight text-lg">COFFEE GEEK</h1>
+                                <span className="bg-yellow-500 text-black px-2 py-0.5 rounded font-black text-xs">{currentVersion}</span>
+                                <h1 className="font-bold text-gray-100 tracking-tight text-lg">{headerTitle}</h1>
                             </div>
-                            <form onSubmit={handleWebSearch} className="relative w-full max-w-xl group flex gap-2">
-                                <div className="relative flex-1">
-                                    <div className="absolute left-3 top-2.5 text-gray-500"><Icon n="search" c="w-4 h-4"/></div>
-                                    <input 
-                                        type="text" 
-                                        value={query} 
-                                        onChange={e=>setQuery(e.target.value)} 
-                                        placeholder="AI 搜尋咖啡裝備 (例如: Fellow Ode Gen 2)" 
-                                        className="w-full bg-[#18181b] border border-[#27272a] text-gray-200 rounded-lg pl-9 pr-4 py-2 focus:border-yellow-600 focus:outline-none transition-all" 
-                                    />
-                                </div>
-                                <button type="submit" className="flex items-center justify-center p-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition" title="AI 網頁搜尋"><Icon n="search" c="w-5 h-5"/></button>
-                            </form>
-                            <div className="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
-                                <select className="bg-[#18181b] border border-[#27272a] text-gray-300 rounded px-2 py-2 cursor-pointer focus:outline-none text-sm" value={filters.brand} onChange={e=>setFilters({...filters, brand: e.target.value})}>{options.brand.map(o=><option key={o} value={o}>{o}</option>)}</select>
-                                <select className="bg-[#18181b] border border-[#27272a] text-gray-300 rounded px-2 py-2 cursor-pointer focus:outline-none text-sm" value={filters.type} onChange={e=>setFilters({...filters, type: e.target.value})}>{options.type.map(o=><option key={o} value={o}>{o}</option>)}</select>
-                                <button onClick={()=>setModal(p=>({...p, key: true}))} className={`p-2 rounded border transition ${apiKey ? 'border-green-900 text-green-500 bg-green-900/10' : 'border-[#27272a] text-gray-400 bg-[#18181b] hover:text-white'}`} title={apiKey ? "API Key 已設定" : "設定 API Key"}>
-                                    <Icon n="key"/>
-                                </button>
+                            <div className="relative w-full max-w-xl">
+                                <div className="absolute left-3 top-2.5 text-gray-500"><Icon n="search" c="w-4 h-4"/></div>
+                                <input value={query} onChange={handleQueryChange} placeholder={searchPlaceholder} className="w-full bg-[#18181b] border border-[#27272a] text-gray-200 rounded-lg pl-9 pr-4 py-2 focus:border-yellow-600 focus:outline-none transition-all"/>
+                            </div>
+                            <div className="flex gap-2 w-full md:w-auto overflow-x-auto">
+                                {/* 品牌篩選 */}
+                                <select className="bg-[#18181b] border border-[#27272a] text-gray-300 rounded px-2 py-2 text-sm focus:outline-none" value={filters.brand} onChange={e => handleFilterChange('brand', e.target.value)}>
+                                    {options.brand.map(o=><option key={o} value={o}>{o}</option>)}
+                                </select>
+                                {/* 類型篩選 */}
+                                <select className="bg-[#18181b] border border-[#27272a] text-gray-300 rounded px-2 py-2 text-sm focus:outline-none" value={filters.type} onChange={e => handleFilterChange('type', e.target.value)}>
+                                    {options.type.map(o=><option key={o} value={o}>{o}</option>)}
+                                </select>
                             </div>
                         </div>
                     </nav>
 
                     <main className="max-w-[1600px] mx-auto p-4">
-                        <div className="flex justify-between items-end mb-4 px-1">
-                            <p className="text-gray-500 text-xs font-mono">項目總數: <span className="text-yellow-500">{db.length}</span> | 篩選結果: <span className="text-yellow-500">{filteredData.length}</span></p>
+                        <div className="flex justify-between items-end mb-4 px-1 text-xs font-mono text-gray-500">
+                            <p>項目總數: <span className="text-yellow-500">{db.length}</span> | 篩選結果: <span className="text-yellow-500">{filteredData.length}</span></p>
                         </div>
-                        
+                        {/* 核心渲染邏輯: 確保當 filteredData.length > 0 時才渲染 Grid */}
                         {filteredData.length > 0 ? (
                             <div className="tetris-grid">
-                                {filteredData.map(item => <Card key={item.id} item={item} spanClass={IO.getSpanClass(item)} onAI={handleAI} />)}
+                                {filteredData.map(item => <Card key={item.id} item={item} spanClass={Utils.getSpanClass(item)} configLabels={config?.ui_labels} />)}
                             </div>
                         ) : (
                             <div className="flex flex-col items-center justify-center py-20 text-gray-600 border-2 border-dashed border-[#27272a] rounded-xl">
                                 <Icon n="search" c="w-12 h-12 mb-4 opacity-20"/>
-                                <p className="text-lg font-bold text-gray-500 mb-4">找不到符合條件的資料</p>
-                                <p className="text-sm text-gray-500 mb-6">請嘗試更改篩選條件或使用上方搜尋框進行 AI 網頁搜尋。</p>
+                                <p className="text-lg font-bold text-gray-500 mb-4">找不到符合的器材</p>
+                                <p className="text-sm text-gray-500 mb-6">請嘗試縮短關鍵字或重設篩選條件。</p>
                             </div>
                         )}
                     </main>
 
-                    <footer className="fixed bottom-0 left-0 w-full bg-[#0c0c0c] border-t border-[#27272a] py-3 px-6 z-30 flex justify-between items-center text-base text-gray-500">
-                        <div className="flex gap-3">
-                            <button onClick={() => { if(window.confirm("確定要重設整個資料庫嗎？此操作將清除所有本地儲存的咖啡器材資料！")) { IO.del(CFG.LS_KEY); window.location.reload(); } }} className="hover:text-red-500 flex items-center gap-1 transition text-sm"><Icon n="trash"/> 重設資料庫</button>
-                            <button onClick={()=>setModal(p=>({...p, cloudImport: true}))} className="hover:text-blue-500 flex items-center gap-1 transition text-sm"><Icon n="cloud"/> 雲端匯入</button>
+                    <footer className="fixed bottom-0 left-0 w-full bg-[#0c0c0c] border-t border-[#27272a] py-3 px-6 z-30 flex justify-between items-center text-sm text-gray-500">
+                        <div className="flex gap-4">
+                            <button onClick={() => { if(window.confirm("確定要重設整個資料庫嗎？此操作將清除所有本地儲存的咖啡器材資料！")) { Utils.delLS(CONSTANTS.LS_KEY); window.location.reload(); } }} className="hover:text-red-500 flex items-center gap-1"><Icon n="trash"/> 重設資料庫</button>
+                            <button onClick={()=>setModalOpen(true)} className="hover:text-blue-500 flex items-center gap-1"><Icon n="cloud"/> 雲端匯入</button>
                         </div>
-                        <div className="flex items-center gap-3">
+                        <div className="flex gap-4">
                             <button onClick={() => {
-                                const blob = new Blob([JSON.stringify(db, null, 2)], {type: "application/json"});
-                                const url = URL.createObjectURL(blob);
                                 const a = document.createElement('a');
-                                a.href = url; a.download = `coffee_geek_backup_${new Date().toISOString().substring(0, 10)}.json`;
+                                a.href = URL.createObjectURL(new Blob([JSON.stringify(db, null, 2)], {type: "application/json"}));
+                                a.download = `backup_${new Date().toISOString().slice(0,10)}.json`;
                                 a.click();
-                            }} className="hover:text-blue-400 flex items-center gap-1 transition text-sm"><Icon n="download"/> 備份資料</button>
-                            <label className="hover:text-green-400 flex items-center gap-1 cursor-pointer transition text-sm"><Icon n="upload"/> 檔案匯入<input type="file" multiple accept=".json" className="hidden" onChange={handleFileImport}/></label>
+                            }} className="hover:text-blue-400 flex items-center gap-1"><Icon n="download"/> 備份資料</button>
+                            <label className="hover:text-green-400 flex items-center gap-1 cursor-pointer"><Icon n="upload"/> 檔案匯入<input type="file" multiple accept=".json" className="hidden" onChange={handleFile}/></label>
                         </div>
                     </footer>
-
-                    {/* Modals 渲染區 (純 JSX 控制) */}
-                    <AIMessageModal
-                        show={modal.aiMessage.open}
-                        onClose={() => setModal(p => ({...p, aiMessage: { open: false, title: '', content: '', loading: false }}))}
-                        title={modal.aiMessage.title}
-                        content={modal.aiMessage.content}
-                        loading={modal.aiMessage.loading}
-                    />
-                    
-                    <ApiKeyModal
-                        show={modal.key}
-                        onClose={() => setModal(p => ({...p, key: false}))}
-                        onSave={handleKeySave}
-                        initialKey={apiKey}
-                    />
-
-                    <SearchResultModal 
-                        show={!!modal.searchResults}
-                        results={modal.searchResults} 
-                        onClose={()=>setModal(p=>({...p, searchResults: null}))}
-                        onAdd={addItemFromSearch}
-                    />
-                    
-                    <CloudImportModal 
-                        show={modal.cloudImport}
-                        onClose={()=>setModal(p=>({...p, cloudImport: false}))} 
-                        onImport={handleImport} 
-                    />
+                    <CloudImportModal show={modalOpen} onClose={()=>setModalOpen(false)} onImport={handleImport}/>
                 </div>
             );
         };
