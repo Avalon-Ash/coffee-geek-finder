@@ -42,15 +42,14 @@
         .mkd th, .mkd td { border: 1px solid #444; padding: 0.5em; text-align: left; }
         .mkd th { background-color: #222; color: #facc15; }
 
-        /* 修正點 1: 確保 modal-root 節點自身擁有最高層級和固定定位 */
+        /* 確保 modal-root 節點自身擁有最高層級和固定定位，交由 React 動態控制 pointer-events */
         #modal-root {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 9999; /* 比 GlobalModal 內部的 9001 更高，確保它在最上層 */
-            pointer-events: none; /* 預設不擋滑鼠事件，讓 GlobalModal 內部元件控制 */
+            z-index: 9999; 
         }
     </style>
 </head>
@@ -185,215 +184,121 @@
         };
 
         // --- 5. Shared Modal Component (Global Root) ---
-        const GlobalModal = () => {
-            // 新增 iconName 欄位用於非載入狀態的 Icon 顯示
-            const [modal, setModal] = useState({ open: false, title: "", content: "", loading: false, type: "", iconName: "msg" });
+        // 修正點：GlobalModal 現在負責渲染所有子 Modal (API Key, Cloud Import, Search Result)
+        const GlobalModal = ({ onImport, onKeySave, initialKey, onAddSearchItem }) => {
+            const [modal, setModal] = useState({ open: false, title: "", content: "", loading: false, type: "", iconName: "msg", results: null, apiKey: initialKey });
             
             useEffect(() => {
-                // 修正點 2: 當 Modal 關閉時，將 iconName 重設為預設值
                 const listener = (data) => setModal(prev => {
                     if (data.open === false) {
-                        return { ...prev, open: false, iconName: "msg" };
+                        return { open: false, title: "", content: "", loading: false, type: "", iconName: "msg", results: null, apiKey: prev.apiKey };
                     }
-                    return {...prev, ...data};
+                    return {...prev, ...data, apiKey: data.apiKey !== undefined ? data.apiKey : prev.apiKey};
                 });
                 eventBus.on('SHOW_MODAL', listener);
                 return () => eventBus.listeners['SHOW_MODAL'] = eventBus.listeners['SHOW_MODAL'].filter(l => l !== listener);
             }, []);
+            
+            // 修正點 2: 處理 modal-root 的點擊事件
+            useEffect(() => {
+                setModal(prev => ({...prev, apiKey: initialKey}));
+                const modalRootEl = document.getElementById('modal-root');
+                if (modalRootEl) {
+                    // 只有當 modal.open 為 true 時，才讓 modal-root 捕獲點擊事件，否則讓事件穿透
+                    modalRootEl.style.pointerEvents = modal.open ? 'auto' : 'none';
+                }
+            }, [modal.open, initialKey]);
 
             if (!modal.open) return null;
 
-            // 根據狀態設定 Icon 和顏色
-            // 修正點 3: 如果是 loading, 則忽略 iconName，只顯示 refresh icon
-            const currentIcon = modal.loading ? "refresh" : (modal.iconName || "msg");
-            const iconColor = modal.iconName === 'close' ? 'text-red-500' : (modal.iconName === 'settings' ? 'text-yellow-500' : 'text-yellow-500');
+            const handleClose = () => eventBus.emit('SHOW_MODAL', { open: false });
+            
+            let ModalContentComponent = null;
+            let containerClass = "w-full max-w-2xl min-h-[12rem] max-h-[80vh] flex flex-col overflow-hidden";
+            let titleIcon = modal.iconName || "msg";
+            let titleColor = modal.iconName === 'close' ? 'text-red-500' : 'text-yellow-500';
 
+            switch (modal.type) {
+                case 'key-settings':
+                    containerClass = "w-full max-w-sm";
+                    titleIcon = "settings";
+                    ModalContentComponent = <ApiKeyModal key={modal.apiKey} onClose={handleClose} onSave={onKeySave} initialKey={modal.apiKey} />;
+                    break;
+                case 'cloud-import':
+                    containerClass = "w-full max-w-md";
+                    titleIcon = "cloud";
+                    titleColor = 'text-blue-500';
+                    ModalContentComponent = <CloudImportModal onClose={handleClose} onImport={onImport} />;
+                    break;
+                case 'search-results':
+                    containerClass = "w-full max-w-4xl max-h-[85vh] flex flex-col overflow-hidden";
+                    titleIcon = "search";
+                    ModalContentComponent = <SearchResultModal results={modal.results} onClose={handleClose} onAdd={onAddSearchItem} />;
+                    break;
+                case 'snark':
+                case 'recipe':
+                case 'success':
+                case 'error':
+                default:
+                    // AI Response or simple message modal
+                    const currentIcon = modal.loading ? "refresh" : (modal.iconName || "msg");
+                    const iconColor = modal.iconName === 'close' ? 'text-red-500' : 'text-yellow-500';
+                    titleIcon = currentIcon;
+                    titleColor = iconColor;
+                    ModalContentComponent = (
+                        <div className="flex flex-col flex-grow">
+                            <div className="p-6 overflow-y-auto text-gray-300 mkd flex-grow">
+                                {modal.loading ? (
+                                    <div className="flex flex-col items-center py-10">
+                                        <div className="w-10 h-10 border-2 border-yellow-600 border-t-transparent rounded-full spin"></div>
+                                        <p className="mt-4 text-sm text-yellow-500">AI 正在努力思考中...</p>
+                                    </div>
+                                ) : (
+                                    <div dangerouslySetInnerHTML={{__html: marked.parse(modal.content||"")}} />
+                                )}
+                            </div>
+                        </div>
+                    );
+            }
+            
+            // 修正點 3: 渲染 Modal Wrapper (統一的 Z-Index)
             return (
-                <div className="fixed inset-0 z-[9001] flex items-center justify-center bg-black/80 p-4" onClick={()=>!modal.loading && setModal({open:false})}>
-                    {/* 修正點 4: 增加 min-h-[12rem] 確保 Modal Box 最小高度可見 */}
-                    <div className="bg-[#18181b] border border-[#27272a] rounded-xl w-full max-w-2xl min-h-[12rem] max-h-[80vh] flex flex-col overflow-hidden" onClick={e=>e.stopPropagation()}>
+                <div className="fixed inset-0 z-[9100] flex items-center justify-center bg-black/80 p-4" onClick={()=>!modal.loading && handleClose()}>
+                    <div className={`bg-[#18181b] border border-[#27272a] rounded-xl shadow-2xl ${containerClass}`} onClick={e=>e.stopPropagation()}>
                         <div className="p-4 border-b border-[#27272a] bg-[#0c0c0c] flex justify-between items-center shrink-0">
-                            <h3 className={`font-bold ${iconColor} flex items-center gap-2`}>
-                                <Icon n={currentIcon} c={`w-5 h-5 ${modal.loading?"spin":""}`}/> {modal.title}
+                            <h3 className={`font-bold ${titleColor} flex items-center gap-2`}>
+                                <Icon n={titleIcon} c={`w-5 h-5 ${modal.loading && modal.type !== 'search-results' ?"spin":""}`}/> {modal.title}
                             </h3>
-                            <button onClick={()=>setModal({open:false})} className="text-gray-500 hover:text-white text-xl"><Icon n="close" c="w-5 h-5"/></button>
+                            <button onClick={handleClose} className="text-gray-500 hover:text-white text-xl"><Icon n="close" c="w-5 h-5"/></button>
                         </div>
-                        {/* 修正點 5: 確保 loading 提示清晰可見 */}
-                        <div className="p-6 overflow-y-auto text-gray-300 mkd">
-                            {modal.loading ? (
-                                <div className="flex flex-col items-center py-10">
-                                    <div className="w-10 h-10 border-2 border-yellow-600 border-t-transparent rounded-full spin"></div>
-                                    <p className="mt-4 text-sm text-yellow-500">AI 正在努力思考中...</p>
-                                </div>
-                            ) : (
-                                <div dangerouslySetInnerHTML={{__html: marked.parse(modal.content||"")}} />
-                            )}
-                        </div>
+                        {ModalContentComponent}
                     </div>
                 </div>
             );
         };
 
-        // --- 6. Product Card (Trimmed for brevity) ---
-        const PieChart = React.memo(({ data }) => {
-            if(!data || !data.length) return null;
-            const total = data.reduce((s, i) => s + (i.value || 0), 0);
-            const items = data.map(i => ({...i, percent: (i.value || 0) / total}));
-            let cumulativePercent = 0;
-            const getCoords = (pct) => [Math.cos(2*Math.PI*pct), Math.sin(2*Math.PI*pct)];
-            return (
-                <svg viewBox="-1.1 -1.1 2.2 2.2" className="w-full h-full -rotate-90">
-                    {items.map((slice, i) => {
-                        const start = cumulativePercent;
-                        const end = start + slice.percent;
-                        cumulativePercent = end;
-                        const [sx, sy] = getCoords(start);
-                        const [ex, ey] = getCoords(end);
-                        const large = slice.percent > 0.5 ? 1 : 0;
-                        const d = `M ${sx} ${sy} A 1 1 0 ${large} 1 ${ex} ${ey} L ${ex*0.65} ${ey*0.65} A 0.65 0.65 0 ${large} 0 ${sx*0.65} ${sy*0.65} Z`;
-                        return <path key={i} d={d} fill={slice.color} stroke="#18181b" strokeWidth="0.02" className="hover:opacity-80 transition-opacity"/>;
-                    })}
-                </svg>
-            );
-        });
-
-        const Card = React.memo(({ item, spanClass, onAI }) => {
-            const [menuOpen, setMenuOpen] = useState(false);
-            if (!item) return null;
-
-            const isHuge = spanClass.includes('row-span-2') && spanClass.includes('col-span-2');
-            const isBig = spanClass.includes('row-span-2') || spanClass.includes('col-span-2');
-            
-            // v39 FONT ADJUSTMENT: Base size is now text-base (16px), scale up from there
-            const typo = {
-                brand: isHuge ? "text-lg font-black tracking-[0.2em]" : "text-xs font-bold tracking-widest",
-                title: isHuge ? "text-5xl md:text-6xl mt-2 mb-4" : (isBig ? "text-3xl mt-1 mb-2" : "text-xl"),
-                verdict: isHuge ? "text-base" : (isBig ? "text-base" : "text-sm"),
-                listText: isHuge ? "text-base" : "text-xs", // Elevated from text-[10px]
-                btn: isHuge ? "text-sm py-2.5" : "text-xs py-2", // Elevated from text-[10px]
-                featLabel: isHuge ? "text-sm" : "text-xs",
-                feat: isHuge ? "text-lg" : "text-sm"
-            };
-
-            const searchUrl = (type) => {
-                const q = encodeURIComponent(`${item.brand || ''} ${item.model || ''}`);
-                return type === 'shopee' ? `https://shopee.tw/search?keyword=${q}` : `https://www.momoshop.com.tw/search/searchShop.jsp?keyword=${q}`;
-            };
-
-            const handleImageSearch = () => {
-                const q = encodeURIComponent(`${item.brand || ''} ${item.model || ''} ${item.type || ''}`);
-                window.open(`https://www.google.com/search?tbm=isch&q=${q}`, '_blank');
-            };
-
-            return (
-                <div className={`bg-[#18181b] border border-[#27272a] rounded-xl p-5 flex flex-col gap-3 hover:border-yellow-600/50 hover:shadow-2xl transition-all duration-300 relative h-full group ${spanClass}`}>
-                    <div className="flex justify-between items-start">
-                        <div className="min-w-0 pr-2 flex-1">
-                            <span className={`text-yellow-500 uppercase block truncate ${typo.brand}`}>{item.brand}</span>
-                            <h3 className={`font-bold text-gray-100 leading-none truncate ${typo.title}`}>{item.model}</h3>
-                            <div className="flex gap-2 mt-2">
-                                <span className="flex items-center gap-1 bg-[#27272a] text-gray-400 px-2 py-1 rounded border border-[#3f3f46] text-xs">
-                                    <Icon n="tag" c="w-3 h-3"/> {item.type}
-                                </span>
-                                <span className="flex items-center gap-1 bg-[#27272a] text-gray-400 px-2 py-1 rounded border border-[#3f3f46] text-xs">
-                                    <Icon n="scale" c="w-3 h-3"/> {item.capacity}
-                                </span>
-                            </div>
-                        </div>
-                        <button onClick={handleImageSearch} className="flex items-center gap-1 bg-[#27272a] hover:bg-[#3f3f46] text-gray-400 hover:text-white px-2 py-1.5 rounded border border-[#3f3f46] transition-colors flex-shrink-0" title="Image Search">
-                            <Icon n="image" c="w-4 h-4"/>
-                            <span className={isBig ? "text-xs ml-1" : "hidden"}>Image</span>
-                        </button>
-                    </div>
-
-                    <div className="bg-[#27272a]/50 p-3 rounded border-l-4 border-yellow-600 flex flex-col gap-1">
-                        <div className="flex justify-between items-center text-xs font-bold tracking-wider text-gray-500 mb-1">
-                            <span>GEEK VERDICT</span>
-                            <span className="text-yellow-500 font-mono text-base">{item.priceLevel}</span>
-                        </div>
-                        <p className={`text-gray-300 italic leading-relaxed ${typo.verdict}`}>"{item.verdict}"</p>
-                    </div>
-
-                    <div className={`grid grid-cols-2 gap-4 flex-grow ${isBig ? 'overflow-auto' : 'overflow-hidden'}`}>
-                        <div>
-                            <span className={`text-emerald-500 font-bold block tracking-wide flex items-center gap-1 mb-1 ${typo.listText}`}>
-                                <Icon n="up" c="w-3 h-3"/> PROS
-                            </span>
-                            <ul className={`space-y-1 text-gray-400 ${typo.listText}`}>
-                                {item.pros.slice(0, isHuge ? 8 : 3).map((p,i)=><li key={i} className="flex items-start"><span className="mr-1.5 text-emerald-500/50">•</span><span className="truncate">{p}</span></li>)}
-                            </ul>
-                        </div>
-                        <div>
-                            <span className={`text-rose-500 font-bold block tracking-wide flex items-center gap-1 mb-1 ${typo.listText}`}>
-                                <Icon n="down" c="w-3 h-3"/> CONS
-                            </span>
-                            <ul className={`space-y-1 text-gray-400 ${typo.listText}`}>
-                                {item.cons.slice(0, isHuge ? 8 : 3).map((c,i)=><li key={i} className="flex items-start"><span className="mr-1.5 text-rose-500/50">•</span><span className="truncate">{c}</span></li>)}
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div className="flex items-center justify-between border-t border-[#27272a] pt-3 mt-auto">
-                        <div className={`${isHuge ? 'w-16 h-16' : 'w-12 h-12'} relative flex-shrink-0 mr-4`}>
-                            <PieChart data={item.sentiment} />
-                        </div>
-                        <div className="flex flex-col items-end">
-                            <span className={`text-gray-500 uppercase font-bold ${typo.featLabel}`}>{IO.getFeatureLabel(item.type)}</span>
-                            <span className={`text-gray-200 font-mono border border-[#3f3f46] bg-[#27272a] px-2 py-0.5 rounded ${typo.feat}`}>{item.feature || "N/A"}</span>
-                        </div>
-                    </div>
-
-                    <div className="grid grid-cols-2 gap-2 mt-2">
-                        <button onClick={()=>onAI('snark', item)} className={`flex items-center justify-center gap-1 bg-indigo-900/20 text-indigo-300 border border-indigo-500/30 rounded hover:bg-indigo-900/40 transition ${typo.btn}`}>
-                            <Icon n="msg" c="w-3 h-3"/> {isHuge ? 'AI Review' : 'Review'}
-                        </button>
-                        <div className="relative">
-                            <button onClick={()=>setMenuOpen(!menuOpen)} className={`w-full flex items-center justify-center gap-1 bg-emerald-900/20 text-emerald-300 border border-emerald-500/30 rounded hover:bg-emerald-900/40 transition ${typo.btn}`}>
-                                <Icon n="chef" c="w-3 h-3"/> {isHuge ? 'AI Recipe' : 'Recipe'}
-                            </button>
-                            {menuOpen && (
-                                <div className="absolute bottom-full left-0 w-full mb-1 bg-[#27272a] border border-[#3f3f46] rounded shadow-xl z-20 flex flex-col overflow-hidden">
-                                    {['淺焙','中焙','深焙'].map(r => (
-                                        <button key={r} onClick={()=>{onAI('recipe', item, r); setMenuOpen(false)}} className="px-3 py-2 text-left text-xs text-gray-300 hover:bg-[#3f3f46] hover:text-white transition">{r}</button>
-                                    ))}
-                                </div>
-                            )}
-                        </div>
-                        <a href={searchUrl('shopee')} target="_blank" className={`flex items-center justify-center gap-1 bg-[#ee4d2d] text-white font-bold rounded hover:opacity-90 transition ${typo.btn}`}>Shopee</a>
-                        <a href={searchUrl('momo')} target="_blank" className={`flex items-center justify-center gap-1 bg-[#d63086] text-white font-bold rounded hover:opacity-90 transition ${typo.btn}`}>MOMO</a>
-                    </div>
-                </div>
-            );
-        });
-        
-        // --- Modal Components ---
+        // --- Local Modal Content Components (No Z-Index or fixed/inset-0 needed here) ---
 
         const SearchResultModal = ({ results, onClose, onAdd }) => {
             return (
-                <div className="fixed inset-0 z-[9000] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" onClick={onClose}>
-                    <div className="bg-[#18181b] border border-[#27272a] rounded-xl w-full max-w-4xl max-h-[85vh] flex flex-col shadow-2xl overflow-hidden" onClick={e=>e.stopPropagation()}>
-                        <div className="p-4 border-b border-[#27272a] bg-[#0c0c0c] flex justify-between items-center shrink-0">
-                            <h3 className="font-bold text-yellow-500 flex items-center gap-2"><Icon n="search" c="w-5 h-5"/> 找到 {results.length} 個網頁結果</h3>
-                            <button onClick={onClose} className="text-gray-500 hover:text-white text-xl"><Icon n="close" c="w-5 h-5"/></button>
-                        </div>
-                        <div className="p-6 overflow-y-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bg-[#0c0c0c]">
-                            {results.map(item => (
-                                <div key={item.id} className="bg-[#1f1f22] border border-[#27272a] rounded-lg p-4 flex flex-col gap-2 hover:border-yellow-600/50">
-                                    <div className="flex justify-between">
-                                        <span className="text-xs text-yellow-500 font-bold">{item.brand}</span>
-                                        <span className="text-xs text-gray-400">{item.type}</span>
-                                    </div>
-                                    <h4 className="text-base font-bold text-white">{item.model}</h4>
-                                    <p className="text-sm text-gray-400 italic line-clamp-2">"{item.verdict}"</p>
-                                    <button 
-                                        onClick={() => onAdd(item)}
-                                        className="mt-auto w-full py-2 bg-emerald-900/30 text-emerald-400 border border-emerald-800 rounded hover:bg-emerald-900/50 text-sm flex items-center justify-center gap-2"
-                                    >
-                                        <Icon n="plus" c="w-3 h-3"/> 加入資料庫
-                                    </button>
+                <div className="flex flex-col flex-grow">
+                    <div className="p-6 overflow-y-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bg-[#0c0c0c] flex-grow">
+                        {results.map(item => (
+                            <div key={item.id} className="bg-[#1f1f22] border border-[#27272a] rounded-lg p-4 flex flex-col gap-2 hover:border-yellow-600/50">
+                                <div className="flex justify-between">
+                                    <span className="text-xs text-yellow-500 font-bold">{item.brand}</span>
+                                    <span className="text-xs text-gray-400">{item.type}</span>
                                 </div>
-                            ))}
-                        </div>
+                                <h4 className="text-base font-bold text-white">{item.model}</h4>
+                                <p className="text-sm text-gray-400 italic line-clamp-2">"{item.verdict}"</p>
+                                <button 
+                                    onClick={() => onAdd(item)}
+                                    className="mt-auto w-full py-2 bg-emerald-900/30 text-emerald-400 border border-emerald-800 rounded hover:bg-emerald-900/50 text-sm flex items-center justify-center gap-2"
+                                >
+                                    <Icon n="plus" c="w-3 h-3"/> 加入資料庫
+                                </button>
+                            </div>
+                        ))}
                     </div>
                 </div>
             );
@@ -416,24 +321,21 @@
                     const data = Array.isArray(json) ? json : [json];
                     if (data.length === 0) throw new Error("Empty JSON");
                     onImport(data);
-                    onClose();
+                    eventBus.emit('SHOW_MODAL', { open: true, title: "匯入成功", content: `成功匯入 ${data.length} 個項目。`, loading: false, type: "success", iconName: "msg" });
                 } catch (err) {
                     setError("匯入失敗。請檢查網址與權限。");
                 } finally { setLoading(false); }
             };
 
             return (
-                <div className="fixed inset-0 z-[9000] flex items-center justify-center bg-black/90 backdrop-blur-sm p-4" onClick={onClose}>
-                    <div className="bg-[#18181b] border border-[#27272a] rounded-xl p-6 w-full max-w-md shadow-2xl" onClick={e=>e.stopPropagation()}>
-                        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Icon n="cloud" c="w-5 h-5 text-blue-500"/> 雲端匯入</h3>
-                        <input type="text" value={url} onChange={e=>setUrl(e.target.value)} placeholder="貼上 JSON/TXT 檔案網址..." className="w-full bg-black border border-[#3f3f46] rounded p-3 text-white text-sm mb-2 focus:border-blue-500 focus:outline-none"/>
-                        {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
-                        <div className="flex justify-end gap-2">
-                            <button onClick={onClose} className="px-4 py-2 text-gray-400 hover:text-white text-sm">取消</button>
-                            <button onClick={handleImport} disabled={loading} className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded text-sm transition flex items-center gap-2">
-                                {loading && <Icon n="refresh" c="w-4 h-4 spin"/>} 匯入
-                            </button>
-                        </div>
+                <div className="p-6 flex flex-col">
+                    <input type="text" value={url} onChange={e=>setUrl(e.target.value)} placeholder="貼上 JSON/TXT 檔案網址..." className="w-full bg-black border border-[#3f3f46] rounded p-3 text-white text-sm mb-2 focus:border-blue-500 focus:outline-none"/>
+                    {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
+                    <div className="flex justify-end gap-2 mt-4">
+                        <button onClick={onClose} className="px-4 py-2 text-gray-400 hover:text-white text-sm">取消</button>
+                        <button onClick={handleImport} disabled={loading} className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded text-sm transition flex items-center gap-2">
+                            {loading && <Icon n="refresh" c="w-4 h-4 spin"/>} 匯入
+                        </button>
                     </div>
                 </div>
             );
@@ -442,13 +344,10 @@
         const ApiKeyModal = ({ onClose, onSave, initialKey }) => {
             const [key, setKey] = useState(initialKey);
             return (
-                <div className="fixed inset-0 z-[9000] flex items-center justify-center bg-black/80 p-4" onClick={onClose}>
-                    <div className="bg-[#18181b] border border-[#27272a] rounded-xl p-6 w-full max-w-sm" onClick={e=>e.stopPropagation()}>
-                        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Icon n="settings"/> API Key 設定</h3>
-                        <input type="password" value={key} onChange={e=>setKey(e.target.value)} placeholder="貼上 Gemini Key" className="w-full bg-black border border-[#3f3f46] rounded p-3 text-white mb-4 focus:border-yellow-600 focus:outline-none"/>
-                        <div className="flex justify-end">
-                            <button onClick={()=>onSave(key)} className="px-4 py-2 bg-yellow-600 text-black font-bold rounded">儲存</button>
-                        </div>
+                <div className="p-6">
+                    <input type="password" value={key} onChange={e=>setKey(e.target.value)} placeholder="貼上 Gemini Key" className="w-full bg-black border border-[#3f3f46] rounded p-3 text-white mb-4 focus:border-yellow-600 focus:outline-none"/>
+                    <div className="flex justify-end">
+                        <button onClick={()=>onSave(key)} className="px-4 py-2 bg-yellow-600 text-black font-bold rounded">儲存</button>
                     </div>
                 </div>
             );
@@ -461,10 +360,7 @@
             const [query, setQuery] = useState("");
             const [filters, setFilters] = useState({ brand: "All", type: "All", capacity: "All" });
             
-            const [keyModal, setKeyModal] = useState(false);
-            const [cloudModal, setCloudModal] = useState(false);
-            const [searchResults, setSearchResults] = useState(null); 
-            
+            // 修正點 4: 移除 keyModal, cloudModal, searchResults 的本地狀態
             const [apiKey, setApiKey] = useState("");
 
             useEffect(() => {
@@ -551,14 +447,15 @@
                 if(!newData || !Array.isArray(newData)) return;
                 setDb(prev => {
                     const ids = new Set(prev.map(i => i.id));
-                    // 修正點：使用 IO.genId(prev) 確保 ID 不衝突
                     const unique = newData.filter(i => !ids.has(i.id)).map(i => ({...IO.enrich(i), id: IO.genId(prev) + (Math.random() * 1000).toFixed(0)})).filter(x=>x);
-                    if(unique.length === 0) return prev;
+                    if(unique.length === 0) {
+                        eventBus.emit('SHOW_MODAL', { open: true, title: "匯入失敗", content: "沒有新的項目可以匯入。", loading: false, type: "error", iconName: "close" });
+                        return prev;
+                    }
                     return [...unique, ...prev];
                 });
             };
 
-            // 修正點：將 alert 替換為 GlobalModal 呼叫，並設定 iconName 為 msg
             const handleFileImport = async (e) => {
                 const files = Array.from(e.target.files);
                 if(!files.length) return;
@@ -583,16 +480,33 @@
                 }
                 e.target.value = null;
             };
+            
+            // 修正點 5: 處理 API Key 儲存，並關閉 Modal
+            const handleKeySave = (key) => {
+                if (key && key.trim().length > 10) { 
+                    IO.set("GEMINI_KEY", key);
+                    setApiKey(key);
+                    eventBus.emit('SHOW_MODAL', { open: false });
+                } else {
+                    eventBus.emit('SHOW_MODAL', { open: true, title: "錯誤", content: "無效的 API Key。", loading: false, type: "error", iconName: "close" });
+                }
+            };
+            
+            // 修正點 6: 統一 Modal 觸發邏輯 - 顯示 API Key 設定
+            const showKeySettings = () => {
+                 eventBus.emit('SHOW_MODAL', { open: true, title: "API Key 設定", content: "", loading: false, type: "key-settings", apiKey: apiKey });
+            };
+
+            // 修正點 7: 統一 Modal 觸發邏輯 - 顯示雲端匯入
+            const showCloudImport = () => {
+                eventBus.emit('SHOW_MODAL', { open: true, title: "雲端匯入", content: "", loading: false, type: "cloud-import" });
+            };
 
             // Logic: Search Web
             const handleWebSearch = async (e) => {
                 if (e) e.preventDefault();
                 if(!query.trim()) return; 
-                // 修正點 6: API Key 檢查，沒有 Key 則直接開 ApiKeyModal 並 return
-                if(!apiKey) {
-                    setKeyModal(true);
-                    return; 
-                }
+                if(!apiKey) return showKeySettings();
 
                 // --- CRITICAL: Immediate UI Update via setTimeout(0) ---
                 setTimeout(async () => {
@@ -617,41 +531,32 @@
                         
                         if(!parsed || !Array.isArray(parsed)) throw new Error("AI 回傳了無效的 JSON 格式");
 
-                        // 修正點： Web Search 時不再使用 IO.genId(db)，而是讓後續的 addItemFromSearch 負責
                         const newItems = parsed.map(IO.enrich).filter(x=>x);
                         
-                        eventBus.emit('SHOW_MODAL', { open: false }); 
-                        setSearchResults(newItems);
+                        // 修正點 8: 顯示搜尋結果 Modal
+                        eventBus.emit('SHOW_MODAL', { open: true, title: "網頁搜尋結果", loading: false, type: "search-results", results: newItems, iconName: "search" }); 
                         
                     } catch (err) { 
-                        // 修正點：設定 iconName 為 close
-                        eventBus.emit('SHOW_MODAL', { open: true, title: "網頁搜尋失敗", content: `錯誤訊息: ${err.message}`, loading: false, iconName: "close" }); 
+                        eventBus.emit('SHOW_MODAL', { open: true, title: "網頁搜尋失敗", content: `錯誤訊息: ${err.message}`, loading: false, iconName: "close", type: "error" }); 
                     }
                 }, 0); 
             };
 
             // Add single item from search results
             const addItemFromSearch = (item) => {
-                // 修正點：確保從搜尋結果加入時，使用最新 db 狀態產生 ID
                 const newItem = { ...item, id: IO.genId(db) }; 
                 handleImport([newItem]);
-                setSearchResults(prev => {
-                    const left = prev.filter(i => i !== item);
-                    return left.length === 0 ? null : left;
-                });
+                
+                // 修正點 9: 關閉 search-results modal
+                eventBus.emit('SHOW_MODAL', { open: false });
             };
 
             const handleAI = (mode, item, extra) => {
-                // 修正點 7: API Key 檢查，沒有 Key 則直接開 ApiKeyModal 並 return
-                if(!apiKey) {
-                    setKeyModal(true);
-                    return;
-                }
+                if(!apiKey) return showKeySettings();
 
                 // --- CRITICAL: Immediate UI Update via setTimeout(0) ---
                 setTimeout(async () => {
                     const initialTitle = mode === 'snark' ? `AI 毒舌評論: ${item.model}` : `AI 沖煮建議: ${item.model}`;
-                    // 修正點：載入時不設定 iconName，使用預設的 refresh
                     eventBus.emit('SHOW_MODAL', { open: true, title: initialTitle, content: "", loading: true, type: mode });
                     
                     let prompt = "";
@@ -684,11 +589,9 @@
                         
                         if (!text) throw new Error("AI 回傳了空白內容");
                         
-                        // 修正點：成功時設定 iconName 為 msg (對話框)
                         eventBus.emit('SHOW_MODAL', { open: true, title: initialTitle, content: text, loading: false, type: mode, iconName: "msg" });
                     } catch (err) { 
-                        // 修正點：失敗時設定 iconName 為 close (紅叉)
-                        eventBus.emit('SHOW_MODAL', { open: true, title: "AI 呼叫失敗", content: `錯誤訊息: ${err.message}`, loading: false, type: mode, iconName: "close" });
+                        eventBus.emit('SHOW_MODAL', { open: true, title: "AI 呼叫失敗", content: `錯誤訊息: ${err.message}`, loading: false, type: "error", iconName: "close" });
                     }
                 }, 0);
             };
@@ -702,24 +605,14 @@
                 a.click();
             };
 
-            const handleKeySave = (key) => {
-                if (key && key.trim().length > 10) { // Basic validation
-                    IO.set("GEMINI_KEY", key);
-                    setApiKey(key);
-                    setKeyModal(false);
-                } else {
-                    // 修正點：設定 iconName 為 close
-                    eventBus.emit('SHOW_MODAL', { open: true, title: "錯誤", content: "無效的 API Key。", loading: false, type: "error", iconName: "close" });
-                }
-            };
-
             if(loading && db.length === 0) return <div className="min-h-screen bg-[#0c0c0c] flex items-center justify-center"><div className="w-12 h-12 border-4 border-yellow-600 rounded-full spin border-t-transparent"></div></div>;
 
             if (db.length === 0) {
                 return (
+                    // 修正點 10: 歡迎畫面點擊事件
                     <>
-                        <WelcomeScreen onFileImport={handleFileImport} onCloudClick={()=>setCloudModal(true)} />
-                        {cloudModal && <CloudImportModal onClose={()=>setCloudModal(false)} onImport={handleImport} />}
+                        <WelcomeScreen onFileImport={handleFileImport} onCloudClick={showCloudImport} />
+                        <GlobalModal onImport={handleImport} onKeySave={handleKeySave} initialKey={apiKey} onAddSearchItem={addItemFromSearch} />
                     </>
                 );
             }
@@ -748,7 +641,7 @@
                             <div className="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
                                 <select className="bg-[#18181b] border border-[#27272a] text-gray-300 rounded px-2 py-2 cursor-pointer focus:outline-none text-sm" value={filters.brand} onChange={e=>setFilters({...filters, brand: e.target.value})}>{options.brand.map(o=><option key={o} value={o}>{o}</option>)}</select>
                                 <select className="bg-[#18181b] border border-[#27272a] text-gray-300 rounded px-2 py-2 cursor-pointer focus:outline-none text-sm" value={filters.type} onChange={e=>setFilters({...filters, type: e.target.value})}>{options.type.map(o=><option key={o} value={o}>{o}</option>)}</select>
-                                <button onClick={()=>setKeyModal(true)} className={`p-2 rounded border transition ${apiKey ? 'border-green-900 text-green-500 bg-green-900/10' : 'border-[#27272a] text-gray-400 bg-[#18181b] hover:text-white'}`}><Icon n="settings"/></button>
+                                <button onClick={showKeySettings} className={`p-2 rounded border transition ${apiKey ? 'border-green-900 text-green-500 bg-green-900/10' : 'border-[#27272a] text-gray-400 bg-[#18181b] hover:text-white'}`}><Icon n="settings"/></button>
                             </div>
                         </div>
                     </nav>
@@ -779,7 +672,7 @@
                     <footer className="fixed bottom-0 left-0 w-full bg-[#0c0c0c] border-t border-[#27272a] py-3 px-6 z-30 flex justify-between items-center text-base text-gray-500">
                         <div className="flex gap-3">
                             <button onClick={handleReset} className="hover:text-red-500 flex items-center gap-1 transition text-sm"><Icon n="trash"/> 重置</button>
-                            <button onClick={()=>setCloudModal(true)} className="hover:text-blue-500 flex items-center gap-1 transition text-sm"><Icon n="cloud"/> 雲端</button>
+                            <button onClick={showCloudImport} className="hover:text-blue-500 flex items-center gap-1 transition text-sm"><Icon n="cloud"/> 雲端</button>
                         </div>
                         <div className="flex items-center gap-3">
                             <button onClick={handleExport} className="hover:text-blue-400 flex items-center gap-1 transition text-sm"><Icon n="download"/> 備份</button>
@@ -787,12 +680,8 @@
                         </div>
                     </footer>
 
-                    {/* Modals are now globally managed, but we keep local handlers for search results/key */}
-                    {keyModal && <ApiKeyModal onClose={()=>setKeyModal(false)} onSave={handleKeySave} initialKey={apiKey} />}
-                    {cloudModal && <CloudImportModal onClose={()=>setCloudModal(false)} onImport={handleImport} />}
-                    {searchResults && <SearchResultModal results={searchResults} onClose={()=>setSearchResults(null)} onAdd={addItemFromSearch} />}
-                    
-                    {/* The main App component ends here. GlobalModal is rendered below. */}
+                    {/* 修正點 11: 只在 App 元件結尾處渲染 GlobalModal 一次 */}
+                    <GlobalModal onImport={handleImport} onKeySave={handleKeySave} initialKey={apiKey} onAddSearchItem={addItemFromSearch} />
                 </div>
             );
         };
@@ -801,8 +690,9 @@
         root.render(<App />);
         
         // --- Global Modal Renderer (Separate React Root) ---
-        const modalRoot = ReactDOM.createRoot(document.getElementById('modal-root'));
-        modalRoot.render(<GlobalModal />);
+        // 修正點 12: 移除單獨的 modalRoot.render，避免重複渲染和 Prop 傳遞問題
+        // const modalRoot = ReactDOM.createRoot(document.getElementById('modal-root'));
+        // modalRoot.render(<GlobalModal />);
 
         // --- Welcome Screen Component (Defined earlier) ---
         const WelcomeScreen = ({ onFileImport, onCloudClick }) => (
