@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Geek Finder v41 | Final Stable</title>
+    <title>Coffee Geek Finder v50 | Final Stable</title>
     
-    <!-- Dependencies -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
@@ -32,7 +31,6 @@
             gap: 1.5rem; 
         }
 
-        /* Markdown Styles */
         .mkd h1, .mkd h2, .mkd h3 { color: #facc15; font-weight: 700; margin-top: 1em; margin-bottom: 0.5em; border-bottom: 1px solid #333; padding-bottom: 0.3em; }
         .mkd ul { list-style: disc; padding-left: 1.5em; color: #a8a29e; margin-bottom: 1em; }
         .mkd li { margin-bottom: 0.2em; }
@@ -41,25 +39,28 @@
         .mkd table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.9em; }
         .mkd th, .mkd td { border: 1px solid #444; padding: 0.5em; text-align: left; }
         .mkd th { background-color: #222; color: #facc15; }
+
+        /* V50: Footer moved to be a simple div above main content */
+        .top-tools-container {
+            border-bottom: 1px solid #27272a;
+            padding: 0.75rem 0; 
+            margin-bottom: 1rem;
+        }
     </style>
 </head>
 <body>
-    <!-- 主應用程式的根節點 -->
     <div id="root"></div>
-    <!-- 獨立 Modal 專用的根節點，與主應用程式隔離 -->
     <div id="modal-root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect, useMemo, useCallback, useRef } = React;
+        const { useState, useEffect, useMemo } = React;
 
-        // --- 1. Configuration ---
         const CFG = {
             LS_KEY: "CGF_DB_V41_FINAL",
             API_MODEL: "gemini-2.5-flash-preview-09-2025",
             MANIFEST_FILE: "./db_manifest.json" 
         };
 
-        // --- 2. Global Event Bus (for Modal communication) ---
         const eventBus = {
             listeners: {},
             on(event, callback) {
@@ -73,32 +74,29 @@
             }
         };
 
-        // --- 3. Logic Layer ---
         const IO = {
             get: (k) => { try { return localStorage.getItem(k); } catch { return null; } },
             set: (k, v) => { try { localStorage.setItem(k, v); return true; } catch { return false; } },
             del: (k) => { try { localStorage.removeItem(k); } catch {} },
             
-            genId: (list) => {
-                if (!Array.isArray(list)) return Date.now();
-                return list.reduce((max, item) => Math.max(max, Number(item.id) || 0), 0) + 1;
-            },
+            genId: (list) => (list || []).reduce((max, item) => Math.max(max, Number(item.id) || 0), 0) + 1,
 
             enrich: (raw) => {
                 if (!raw || typeof raw !== 'object') return null;
-                const p = { ...raw };
-                p.id = p.id || Date.now() + Math.random();
-                p.brand = String(p.brand || "Unknown");
-                p.model = String(p.model || "Unknown Model");
-                p.type = String(p.type || "Equipment");
-                p.priceLevel = String(p.priceLevel || "$");
-                p.capacity = String(p.capacity || "N/A");
-                p.feature = String(p.feature || "");
-                p.pros = Array.isArray(p.pros) ? p.pros : [];
-                p.cons = Array.isArray(p.cons) ? p.cons : [];
-                p.sentiment = Array.isArray(p.sentiment) ? p.sentiment : [{ name: "N/A", value: 100, color: "#555" }];
-                p.verdict = p.verdict || "No verdict available.";
-                return p;
+                const { id, brand, model, type, priceLevel, capacity, feature, pros, cons, sentiment, verdict } = raw;
+                return {
+                    id: id || Date.now() + Math.random(),
+                    brand: String(brand || "Unknown"),
+                    model: String(model || "Unknown Model"),
+                    type: String(type || "Equipment"),
+                    priceLevel: String(priceLevel || "$"),
+                    capacity: String(capacity || "N/A"),
+                    feature: String(feature || ""),
+                    pros: Array.isArray(pros) ? pros : [],
+                    cons: Array.isArray(cons) ? cons : [],
+                    sentiment: Array.isArray(sentiment) ? sentiment : [{ name: "N/A", value: 100, color: "#555" }],
+                    verdict: verdict || "No verdict available."
+                };
             },
 
             parseJSON: (text) => {
@@ -107,12 +105,9 @@
                     const clean = text.replace(/```json|```/g, '').trim();
                     const start = clean.indexOf('[');
                     const end = clean.lastIndexOf(']');
-                    if (start !== -1 && end !== -1) {
-                        return JSON.parse(clean.substring(start, end + 1));
-                    }
-                    return JSON.parse(clean);
+                    return JSON.parse(clean.substring(start, end + 1));
                 } catch (e) {
-                    return null;
+                    try { return JSON.parse(clean); } catch (e2) { return null; }
                 }
             },
 
@@ -141,8 +136,7 @@
             },
 
             proxyUrl: (url) => {
-                const driveRegex = /\/file\/d\/([a-zA-Z0-9_-]+)\//;
-                const match = url.match(driveRegex);
+                const match = url.match(/\/file\/d\/([a-zA-Z0-9_-]+)\//);
                 if (match && match[1]) {
                     return `https://api.allorigins.win/raw?url=${encodeURIComponent(`https://drive.google.com/uc?export=download&id=${match[1]}`)}`;
                 }
@@ -150,8 +144,7 @@
             }
         };
 
-        // --- 4. Icons ---
-        const Icon = ({ n, c = "w-4 h-4" }) => {
+        const Icon = React.memo(({ n, c = "w-4 h-4" }) => {
             const paths = {
                 search: "m21 21-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z",
                 cloud: "M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242",
@@ -168,12 +161,12 @@
                 up: "M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3",
                 down: "M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3",
                 refresh: "M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16",
-                close: "M18 6 6 18 M6 6 18 18"
+                close: "M18 6 6 18 M6 6 18 18",
+                undo: "M21 21L12 12M12 12V3h9" // Placeholder for reset icon
             };
             return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}><path d={paths[n] || ""}/></svg>;
-        };
+        });
 
-        // --- 5. Shared Modal Component (Global Root) ---
         const GlobalModal = () => {
             const [modal, setModal] = useState({ open: false, title: "", content: "", loading: false, type: "" });
             
@@ -185,7 +178,7 @@
 
             if (!modal.open) return null;
 
-            return (
+            return ReactDOM.createPortal(
                 <div className="fixed inset-0 z-[9001] flex items-center justify-center bg-black/80 p-4" onClick={()=>!modal.loading && setModal({open:false})}>
                     <div className="bg-[#18181b] border border-[#27272a] rounded-xl w-full max-w-2xl max-h-[80vh] flex flex-col overflow-hidden" onClick={e=>e.stopPropagation()}>
                         <div className="p-4 border-b border-[#27272a] bg-[#0c0c0c] flex justify-between items-center shrink-0">
@@ -198,11 +191,11 @@
                             {modal.loading ? <div className="flex flex-col items-center py-10"><div className="w-10 h-10 border-2 border-yellow-600 border-t-transparent rounded-full spin"></div></div> : <div dangerouslySetInnerHTML={{__html: marked.parse(modal.content||"")}} />}
                         </div>
                     </div>
-                </div>
+                </div>,
+                document.getElementById('modal-root')
             );
         };
 
-        // --- 6. Product Card (Trimmed for brevity) ---
         const PieChart = React.memo(({ data }) => {
             if(!data || !data.length) return null;
             const total = data.reduce((s, i) => s + (i.value || 0), 0);
@@ -232,13 +225,12 @@
             const isHuge = spanClass.includes('row-span-2') && spanClass.includes('col-span-2');
             const isBig = spanClass.includes('row-span-2') || spanClass.includes('col-span-2');
             
-            // v39 FONT ADJUSTMENT: Base size is now text-base (16px), scale up from there
             const typo = {
                 brand: isHuge ? "text-lg font-black tracking-[0.2em]" : "text-xs font-bold tracking-widest",
                 title: isHuge ? "text-5xl md:text-6xl mt-2 mb-4" : (isBig ? "text-3xl mt-1 mb-2" : "text-xl"),
                 verdict: isHuge ? "text-base" : (isBig ? "text-base" : "text-sm"),
-                listText: isHuge ? "text-base" : "text-xs", // Elevated from text-[10px]
-                btn: isHuge ? "text-sm py-2.5" : "text-xs py-2", // Elevated from text-[10px]
+                listText: isHuge ? "text-base" : "text-xs",
+                btn: isHuge ? "text-sm py-2.5" : "text-xs py-2",
                 featLabel: isHuge ? "text-sm" : "text-xs",
                 feat: isHuge ? "text-lg" : "text-sm"
             };
@@ -334,8 +326,6 @@
             );
         });
         
-        // --- Modal Components ---
-
         const SearchResultModal = ({ results, onClose, onAdd }) => {
             return (
                 <div className="fixed inset-0 z-[9000] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" onClick={onClose}>
@@ -422,12 +412,12 @@
             );
         };
         
-        // --- 7. Main App ---
         const App = () => {
             const [db, setDb] = useState([]);
             const [loading, setLoading] = useState(true);
             const [query, setQuery] = useState("");
-            const [filters, setFilters] = useState({ brand: "All", type: "All", capacity: "All" });
+            const initialFilters = { brand: "All", type: "All", capacity: "All" };
+            const [filters, setFilters] = useState(initialFilters);
             
             const [keyModal, setKeyModal] = useState(false);
             const [cloudModal, setCloudModal] = useState(false);
@@ -452,7 +442,6 @@
                         } catch {}
                     }
 
-                    // --- Manifest Load Logic (v40) ---
                     if (initialData.length === 0) {
                         try {
                             const manifestRes = await fetch(CFG.MANIFEST_FILE);
@@ -464,8 +453,7 @@
                             const promises = filesToLoad.map(file => 
                                 fetch(file).then(res => res.ok ? res.json() : [])
                             );
-                            const results = await Promise.allSettled(promises);
-                            const validData = results
+                            const validData = (await Promise.allSettled(promises))
                                 .filter(r => r.status === 'fulfilled')
                                 .map(r => r.value)
                                 .flat()
@@ -487,12 +475,10 @@
                 init();
             }, []);
 
-            // Persist
             useEffect(() => {
                 if(db.length > 0) IO.set(CFG.LS_KEY, JSON.stringify(db));
             }, [db]);
 
-            // Filter
             const filteredData = useMemo(() => {
                 let res = db;
                 if (filters.brand !== "All") res = res.filter(i => i.brand === filters.brand);
@@ -538,8 +524,7 @@
                     r.readAsText(file);
                 }));
 
-                const rawResults = await Promise.all(readPromises);
-                const flatItems = rawResults.flat().map(IO.enrich).filter(x=>x);
+                const flatItems = (await Promise.all(readPromises)).flat().map(IO.enrich).filter(x=>x);
                 
                 if(flatItems.length > 0) {
                     handleImport(flatItems);
@@ -550,13 +535,11 @@
                 e.target.value = null;
             };
 
-            // Logic: Search Web
             const handleWebSearch = async (e) => {
                 if (e) e.preventDefault();
                 if(!query.trim()) return; 
                 if(!apiKey) return setKeyModal(true);
 
-                // --- CRITICAL: Immediate UI Update via setTimeout(0) ---
                 setTimeout(async () => {
                     eventBus.emit('SHOW_MODAL', { open: true, title: "Searching Web...", content: "", loading: true, type: "search" });
                     
@@ -590,7 +573,6 @@
                 }, 0); 
             };
 
-            // Add single item from search results
             const addItemFromSearch = (item) => {
                 const newItem = { ...item, id: IO.genId(db) };
                 handleImport([newItem]);
@@ -603,7 +585,6 @@
             const handleAI = (mode, item, extra) => {
                 if(!apiKey) return setKeyModal(true);
 
-                // --- CRITICAL: Immediate UI Update via setTimeout(0) ---
                 setTimeout(async () => {
                     const initialTitle = mode === 'snark' ? `AI 毒舌評論: ${item.model}` : `AI 沖煮建議: ${item.model}`;
                     eventBus.emit('SHOW_MODAL', { open: true, title: initialTitle, content: "", loading: true, type: mode });
@@ -644,18 +625,23 @@
                     }
                 }, 0);
             };
+            
+            const handleClearFilters = () => {
+                setQuery("");
+                setFilters(initialFilters);
+            };
 
-            const handleReset = () => { if(confirm("Reset Database?")) { IO.del(CFG.LS_KEY); window.location.reload(); } };
+            const handleReset = () => { if(confirm("確定要重置整個資料庫 (Local Storage) 嗎？此操作無法復原。")) { IO.del(CFG.LS_KEY); window.location.reload(); } };
             const handleExport = () => {
                 const blob = new Blob([JSON.stringify(db, null, 2)], {type: "application/json"});
                 const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
-                a.href = url; a.download = `coffee_geek_backup.json`;
+                a.href = url; a.download = `coffee_geek_backup_v50.json`;
                 a.click();
             };
 
             const handleKeySave = (key) => {
-                if (key && key.trim().length > 10) { // Basic validation
+                if (key && key.trim().length > 10) { 
                     IO.set("GEMINI_KEY", key);
                     setApiKey(key);
                     setKeyModal(false);
@@ -676,11 +662,11 @@
             }
 
             return (
-                <div className="min-h-screen bg-[#0c0c0c] pb-20 fade-in text-base">
+                <div className="min-h-screen bg-[#0c0c0c] pb-8 fade-in text-base">
                     <nav className="sticky top-0 z-40 bg-[#0c0c0c]/90 backdrop-blur border-b border-[#27272a] px-4 py-3 shadow-lg">
                         <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
                             <div className="flex items-center gap-2 flex-shrink-0">
-                                <span className="bg-yellow-500 text-black px-2 py-0.5 rounded font-black text-xs">V41</span>
+                                <span className="bg-yellow-500 text-black px-2 py-0.5 rounded font-black text-xs">V50</span>
                                 <h1 className="font-bold text-gray-100 tracking-tight text-lg">COFFEE GEEK</h1>
                             </div>
                             <form onSubmit={handleWebSearch} className="relative w-full max-w-xl group flex gap-2">
@@ -699,12 +685,25 @@
                             <div className="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
                                 <select className="bg-[#18181b] border border-[#27272a] text-gray-300 rounded px-2 py-2 cursor-pointer focus:outline-none text-sm" value={filters.brand} onChange={e=>setFilters({...filters, brand: e.target.value})}>{options.brand.map(o=><option key={o} value={o}>{o}</option>)}</select>
                                 <select className="bg-[#18181b] border border-[#27272a] text-gray-300 rounded px-2 py-2 cursor-pointer focus:outline-none text-sm" value={filters.type} onChange={e=>setFilters({...filters, type: e.target.value})}>{options.type.map(o=><option key={o} value={o}>{o}</option>)}</select>
-                                <button onClick={()=>setKeyModal(true)} className={`p-2 rounded border transition ${apiKey ? 'border-green-900 text-green-500 bg-green-900/10' : 'border-[#27272a] text-gray-400 bg-[#18181b] hover:text-white'}`}><Icon n="settings"/></button>
+                                <button onClick={handleClearFilters} className="p-2 rounded border border-red-900 text-red-400 bg-red-900/10 hover:bg-red-900/20 transition" title="Clear Filters"><Icon n="refresh"/></button>
+                                <button onClick={()=>setKeyModal(true)} className={`p-2 rounded border transition ${apiKey ? 'border-green-900 text-green-500 bg-green-900/10' : 'border-[#27272a] text-gray-400 bg-[#18181b] hover:text-white'}`} title="API Settings"><Icon n="settings"/></button>
                             </div>
                         </div>
                     </nav>
 
                     <main className="max-w-[1600px] mx-auto p-4">
+                        
+                        <div className="top-tools-container max-w-[1600px] mx-auto px-1 flex justify-between items-center text-base text-gray-500">
+                            <div className="flex gap-3">
+                                <button onClick={handleReset} className="hover:text-red-500 flex items-center gap-1 transition text-sm"><Icon n="trash"/> RESET</button>
+                                <button onClick={()=>setCloudModal(true)} className="hover:text-blue-500 flex items-center gap-1 transition text-sm"><Icon n="cloud"/> CLOUD</button>
+                            </div>
+                            <div className="flex items-center gap-3">
+                                <button onClick={handleExport} className="hover:text-blue-400 flex items-center gap-1 transition text-sm"><Icon n="download"/> BACKUP</button>
+                                <label className="hover:text-green-400 flex items-center gap-1 cursor-pointer transition text-sm"><Icon n="upload"/> FILE<input type="file" multiple accept=".json" className="hidden" onChange={handleFileImport}/></label>
+                            </div>
+                        </div>
+                        
                         <div className="flex justify-between items-end mb-4 px-1">
                             <p className="text-gray-500 text-xs font-mono">ITEMS: <span className="text-yellow-500">{filteredData.length}</span></p>
                         </div>
@@ -727,35 +726,19 @@
                         )}
                     </main>
 
-                    <footer className="fixed bottom-0 left-0 w-full bg-[#0c0c0c] border-t border-[#27272a] py-3 px-6 z-30 flex justify-between items-center text-base text-gray-500">
-                        <div className="flex gap-3">
-                            <button onClick={handleReset} className="hover:text-red-500 flex items-center gap-1 transition text-sm"><Icon n="trash"/> RESET</button>
-                            <button onClick={()=>setCloudModal(true)} className="hover:text-blue-500 flex items-center gap-1 transition text-sm"><Icon n="cloud"/> CLOUD</button>
-                        </div>
-                        <div className="flex items-center gap-3">
-                            <button onClick={handleExport} className="hover:text-blue-400 flex items-center gap-1 transition text-sm"><Icon n="download"/> BACKUP</button>
-                            <label className="hover:text-green-400 flex items-center gap-1 cursor-pointer transition text-sm"><Icon n="upload"/> FILE<input type="file" multiple accept=".json" className="hidden" onChange={handleFileImport}/></label>
-                        </div>
-                    </footer>
-
-                    {/* Modals are now globally managed, but we keep local handlers for search results/key */}
                     {keyModal && <ApiKeyModal onClose={()=>setKeyModal(false)} onSave={handleKeySave} initialKey={apiKey} />}
                     {cloudModal && <CloudImportModal onClose={()=>setCloudModal(false)} onImport={handleImport} />}
                     {searchResults && <SearchResultModal results={searchResults} onClose={()=>setSearchResults(null)} onAdd={addItemFromSearch} />}
-                    
-                    {/* The main App component ends here. GlobalModal is rendered below. */}
                 </div>
             );
         };
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
+        root.render(React.createElement(App));
         
-        // --- Global Modal Renderer (Separate React Root) ---
         const modalRoot = ReactDOM.createRoot(document.getElementById('modal-root'));
-        modalRoot.render(<GlobalModal />);
+        modalRoot.render(React.createElement(GlobalModal));
 
-        // --- Welcome Screen Component (Defined earlier) ---
         const WelcomeScreen = ({ onFileImport, onCloudClick }) => (
             <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-[#0c0c0c] text-center space-y-10 fade-in">
                 <div className="space-y-4">
@@ -786,7 +769,7 @@
                         </div>
                     </button>
                 </div>
-                <div className="text-xs text-gray-600 font-mono pt-10">v33.0 | LOGIC REFACTOR</div>
+                <div className="text-xs text-gray-600 font-mono pt-10">v50.0 | UI REFACTOR</div>
             </div>
         );
     </script>
