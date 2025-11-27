@@ -46,11 +46,15 @@
             delLS: (k) => { try { localStorage.removeItem(k); } catch {} },
             genId: () => Date.now() + Math.floor(Math.random() * 1000000),
 
+            // 超防禦性淨化函數，取代單純的 trim()
+            superTrim: (str) => String(str || '').replace(/\s/g, '').trim(),
+
             enrich: (raw) => ({
                 id: raw.id || Utils.genId(),
-                brand: String(raw.brand || "Unknown"),
+                // 確保品牌和類型字串被淨化 (trim) - 這是資料準備階段的關鍵
+                brand: String(raw.brand || "Unknown").trim(),
                 model: String(raw.model || "Unknown Model"),
-                type: String(raw.type || "Equipment"),
+                type: String(raw.type || "Equipment").trim(),
                 priceLevel: String(raw.priceLevel || "$"),
                 capacity: String(raw.capacity || "N/A"),
                 feature: String(raw.feature || ""),
@@ -301,7 +305,8 @@
             const [modalOpen, setModalOpen] = useState(false);
             const [actionModal, setActionModal] = useState({ show: false, title: '', message: '', type: 'alert', onConfirm: () => {} });
             
-            const currentData = db; 
+            const [selectedBrand, setSelectedBrand] = useState('所有品牌');
+            const [selectedType, setSelectedType] = useState('所有類型');
             
             const showAlert = useCallback((message, title = '訊息') => {
                 setActionModal({ show: true, title, message, type: 'alert', onConfirm: () => {} });
@@ -360,6 +365,75 @@
                     }
                 );
             };
+            
+            const handleDebug = () => {
+                console.groupCollapsed(`%c[CGF DEBUG] Filter State and Data (%d items)`, 'color: #f59e0b; font-weight: bold;', db.length);
+                console.log("%cDB Content (First 5 Items):", 'color: #38bdf8; font-weight: bold;', db.slice(0, 5));
+                
+                // Log filter states with their raw value and trimmed length for inspection
+                console.log("%cSelected Brand:", 'color: #a78bfa; font-weight: bold;', {
+                    value: selectedBrand,
+                    trimmedValue: selectedBrand.trim(),
+                    rawValueLength: selectedBrand.length,
+                    trimmedLength: selectedBrand.trim().length,
+                });
+                console.log("%cSelected Type:", 'color: #a78bfa; font-weight: bold;', {
+                    value: selectedType,
+                    trimmedValue: selectedType.trim(),
+                    rawValueLength: selectedType.length,
+                    trimmedLength: selectedType.trim().length,
+                });
+
+                // Log unique lists with their raw length for verification
+                console.log("%cUnique Brands (Verify lengths):", 'color: #10b981; font-weight: bold;', uniqueBrands.map(b => ({ brand: b, length: b.length })));
+                console.log("%cUnique Types (Verify lengths):", 'color: #10b981; font-weight: bold;', uniqueTypes.map(t => ({ type: t, length: t.length })));
+                
+                // Log failed items for current filter combination
+                if (selectedBrand !== '所有品牌' || selectedType !== '所有類型') {
+                    const failedItems = db.filter(item => {
+                        const brandMatch = selectedBrand === '所有品牌' || item.brand.trim() === selectedBrand.trim();
+                        const typeMatch = selectedType === '所有類型' || item.type.trim() === selectedType.trim();
+                        return !(brandMatch && typeMatch);
+                    }).slice(0, 5);
+                    console.log(`%cItems NOT matching the current filter (First 5):`, 'color: #ef4444; font-weight: bold;', failedItems.map(item => ({
+                        model: item.model,
+                        dbBrand: item.brand, 
+                        dbType: item.type,
+                        brandMatch: selectedBrand === '所有品牌' || item.brand.trim() === selectedBrand.trim(),
+                        typeMatch: selectedType === '所有類型' || item.type.trim() === selectedType.trim(),
+                    })));
+                }
+
+                console.groupEnd();
+                showAlert("已將除錯資訊（資料庫、唯一值、選定狀態與長度）輸出到瀏覽器控制台 (Console)。請按 F12 打開開發者工具查看。", "除錯資訊輸出");
+            };
+
+
+            // 計算不重複的品牌和類型 (確保選項值是乾淨的)
+            const uniqueBrands = useMemo(() => {
+                // 修正：明確對每個品牌進行 trim，確保 Set 中的鍵是乾淨的
+                const brands = new Set(db.map(item => item.brand.trim()).filter(Boolean));
+                return ['所有品牌', ...Array.from(brands).sort()];
+            }, [db]);
+
+            const uniqueTypes = useMemo(() => {
+                // 修正：明確對每個類型進行 trim，確保 Set 中的鍵是乾淨的
+                const types = new Set(db.map(item => item.type.trim()).filter(Boolean));
+                return ['所有類型', ...Array.from(types).sort()];
+            }, [db]);
+
+            // 根據篩選條件過濾資料 - 採用最防禦性的比較
+            const currentData = useMemo(() => {
+                if (!db.length) return [];
+                return db.filter(item => {
+                    // 修正：在比較時，同時對資料項目的屬性與選定的狀態值執行 .trim()
+                    const brandMatch = selectedBrand === '所有品牌' || item.brand.trim() === selectedBrand.trim();
+                    const typeMatch = selectedType === '所有類型' || item.type.trim() === selectedType.trim();
+                    
+                    // 1+1 (AND) 邏輯：只有當兩個條件都滿足時才顯示 (或其中一個是'所有')
+                    return brandMatch && typeMatch;
+                });
+            }, [db, selectedBrand, selectedType]);
 
             useEffect(() => {
                 const init = async () => {
@@ -368,6 +442,7 @@
                     const local = Utils.getLS(CONSTANTS.LS_KEY);
                     if (local) {
                         try {
+                            // 確保舊的本地資料也會經過 Utils.enrich 淨化
                             const parsed = Utils.parseJSON(local);
                             if (parsed && parsed.length) {
                                 initialData = parsed.map(Utils.enrich).filter(x=>x);
@@ -440,9 +515,36 @@
                     </nav>
 
                     <main className="max-w-[1600px] mx-auto p-4">
-                        <div className="flex justify-between items-end mb-4 px-1 text-xs font-mono text-gray-500">
-                            <p>總項目: <span className="text-yellow-500">{currentData.length}</span></p>
+                        {/* 篩選器和項目總覽 */}
+                        <div className="flex justify-between items-center mb-4 px-1 text-sm font-mono text-gray-400">
+                            {/* 顯示當前篩選狀態 */}
+                            <p>顯示項目: <span className="text-yellow-500">{currentData.length}</span> / 總計: {db.length} (篩選: <span className="text-yellow-500">{selectedBrand}</span>, <span className="text-yellow-500">{selectedType}</span>)</p>
+                            <div className="flex gap-4">
+                                {/* 品牌篩選器 */}
+                                <select
+                                    value={selectedBrand}
+                                    onChange={(e) => setSelectedBrand(e.target.value.trim())}
+                                    className="bg-[#18181b] border border-[#3f3f46] rounded px-3 py-1 text-sm text-gray-200 focus:ring-yellow-500 focus:border-yellow-500 cursor-pointer"
+                                >
+                                    {uniqueBrands.map(brand => (
+                                        <option key={brand} value={brand}>{brand}</option>
+                                    ))}
+                                </select>
+                                {/* 類型篩選器 */}
+                                <select
+                                    value={selectedType}
+                                    onChange={(e) => setSelectedType(e.target.value.trim())}
+                                    className="bg-[#18181b] border border-[#3f3f46] rounded px-3 py-1 text-sm text-gray-200 focus:ring-yellow-500 focus:border-yellow-500 cursor-pointer"
+                                >
+                                    {uniqueTypes.map(type => (
+                                        <option key={type} value={type}>{type}</option>
+                                    ))}
+                                </select>
+                            </div>
                         </div>
+                        {/* 篩選器結束 */}
+
+
                         {currentData.length > 0 ? (
                             <div className="tetris-grid">
                                 {currentData.map(item => <Card key={item.id} item={item} spanClass={Utils.getSpanClass(item)} configLabels={config?.ui_labels} />)}
@@ -450,8 +552,8 @@
                         ) : (
                             <div className="flex flex-col items-center justify-center py-20 text-gray-600 border-2 border-dashed border-[#27272a] rounded-xl">
                                 <Icon n="search" c="w-12 h-12 mb-4 opacity-20"/>
-                                <p className="text-lg font-bold text-gray-500 mb-4">資料庫載入中或沒有項目</p>
-                                <p className="text-sm text-gray-500 mb-6">請檢查網路連線或嘗試匯入資料。</p>
+                                <p className="text-lg font-bold text-gray-500 mb-4">目前篩選條件下無項目</p>
+                                <p className="text-sm text-gray-500 mb-6">請調整您的品牌或類型篩選條件。</p>
                             </div>
                         )}
                     </main>
@@ -462,6 +564,7 @@
                             <button onClick={()=>setModalOpen(true)} className="hover:text-blue-500 flex items-center gap-1 transition-colors"><Icon n="cloud"/> 雲端匯入</button>
                         </div>
                         <div className="flex gap-4">
+                             <button onClick={handleDebug} className="hover:text-amber-500 flex items-center gap-1 transition-colors"><Icon n="search"/> 除錯輸出</button>
                             <button onClick={() => {
                                 const a = document.createElement('a');
                                 a.href = URL.createObjectURL(new Blob([JSON.stringify(db, null, 2)], {type: "application/json"}));
