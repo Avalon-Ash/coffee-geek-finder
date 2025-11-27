@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Geek Finder v42 | Hybrid Modal & Manifest</title>
+    <title>Coffee Geek Finder v43 | Modal Final Fix</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
@@ -51,7 +51,7 @@
 
         // --- 1. Configuration (Manifest enabled) ---
         const CFG = {
-            LS_KEY: "CGF_DB_V42_HYBRID",
+            LS_KEY: "CGF_DB_V43_HYBRID",
             API_MODEL: "gemini-2.5-flash-preview-09-2025",
             MANIFEST_FILE: "./db_manifest.json" 
         };
@@ -270,18 +270,20 @@
             const handleClose = () => eventBus.emit('SHOW_MODAL', { open: false });
             
             let ModalContentComponent = null;
-            let containerClass = "w-full max-w-2xl min-h-[12rem] max-h-[80vh] flex flex-col overflow-hidden";
+            // CRITICAL FIX: Ensure container has min-width/min-height for proper layout calculation.
+            let containerClass = "w-full max-w-2xl min-w-[20rem] min-h-[12rem] max-h-[80vh] flex flex-col overflow-hidden";
             let titleIcon = modal.iconName || "msg";
             let titleColor = modal.iconName === 'close' ? 'text-red-500' : 'text-yellow-500';
 
             switch (modal.type) {
                 case 'key-settings':
-                    containerClass = "w-full max-w-sm";
+                    // Explicitly set narrow dimensions for API Key modal
+                    containerClass = "w-full max-w-sm min-w-[20rem] min-h-[10rem]"; 
                     titleIcon = "settings";
                     ModalContentComponent = <ApiKeyModal key={modal.apiKey} onClose={handleClose} onSave={onKeySave} initialKey={modal.apiKey} />;
                     break;
                 case 'cloud-import':
-                    containerClass = "w-full max-w-md";
+                    containerClass = "w-full max-w-md min-w-[20rem] min-h-[10rem]";
                     titleIcon = "cloud";
                     titleColor = 'text-blue-500';
                     ModalContentComponent = <CloudImportModal onClose={handleClose} onImport={onImport} />;
@@ -304,12 +306,21 @@
                     ModalContentComponent = (
                         <div className="flex flex-col flex-grow">
                             <div className="p-6 overflow-y-auto text-gray-300 mkd flex-grow">
-                                {modal.loading ? (
-                                    <div className="flex flex-col items-center py-10">
-                                        <div className="w-10 h-10 border-2 border-yellow-600 border-t-transparent rounded-full spin"></div>
-                                        <p className="mt-4 text-sm text-yellow-500">AI 正在努力思考中...</p>
+                                {/* Ensure the AI loading/error content area also maintains height */}
+                                {modal.loading || modal.iconName === 'close' || modal.iconName === 'msg' ? (
+                                    <div className="flex flex-col items-center py-10 min-h-[8rem]">
+                                        {modal.loading ? (
+                                            <>
+                                                <div className="w-10 h-10 border-2 border-yellow-600 border-t-transparent rounded-full spin"></div>
+                                                <p className="mt-4 text-sm text-yellow-500">AI 正在努力思考中...</p>
+                                            </>
+                                        ) : (
+                                            // Render content for success/error if not loading
+                                            <div dangerouslySetInnerHTML={{__html: marked.parse(modal.content||"")}} />
+                                        )}
                                     </div>
                                 ) : (
+                                    // Render content for loaded AI response (non-error/success)
                                     <div dangerouslySetInnerHTML={{__html: marked.parse(modal.content||"")}} />
                                 )}
                             </div>
@@ -317,7 +328,6 @@
                     );
             }
             
-            // 修正點：Modal Wrapper - Z-index 統一且足夠高
             return (
                 <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 p-4" onClick={()=>!modal.loading && handleClose()}>
                     <div className={`bg-[#18181b] border border-[#27272a] rounded-xl shadow-2xl ${containerClass}`} onClick={e=>e.stopPropagation()}>
@@ -334,6 +344,7 @@
         };
 
         // --- 6. Product Card ---
+        // ... (PieChart and Card components remain the same) ...
         const PieChart = React.memo(({ data }) => {
             if(!data || !data.length) return null;
             const total = data.reduce((s, i) => s + (i.value || 0), 0);
@@ -724,7 +735,7 @@
                     <nav className="sticky top-0 z-40 bg-[#0c0c0c]/90 backdrop-blur border-b border-[#27272a] px-4 py-3 shadow-lg">
                         <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
                             <div className="flex items-center gap-2 flex-shrink-0">
-                                <span className="bg-yellow-500 text-black px-2 py-0.5 rounded font-black text-xs">V42</span>
+                                <span className="bg-yellow-500 text-black px-2 py-0.5 rounded font-black text-xs">V43</span>
                                 <h1 className="font-bold text-gray-100 tracking-tight text-lg">COFFEE GEEK</h1>
                             </div>
                             <form onSubmit={handleWebSearch} className="relative w-full max-w-xl group flex gap-2">
@@ -822,7 +833,7 @@
                         </div>
                     </button>
                 </div>
-                <div className="text-xs text-gray-600 font-mono pt-10">v42.0 | HYBRID STABLE</div>
+                <div className="text-xs text-gray-600 font-mono pt-10">v43.0 | HYBRID STABLE</div>
             </div>
         );
     </script>
