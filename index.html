@@ -12,12 +12,13 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     
     <style>
-        /* Base and Animation */
+        /* CSS Styles (Skipped for brevity) */
         body { background-color: #0c0c0c; color: #e5e5e5; font-family: system-ui, -apple-system, sans-serif; overflow-x: hidden; }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0c0c0c; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
+        
         .fade-in { animation: fadeIn 0.3s ease-out forwards; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
         .spin { animation: spin 1s linear infinite; }
@@ -31,13 +32,14 @@
             gap: 1.5rem; 
         }
 
-        /* Modal & Markdown */
+        /* Markdown Styles */
         .mkd h1, .mkd h2, .mkd h3 { color: #facc15; font-weight: 700; margin-top: 1em; margin-bottom: 0.5em; border-bottom: 1px solid #333; padding-bottom: 0.3em; }
         .mkd ul { list-style: disc; padding-left: 1.5em; color: #a8a29e; margin-bottom: 1em; }
         .mkd table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.9em; }
         .mkd th, .mkd td { border: 1px solid #444; padding: 0.5em; text-align: left; }
         .mkd th { background-color: #222; color: #facc15; }
         
+        /* Modal Fix: Fixed positioning for max stability */
         .modal-overlay {
             position: fixed;
             inset: 0;
@@ -56,12 +58,13 @@
         const { useState, useEffect, useMemo, useCallback } = React;
 
         // --- 1. Configuration & Constants ---
-        const CONFIG_FILE = "./project_config.json";
+        const CONFIG_FILE = "./project_config.json"; 
         const API_MODEL = "gemini-2.5-flash-preview-09-2025";
         const LS_KEY_PREFIX = "CGF_DB_"; 
         
+        // --- FALLBACK CONFIGURATION ---
         const DEFAULT_CONFIG = {
-            "project": { "title": "通用器材管理器", "version": "v46.0", "item_name_tw": "通用器材" },
+            "project": { "title": "通用器材管理器", "version": "v48.0", "item_name_tw": "通用器材" },
             "ui_labels": {
                 "header_title": "GEEK MANAGER", "search_placeholder": "Search / AI Expand...", "capacity_label": "容量/尺寸",
                 "feature_label_map": { "磨": "機制", "壺": "壺嘴", "濾": "結構", "秤": "反應", "壓": "壓力" }
@@ -69,7 +72,7 @@
             "ai_prompts": {
                 "search_system": "你是一位頂尖的通用器材數據生成師。", "search_prompt_schema": "Schema: {\"brand\":\"String (TW)\",\"model\":\"String (TW)\",\"type\":\"String (TW)\",\"material\":\"String (TW)\",\"capacity\":\"String (TW)\",\"feature\":\"String (TW)\",\"priceLevel\":\"String ($$$)\",\"verdict\":\"String (TW)\",\"pros\":[\"String (TW)\"],\"cons\":[\"String (TW)\"],\"sentiment\":[{\"name\":\"Tag (TW)\",\"value\":Number,\"color\":\"String (#94a3b8)\"}]}. Return ONLY JSON.",
                 "review_title": "AI 毒舌評論", "review_prompt_system": "你是一位極度毒舌且專業的器材評論家，請使用 Markdown 格式，並且必須使用繁體中文。",
-                "recipe_title": "AI 建議", "recipe_prompt_system": "你是一位專家，請提供針對該器材的具體建議，使用 Markdown 表格來呈現參數，所有文字必須是繁體中文。"
+                "recipe_title": "AI 沖煮建議", "recipe_prompt_system": "你是一位專家，請提供針對該器材的具體建議，使用 Markdown 表格來呈現參數，所有文字必須是繁體中文。"
             },
             "db_config": { "manifest_file": "./db_manifest.json" }
         };
@@ -180,8 +183,6 @@
             return React.createElement('svg', { viewBox: "-1.1 -1.1 2.2 2.2", className: "w-full h-full -rotate-90" }, paths);
         });
 
-        // --- 4. Main App Components (Pure JS Definition) ---
-        
         // Card Component
         const Card = React.memo(function Card({ item, spanClass, onAI, config }) {
             if (!item) return null;
@@ -215,7 +216,7 @@
 
             const renderIcon = (n, c) => React.createElement(Ico, { n: n, c: c });
             const renderLink = (url, label, color) => React.createElement('a', { href: url, target: "_blank", className: `flex items-center justify-center gap-1 ${color} text-white font-bold rounded hover:opacity-90 transition ${typo.btn}` }, label);
-            const renderList = (arr, color, icon) => React.createElement('ul', { className: `space-y-1 text-gray-400 ${typo.listText}` }, arr.slice(0, isHuge ? 8 : 3).map((p, i) => React.createElement('li', { key: i, className: 'flex items-start' }, React.createElement('span', { className: `mr-1.5 ${color}` }, '•'), React.createElement('span', { className: 'truncate' }, p))));
+            const renderList = (arr, color) => React.createElement('ul', { className: `space-y-1 text-gray-400 ${typo.listText}` }, arr.slice(0, isHuge ? 8 : 3).map((p, i) => React.createElement('li', { key: i, className: 'flex items-start' }, React.createElement('span', { className: `mr-1.5 ${color}` }, '•'), React.createElement('span', { className: 'truncate' }, p))));
 
             return React.createElement('div', { className: `bg-[#18181b] border border-[#27272a] rounded-xl p-5 flex flex-col gap-3 hover:border-yellow-600/50 hover:shadow-2xl transition-all duration-300 relative h-full group ${spanClass}` },
                 // Header
@@ -324,8 +325,8 @@
                 );
             };
         })();
-
-        // WelcomeScreen, CloudImportModal, ApiKeyModal components defined below (Pure JS)
+        
+        // WelcomeScreen, CloudImportModal, ApiKeyModal components (Skipped for brevity)
         const WelcomeScreen = (function WelcomeScreenComponent() {
             return function WelcomeScreen({ onFileImport, onCloudClick, config }) {
                 const renderIco = (n, c) => React.createElement(Ico, {n, c});
@@ -382,7 +383,7 @@
                         let data = [];
                         
                         if (json.files && Array.isArray(json.files)) {
-                            const promises = json.files.map(file => fetch(IO.proxyUrl(file)).then(r => r.ok ? r.json() : []));
+                            const promises = json.files.map(file => fetch(IO.proxyUrl(file)).then(r => r.ok ? r.json() : [])).filter(p => p !== null);
                             const results = await Promise.allSettled(promises);
                             data = results.filter(r => r.status === 'fulfilled').map(r => r.value).flat();
                         } else {
@@ -448,12 +449,17 @@
                 const init = async () => {
                     let projectConfig = null;
                     try {
+                        // 1. Try to fetch external config
                         const configRes = await fetch(CONFIG_FILE);
-                        if(configRes.ok) projectConfig = await configRes.json();
-                        else throw new Error(`HTTP Error ${configRes.status}`);
+                        if(configRes.ok) {
+                            projectConfig = await configRes.json();
+                        } else {
+                            throw new Error(`HTTP Error ${configRes.status}`);
+                        }
                     } catch (e) { 
-                        console.error(`無法載入 ${CONFIG_FILE}，使用預設配置。`, e);
-                        projectConfig = DEFAULT_CONFIG;
+                        // 2. Fallback to EMBEDDED CONFIG
+                        console.error(`無法載入 ${CONFIG_FILE}，使用內嵌配置。`, e);
+                        projectConfig = EMBEDDED_CONFIG;
                         setConfigLoadError(`注意：無法載入外部配置檔 (${CONFIG_FILE})，已切換為內建通用配置。請檢查檔案！`);
                     }
                     
@@ -609,9 +615,9 @@
             const handleAI = (mode, item) => {
                 if(!apiKey) return setKeyModal(true);
 
-                let extra = "";
-                if(mode === 'recipe') {
-                    extra = "中焙"; 
+                let extra = "中焙"; 
+                if(mode !== 'snark') {
+                     // In a later version, this is where the recipe selection logic (light/medium/dark) would go
                 }
 
                 const initialTitle = mode === 'snark' ? `${config.ai_prompts.review_title}: ${item.model}` : `${config.ai_prompts.recipe_title}: ${item.model}`;
@@ -657,7 +663,7 @@
 
 
             // Main Render Logic
-            if(loading || configLoadError) return (
+            if(loading) return (
                 React.createElement('div', { className: "min-h-screen bg-[#0c0c0c] flex flex-col items-center justify-center p-8" },
                     loading && React.createElement('div', { className: "w-12 h-12 border-4 border-yellow-600 rounded-full spin border-t-transparent mb-4" }),
                     configLoadError && 
