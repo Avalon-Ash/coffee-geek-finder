@@ -8,10 +8,34 @@
     "capacity": "1-4杯",
     "feature": "錐形 (螺旋肋骨)",
     "priceLevel": "$",
-    "verdict": "冠軍濾杯始祖，陶瓷保溫需預熱。",
-    "pros": ["流速快", "耗材便宜", "變化多"],
-    "cons": ["易萃取不足", "易碎", "預熱慢"],
-    "sentiment": [{"name": "經典", "value": 90, "color": "#4ade80"}, {"name": "挫折", "value": 5, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "冠軍濾杯始祖，陶瓷材質保溫需預熱，手法變化多。",
+    "pros": [
+      "流速快",
+      "耗材（濾紙）便宜",
+      "沖煮手法變化多"
+    ],
+    "cons": [
+      "易萃取不足（需細研磨）",
+      "陶瓷易碎",
+      "預熱速度慢"
+    ],
+    "sentiment": [
+      {
+        "name": "經典",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "挫折",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2002,
@@ -22,10 +46,34 @@
     "capacity": "1-2杯",
     "feature": "錐形 (螺旋肋骨)",
     "priceLevel": "$",
-    "verdict": "其實塑膠版才是最好用的V60。",
-    "pros": ["不吸熱", "極便宜", "耐摔"],
-    "cons": ["質感廉價", "容易染色", "無保溫感"],
-    "sentiment": [{"name": "實用", "value": 95, "color": "#4ade80"}, {"name": "嫌醜", "value": 5, "color": "#f87171"}, {"name": "普", "value": 0, "color": "#94a3b8"}]
+    "verdict": "塑膠版才是導熱性最好的 V60，流速穩定，CP 值高。",
+    "pros": [
+      "不吸熱導熱快",
+      "價格極便宜",
+      "耐摔耐用"
+    ],
+    "cons": [
+      "質感廉價",
+      "容易染色",
+      "無陶瓷保溫感"
+    ],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 95,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌醜",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2003,
@@ -34,12 +82,36 @@
     "type": "濾杯",
     "material": "玻璃/矽膠",
     "capacity": "1-4杯",
-    "feature": "浸泡式",
+    "feature": "浸泡式/開關",
     "priceLevel": "$$",
-    "verdict": "聰明濾杯的進化版，容錯率無限大。",
-    "pros": ["可玩性高", "甜感好", "穩定"],
-    "cons": ["清洗麻煩(拆珠珠)", "玻璃易破", "預熱難"],
-    "sentiment": [{"name": "依賴", "value": 85, "color": "#4ade80"}, {"name": "麻煩", "value": 10, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "聰明濾杯的進化版，結合浸泡與手沖，容錯率無限大。",
+    "pros": [
+      "可玩性高（浸泡時間可控）",
+      "甜感飽滿",
+      "沖煮穩定度極高"
+    ],
+    "cons": [
+      "清洗麻煩（需拆卸矽膠珠）",
+      "玻璃版本易破",
+      "預熱難度較高"
+    ],
+    "sentiment": [
+      {
+        "name": "依賴",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "麻煩",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2004,
@@ -48,12 +120,36 @@
     "type": "濾杯",
     "material": "樹脂",
     "capacity": "1-2杯",
-    "feature": "單次注水",
+    "feature": "單次注水/懶人",
     "priceLevel": "$",
-    "verdict": "無限濾杯，一次注水到底。",
-    "pros": ["極簡單", "穩定", "便宜"],
-    "cons": ["流速慢", "變化少", "只能一種沖法"],
-    "sentiment": [{"name": "懶人", "value": 80, "color": "#4ade80"}, {"name": "無聊", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "無限濾杯，設計用於一次注水到底的懶人沖法。",
+    "pros": [
+      "沖煮流程極簡單",
+      "流速穩定",
+      "價格便宜"
+    ],
+    "cons": [
+      "流速慢",
+      "沖煮變化性少",
+      "只能使用單次注水法"
+    ],
+    "sentiment": [
+      {
+        "name": "懶人",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "無聊",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2005,
@@ -62,12 +158,36 @@
     "type": "濾杯",
     "material": "陶瓷",
     "capacity": "1-4杯",
-    "feature": "粗肋骨",
+    "feature": "粗肋骨/4:6法",
     "priceLevel": "$$",
-    "verdict": "4:6法專用，流速較慢。",
-    "pros": ["適合粗研磨", "甜感高", "冠軍聯名"],
-    "cons": ["流速慢", "易堵塞", "只適合46法"],
-    "sentiment": [{"name": "信仰", "value": 70, "color": "#4ade80"}, {"name": "慢", "value": 25, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "Tetsu Kasuya 冠軍聯名款，針對 4:6 法設計，流速慢。",
+    "pros": [
+      "適合粗研磨增加接觸時間",
+      "甜感表現優秀",
+      "冠軍聯名信仰加持"
+    ],
+    "cons": [
+      "流速慢",
+      "易堵塞",
+      "只適合 4:6 沖法"
+    ],
+    "sentiment": [
+      {
+        "name": "信仰",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "慢",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2006,
@@ -76,12 +196,36 @@
     "type": "濾杯",
     "material": "矽膠",
     "capacity": "1-2杯",
-    "feature": "折疊",
+    "feature": "折疊/便攜",
     "priceLevel": "$$",
-    "verdict": "露營專用，可捲收的V60。",
-    "pros": ["極輕", "好收納", "V60流速"],
-    "cons": ["矽膠味", "軟趴趴", "貴"],
-    "sentiment": [{"name": "便攜", "value": 85, "color": "#4ade80"}, {"name": "手感", "value": 10, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "露營專用 V60，可捲收極致輕量化，方便攜帶。",
+    "pros": [
+      "機身極輕",
+      "收納體積小",
+      "維持 V60 流速"
+    ],
+    "cons": [
+      "初期有矽膠異味",
+      "結構軟趴趴",
+      "價格偏貴"
+    ],
+    "sentiment": [
+      {
+        "name": "便攜",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "手感",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2007,
@@ -90,12 +234,36 @@
     "type": "濾杯",
     "material": "銅",
     "capacity": "1-4杯",
-    "feature": "錐形",
+    "feature": "錐形/傳熱快",
     "priceLevel": "$$$",
-    "verdict": "傳熱極快，但燙手。",
-    "pros": ["美", "殺菌", "升溫快"],
-    "cons": ["極燙", "氧化變黑", "貴"],
-    "sentiment": [{"name": "藝術", "value": 70, "color": "#4ade80"}, {"name": "燙", "value": 25, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "傳熱極快，視覺效果極佳，但沖煮時燙手。",
+    "pros": [
+      "外型美觀具藝術性",
+      "銅有殺菌特性",
+      "升溫極快"
+    ],
+    "cons": [
+      "機身極燙",
+      "容易氧化變黑",
+      "價格昂貴"
+    ],
+    "sentiment": [
+      {
+        "name": "藝術",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "燙",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2008,
@@ -104,12 +272,36 @@
     "type": "濾杯",
     "material": "陶瓷/網",
     "capacity": "1-4杯",
-    "feature": "平底網",
+    "feature": "平底/濾網",
     "priceLevel": "$$",
-    "verdict": "實驗性質的平底濾杯。",
-    "pros": ["清爽", "無紙味", "特別"],
-    "cons": ["細粉多", "流速怪", "冷門"],
-    "sentiment": [{"name": "有趣", "value": 60, "color": "#4ade80"}, {"name": "怪", "value": 30, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]
+    "verdict": "結合平底濾網的實驗性質濾杯，口感清爽。",
+    "pros": [
+      "口感清爽",
+      "無紙味",
+      "沖煮結構特別"
+    ],
+    "cons": [
+      "細粉量多",
+      "流速控制困難",
+      "市場冷門"
+    ],
+    "sentiment": [
+      {
+        "name": "有趣",
+        "value": 60,
+        "color": "#4ade80"
+      },
+      {
+        "name": "怪",
+        "value": 30,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2009,
@@ -120,10 +312,34 @@
     "capacity": "2-4杯",
     "feature": "平底 (三孔)",
     "priceLevel": "$$",
-    "verdict": "蛋糕濾杯標準版，穩定輸出。",
-    "pros": ["萃取均勻", "容錯高", "耐用"],
-    "cons": ["易堵塞", "濾紙貴", "流速慢"],
-    "sentiment": [{"name": "安心", "value": 80, "color": "#4ade80"}, {"name": "生氣", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "蛋糕濾杯標準版，粉層較淺，萃取穩定輸出。",
+    "pros": [
+      "萃取均勻",
+      "容錯率高",
+      "不鏽鋼材質耐用"
+    ],
+    "cons": [
+      "易堵塞",
+      "專用濾紙價格較貴",
+      "流速偏慢"
+    ],
+    "sentiment": [
+      {
+        "name": "安心",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "生氣",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2010,
@@ -134,10 +350,34 @@
     "capacity": "1-2杯",
     "feature": "平底 (三孔)",
     "priceLevel": "$$",
-    "verdict": "一人份蛋糕杯，玻璃不吸熱。",
-    "pros": ["美觀", "不吸味", "適合淺焙"],
-    "cons": ["易破", "加上托架重", "小"],
-    "sentiment": [{"name": "美", "value": 75, "color": "#4ade80"}, {"name": "破", "value": 20, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "一人份蛋糕杯，玻璃材質不吸熱，適合淺焙。",
+    "pros": [
+      "外觀美觀",
+      "不吸味",
+      "適合淺焙豆"
+    ],
+    "cons": [
+      "玻璃易破",
+      "需加上托架體積大",
+      "容量小"
+    ],
+    "sentiment": [
+      {
+        "name": "美",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "破",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2011,
@@ -146,12 +386,36 @@
     "type": "濾杯",
     "material": "不鏽鋼/銅",
     "capacity": "1-4杯",
-    "feature": "燕三条製",
+    "feature": "燕三条製/職人",
     "priceLevel": "$$$",
-    "verdict": "職人手工打造，流速比一般版快。",
-    "pros": ["做工極佳", "流速順暢", "信仰"],
-    "cons": ["貴", "銅版會變色", "重"],
-    "sentiment": [{"name": "工藝", "value": 85, "color": "#4ade80"}, {"name": "貴", "value": 10, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "職人手工打造，流速比一般版快，做工精緻。",
+    "pros": [
+      "做工極佳",
+      "流速順暢",
+      "品牌信仰與收藏價值"
+    ],
+    "cons": [
+      "價格昂貴",
+      "銅版會因氧化變色",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "工藝",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2012,
@@ -160,12 +424,36 @@
     "type": "濾杯",
     "material": "砂岩陶",
     "capacity": "1-2杯",
-    "feature": "未上釉",
+    "feature": "未上釉/保溫",
     "priceLevel": "$$",
-    "verdict": "Hasami 波佐見燒，質感溫潤。",
-    "pros": ["保溫好", "手感佳", "美"],
-    "cons": ["不能用洗碗機", "易卡色", "重"],
-    "sentiment": [{"name": "溫潤", "value": 80, "color": "#4ade80"}, {"name": "髒", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "Hasami 波佐見燒，未上釉質感溫潤，保溫性好。",
+    "pros": [
+      "保溫性好",
+      "手感溫潤舒適",
+      "外觀設計美觀"
+    ],
+    "cons": [
+      "不能使用洗碗機",
+      "易卡咖啡油漬變色",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "溫潤",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "髒",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2013,
@@ -176,10 +464,34 @@
     "capacity": "2-4杯",
     "feature": "扇形 (三孔)",
     "priceLevel": "$",
-    "verdict": "復古扇形，口感醇厚。",
-    "pros": ["便宜", "濾紙好買", "Body厚"],
-    "cons": ["流速慢", "易苦澀", "需技巧"],
-    "sentiment": [{"name": "經典", "value": 65, "color": "#4ade80"}, {"name": "苦", "value": 25, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]
+    "verdict": "復古扇形濾杯，口感醇厚，需要搭配技巧。",
+    "pros": [
+      "價格便宜",
+      "濾紙易於購買",
+      "Body 醇厚感強"
+    ],
+    "cons": [
+      "流速慢",
+      "易萃取過度導致苦澀",
+      "需沖煮技巧"
+    ],
+    "sentiment": [
+      {
+        "name": "經典",
+        "value": 65,
+        "color": "#4ade80"
+      },
+      {
+        "name": "苦",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2014,
@@ -190,10 +502,34 @@
     "capacity": "1-2杯",
     "feature": "扇形 (三孔)",
     "priceLevel": "$",
-    "verdict": "阿嬤家的濾杯，但其實很好用。",
-    "pros": ["極便宜", "耐用", "穩定"],
-    "cons": ["醜", "流速慢", "無特色"],
-    "sentiment": [{"name": "實惠", "value": 80, "color": "#4ade80"}, {"name": "嫌", "value": 10, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]
+    "verdict": "極致實惠的塑膠版扇形濾杯。",
+    "pros": [
+      "價格極便宜",
+      "耐用",
+      "沖煮穩定"
+    ],
+    "cons": [
+      "外型不佳",
+      "流速慢",
+      "無特色"
+    ],
+    "sentiment": [
+      {
+        "name": "實惠",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2015,
@@ -202,12 +538,36 @@
     "type": "濾杯",
     "material": "陶瓷",
     "capacity": "1-4杯",
-    "feature": "折紙錐形",
+    "feature": "折紙錐形/通用",
     "priceLevel": "$$$",
-    "verdict": "最美濾杯，流速極快。",
-    "pros": ["流速極快", "通用濾紙", "好看"],
-    "cons": ["需木托", "易碎", "需塑形"],
-    "sentiment": [{"name": "愛慕", "value": 75, "color": "#4ade80"}, {"name": "麻煩", "value": 20, "color": "#f87171"}, {"name": "藏", "value": 5, "color": "#94a3b8"}]
+    "verdict": "最美濾杯之一，錐形結構流速極快，可通用多種濾紙。",
+    "pros": [
+      "流速極快",
+      "可通用 V60 或 Kalita 濾紙",
+      "外型設計美觀"
+    ],
+    "cons": [
+      "需搭配木托或樹脂托",
+      "陶瓷易碎",
+      "濾紙需塑形"
+    ],
+    "sentiment": [
+      {
+        "name": "愛慕",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "麻煩",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "藏",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2016,
@@ -216,12 +576,36 @@
     "type": "濾杯",
     "material": "AS樹脂",
     "capacity": "1-2杯",
-    "feature": "折紙錐形",
+    "feature": "折紙錐形/輕量",
     "priceLevel": "$$",
-    "verdict": "輕量版Origami，不怕摔。",
-    "pros": ["輕", "耐摔", "便宜"],
-    "cons": ["質感塑膠", "易刮傷", "輕浮"],
-    "sentiment": [{"name": "實用", "value": 85, "color": "#4ade80"}, {"name": "膠", "value": 10, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "輕量版 Origami，適合戶外使用，不怕摔。",
+    "pros": [
+      "機身輕巧",
+      "耐摔",
+      "價格較陶瓷版便宜"
+    ],
+    "cons": [
+      "質感塑膠",
+      "易刮傷",
+      "手感較輕浮"
+    ],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "膠",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2017,
@@ -230,12 +614,36 @@
     "type": "濾杯",
     "material": "特殊塑膠",
     "capacity": "1-2杯",
-    "feature": "平底專利",
+    "feature": "平底專利/淺焙",
     "priceLevel": "$$$",
-    "verdict": "北歐淺焙特化，酸質明亮。",
-    "pros": ["酸質明亮", "萃取均勻", "快"],
-    "cons": ["專用濾紙", "貴", "塑膠感"],
-    "sentiment": [{"name": "專業", "value": 75, "color": "#4ade80"}, {"name": "質", "value": 15, "color": "#f87171"}, {"name": "無", "value": 10, "color": "#94a3b8"}]
+    "verdict": "北歐淺焙特化濾杯，強調明亮的酸質與乾淨度。",
+    "pros": [
+      "酸質表現明亮",
+      "萃取均勻",
+      "流速快"
+    ],
+    "cons": [
+      "需專用濾紙",
+      "價格偏貴",
+      "塑膠感重"
+    ],
+    "sentiment": [
+      {
+        "name": "專業",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "質",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "無",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2018,
@@ -244,12 +652,36 @@
     "type": "濾杯",
     "material": "陶瓷",
     "capacity": "1-2杯",
-    "feature": "平底專利",
+    "feature": "平底專利/保溫",
     "priceLevel": "$$$",
-    "verdict": "April 的陶瓷版，較慢。",
-    "pros": ["美觀", "保溫", "質感"],
-    "cons": ["流速較慢", "易碎", "重"],
-    "sentiment": [{"name": "美", "value": 70, "color": "#4ade80"}, {"name": "慢", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]
+    "verdict": "April 的陶瓷版，質感較好但流速較慢。",
+    "pros": [
+      "美觀",
+      "保溫性佳",
+      "陶瓷質感好"
+    ],
+    "cons": [
+      "流速較慢",
+      "易碎",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "美",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "慢",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2019,
@@ -258,12 +690,36 @@
     "type": "濾杯",
     "material": "Trogamid",
     "capacity": "1-2杯",
-    "feature": "平底",
+    "feature": "平底/極速",
     "priceLevel": "$$$",
-    "verdict": "濾杯變形金剛，耐摔好用。",
-    "pros": ["流速快", "耐摔", "變化多"],
-    "cons": ["貴", "配件多", "容易丟"],
-    "sentiment": [{"name": "玩", "value": 85, "color": "#4ade80"}, {"name": "燒", "value": 10, "color": "#f87171"}, {"name": "雜", "value": 5, "color": "#94a3b8"}]
+    "verdict": "濾杯變形金剛，模組化、耐摔且流速快。",
+    "pros": [
+      "流速快",
+      "耐摔",
+      "沖煮變化多"
+    ],
+    "cons": [
+      "價格偏貴",
+      "配件多易遺失",
+      "需要專用底座"
+    ],
+    "sentiment": [
+      {
+        "name": "玩",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "燒",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "雜",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2020,
@@ -272,12 +728,36 @@
     "type": "濾杯",
     "material": "Trogamid",
     "capacity": "1-2杯",
-    "feature": "模組化底座",
+    "feature": "模組化底座/寬",
     "priceLevel": "$$$$",
-    "verdict": "V3的完全體，可換底座。",
-    "pros": ["一顆抵四顆", "流速可變", "甜"],
-    "cons": ["超貴", "配件煩", "組裝"],
-    "sentiment": [{"name": "極客", "value": 80, "color": "#4ade80"}, {"name": "煩", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "V3 的完全體，可更換底座創造不同流速。",
+    "pros": [
+      "一顆抵四顆（可換底座）",
+      "流速可變",
+      "甜感突出"
+    ],
+    "cons": [
+      "價格昂貴",
+      "配件複雜",
+      "組裝需耐心"
+    ],
+    "sentiment": [
+      {
+        "name": "極客",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "煩",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2021,
@@ -286,12 +766,36 @@
     "type": "濾杯",
     "material": "Trogamid",
     "capacity": "1-2杯",
-    "feature": "模組化底座",
+    "feature": "模組化底座/窄",
     "priceLevel": "$$$$",
-    "verdict": "V4的窄版，更聚香。",
-    "pros": ["香氣集中", "流速快", "模組"],
-    "cons": ["容易塞", "貴", "小"],
-    "sentiment": [{"name": "香", "value": 75, "color": "#4ade80"}, {"name": "塞", "value": 20, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "V4 的窄版，粉層較深，香氣集中。",
+    "pros": [
+      "香氣集中",
+      "流速快",
+      "模組化設計"
+    ],
+    "cons": [
+      "容易塞粉",
+      "價格昂貴",
+      "容量小"
+    ],
+    "sentiment": [
+      {
+        "name": "香",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "塞",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2022,
@@ -300,12 +804,36 @@
     "type": "濾杯",
     "material": "樹脂",
     "capacity": "1-4杯",
-    "feature": "短肋骨",
+    "feature": "短肋骨/慢流",
     "priceLevel": "$$",
-    "verdict": "點滴法專用，虹吸效應強。",
-    "pros": ["貼合度高", "醇厚度佳", "耐用"],
-    "cons": ["流速慢", "需技術", "易有刮痕"],
-    "sentiment": [{"name": "職人", "value": 80, "color": "#4ade80"}, {"name": "難", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "點滴法專用，濾紙貼合度高，虹吸效應強。",
+    "pros": [
+      "貼合度高可作點滴法",
+      "醇厚度佳",
+      "樹脂材質耐用"
+    ],
+    "cons": [
+      "流速慢",
+      "需高技術沖煮",
+      "易有刮痕"
+    ],
+    "sentiment": [
+      {
+        "name": "職人",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "難",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2023,
@@ -314,12 +842,36 @@
     "type": "濾杯",
     "material": "不鏽鋼",
     "capacity": "1-2杯",
-    "feature": "平底/雙層",
+    "feature": "平底/雙層保溫",
     "priceLevel": "$$",
-    "verdict": "保溫極佳的平底濾杯。",
-    "pros": ["雙層保溫", "無需底座", "均勻"],
-    "cons": ["易堵塞", "濾紙貴", "重"],
-    "sentiment": [{"name": "滿", "value": 70, "color": "#4ade80"}, {"name": "煩", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]
+    "verdict": "雙層不鏽鋼保溫極佳的平底濾杯，萃取均勻。",
+    "pros": [
+      "雙層結構保溫極佳",
+      "無需額外底座",
+      "萃取均勻"
+    ],
+    "cons": [
+      "易堵塞",
+      "專用濾紙價格較貴",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "滿",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "煩",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2024,
@@ -330,10 +882,34 @@
     "capacity": "2-4杯",
     "feature": "高筒平底",
     "priceLevel": "$$",
-    "verdict": "長版Stagg，適合大份量。",
-    "pros": ["量大", "保溫", "均勻"],
-    "cons": ["濾紙難買", "易塞", "高"],
-    "sentiment": [{"name": "大", "value": 65, "color": "#4ade80"}, {"name": "煩", "value": 25, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]
+    "verdict": "長版 Stagg，適合大份量沖煮，保溫性佳。",
+    "pros": [
+      "可沖煮大份量",
+      "保溫性佳",
+      "萃取均勻"
+    ],
+    "cons": [
+      "濾紙難買",
+      "易塞",
+      "機身高"
+    ],
+    "sentiment": [
+      {
+        "name": "大",
+        "value": 65,
+        "color": "#4ade80"
+      },
+      {
+        "name": "煩",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2025,
@@ -344,10 +920,34 @@
     "capacity": "1-4杯",
     "feature": "花瓣肋骨",
     "priceLevel": "$",
-    "verdict": "花瓣濾杯，流速快且香。",
-    "pros": ["流速快", "香氣好", "便宜"],
-    "cons": ["質感普", "易裂", "需專用濾紙"],
-    "sentiment": [{"name": "驚喜", "value": 80, "color": "#4ade80"}, {"name": "隨", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "花瓣肋骨設計，流速快且香氣表現優秀。",
+    "pros": [
+      "流速快",
+      "香氣表現突出",
+      "價格便宜"
+    ],
+    "cons": [
+      "質感普通",
+      "易裂",
+      "需專用濾紙"
+    ],
+    "sentiment": [
+      {
+        "name": "驚喜",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "隨",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2026,
@@ -356,12 +956,36 @@
     "type": "濾杯",
     "material": "樹脂",
     "capacity": "1杯",
-    "feature": "深層過濾",
+    "feature": "深層過濾/甜感",
     "priceLevel": "$$",
-    "verdict": "一人份極致深層過濾，免技術。",
-    "pros": ["甜感爆炸", "不需技巧", "特別"],
-    "cons": ["專用濾紙", "極慢", "只能沖一杯"],
-    "sentiment": [{"name": "甜", "value": 85, "color": "#4ade80"}, {"name": "限", "value": 10, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "一人份極致深層過濾，容錯率高，甜感突出。",
+    "pros": [
+      "甜感表現爆炸",
+      "不需沖煮技巧",
+      "結構特別"
+    ],
+    "cons": [
+      "需專用濾紙",
+      "流速極慢",
+      "只能沖煮單一杯份"
+    ],
+    "sentiment": [
+      {
+        "name": "甜",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "限",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2027,
@@ -370,12 +994,36 @@
     "type": "濾杯",
     "material": "樹脂",
     "capacity": "500ml",
-    "feature": "浸泡式",
+    "feature": "浸泡式/聰明",
     "priceLevel": "$",
-    "verdict": "懶人神器，辦公室必備。",
-    "pros": ["極簡單", "穩定", "便宜"],
-    "cons": ["味道平", "塑膠", "難乾"],
-    "sentiment": [{"name": "便", "value": 90, "color": "#4ade80"}, {"name": "趣", "value": 5, "color": "#f87171"}, {"name": "習", "value": 5, "color": "#94a3b8"}]
+    "verdict": "懶人神器，利用浸泡達到穩定萃取，辦公室必備。",
+    "pros": [
+      "沖煮極簡單",
+      "萃取穩定",
+      "價格便宜"
+    ],
+    "cons": [
+      "味道平淡",
+      "塑膠材質",
+      "難以晾乾"
+    ],
+    "sentiment": [
+      {
+        "name": "便",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "趣",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "習",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2028,
@@ -384,12 +1032,36 @@
     "type": "濾杯",
     "material": "玻璃",
     "capacity": "6杯",
-    "feature": "一體式",
+    "feature": "一體式/分享壺",
     "priceLevel": "$$",
-    "verdict": "最美的咖啡壺，也是花瓶。",
-    "pros": ["乾淨度高", "美", "分享方便"],
-    "cons": ["濾紙極厚", "難洗", "易破"],
-    "sentiment": [{"name": "雅", "value": 75, "color": "#4ade80"}, {"name": "麻", "value": 20, "color": "#f87171"}, {"name": "飾", "value": 5, "color": "#94a3b8"}]
+    "verdict": "外型最美的咖啡壺，也是藝術花瓶，乾淨度高。",
+    "pros": [
+      "咖啡乾淨度高",
+      "外型美觀",
+      "方便多人分享"
+    ],
+    "cons": [
+      "濾紙極厚且貴",
+      "清洗困難",
+      "玻璃易破"
+    ],
+    "sentiment": [
+      {
+        "name": "雅",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "麻",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "飾",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2029,
@@ -398,12 +1070,36 @@
     "type": "濾杯",
     "material": "塑膠",
     "capacity": "250ml",
-    "feature": "針筒",
+    "feature": "針筒/加壓",
     "priceLevel": "$",
-    "verdict": "露營神器，摔不壞。",
-    "pros": ["耐用", "多變", "便宜"],
-    "cons": ["容量小", "零件多", "需出力"],
-    "sentiment": [{"name": "玩", "value": 95, "color": "#4ade80"}, {"name": "累", "value": 5, "color": "#f87171"}, {"name": "普", "value": 0, "color": "#94a3b8"}]
+    "verdict": "露營神器，耐摔、多變，可沖出近似濃縮的咖啡。",
+    "pros": [
+      "極度耐用",
+      "沖煮手法多變",
+      "價格便宜"
+    ],
+    "cons": [
+      "容量小",
+      "零件多",
+      "需出力下壓"
+    ],
+    "sentiment": [
+      {
+        "name": "玩",
+        "value": 95,
+        "color": "#4ade80"
+      },
+      {
+        "name": "累",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2030,
@@ -414,10 +1110,34 @@
     "capacity": "200ml",
     "feature": "針筒/收納",
     "priceLevel": "$",
-    "verdict": "Original的縮小收納版。",
-    "pros": ["極便攜", "含杯子", "耐用"],
-    "cons": ["容量更小", "杯子燙", "難壓"],
-    "sentiment": [{"name": "旅", "value": 90, "color": "#4ade80"}, {"name": "小", "value": 10, "color": "#f87171"}, {"name": "普", "value": 0, "color": "#94a3b8"}]
+    "verdict": "Original 的縮小收納版，極致便攜。",
+    "pros": [
+      "極致便攜",
+      "含收納杯子",
+      "耐用"
+    ],
+    "cons": [
+      "容量更小",
+      "附帶杯子易燙手",
+      "難以用力下壓"
+    ],
+    "sentiment": [
+      {
+        "name": "旅",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "小",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2031,
@@ -426,12 +1146,36 @@
     "type": "濾杯",
     "material": "塑膠",
     "capacity": "500ml",
-    "feature": "針筒/大",
+    "feature": "針筒/大容量",
     "priceLevel": "$$",
-    "verdict": "終於可以沖兩人份了。",
-    "pros": ["容量大", "耐用", "原味"],
-    "cons": ["巨大", "難壓", "貴"],
-    "sentiment": [{"name": "大", "value": 80, "color": "#4ade80"}, {"name": "累", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "大容量版本，終於可以沖煮兩人份了。",
+    "pros": [
+      "容量大",
+      "耐用",
+      "原味保留"
+    ],
+    "cons": [
+      "體積巨大",
+      "難以壓到底",
+      "價格偏貴"
+    ],
+    "sentiment": [
+      {
+        "name": "大",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "累",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2032,
@@ -442,10 +1186,34 @@
     "capacity": "1-4杯",
     "feature": "扇形 (單孔)",
     "priceLevel": "$",
-    "verdict": "扇形濾杯始祖。",
-    "pros": ["便宜", "濾紙好買", "醇厚"],
-    "cons": ["流速慢", "易苦", "老派"],
-    "sentiment": [{"name": "懷", "value": 65, "color": "#4ade80"}, {"name": "嫌", "value": 25, "color": "#f87171"}, {"name": "無", "value": 10, "color": "#94a3b8"}]
+    "verdict": "扇形濾杯始祖，單孔設計流速慢，口感醇厚。",
+    "pros": [
+      "價格便宜",
+      "濾紙好買",
+      "口感醇厚"
+    ],
+    "cons": [
+      "流速慢",
+      "易萃取過度導致苦味",
+      "外型老派"
+    ],
+    "sentiment": [
+      {
+        "name": "懷",
+        "value": 65,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "無",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2033,
@@ -456,10 +1224,34 @@
     "capacity": "1-2杯",
     "feature": "平底 (單孔)",
     "priceLevel": "$$",
-    "verdict": "藍瓶信仰，特製結構。",
-    "pros": ["流速穩", "好看", "信仰"],
-    "cons": ["專用濾紙", "貴", "易破"],
-    "sentiment": [{"name": "信", "value": 70, "color": "#4ade80"}, {"name": "麻", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]
+    "verdict": "藍瓶咖啡的信仰濾杯，特製平底單孔結構，流速穩定。",
+    "pros": [
+      "流速穩定",
+      "外觀設計好看",
+      "品牌信仰"
+    ],
+    "cons": [
+      "需專用濾紙",
+      "價格偏貴",
+      "陶瓷易破"
+    ],
+    "sentiment": [
+      {
+        "name": "信",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "麻",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2034,
@@ -470,10 +1262,34 @@
     "capacity": "1-2杯",
     "feature": "平/錐兼容",
     "priceLevel": "$$",
-    "verdict": "瘦長型濾杯，層次佳。",
-    "pros": ["外型美", "流速快", "兼容濾紙"],
-    "cons": ["易倒", "需木托", "少見"],
-    "sentiment": [{"name": "獨", "value": 80, "color": "#4ade80"}, {"name": "擔", "value": 15, "color": "#f87171"}, {"name": "藏", "value": 5, "color": "#94a3b8"}]
+    "verdict": "瘦長型濾杯，兼容 V60 和 Kalita 濾紙，層次感佳。",
+    "pros": [
+      "外型美觀",
+      "流速快",
+      "兼容兩種濾紙"
+    ],
+    "cons": [
+      "機身易倒",
+      "需搭配木托",
+      "市場少見"
+    ],
+    "sentiment": [
+      {
+        "name": "獨",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "擔",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "藏",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2035,
@@ -482,12 +1298,36 @@
     "type": "濾杯",
     "material": "玻璃/樹脂",
     "capacity": "1-2杯",
-    "feature": "錐形",
+    "feature": "錐形/三層肋",
     "priceLevel": "$$",
-    "verdict": "晶瑩剔透，排水快。",
-    "pros": ["好看", "三層肋骨", "快"],
-    "cons": ["易破", "底座鬆", "冷門"],
-    "sentiment": [{"name": "顏", "value": 70, "color": "#4ade80"}, {"name": "擔", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]
+    "verdict": "晶瑩剔透，三層肋骨設計，排水快。",
+    "pros": [
+      "外型好看",
+      "三層肋骨設計",
+      "流速快"
+    ],
+    "cons": [
+      "玻璃易破",
+      "底座容易鬆動",
+      "市場冷門"
+    ],
+    "sentiment": [
+      {
+        "name": "顏",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "擔",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2036,
@@ -496,12 +1336,36 @@
     "type": "濾杯",
     "material": "金屬",
     "capacity": "1-4杯",
-    "feature": "可調流速",
+    "feature": "可調流速/平底",
     "priceLevel": "$$$",
-    "verdict": "物理變速濾杯。",
-    "pros": ["可調孔洞", "平底", "耐用"],
-    "cons": ["貴", "重", "結構複雜"],
-    "sentiment": [{"name": "極", "value": 80, "color": "#4ade80"}, {"name": "麻", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "物理變速濾杯，可調整孔洞大小控制流速。",
+    "pros": [
+      "可調孔洞設計",
+      "平底結構萃取均勻",
+      "金屬材質耐用"
+    ],
+    "cons": [
+      "價格昂貴",
+      "機身重",
+      "結構複雜清洗不易"
+    ],
+    "sentiment": [
+      {
+        "name": "極",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "麻",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2037,
@@ -510,26 +1374,74 @@
     "type": "濾杯",
     "material": "陶瓷",
     "capacity": "1-4杯",
-    "feature": "三種流速",
+    "feature": "三種流速/陶瓷",
     "priceLevel": "$$",
-    "verdict": "依豆挑杯，專業取向。",
-    "pros": ["流速可選", "顏色多", "保溫"],
-    "cons": ["要買三個", "重", "佔位"],
-    "sentiment": [{"name": "專", "value": 80, "color": "#4ade80"}, {"name": "佔", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "依豆種挑選濾杯，提供三種流速，專業取向。",
+    "pros": [
+      "提供三種不同流速設計",
+      "顏色選擇多樣",
+      "陶瓷保溫性佳"
+    ],
+    "cons": [
+      "需要購買三個濾杯才能完全體驗",
+      "機身重",
+      "佔用收納空間"
+    ],
+    "sentiment": [
+      {
+        "name": "專",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "佔",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2038,
     "brand": "Munieq",
     "model": "Tetra Drip",
     "type": "濾杯",
-    "material": "鋼/PP",
+    "material": "不鏽鋼/PP",
     "capacity": "1-2杯",
-    "feature": "折疊",
+    "feature": "折疊/輕薄",
     "priceLevel": "$$$",
-    "verdict": "最輕薄的折疊濾杯。",
-    "pros": ["極薄", "組裝樂趣", "流速快"],
-    "cons": ["組裝麻煩", "貴", "易遺失"],
-    "sentiment": [{"name": "極", "value": 80, "color": "#4ade80"}, {"name": "麻", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "最輕薄的折疊濾杯，適合極致輕量化旅行。",
+    "pros": [
+      "體積極薄",
+      "組裝過程富樂趣",
+      "流速快"
+    ],
+    "cons": [
+      "組裝過程麻煩",
+      "價格偏貴",
+      "零件小易遺失"
+    ],
+    "sentiment": [
+      {
+        "name": "極",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "麻",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2039,
@@ -538,26 +1450,74 @@
     "type": "濾杯",
     "material": "陶瓷",
     "capacity": "1-2杯",
-    "feature": "70度錐形",
+    "feature": "70度錐形/深",
     "priceLevel": "$$$",
-    "verdict": "更陡峭的錐形，增加粉層厚度。",
-    "pros": ["甜感高", "流速快", "美"],
-    "cons": ["專用濾紙", "貴", "易碎"],
-    "sentiment": [{"name": "獨", "value": 70, "color": "#4ade80"}, {"name": "麻", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]
+    "verdict": "比 V60 更陡峭的 70 度錐形，增加粉層厚度，甜感高。",
+    "pros": [
+      "甜感高",
+      "流速快",
+      "外型設計美觀"
+    ],
+    "cons": [
+      "需專用濾紙",
+      "價格偏貴",
+      "陶瓷易碎"
+    ],
+    "sentiment": [
+      {
+        "name": "獨",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "麻",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2040,
     "brand": "Simpli",
     "model": "Press",
     "type": "濾杯",
-    "material": "鋼/玻",
+    "material": "不鏽鋼/玻璃",
     "capacity": "3杯",
-    "feature": "法壓",
+    "feature": "法壓/雙濾",
     "priceLevel": "$$",
-    "verdict": "乾淨法壓，雙重過濾。",
-    "pros": ["乾淨", "方便", "好洗"],
-    "cons": ["易破", "貴", "殘粉"],
-    "sentiment": [{"name": "淨", "value": 70, "color": "#4ade80"}, {"name": "破", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]
+    "verdict": "乾淨法壓，採用雙重過濾系統，降低細粉。",
+    "pros": [
+      "咖啡乾淨度高",
+      "操作方便",
+      "清洗容易"
+    ],
+    "cons": [
+      "玻璃易破",
+      "價格偏貴",
+      "仍有殘粉"
+    ],
+    "sentiment": [
+      {
+        "name": "淨",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "破",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2041,
@@ -566,12 +1526,36 @@
     "type": "濾杯",
     "material": "塑膠",
     "capacity": "380ml",
-    "feature": "零繞流",
+    "feature": "零繞流/可調",
     "priceLevel": "$$$",
-    "verdict": "零繞流神作，可調流速。",
-    "pros": ["萃取均勻", "無Bypass", "可調"],
-    "cons": ["醜", "大", "貴"],
-    "sentiment": [{"name": "神", "value": 90, "color": "#4ade80"}, {"name": "醜", "value": 10, "color": "#f87171"}, {"name": "普", "value": 0, "color": "#94a3b8"}]
+    "verdict": "零繞流神作，可關閉洩水孔，具備浸泡功能。",
+    "pros": [
+      "萃取均勻",
+      "無 Bypass 繞流",
+      "可調流速"
+    ],
+    "cons": [
+      "外型設計不佳",
+      "體積大",
+      "價格偏貴"
+    ],
+    "sentiment": [
+      {
+        "name": "神",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "醜",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2042,
@@ -580,12 +1564,36 @@
     "type": "濾杯",
     "material": "塑膠",
     "capacity": "400ml",
-    "feature": "零繞流",
+    "feature": "零繞流/高萃取",
     "priceLevel": "$$$",
-    "verdict": "萃取率怪獸。",
-    "pros": ["高萃取", "甜感", "寬容"],
-    "cons": ["醜", "塑膠感", "貴"],
-    "sentiment": [{"name": "極", "value": 85, "color": "#4ade80"}, {"name": "質", "value": 15, "color": "#f87171"}, {"name": "普", "value": 0, "color": "#94a3b8"}]
+    "verdict": "高萃取率怪獸，平底結構容錯率高。",
+    "pros": [
+      "高萃取率",
+      "甜感極高",
+      "沖煮容錯率寬容"
+    ],
+    "cons": [
+      "外型不佳",
+      "塑膠感重",
+      "價格偏貴"
+    ],
+    "sentiment": [
+      {
+        "name": "極",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "質",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2043,
@@ -594,12 +1602,36 @@
     "type": "濾杯",
     "material": "鋁合金",
     "capacity": "1-2杯",
-    "feature": "熔岩肋骨",
+    "feature": "熔岩肋骨/控溫",
     "priceLevel": "$$$$",
-    "verdict": "德國金屬工藝，控溫強。",
-    "pros": ["保溫極佳", "流速快", "帥"],
-    "cons": ["貴", "需套筒", "燙"],
-    "sentiment": [{"name": "帥", "value": 80, "color": "#4ade80"}, {"name": "貴", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "德國金屬工藝，鋁合金機身控溫能力強。",
+    "pros": [
+      "保溫性極佳",
+      "流速快",
+      "外型帥氣"
+    ],
+    "cons": [
+      "價格昂貴",
+      "需搭配套筒才能使用",
+      "沖煮時燙手"
+    ],
+    "sentiment": [
+      {
+        "name": "帥",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2044,
@@ -608,12 +1640,36 @@
     "type": "濾杯",
     "material": "陶瓷",
     "capacity": "2-4杯",
-    "feature": "平底大孔",
+    "feature": "平底/大孔",
     "priceLevel": "$$$",
-    "verdict": "土耳其大孔平底。",
-    "pros": ["流速快", "適合多人", "美"],
-    "cons": ["貴", "大", "易碎"],
-    "sentiment": [{"name": "美", "value": 75, "color": "#4ade80"}, {"name": "貴", "value": 20, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]
+    "verdict": "土耳其設計，平底大孔洞，適合多人沖煮。",
+    "pros": [
+      "流速快",
+      "適合多人分享",
+      "外型美觀"
+    ],
+    "cons": [
+      "價格偏貴",
+      "體積大",
+      "陶瓷易碎"
+    ],
+    "sentiment": [
+      {
+        "name": "美",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2045,
@@ -622,12 +1678,35 @@
     "type": "濾杯",
     "material": "塑膠",
     "capacity": "1-2杯",
-    "feature": "鑽石紋",
+    "feature": "鑽石紋/塑膠",
     "priceLevel": "$",
-    "verdict": "印尼鑽石紋濾杯。",
-    "pros": ["流速均勻", "便宜", "美"],
-    "cons": ["冷門", "難買", "塑膠"],
-    "sentiment": [{"name": "奇", "value": 70, "color": "#4ade80"}, {"name": "難", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]
+    "verdict": "印尼設計的鑽石紋濾杯，流速均勻。",
+    "pros": [
+      "流速均勻",
+      "價格便宜",
+      "外型美觀"
+    ],
+    "cons": [
+      "市場冷門難買",
+      "塑膠材質"
+    ],
+    "sentiment": [
+      {
+        "name": "奇",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "難",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2046,
@@ -636,12 +1715,36 @@
     "type": "濾杯",
     "material": "PCTG",
     "capacity": "1-2杯",
-    "feature": "平底",
+    "feature": "平底/極速",
     "priceLevel": "$",
-    "verdict": "平底入門CP王。",
-    "pros": ["便宜", "流速快", "耐用"],
-    "cons": ["小", "需蛋糕紙", "塑膠"],
-    "sentiment": [{"name": "超", "value": 90, "color": "#4ade80"}, {"name": "小", "value": 10, "color": "#f87171"}, {"name": "普", "value": 0, "color": "#94a3b8"}]
+    "verdict": "平底入門 CP 王，流速極快，甜感突出。",
+    "pros": [
+      "價格便宜",
+      "流速快",
+      "PCTG 材質耐用"
+    ],
+    "cons": [
+      "容量小",
+      "需蛋糕濾紙",
+      "塑膠感"
+    ],
+    "sentiment": [
+      {
+        "name": "超",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "小",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
   },
   {
     "id": 2047,
@@ -650,12 +1753,37 @@
     "type": "濾杯",
     "material": "玻璃",
     "capacity": "1-2杯",
-    "feature": "雙層玻璃",
+    "feature": "雙層玻璃/龍捲風",
     "priceLevel": "$$",
-    "verdict": "龍捲風肋骨，漂亮。",
-    "pros": ["美", "保溫", "特殊肋骨"],
-    "cons": ["易破", "貴", "難洗"],
-    "sentiment": [{"name": "美", "value": 75, "color": "#4ade80"}, {"name": "破", "value": 20, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "雙層玻璃保溫且美觀，龍捲風肋骨設計。",
+    "pros": [
+      "外型美觀",
+      "雙層保溫",
+      "特殊肋骨"
+    ],
+    "cons": [
+      "玻璃易破",
+      "價格偏貴",
+      "清洗難度高"
+    ],
+    "sentiment": [
+      {
+        "name": "美",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "破",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2048,
     "brand": "MiiR",
@@ -663,25 +1791,75 @@
     "type": "濾杯",
     "material": "不鏽鋼",
     "capacity": "1-2杯",
-    "feature": "三片拼裝",
+    "feature": "三片拼裝/扁平",
     "priceLevel": "$$",
-    "verdict": "極致扁平收納。",
-    "pros": ["極薄", "好收", "耐用"],
-    "cons": ["重", "組裝煩", "流速普"],
-    "sentiment": [{"name": "便", "value": 70, "color": "#4ade80"}, {"name": "煩", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "極致扁平收納，適合旅行的不鏽鋼濾杯。",
+    "pros": [
+      "收納體積極薄",
+      "方便攜帶",
+      "不鏽鋼耐用"
+    ],
+    "cons": [
+      "機身重",
+      "組裝過程繁瑣",
+      "流速普通"
+    ],
+    "sentiment": [
+      {
+        "name": "便",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "煩",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2049,
     "brand": "Wacaco",
     "model": "Cuppamoka",
     "type": "濾杯",
-    "material": "塑/鋼",
+    "material": "塑膠/不鏽鋼",
     "capacity": "300ml",
-    "feature": "一體杯",
+    "feature": "濾杯+保溫杯",
     "priceLevel": "$$",
-    "verdict": "濾杯+保溫杯。",
-    "pros": ["方便", "保溫", "一體"],
-    "cons": ["紙特殊", "流速慢", "重"],
-    "sentiment": [{"name": "合", "value": 75, "color": "#4ade80"}, {"name": "限", "value": 20, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "將濾杯與保溫杯整合為一體，戶外方便。",
+    "pros": [
+      "方便",
+      "保溫效果好",
+      "一體化設計"
+    ],
+    "cons": [
+      "需特殊濾紙",
+      "流速慢",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "合",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "限",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2050,
     "brand": "Fellow",
@@ -689,12 +1867,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "900ml",
-    "feature": "細口",
+    "feature": "細口/顏值",
     "priceLevel": "$$$$",
-    "verdict": "外貌協會首選，水流極慢且穩。",
-    "pros": ["顏值極高", "溫控精準", "重心設計佳"],
-    "cons": ["倒水太慢", "價格高", "品控不穩"],
-    "sentiment": [{"name": "爽", "value": 70, "color": "#4ade80"}, {"name": "怒", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "外貌協會首選，水流極慢且穩定，溫控準確。",
+    "pros": [
+      "顏值極高",
+      "溫控精準",
+      "水流重心設計佳"
+    ],
+    "cons": [
+      "倒水速度太慢",
+      "價格高昂",
+      "品控偶有不穩"
+    ],
+    "sentiment": [
+      {
+        "name": "爽",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "怒",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2051,
     "brand": "Brewista",
@@ -702,12 +1905,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "600ml",
-    "feature": "天鵝頸",
+    "feature": "天鵝頸/精準",
     "priceLevel": "$$$",
-    "verdict": "比賽選手愛用，功能強大。",
-    "pros": ["加熱快", "手感佳", "控水範圍廣"],
-    "cons": ["外型見仁見智", "按鍵複雜", "容量小"],
-    "sentiment": [{"name": "讚", "value": 80, "color": "#4ade80"}, {"name": "嫌", "value": 10, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "比賽選手愛用，功能強大且加熱迅速。",
+    "pros": [
+      "加熱極快",
+      "手感佳",
+      "控水範圍廣"
+    ],
+    "cons": [
+      "外型設計見仁見智",
+      "按鍵操作複雜",
+      "容量小"
+    ],
+    "sentiment": [
+      {
+        "name": "讚",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2052,
     "brand": "Timemore",
@@ -715,12 +1943,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "800ml",
-    "feature": "細口",
+    "feature": "細口/CP值",
     "priceLevel": "$$",
-    "verdict": "Fellow 的高CP平替版。",
-    "pros": ["加熱快", "垂直水流", "價格合理"],
-    "cons": ["滑動溫控易誤觸", "質感普普", "底座大"],
-    "sentiment": [{"name": "超", "value": 75, "color": "#4ade80"}, {"name": "挑", "value": 15, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "Fellow 的高 CP 值平替版，具備垂直水流。",
+    "pros": [
+      "加熱速度快",
+      "可實現垂直水流",
+      "價格合理"
+    ],
+    "cons": [
+      "滑動溫控容易誤觸",
+      "質感普通",
+      "底座體積較大"
+    ],
+    "sentiment": [
+      {
+        "name": "超",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "挑",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2053,
     "brand": "Bonavita",
@@ -728,12 +1981,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "1000ml",
-    "feature": "細口",
+    "feature": "細口/經典",
     "priceLevel": "$$",
-    "verdict": "經典老將，醜但好用。",
-    "pros": ["耐用", "出水穩定", "便宜"],
-    "cons": ["外型過時", "容易生鏽", "把手普通"],
-    "sentiment": [{"name": "信", "value": 85, "color": "#4ade80"}, {"name": "嫌", "value": 10, "color": "#f87171"}, {"name": "無", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "經典老將，外型過時但性能穩定耐用。",
+    "pros": [
+      "極度耐用",
+      "出水穩定",
+      "價格便宜"
+    ],
+    "cons": [
+      "外型過時不佳",
+      "部分批次容易生鏽",
+      "把手手感普通"
+    ],
+    "sentiment": [
+      {
+        "name": "信",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "無",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2054,
     "brand": "Fellow",
@@ -741,12 +2019,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "900ml",
-    "feature": "寬口",
+    "feature": "寬口/設計",
     "priceLevel": "$$$$",
-    "verdict": "Stagg 的寬口版，適合法壓。",
-    "pros": ["倒水快", "溫控準", "好看"],
-    "cons": ["不適合手沖", "貴", "用途受限"],
-    "sentiment": [{"name": "滿", "value": 60, "color": "#4ade80"}, {"name": "悔", "value": 20, "color": "#f87171"}, {"name": "普", "value": 20, "color": "#94a3b8"}]},
+    "verdict": "Stagg 的寬口版，適合沖泡茶或法壓壺。",
+    "pros": [
+      "倒水速度快",
+      "溫控精準",
+      "外型設計美觀"
+    ],
+    "cons": [
+      "不適合手沖",
+      "價格昂貴",
+      "用途受限"
+    ],
+    "sentiment": [
+      {
+        "name": "滿",
+        "value": 60,
+        "color": "#4ade80"
+      },
+      {
+        "name": "悔",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 20,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2055,
     "brand": "Oxo",
@@ -754,12 +2057,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "1000ml",
-    "feature": "細口",
+    "feature": "細口/介面",
     "priceLevel": "$$",
-    "verdict": "美國國民壺，中規中矩。",
-    "pros": ["介面簡單", "加熱快", "保固好"],
-    "cons": ["水流普通", "塑料感", "台灣少見"],
-    "sentiment": [{"name": "實", "value": 70, "color": "#4ade80"}, {"name": "無", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "美國國民壺，介面簡單，中規中矩的選擇。",
+    "pros": [
+      "操作介面簡單",
+      "加熱速度快",
+      "保固服務完善"
+    ],
+    "cons": [
+      "水流控制普通",
+      "塑料感重",
+      "台灣市場少見"
+    ],
+    "sentiment": [
+      {
+        "name": "實",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "無",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2056,
     "brand": "Hario",
@@ -767,12 +2095,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "800ml",
-    "feature": "寬口細嘴",
+    "feature": "寬口細嘴/經典",
     "priceLevel": "$$$",
-    "verdict": "雲朵壺的溫控版。",
-    "pros": ["經典手感", "加熱快", "品牌信仰"],
-    "cons": ["介面陽春", "性價比低", "水流快"],
-    "sentiment": [{"name": "懷", "value": 65, "color": "#4ade80"}, {"name": "嫌", "value": 25, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "Hario 雲朵壺的溫控版本，經典外型。",
+    "pros": [
+      "經典壺嘴手感好",
+      "加熱快",
+      "品牌信仰"
+    ],
+    "cons": [
+      "介面設計陽春",
+      "性價比低",
+      "水流快難控"
+    ],
+    "sentiment": [
+      {
+        "name": "懷",
+        "value": 65,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2057,
     "brand": "Cosori",
@@ -780,12 +2133,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "800ml",
-    "feature": "細口",
+    "feature": "細口/低價",
     "priceLevel": "$",
-    "verdict": "亞馬遜爆款，便宜治百病。",
-    "pros": ["極便宜", "功能夠用", "加熱快"],
-    "cons": ["做工粗糙", "水流不穩", "壽命短"],
-    "sentiment": [{"name": "省", "value": 80, "color": "#4ade80"}, {"name": "擔", "value": 15, "color": "#f87171"}, {"name": "將", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "亞馬遜爆款，價格極低，功能夠用。",
+    "pros": [
+      "價格極便宜",
+      "基本溫控功能夠用",
+      "加熱快"
+    ],
+    "cons": [
+      "做工粗糙",
+      "水流控制不穩",
+      "壽命短"
+    ],
+    "sentiment": [
+      {
+        "name": "省",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "擔",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "將",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2058,
     "brand": "Kader",
@@ -793,12 +2171,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "600ml",
-    "feature": "細口",
+    "feature": "細口/小眾",
     "priceLevel": "$$",
-    "verdict": "小眾選擇，意外順手。",
-    "pros": ["輕巧", "出水柔", "便宜"],
-    "cons": ["品牌冷門", "維修難", "質感差"],
-    "sentiment": [{"name": "驚", "value": 60, "color": "#4ade80"}, {"name": "猶", "value": 30, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "小眾選擇，壺嘴設計精巧，出水意外順手。",
+    "pros": [
+      "機身輕巧",
+      "出水柔和",
+      "價格便宜"
+    ],
+    "cons": [
+      "品牌冷門",
+      "維修困難",
+      "質感差"
+    ],
+    "sentiment": [
+      {
+        "name": "驚",
+        "value": 60,
+        "color": "#4ade80"
+      },
+      {
+        "name": "猶",
+        "value": 30,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2059,
     "brand": "Driver",
@@ -806,12 +2209,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "600ml",
-    "feature": "細口",
+    "feature": "細口/垂直流",
     "priceLevel": "$$",
-    "verdict": "台灣品牌，控水極佳。",
-    "pros": ["垂直水流", "好控", "在地保固"],
-    "cons": ["外型普通", "加熱稍慢", "底座大"],
-    "sentiment": [{"name": "支", "value": 80, "color": "#4ade80"}, {"name": "嫌", "value": 10, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "台灣品牌，壺嘴設計控水極佳，可實現垂直水流。",
+    "pros": [
+      "可實現垂直水流",
+      "控水好",
+      "在地保固方便"
+    ],
+    "cons": [
+      "外型普通",
+      "加熱速度稍慢",
+      "底座體積大"
+    ],
+    "sentiment": [
+      {
+        "name": "支",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2060,
     "brand": "Brewista",
@@ -819,12 +2247,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "1000ml",
-    "feature": "天鵝頸",
+    "feature": "天鵝頸/大容量",
     "priceLevel": "$$$",
-    "verdict": "大容量版，適合營業用。",
-    "pros": ["容量大", "加熱穩", "手感好"],
-    "cons": ["滿水重", "佔空間", "醜"],
-    "sentiment": [{"name": "實", "value": 80, "color": "#4ade80"}, {"name": "累", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "大容量版本，適合營業或多人家庭使用，加熱穩定。",
+    "pros": [
+      "容量大",
+      "加熱穩定",
+      "手感好"
+    ],
+    "cons": [
+      "滿水時機身重",
+      "佔用空間",
+      "外型設計普通"
+    ],
+    "sentiment": [
+      {
+        "name": "實",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "累",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2061,
     "brand": "Fellow",
@@ -832,12 +2285,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "900ml",
-    "feature": "細口",
+    "feature": "細口/智能",
     "priceLevel": "$$$$$",
-    "verdict": "功能過剩的極致。",
-    "pros": ["全彩螢幕", "WiFi更新", "排程"],
-    "cons": ["極貴", "功能多餘", "易壞"],
-    "sentiment": [{"name": "炫", "value": 60, "color": "#4ade80"}, {"name": "盤", "value": 30, "color": "#f87171"}, {"name": "爽", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "功能過剩的極致，具備全彩螢幕與 WiFi 功能。",
+    "pros": [
+      "全彩螢幕",
+      "WiFi 連網可更新",
+      "可排程加熱"
+    ],
+    "cons": [
+      "價格極貴",
+      "功能多餘且不實用",
+      "電子零件故障率高"
+    ],
+    "sentiment": [
+      {
+        "name": "炫",
+        "value": 60,
+        "color": "#4ade80"
+      },
+      {
+        "name": "盤",
+        "value": 30,
+        "color": "#f87171"
+      },
+      {
+        "name": "爽",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2062,
     "brand": "Miroco",
@@ -845,12 +2323,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "900ml",
-    "feature": "細口",
+    "feature": "細口/CP值",
     "priceLevel": "$",
-    "verdict": "Costco 等級的好物。",
-    "pros": ["便宜", "耐用", "簡單"],
-    "cons": ["水流粗", "質感差", "溫控普"],
-    "sentiment": [{"name": "划", "value": 80, "color": "#4ade80"}, {"name": "無", "value": 10, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "Costco 等級的好物，便宜耐用且簡單。",
+    "pros": [
+      "價格便宜",
+      "耐用",
+      "操作簡單"
+    ],
+    "cons": [
+      "水流偏粗",
+      "質感普通",
+      "溫控精準度一般"
+    ],
+    "sentiment": [
+      {
+        "name": "划",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "無",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2063,
     "brand": "KitchenAid",
@@ -858,12 +2361,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "1000ml",
-    "feature": "細口",
+    "feature": "細口/家電",
     "priceLevel": "$$$",
-    "verdict": "廚房家電風格。",
-    "pros": ["美式風格", "調節順", "穩"],
-    "cons": ["重", "流速快", "貴"],
-    "sentiment": [{"name": "搭", "value": 70, "color": "#4ade80"}, {"name": "重", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "美式廚房家電風格，調節順暢，機身穩定。",
+    "pros": [
+      "美式風格",
+      "溫控調節順暢",
+      "機身穩定"
+    ],
+    "cons": [
+      "機身重",
+      "水流偏快",
+      "價格偏貴"
+    ],
+    "sentiment": [
+      {
+        "name": "搭",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "重",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2064,
     "brand": "Bodum",
@@ -871,12 +2399,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼/軟木",
     "capacity": "800ml",
-    "feature": "細口",
+    "feature": "細口/設計",
     "priceLevel": "$$",
-    "verdict": "設計感強，實用性普。",
-    "pros": ["軟木把手", "好看", "便宜"],
-    "cons": ["水流難控", "蓋子卡", "加熱慢"],
-    "sentiment": [{"name": "裝", "value": 60, "color": "#4ade80"}, {"name": "難", "value": 30, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "設計感強，軟木把手美觀但水流控制普通。",
+    "pros": [
+      "軟木把手設計美觀",
+      "外型好看",
+      "價格便宜"
+    ],
+    "cons": [
+      "水流難以控制",
+      "蓋子容易卡住",
+      "加熱速度慢"
+    ],
+    "sentiment": [
+      {
+        "name": "裝",
+        "value": 60,
+        "color": "#4ade80"
+      },
+      {
+        "name": "難",
+        "value": 30,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2065,
     "brand": "Fellow",
@@ -884,12 +2437,37 @@
     "type": "溫控壺",
     "material": "金屬/玻璃",
     "capacity": "900ml",
-    "feature": "細口",
+    "feature": "細口/奢華",
     "priceLevel": "$$$$$",
-    "verdict": "頂級中的頂級，奢華感。",
-    "pros": ["玻璃頂蓋", "質感無敵", "功能全"],
-    "cons": ["天價", "指紋收集", "實用性同Pro"],
-    "sentiment": [{"name": "奢", "value": 80, "color": "#4ade80"}, {"name": "貴", "value": 15, "color": "#f87171"}, {"name": "賞", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "頂級中的頂級，奢華感設計，功能與 Pro 版相同。",
+    "pros": [
+      "玻璃頂蓋質感無敵",
+      "質感無敵",
+      "功能齊全"
+    ],
+    "cons": [
+      "價格極貴",
+      "機身易留指紋",
+      "實用性同 Pro"
+    ],
+    "sentiment": [
+      {
+        "name": "奢",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "賞",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2066,
     "brand": "Hario",
@@ -897,12 +2475,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "800ml",
-    "feature": "寬口細嘴",
+    "feature": "寬口細嘴/無溫控",
     "priceLevel": "$$",
-    "verdict": "無溫控的電熱版。",
-    "pros": ["加熱極快", "便宜", "耐用"],
-    "cons": ["無溫控", "自動跳停", "陽春"],
-    "sentiment": [{"name": "耐", "value": 80, "color": "#4ade80"}, {"name": "無", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "無溫控的電熱版本，加熱極快且便宜。",
+    "pros": [
+      "加熱極快",
+      "價格便宜",
+      "耐用"
+    ],
+    "cons": [
+      "無溫控功能",
+      "自動跳停不方便",
+      "設計陽春"
+    ],
+    "sentiment": [
+      {
+        "name": "耐",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "無",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2067,
     "brand": "Balmuda",
@@ -910,12 +2513,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "600ml",
-    "feature": "細口",
+    "feature": "細口/設計",
     "priceLevel": "$$$",
-    "verdict": "為了好看而生。",
-    "pros": ["氖氣燈美", "出水順", "輕"],
-    "cons": ["無溫控", "容量小", "貴"],
-    "sentiment": [{"name": "顏", "value": 85, "color": "#4ade80"}, {"name": "功", "value": 10, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "為了好看而生的設計家電，無溫控功能。",
+    "pros": [
+      "氖氣燈設計極美",
+      "出水順暢",
+      "機身輕巧"
+    ],
+    "cons": [
+      "無溫控功能",
+      "容量小",
+      "價格昂貴"
+    ],
+    "sentiment": [
+      {
+        "name": "顏",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "功",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2068,
     "brand": "Fellow",
@@ -923,12 +2551,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "900ml",
-    "feature": "寬口",
+    "feature": "寬口/智能",
     "priceLevel": "$$$$$",
-    "verdict": "茶與法壓的頂級選擇。",
-    "pros": ["倒水快", "Pro功能", "好看"],
-    "cons": ["貴", "不適合手沖", "小眾"],
-    "sentiment": [{"name": "滿", "value": 70, "color": "#4ade80"}, {"name": "貴", "value": 25, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "茶與法壓的頂級選擇，具備 Pro 級智能功能。",
+    "pros": [
+      "倒水快",
+      "具備 Pro 級功能",
+      "外型設計美觀"
+    ],
+    "cons": [
+      "價格昂貴",
+      "不適合手沖",
+      "市場小眾"
+    ],
+    "sentiment": [
+      {
+        "name": "滿",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2069,
     "brand": "Timemore",
@@ -936,12 +2589,37 @@
     "type": "溫控壺",
     "material": "不鏽鋼",
     "capacity": "600ml",
-    "feature": "細口",
+    "feature": "細口/輕巧",
     "priceLevel": "$$",
-    "verdict": "小容量的溫控壺。",
-    "pros": ["輕巧", "加熱快", "便宜"],
-    "cons": ["量小", "座大", "手感普"],
-    "sentiment": [{"name": "輕", "value": 70, "color": "#4ade80"}, {"name": "缺", "value": 25, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "小容量溫控壺，輕巧且加熱快。",
+    "pros": [
+      "機身輕巧",
+      "加熱快",
+      "價格便宜"
+    ],
+    "cons": [
+      "容量小",
+      "座大",
+      "手感普"
+    ],
+    "sentiment": [
+      {
+        "name": "輕",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "缺",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2070,
     "brand": "Hario",
@@ -949,12 +2627,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "1200ml",
-    "feature": "寬口細嘴",
+    "feature": "寬口細嘴/經典",
     "priceLevel": "$",
-    "verdict": "手沖壺的代名詞，耐用。",
-    "pros": ["便宜耐操", "水流可大可小", "直火可"],
-    "cons": ["無溫控", "水流快難控", "手柄細"],
-    "sentiment": [{"name": "典", "value": 85, "color": "#4ade80"}, {"name": "挫", "value": 10, "color": "#f87171"}, {"name": "無", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "手沖壺的代名詞，不鏽鋼材質耐用且可直火加熱。",
+    "pros": [
+      "價格便宜耐操",
+      "水流可大可小",
+      "可直火加熱"
+    ],
+    "cons": [
+      "無溫控",
+      "水流快難控",
+      "手柄細"
+    ],
+    "sentiment": [
+      {
+        "name": "典",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "挫",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "無",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2071,
     "brand": "Takahiro",
@@ -962,12 +2665,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "900ml",
-    "feature": "極細口",
+    "feature": "極細口/點滴",
     "priceLevel": "$$$",
-    "verdict": "點滴法神器，作弊壺。",
-    "pros": ["極穩", "精細", "俐落"],
-    "cons": ["貴", "大水難", "蓋掉"],
-    "sentiment": [{"name": "拜", "value": 85, "color": "#4ade80"}, {"name": "痛", "value": 10, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "點滴法神器，可實現極為精細穩定的細水流。",
+    "pros": [
+      "水流極穩",
+      "可精細控制點滴",
+      "外型俐落"
+    ],
+    "cons": [
+      "價格偏貴",
+      "大水流難以實現",
+      "壺蓋容易掉落"
+    ],
+    "sentiment": [
+      {
+        "name": "拜",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "痛",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2072,
     "brand": "Kalita",
@@ -975,12 +2703,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼/木",
     "capacity": "1000ml",
-    "feature": "鶴嘴",
+    "feature": "鶴嘴/老派",
     "priceLevel": "$$",
-    "verdict": "老派浪漫，鶴嘴控水難。",
-    "pros": ["質感", "可玩性", "量大"],
-    "cons": ["難控", "做工粗", "蓋緊"],
-    "sentiment": [{"name": "愛", "value": 65, "color": "#4ade80"}, {"name": "崩", "value": 25, "color": "#f87171"}, {"name": "藏", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "老派浪漫的鶴嘴壺，水流控制需要技巧。",
+    "pros": [
+      "質感優異",
+      "可玩性高",
+      "容量大"
+    ],
+    "cons": [
+      "水流難以控制",
+      "做工相對粗糙",
+      "壺蓋緊度不佳"
+    ],
+    "sentiment": [
+      {
+        "name": "愛",
+        "value": 65,
+        "color": "#4ade80"
+      },
+      {
+        "name": "崩",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "藏",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2073,
     "brand": "Kalita",
@@ -990,10 +2743,35 @@
     "capacity": "1000ml",
     "feature": "寬口鶴嘴",
     "priceLevel": "$$",
-    "verdict": "鵜鶘壺，大水流專用。",
-    "pros": ["琺瑯保溫佳", "外型復古", "大水攪拌"],
-    "cons": ["容易掉漆", "細水流難", "重"],
-    "sentiment": [{"name": "風", "value": 75, "color": "#4ade80"}, {"name": "保", "value": 20, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "鵜鶘壺，琺瑯材質保溫好，適合大水流沖煮。",
+    "pros": [
+      "琺瑯保溫性佳",
+      "外型復古",
+      "適合大水流攪拌"
+    ],
+    "cons": [
+      "容易掉漆",
+      "細水流難以控制",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "風",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "保",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2074,
     "brand": "Fellow",
@@ -1001,12 +2779,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "1000ml",
-    "feature": "細口",
+    "feature": "細口/溫度計",
     "priceLevel": "$$",
-    "verdict": "Stagg 的無電版，帶溫度計。",
-    "pros": ["溫度計", "水穩", "美"],
-    "cons": ["重", "塗層易刮", "倒水慢"],
-    "sentiment": [{"name": "滿", "value": 75, "color": "#4ade80"}, {"name": "酸", "value": 20, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "Stagg 的無電版本，內建溫度計，控水穩定。",
+    "pros": [
+      "內建溫度計",
+      "水流穩定",
+      "外型設計美觀"
+    ],
+    "cons": [
+      "機身重",
+      "表面塗層易刮傷",
+      "倒水速度慢"
+    ],
+    "sentiment": [
+      {
+        "name": "滿",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "酸",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2075,
     "brand": "Kinto",
@@ -1014,12 +2817,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "900ml",
-    "feature": "細口",
+    "feature": "細口/簡約",
     "priceLevel": "$$",
-    "verdict": "日系簡約，手感舒適。",
-    "pros": ["手柄好握", "外型優雅", "出水柔"],
-    "cons": ["蓋子會燙", "水流較小", "無刻度"],
-    "sentiment": [{"name": "舒", "value": 80, "color": "#4ade80"}, {"name": "缺", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "日系簡約設計，手柄好握，出水柔順。",
+    "pros": [
+      "手柄好握",
+      "外型優雅",
+      "出水柔和"
+    ],
+    "cons": [
+      "壺蓋容易燙手",
+      "水流較小",
+      "壺身無刻度"
+    ],
+    "sentiment": [
+      {
+        "name": "舒",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "缺",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2076,
     "brand": "Miyaco",
@@ -1027,12 +2855,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼/木",
     "capacity": "400ml",
-    "feature": "極細口",
+    "feature": "極細口/小巧",
     "priceLevel": "$$",
-    "verdict": "一人份專用，可愛。",
-    "pros": ["小巧", "直火", "質感"],
-    "cons": ["量小", "溢出", "貴"],
-    "sentiment": [{"name": "療", "value": 75, "color": "#4ade80"}, {"name": "不", "value": 15, "color": "#f87171"}, {"name": "藏", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "一人份專用，小巧可愛，適合獨享。",
+    "pros": [
+      "體積小巧",
+      "可直火加熱",
+      "質感佳"
+    ],
+    "cons": [
+      "容量極小",
+      "容易溢出",
+      "價格偏貴"
+    ],
+    "sentiment": [
+      {
+        "name": "療",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "不",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "藏",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2077,
     "brand": "Yukiwa",
@@ -1040,12 +2893,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "750ml",
-    "feature": "寬口",
+    "feature": "寬口/職人",
     "priceLevel": "$$$",
-    "verdict": "日本老舖，職人專用。",
-    "pros": ["極度耐用", "點滴法強", "連結感好"],
-    "cons": ["蓋子會掉", "很燙", "需改裝壺嘴"],
-    "sentiment": [{"name": "敬", "value": 85, "color": "#4ade80"}, {"name": "燙", "value": 10, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "日本老舖職人專用，極度耐用，適合點滴法。",
+    "pros": [
+      "極度耐用",
+      "點滴法控制力強",
+      "手感與連結感好"
+    ],
+    "cons": [
+      "壺蓋容易掉落",
+      "機身很燙",
+      "需改裝壺嘴以達最佳效果"
+    ],
+    "sentiment": [
+      {
+        "name": "敬",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "燙",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2078,
     "brand": "Balmuda",
@@ -1053,12 +2931,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "600ml",
-    "feature": "細口",
+    "feature": "細口/設計",
     "priceLevel": "$$$",
-    "verdict": "家電界的蘋果，好看但貴。",
-    "pros": ["流線燈號美", "輕巧", "出水順"],
-    "cons": ["容量極小", "性價比低", "塗層易髒"],
-    "sentiment": [{"name": "美", "value": 90, "color": "#4ade80"}, {"name": "盤", "value": 5, "color": "#f87171"}, {"name": "無", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "家電界的蘋果，外型極簡，無溫控功能。",
+    "pros": [
+      "流線燈號設計美觀",
+      "機身輕巧",
+      "出水順暢"
+    ],
+    "cons": [
+      "容量極小",
+      "性價比低",
+      "塗層易髒"
+    ],
+    "sentiment": [
+      {
+        "name": "美",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "盤",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "無",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2079,
     "brand": "Tiamo",
@@ -1066,12 +2969,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "700ml",
-    "feature": "細口",
+    "feature": "細口/入門",
     "priceLevel": "$",
-    "verdict": "新手入門高CP。",
-    "pros": ["便宜", "好買", "耐用"],
-    "cons": ["做工粗", "水流普", "外型普"],
-    "sentiment": [{"name": "惠", "value": 85, "color": "#4ade80"}, {"name": "嫌", "value": 10, "color": "#f87171"}, {"name": "渡", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "新手入門高 CP 值選擇，耐用。",
+    "pros": [
+      "價格便宜",
+      "市場易於購買",
+      "耐用"
+    ],
+    "cons": [
+      "做工粗糙",
+      "水流控制普通",
+      "外型普通"
+    ],
+    "sentiment": [
+      {
+        "name": "惠",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "渡",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2080,
     "brand": "Kalita",
@@ -1079,12 +3007,37 @@
     "type": "手沖壺 (直火)",
     "material": "銅",
     "capacity": "900ml",
-    "feature": "鶴嘴",
+    "feature": "鶴嘴/紅銅",
     "priceLevel": "$$$",
-    "verdict": "紅銅質感，傳熱快。",
-    "pros": ["美", "快熱", "殺菌"],
-    "cons": ["氧化", "燙", "貴"],
-    "sentiment": [{"name": "藝", "value": 80, "color": "#4ade80"}, {"name": "保", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "紅銅質感，傳熱快，具備收藏價值。",
+    "pros": [
+      "外型美觀",
+      "快速加熱",
+      "銅有殺菌特性"
+    ],
+    "cons": [
+      "容易氧化",
+      "機身燙",
+      "價格昂貴"
+    ],
+    "sentiment": [
+      {
+        "name": "藝",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "保",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2081,
     "brand": "Pearl Horse",
@@ -1092,12 +3045,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "700ml",
-    "feature": "極細口",
+    "feature": "極細口/便宜",
     "priceLevel": "$",
-    "verdict": "寶馬牌，便宜耐用。",
-    "pros": ["極便宜", "水流穩", "不怕摔"],
-    "cons": ["醜", "手柄燙", "無設計"],
-    "sentiment": [{"name": "惠", "value": 90, "color": "#4ade80"}, {"name": "醜", "value": 5, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "寶馬牌，價格極便宜且耐用，極細水流穩定。",
+    "pros": [
+      "價格極便宜",
+      "水流穩定",
+      "不怕摔"
+    ],
+    "cons": [
+      "外型不佳",
+      "手柄燙手",
+      "無設計感"
+    ],
+    "sentiment": [
+      {
+        "name": "惠",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "醜",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2082,
     "brand": "Hario",
@@ -1105,12 +3083,37 @@
     "type": "手沖壺 (直火)",
     "material": "樹脂",
     "capacity": "350ml",
-    "feature": "細口",
+    "feature": "細口/輕量",
     "priceLevel": "$",
-    "verdict": "透明樹脂，輕量化。",
-    "pros": ["可視", "輕", "便宜"],
-    "cons": ["不能直火", "保溫差", "膠"],
-    "sentiment": [{"name": "便", "value": 70, "color": "#4ade80"}, {"name": "廉", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "透明樹脂材質，極輕量化，適合單人沖煮。",
+    "pros": [
+      "可視化水位",
+      "機身極輕",
+      "價格便宜"
+    ],
+    "cons": [
+      "不能直火加熱",
+      "保溫性差",
+      "塑膠感重"
+    ],
+    "sentiment": [
+      {
+        "name": "便",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "廉",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2083,
     "brand": "Takahiro",
@@ -1118,12 +3121,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "900ml",
-    "feature": "細口",
+    "feature": "細口/大水流",
     "priceLevel": "$$$",
-    "verdict": "雫的一般版，水流較大。",
-    "pros": ["可做大水", "做工好", "經典"],
-    "cons": ["點滴較難", "貴", "蓋鬆"],
-    "sentiment": [{"name": "專", "value": 80, "color": "#4ade80"}, {"name": "貴", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "雫的一般版，水流較大，適合多段注水。",
+    "pros": [
+      "可做大水流",
+      "做工好",
+      "經典壺型"
+    ],
+    "cons": [
+      "點滴控制較難",
+      "價格偏貴",
+      "壺蓋容易鬆動"
+    ],
+    "sentiment": [
+      {
+        "name": "專",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2084,
     "brand": "Kalita",
@@ -1131,12 +3159,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "700ml",
-    "feature": "細口",
+    "feature": "細口/輕",
     "priceLevel": "$$",
-    "verdict": "Kalita 的細口壺。",
-    "pros": ["輕", "水流穩", "便宜"],
-    "cons": ["太輕沒手感", "外型普", "容量小"],
-    "sentiment": [{"name": "實", "value": 70, "color": "#4ade80"}, {"name": "無", "value": 20, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]},
+    "verdict": "Kalita 的細口壺，機身輕巧，水流穩定。",
+    "pros": [
+      "機身輕巧",
+      "水流穩定",
+      "價格合理"
+    ],
+    "cons": [
+      "太輕缺乏手感",
+      "外型普通",
+      "容量小"
+    ],
+    "sentiment": [
+      {
+        "name": "實",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "無",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2085,
     "brand": "Fellow",
@@ -1144,12 +3197,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "600ml",
-    "feature": "細口",
+    "feature": "細口/迷你",
     "priceLevel": "$$$",
-    "verdict": "Stagg 的縮小版，輕便。",
-    "pros": ["手感好", "輕巧", "水流穩"],
-    "cons": ["容量小", "無溫度計", "貴"],
-    "sentiment": [{"name": "精", "value": 75, "color": "#4ade80"}, {"name": "小", "value": 20, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "Stagg 的縮小版，輕便且水流控制穩定。",
+    "pros": [
+      "手感好",
+      "機身輕巧",
+      "水流穩定"
+    ],
+    "cons": [
+      "容量小",
+      "無溫度計",
+      "價格貴"
+    ],
+    "sentiment": [
+      {
+        "name": "精",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "小",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2086,
     "brand": "Cafec",
@@ -1157,12 +3235,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "1000ml",
-    "feature": "超細口",
+    "feature": "超細口/職人",
     "priceLevel": "$$$",
-    "verdict": "燕市職人打造，極細水流。",
-    "pros": ["做工精細", "水流極細", "耐用"],
-    "cons": ["大水難", "貴", "重"],
-    "sentiment": [{"name": "職", "value": 85, "color": "#4ade80"}, {"name": "貴", "value": 10, "color": "#f87171"}, {"name": "賞", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "燕市職人打造，可實現極致細水流。",
+    "pros": [
+      "做工精細",
+      "水流極細",
+      "耐用"
+    ],
+    "cons": [
+      "大水難",
+      "價格貴",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "職",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "賞",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2087,
     "brand": "Hario",
@@ -1170,12 +3273,37 @@
     "type": "手沖壺 (直火)",
     "material": "銅",
     "capacity": "700ml",
-    "feature": "細口",
+    "feature": "細口/紅銅",
     "priceLevel": "$$$",
-    "verdict": "全銅打造。",
-    "pros": ["美", "殺菌", "手感"],
-    "cons": ["燙", "變色", "柄舊"],
-    "sentiment": [{"name": "典", "value": 80, "color": "#4ade80"}, {"name": "燙", "value": 15, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "全銅打造，具備經典外型與良好的手感。",
+    "pros": [
+      "外型美觀",
+      "銅有殺菌特性",
+      "手感優良"
+    ],
+    "cons": [
+      "機身燙手",
+      "容易變色氧化",
+      "把手設計老舊"
+    ],
+    "sentiment": [
+      {
+        "name": "典",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "燙",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2088,
     "brand": "Kalita",
@@ -1183,12 +3311,37 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼",
     "capacity": "700ml",
-    "feature": "細口",
+    "feature": "細口/基本",
     "priceLevel": "$",
-    "verdict": "基本款。",
-    "pros": ["便宜", "耐用", "好洗"],
-    "cons": ["普", "水普", "無特色"],
-    "sentiment": [{"name": "實", "value": 70, "color": "#4ade80"}, {"name": "聊", "value": 25, "color": "#f87171"}, {"name": "普", "value": 5, "color": "#94a3b8"}]},
+    "verdict": "基本款細口壺，實惠且耐用。",
+    "pros": [
+      "價格便宜",
+      "耐用",
+      "好洗"
+    ],
+    "cons": [
+      "外型普通",
+      "水流控制普通",
+      "無特色"
+    ],
+    "sentiment": [
+      {
+        "name": "實",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "聊",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
   {
     "id": 2089,
     "brand": "Chemex",
@@ -1196,10 +3349,2353 @@
     "type": "手沖壺 (直火)",
     "material": "不鏽鋼/玻璃",
     "capacity": "1200ml",
-    "feature": "造型",
+    "feature": "造型/快煮",
     "priceLevel": "$$$",
-    "verdict": "Chemex 風格。",
-    "pros": ["獨特", "量大", "快煮"],
-    "cons": ["貴", "手感怪", "重"],
-    "sentiment": [{"name": "獨", "value": 65, "color": "#4ade80"}, {"name": "不", "value": 25, "color": "#f87171"}, {"name": "普", "value": 10, "color": "#94a3b8"}]}
+    "verdict": "Chemex 風格設計，造型獨特，容量大。",
+    "pros": [
+      "獨特造型",
+      "容量大",
+      "快速煮水"
+    ],
+    "cons": [
+      "價格貴",
+      "手感怪",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "獨",
+        "value": 65,
+        "color": "#4ade80"
+      },
+      {
+        "name": "不",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2090,
+    "brand": "Stagg",
+    "model": "Raven Tea Kettle",
+    "type": "溫控壺",
+    "material": "不鏽鋼",
+    "capacity": "1000ml",
+    "feature": "茶專用/內建濾網",
+    "priceLevel": "$$$$",
+    "verdict": "Fellow 針對茶葉設計的溫控壺，內建濾網，不適合手沖。",
+    "pros": [
+      "內建沖茶濾網",
+      "溫控精準",
+      "外型設計美觀"
+    ],
+    "cons": [
+      "價格昂貴",
+      "水流不適合手沖",
+      "用途侷限"
+    ],
+    "sentiment": [
+      {
+        "name": "專",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2091,
+    "brand": "Ratio",
+    "model": "Six",
+    "type": "自動機",
+    "material": "鋁合金/玻璃",
+    "capacity": "1400ml",
+    "feature": "SCA認證/極簡",
+    "priceLevel": "$$$$",
+    "verdict": "極簡設計的 SCA 認證手沖模擬機，操作簡單。",
+    "pros": [
+      "SCA 認證品質保證",
+      "設計極簡美觀",
+      "操作一鍵完成"
+    ],
+    "cons": [
+      "價格昂貴",
+      "無溫控設定",
+      "清潔較繁瑣"
+    ],
+    "sentiment": [
+      {
+        "name": "美",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2092,
+    "brand": "Technivorm",
+    "model": "Moccamaster KBGV Select",
+    "type": "自動機",
+    "material": "鋁合金/塑",
+    "capacity": "1250ml",
+    "feature": "SCA認證/耐用",
+    "priceLevel": "$$$$",
+    "verdict": "荷蘭製造的 SCA 認證手沖機，極致耐用與穩定。",
+    "pros": [
+      "SCA 認證",
+      "極度耐用（可使用數十年）",
+      "沖煮溫度穩定"
+    ],
+    "cons": [
+      "外型復古",
+      "價格高昂",
+      "佔用空間"
+    ],
+    "sentiment": [
+      {
+        "name": "經典",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2093,
+    "brand": "Breville",
+    "model": "Precision Brewer",
+    "type": "自動機",
+    "material": "不鏽鋼",
+    "capacity": "1800ml",
+    "feature": "多模式/溫控",
+    "priceLevel": "$$$",
+    "verdict": "功能最多的 SCA 認證機，可調整流速、溫度及沖煮模式。",
+    "pros": [
+      "多種沖煮模式",
+      "溫控、流速可調",
+      "容量大"
+    ],
+    "cons": [
+      "體積大",
+      "介面複雜",
+      "塑膠部件多"
+    ],
+    "sentiment": [
+      {
+        "name": "多功",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "雜",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2094,
+    "brand": "Wilfa",
+    "model": "Svart Precision",
+    "type": "自動機",
+    "material": "鋁合金/塑",
+    "capacity": "1250ml",
+    "feature": "溫控/可拆水箱",
+    "priceLevel": "$$$",
+    "verdict": "北歐設計，具備可拆卸水箱，精準溫控。",
+    "pros": [
+      "設計美觀",
+      "沖煮溫度精準",
+      "可拆水箱方便"
+    ],
+    "cons": [
+      "價格偏高",
+      "沖煮速度慢",
+      "水流速度固定"
+    ],
+    "sentiment": [
+      {
+        "name": "精準",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "慢",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2095,
+    "brand": "Bonavita",
+    "model": "Connoisseur",
+    "type": "自動機",
+    "material": "不鏽鋼/塑",
+    "capacity": "1300ml",
+    "feature": "SCA認證/平價",
+    "priceLevel": "$$",
+    "verdict": "最平價的 SCA 認證手沖機，性能穩定。",
+    "pros": [
+      "價格實惠",
+      "沖煮穩定",
+      "保溫壺設計"
+    ],
+    "cons": [
+      "塑膠感重",
+      "無多餘功能",
+      "沖煮速度慢"
+    ],
+    "sentiment": [
+      {
+        "name": "實惠",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "陽春",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2096,
+    "brand": "Chemex",
+    "model": "Ottomatic 2.0",
+    "type": "自動機",
+    "material": "玻璃/塑",
+    "capacity": "6杯",
+    "feature": "Chemex濾杯/溫控",
+    "priceLevel": "$$$$",
+    "verdict": "專為 Chemex 設計的沖煮機，可自動預浸。",
+    "pros": [
+      "自動預浸功能",
+      "外型美觀",
+      "沖煮溫度穩定"
+    ],
+    "cons": [
+      "需 Chemex 濾紙",
+      "價格昂貴",
+      "塑料部件多"
+    ],
+    "sentiment": [
+      {
+        "name": "美",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2097,
+    "brand": "Goat Story",
+    "model": "Gina Smart Coffee Instrument",
+    "type": "濾杯",
+    "material": "陶瓷/鋼",
+    "capacity": "750ml",
+    "feature": "智能/浸泡/注水",
+    "priceLevel": "$$$$$",
+    "verdict": "結合手沖、浸泡、冰滴三合一的智能濾杯。",
+    "pros": [
+      "三合一功能",
+      "內建電子秤",
+      "App 智能控制流速"
+    ],
+    "cons": [
+      "價格極貴",
+      "體積大",
+      "清洗不易"
+    ],
+    "sentiment": [
+      {
+        "name": "科技",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "雜",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2098,
+    "brand": "Stagg",
+    "model": "EKG Pro Studio",
+    "type": "溫控壺",
+    "material": "不鏽鋼/玻璃",
+    "capacity": "900ml",
+    "feature": "細口/奢華",
+    "priceLevel": "$$$$$",
+    "verdict": "Fellow 頂級的奢華溫控壺，功能與顏值兼具。",
+    "pros": [
+      "玻璃頂蓋美觀",
+      "全彩螢幕",
+      "精準溫控"
+    ],
+    "cons": [
+      "價格天價",
+      "指紋收集",
+      "功能過剩"
+    ],
+    "sentiment": [
+      {
+        "name": "奢",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "炫",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2099,
+    "brand": "Kalita",
+    "model": "Next G100",
+    "type": "自動機",
+    "material": "金屬/玻璃",
+    "capacity": "1000ml",
+    "feature": "商用/手沖模擬",
+    "priceLevel": "$$$$$",
+    "verdict": "Kalita 的商用級自動手沖機，可模擬多段注水。",
+    "pros": [
+      "模擬手沖注水",
+      "沖煮品質高",
+      "容量大"
+    ],
+    "cons": [
+      "價格昂貴",
+      "體積大",
+      "清潔複雜"
+    ],
+    "sentiment": [
+      {
+        "name": "專業",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2100,
+    "brand": "Hario",
+    "model": "V60 Drip-Assist",
+    "type": "濾杯",
+    "material": "塑膠",
+    "capacity": "1-2杯",
+    "feature": "注水輔助",
+    "priceLevel": "$",
+    "verdict": "V60 的注水輔助工具，提高注水穩定性。",
+    "pros": [
+      "幫助新手穩定水流",
+      "價格便宜",
+      "結構簡單"
+    ],
+    "cons": [
+      "塑膠感重",
+      "功能單一",
+      "沖煮速度慢"
+    ],
+    "sentiment": [
+      {
+        "name": "輔助",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "入",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2101,
+    "brand": "Timemore",
+    "model": "Osmotic",
+    "type": "濾杯",
+    "material": "陶瓷",
+    "capacity": "1-2杯",
+    "feature": "滲透肋骨",
+    "priceLevel": "$$",
+    "verdict": "滲透肋骨設計，提供極佳的側壁透氣性。",
+    "pros": [
+      "流速快",
+      "風味乾淨",
+      "陶瓷質感佳"
+    ],
+    "cons": [
+      "易碎",
+      "需精準研磨",
+      "價格偏高"
+    ],
+    "sentiment": [
+      {
+        "name": "乾淨",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2102,
+    "brand": "Kalita",
+    "model": "Wave Drip Pot",
+    "type": "濾杯",
+    "material": "玻璃",
+    "capacity": "500ml",
+    "feature": "平底/分享壺",
+    "priceLevel": "$$",
+    "verdict": "Wave 濾杯搭配玻璃分享壺的套裝，設計簡約。",
+    "pros": [
+      "設計感佳",
+      "萃取均勻",
+      "體積小巧"
+    ],
+    "cons": [
+      "玻璃易破",
+      "容量小",
+      "濾紙貴"
+    ],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "破",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2103,
+    "brand": "Fellow",
+    "model": "Monty Milk Art Cup",
+    "type": "濾杯",
+    "material": "陶瓷",
+    "capacity": "11oz",
+    "feature": "拿鐵藝術/雙層",
+    "priceLevel": "$$",
+    "verdict": "專為拿鐵藝術設計的杯子，雙層陶瓷保溫。",
+    "pros": [
+      "拿鐵藝術效果好",
+      "雙層保溫",
+      "外型美觀"
+    ],
+    "cons": [
+      "價格偏高",
+      "容量小",
+      "不適合一般飲用"
+    ],
+    "sentiment": [
+      {
+        "name": "美",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2104,
+    "brand": "Stagg",
+    "model": "Edison Kettle",
+    "type": "溫控壺",
+    "material": "不鏽鋼",
+    "capacity": "1000ml",
+    "feature": "大容量/簡約",
+    "priceLevel": "$$$",
+    "verdict": "Stagg 系列的大容量簡約版，適合家庭使用。",
+    "pros": [
+      "容量大",
+      "溫控穩定",
+      "設計簡約"
+    ],
+    "cons": [
+      "體積大",
+      "水流控制不如 EKG",
+      "價格偏高"
+    ],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "大",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2105,
+    "brand": "Hario",
+    "model": "VDM-02CP",
+    "type": "濾杯",
+    "material": "銅",
+    "capacity": "1-4杯",
+    "feature": "錐形/銅",
+    "priceLevel": "$$$",
+    "verdict": "V60 的銅製版本，傳熱快，但需注意氧化問題。",
+    "pros": [
+      "傳熱快",
+      "外型美觀",
+      "沖煮穩定"
+    ],
+    "cons": [
+      "價格昂貴",
+      "易氧化",
+      "機身燙手"
+    ],
+    "sentiment": [
+      {
+        "name": "質感",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "燙",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "貴",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2106,
+    "brand": "Melitta",
+    "model": "Single Serve Pour Over",
+    "type": "濾杯",
+    "material": "樹脂",
+    "capacity": "1杯",
+    "feature": "單孔/入門",
+    "priceLevel": "$",
+    "verdict": "Melitta 的單杯入門濾杯，價格便宜。",
+    "pros": [
+      "價格極便宜",
+      "操作簡單",
+      "濾紙易買"
+    ],
+    "cons": [
+      "流速慢",
+      "易萃取過度",
+      "塑膠感重"
+    ],
+    "sentiment": [
+      {
+        "name": "入門",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "慢",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2107,
+    "brand": "Bodum",
+    "model": "Chambord French Press",
+    "type": "濾杯",
+    "material": "玻璃/鋼",
+    "capacity": "8杯",
+    "feature": "法壓/經典",
+    "priceLevel": "$$",
+    "verdict": "Bodum 經典法壓壺，設計優雅，口感醇厚。",
+    "pros": [
+      "口感醇厚",
+      "外型經典",
+      "容量大"
+    ],
+    "cons": [
+      "細粉多",
+      "清洗不易",
+      "玻璃易破"
+    ],
+    "sentiment": [
+      {
+        "name": "醇厚",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "細粉",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2108,
+    "brand": "Chemex",
+    "model": "Glass Handle",
+    "type": "濾杯",
+    "material": "玻璃",
+    "capacity": "8杯",
+    "feature": "一體式/把手",
+    "priceLevel": "$$$",
+    "verdict": "Chemex 玻璃把手版本，無需木環或皮革。",
+    "pros": [
+      "無需額外配件",
+      "外型美觀",
+      "沖煮乾淨"
+    ],
+    "cons": [
+      "價格貴",
+      "易碎",
+      "濾紙厚"
+    ],
+    "sentiment": [
+      {
+        "name": "雅",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2109,
+    "brand": "Kalita",
+    "model": "Wave Dripper 185 (Glass)",
+    "type": "濾杯",
+    "material": "玻璃",
+    "capacity": "2-4杯",
+    "feature": "平底/大容量",
+    "priceLevel": "$$",
+    "verdict": "Wave 185 的玻璃版本，保溫性略差，但不會吸味。",
+    "pros": [
+      "不吸味",
+      "萃取均勻",
+      "容量大"
+    ],
+    "cons": [
+      "玻璃易破",
+      "流速慢",
+      "需搭配托架"
+    ],
+    "sentiment": [
+      {
+        "name": "乾淨",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "破",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2110,
+    "brand": "Hario",
+    "model": "V60 Metal Dripper",
+    "type": "濾杯",
+    "material": "不鏽鋼",
+    "capacity": "1-4杯",
+    "feature": "錐形/不鏽鋼",
+    "priceLevel": "$$",
+    "verdict": "V60 的金屬版本，耐摔且保溫性好。",
+    "pros": [
+      "耐摔",
+      "保溫性好",
+      "流速快"
+    ],
+    "cons": [
+      "價格偏高",
+      "易刮傷",
+      "外型普通"
+    ],
+    "sentiment": [
+      {
+        "name": "耐用",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "貴",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2111,
+    "brand": "Stagg",
+    "model": "Pour-Over Kettle",
+    "type": "手沖壺 (直火)",
+    "material": "不鏽鋼",
+    "capacity": "1000ml",
+    "feature": "細口/直火",
+    "priceLevel": "$$",
+    "verdict": "Stagg 的無電直火版，水流控制穩定。",
+    "pros": [
+      "水流穩定",
+      "內建溫度計",
+      "外型美觀"
+    ],
+    "cons": [
+      "機身重",
+      "倒水速度慢",
+      "價格偏高"
+    ],
+    "sentiment": [
+      {
+        "name": "穩",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "重",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2112,
+    "brand": "Melitta",
+    "model": "Aroma Elegance Deluxe",
+    "type": "自動機",
+    "material": "不鏽鋼/塑",
+    "capacity": "1250ml",
+    "feature": "溫控/定時",
+    "priceLevel": "$$$",
+    "verdict": "Melitta 的進階自動機，具備溫控和定時功能。",
+    "pros": [
+      "溫控穩定",
+      "定時功能方便",
+      "容量大"
+    ],
+    "cons": [
+      "外型普通",
+      "塑料感重",
+      "價格偏高"
+    ],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "無",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2113,
+    "brand": "Breville",
+    "model": "Oracle Touch",
+    "type": "自動機",
+    "material": "不鏽鋼",
+    "capacity": "2500ml",
+    "feature": "全自動/義式",
+    "priceLevel": "$$$$$",
+    "verdict": "頂級全自動義式機，自動研磨、壓粉和打奶泡。",
+    "pros": [
+      "全自動一鍵完成",
+      "沖煮品質高",
+      "觸控螢幕"
+    ],
+    "cons": [
+      "價格天價",
+      "體積巨大",
+      "清潔複雜"
+    ],
+    "sentiment": [
+      {
+        "name": "奢華",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2114,
+    "brand": "Hario",
+    "model": "V60 Auto Pour Over",
+    "type": "自動機",
+    "material": "塑膠/玻璃",
+    "capacity": "800ml",
+    "feature": "V60/自動注水",
+    "priceLevel": "$$",
+    "verdict": "Hario 的自動 V60 沖煮機，適合新手穩定沖煮。",
+    "pros": [
+      "模擬 V60 手法",
+      "價格合理",
+      "操作簡單"
+    ],
+    "cons": [
+      "塑料感重",
+      "沖煮品質普通",
+      "無溫控"
+    ],
+    "sentiment": [
+      {
+        "name": "入門",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "無",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2115,
+    "brand": "Moccamaster",
+    "model": "Cup-One",
+    "type": "自動機",
+    "material": "鋁合金/塑",
+    "capacity": "300ml",
+    "feature": "單杯/SCA認證",
+    "priceLevel": "$$$",
+    "verdict": "Moccamaster 的單杯 SCA 認證機，極致簡約。",
+    "pros": [
+      "SCA 認證",
+      "沖煮品質穩定",
+      "體積小巧"
+    ],
+    "cons": [
+      "只能沖單杯",
+      "價格高",
+      "無多餘功能"
+    ],
+    "sentiment": [
+      {
+        "name": "精準",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2116,
+    "brand": "Stagg",
+    "model": "Edison Mini",
+    "type": "溫控壺",
+    "material": "不鏽鋼",
+    "capacity": "600ml",
+    "feature": "細口/迷你",
+    "priceLevel": "$$$",
+    "verdict": "Edison 系列的迷你版，適合單人沖煮。",
+    "pros": [
+      "體積小巧",
+      "溫控穩定",
+      "設計簡約"
+    ],
+    "cons": [
+      "容量小",
+      "價格偏高",
+      "水流控制普通"
+    ],
+    "sentiment": [
+      {
+        "name": "精緻",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "小",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2117,
+    "brand": "Timemore",
+    "model": "B75 Mini",
+    "type": "濾杯",
+    "material": "PCTG",
+    "capacity": "1杯",
+    "feature": "平底/極速",
+    "priceLevel": "$",
+    "verdict": "B75 的迷你版，適合單杯沖煮，流速極快。",
+    "pros": [
+      "價格便宜",
+      "流速快",
+      "平底萃取均勻"
+    ],
+    "cons": [
+      "容量極小",
+      "需蛋糕濾紙",
+      "塑膠感"
+    ],
+    "sentiment": [
+      {
+        "name": "超",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "小",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2118,
+    "brand": "Hario",
+    "model": "V60 Immersion Dripper",
+    "type": "濾杯",
+    "material": "塑膠/玻璃",
+    "capacity": "1-4杯",
+    "feature": "浸泡式/V60",
+    "priceLevel": "$$",
+    "verdict": "V60 濾杯的浸泡版本，結合了聰明濾杯的優點。",
+    "pros": [
+      "可控制浸泡時間",
+      "甜感突出",
+      "價格合理"
+    ],
+    "cons": [
+      "清洗不易",
+      "玻璃易破",
+      "體積大"
+    ],
+    "sentiment": [
+      {
+        "name": "玩",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "雜",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2119,
+    "brand": "Kalita",
+    "model": "Wave Tsubame Copper",
+    "type": "濾杯",
+    "material": "銅",
+    "capacity": "1-4杯",
+    "feature": "燕三条製/紅銅",
+    "priceLevel": "$$$$",
+    "verdict": "Kalita 燕三条紅銅版本，極致奢華與工藝。",
+    "pros": [
+      "紅銅外型美觀",
+      "傳熱快",
+      "收藏價值高"
+    ],
+    "cons": [
+      "價格昂貴",
+      "易氧化",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "奢",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2120,
+    "brand": "Ratio",
+    "model": "Eight",
+    "type": "自動機",
+    "material": "鋁合金/玻璃",
+    "capacity": "1500ml",
+    "feature": "SCA認證/定時",
+    "priceLevel": "$$$$",
+    "verdict": "Ratio 的旗艦機，沖煮品質極高，設計簡約。",
+    "pros": [
+      "SCA 認證",
+      "設計極簡美觀",
+      "沖煮品質高"
+    ],
+    "cons": [
+      "價格昂貴",
+      "體積大",
+      "功能單一"
+    ],
+    "sentiment": [
+      {
+        "name": "美",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2121,
+    "brand": "Fellow",
+    "model": "Stagg EKG Pro Studio 2.0",
+    "type": "溫控壺",
+    "material": "不鏽鋼/玻璃",
+    "capacity": "900ml",
+    "feature": "細口/智能頂配",
+    "priceLevel": "$$$$$",
+    "verdict": "EKG Pro Studio 的第二代，極致奢華與智能的頂級溫控壺。",
+    "pros": [
+      "極致奢華設計",
+      "全彩螢幕與 WiFi",
+      "精準溫控"
+    ],
+    "cons": [
+      "價格天價",
+      "功能過剩",
+      "電子零件複雜"
+    ],
+    "sentiment": [
+      {
+        "name": "頂尖",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "炫",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2122,
+    "brand": "Breville",
+    "model": "Bambino Plus",
+    "type": "自動機",
+    "material": "不鏽鋼",
+    "capacity": "1900ml",
+    "feature": "義式/小巧",
+    "priceLevel": "$$$",
+    "verdict": "Breville 的入門義式機，體積小巧，具備自動打奶泡。",
+    "pros": [
+      "體積小巧",
+      "自動打奶泡",
+      "加熱速度快"
+    ],
+    "cons": [
+      "奶泡品質普通",
+      "塑料部件多",
+      "無法深度設定"
+    ],
+    "sentiment": [
+      {
+        "name": "入門",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "小",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2123,
+    "brand": "Hario",
+    "model": "V60 Transparent Dripper",
+    "type": "濾杯",
+    "material": "樹脂",
+    "capacity": "1-4杯",
+    "feature": "錐形/透明",
+    "priceLevel": "$",
+    "verdict": "V60 的透明樹脂版本，導熱快且耐用。",
+    "pros": [
+      "價格便宜",
+      "導熱快",
+      "耐摔"
+    ],
+    "cons": [
+      "質感廉價",
+      "易染色",
+      "無特色"
+    ],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "廉",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2124,
+    "brand": "Origami",
+    "model": "Dripper L",
+    "type": "濾杯",
+    "material": "陶瓷",
+    "capacity": "2-6杯",
+    "feature": "折紙錐形/大",
+    "priceLevel": "$$$$",
+    "verdict": "Origami 的大容量版本，適合多人分享。",
+    "pros": [
+      "容量大",
+      "外型美觀",
+      "通用濾紙"
+    ],
+    "cons": [
+      "價格高",
+      "體積大",
+      "需搭配木托"
+    ],
+    "sentiment": [
+      {
+        "name": "分享",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2125,
+    "brand": "Kalita",
+    "model": "Wave Dripper 185 (Copper)",
+    "type": "濾杯",
+    "material": "銅",
+    "capacity": "2-4杯",
+    "feature": "平底/紅銅",
+    "priceLevel": "$$$$",
+    "verdict": "Kalita Wave 的紅銅版本，傳熱快，質感佳。",
+    "pros": [
+      "紅銅質感美觀",
+      "傳熱快",
+      "萃取均勻"
+    ],
+    "cons": [
+      "價格昂貴",
+      "易氧化",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "奢",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2126,
+    "brand": "Chemex",
+    "model": "Pour-Over Kettle",
+    "type": "手沖壺 (直火)",
+    "material": "玻璃",
+    "capacity": "900ml",
+    "feature": "細口/玻璃",
+    "priceLevel": "$$$",
+    "verdict": "Chemex 的玻璃手沖壺，造型優美，但水流控制普通。",
+    "pros": [
+      "外型美觀",
+      "玻璃不吸味",
+      "可視化水位"
+    ],
+    "cons": [
+      "玻璃易破",
+      "水流控制普通",
+      "價格高"
+    ],
+    "sentiment": [
+      {
+        "name": "美",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "破",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2127,
+    "brand": "Takahiro",
+    "model": "Shizuku Black",
+    "type": "手沖壺 (直火)",
+    "material": "不鏽鋼",
+    "capacity": "900ml",
+    "feature": "極細口/黑色",
+    "priceLevel": "$$$$",
+    "verdict": "雫的黑色霧面版本，質感提升，點滴法神器。",
+    "pros": [
+      "水流極穩",
+      "外型帥氣",
+      "質感佳"
+    ],
+    "cons": [
+      "價格高昂",
+      "大水難",
+      "塗層易刮傷"
+    ],
+    "sentiment": [
+      {
+        "name": "帥",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2128,
+    "brand": "Fellow",
+    "model": "Stagg Corvo EKG Pro",
+    "type": "溫控壺",
+    "material": "不鏽鋼",
+    "capacity": "900ml",
+    "feature": "寬口/智能頂配",
+    "priceLevel": "$$$$$",
+    "verdict": "Corvo 的 Pro 版本，適合沖茶與法壓的頂級智能壺。",
+    "pros": [
+      "全彩螢幕",
+      "WiFi 連網",
+      "寬口快速倒水"
+    ],
+    "cons": [
+      "價格極貴",
+      "不適合手沖",
+      "功能過剩"
+    ],
+    "sentiment": [
+      {
+        "name": "奢",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2129,
+    "brand": "Timemore",
+    "model": "Fish Pure",
+    "type": "溫控壺",
+    "material": "不鏽鋼",
+    "capacity": "700ml",
+    "feature": "細口/簡約",
+    "priceLevel": "$$",
+    "verdict": "Fish 系列的簡約版，只有基礎溫控，適合手沖入門。",
+    "pros": [
+      "價格合理",
+      "水流穩定",
+      "外型簡約"
+    ],
+    "cons": [
+      "功能陽春",
+      "質感普通",
+      "無流速顯示"
+    ],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "陽春",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2130,
+    "brand": "Gino",
+    "model": "Smart Pour Over",
+    "type": "自動機",
+    "material": "塑膠/玻璃",
+    "capacity": "450ml",
+    "feature": "V60/輕巧",
+    "priceLevel": "$$",
+    "verdict": "Gino 的自動 V60 沖煮機，體積小巧，適合單人。",
+    "pros": [
+      "體積小巧",
+      "操作簡單",
+      "價格合理"
+    ],
+    "cons": [
+      "沖煮品質普通",
+      "塑料感重",
+      "容量小"
+    ],
+    "sentiment": [
+      {
+        "name": "入門",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "小",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2131,
+    "brand": "Osaka",
+    "model": "Pour Over Dripper",
+    "type": "濾杯",
+    "material": "陶瓷",
+    "capacity": "1-4杯",
+    "feature": "錐形/大孔",
+    "priceLevel": "$$",
+    "verdict": "錐形濾杯，底部孔洞較大，流速快。",
+    "pros": [
+      "流速快",
+      "價格合理",
+      "陶瓷質感佳"
+    ],
+    "cons": [
+      "易萃取不足",
+      "需精準研磨",
+      "市場少見"
+    ],
+    "sentiment": [
+      {
+        "name": "快",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "難",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2132,
+    "brand": "Melitta",
+    "model": "Aroma Fresh",
+    "type": "自動機",
+    "material": "不鏽鋼/塑",
+    "capacity": "1000ml",
+    "feature": "內建磨豆機",
+    "priceLevel": "$$$",
+    "verdict": "內建磨豆機的自動咖啡機，一機完成。",
+    "pros": [
+      "一機完成研磨沖煮",
+      "價格合理",
+      "定時功能"
+    ],
+    "cons": [
+      "磨豆機品質普通",
+      "體積大",
+      "清潔複雜"
+    ],
+    "sentiment": [
+      {
+        "name": "方便",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "雜",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2133,
+    "brand": "Chemex",
+    "model": "Three-Cup",
+    "type": "濾杯",
+    "material": "玻璃",
+    "capacity": "3杯",
+    "feature": "一體式/小",
+    "priceLevel": "$$",
+    "verdict": "Chemex 的小型版本，適合單人或兩人使用。",
+    "pros": [
+      "外型美觀",
+      "沖煮乾淨",
+      "體積小巧"
+    ],
+    "cons": [
+      "容量小",
+      "易碎",
+      "濾紙厚"
+    ],
+    "sentiment": [
+      {
+        "name": "雅",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "小",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2134,
+    "brand": "Wilfa",
+    "model": "Svart Classic",
+    "type": "自動機",
+    "material": "鋁合金/塑",
+    "capacity": "1000ml",
+    "feature": "SCA認證/北歐",
+    "priceLevel": "$$$",
+    "verdict": "北歐簡約設計，SCA 認證，沖煮品質穩定。",
+    "pros": [
+      "SCA 認證",
+      "設計簡約美觀",
+      "沖煮溫度穩定"
+    ],
+    "cons": [
+      "價格偏高",
+      "無多餘功能",
+      "塑料部件多"
+    ],
+    "sentiment": [
+      {
+        "name": "簡約",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "貴",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2135,
+    "brand": "Fellow",
+    "model": "Stagg EKG Black",
+    "type": "溫控壺",
+    "material": "不鏽鋼",
+    "capacity": "900ml",
+    "feature": "細口/黑色",
+    "priceLevel": "$$$$",
+    "verdict": "Stagg EKG 的經典黑色版本，外型極簡。",
+    "pros": [
+      "顏值極高",
+      "溫控精準",
+      "水流穩定"
+    ],
+    "cons": [
+      "價格高昂",
+      "倒水速度慢",
+      "易留指紋"
+    ],
+    "sentiment": [
+      {
+        "name": "美",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2136,
+    "brand": "Kalita",
+    "model": "Wave Drip Kettle",
+    "type": "手沖壺 (直火)",
+    "material": "不鏽鋼",
+    "capacity": "1000ml",
+    "feature": "鶴嘴/直火",
+    "priceLevel": "$$",
+    "verdict": "Kalita 的鶴嘴手沖壺，適合大水流沖煮。",
+    "pros": [
+      "容量大",
+      "可直火加熱",
+      "外型經典"
+    ],
+    "cons": [
+      "水流難控",
+      "做工普通",
+      "老派"
+    ],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "難",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2137,
+    "brand": "Brewista",
+    "model": "Artisan Gooseneck",
+    "type": "溫控壺",
+    "material": "不鏽鋼",
+    "capacity": "700ml",
+    "feature": "細口/多模式",
+    "priceLevel": "$$$",
+    "verdict": "Artisan 系列的中型溫控壺，功能強大。",
+    "pros": [
+      "加熱快",
+      "多種預設模式",
+      "手感佳"
+    ],
+    "cons": [
+      "外型見仁見智",
+      "按鍵複雜",
+      "價格偏高"
+    ],
+    "sentiment": [
+      {
+        "name": "讚",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2138,
+    "brand": "Bonavita",
+    "model": "Variable Temp Kettle",
+    "type": "溫控壺",
+    "material": "不鏽鋼",
+    "capacity": "1700ml",
+    "feature": "大容量/溫控",
+    "priceLevel": "$$",
+    "verdict": "Bonavita 的大容量溫控壺，適合多人家庭。",
+    "pros": [
+      "容量大",
+      "價格合理",
+      "溫控穩定"
+    ],
+    "cons": [
+      "外型普通",
+      "水流控制普通",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "大",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2139,
+    "brand": "Oxo",
+    "model": "Brew 9 Cup Coffee Maker",
+    "type": "自動機",
+    "material": "不鏽鋼/塑",
+    "capacity": "1400ml",
+    "feature": "SCA認證/大容量",
+    "priceLevel": "$$$",
+    "verdict": "Oxo 的 SCA 認證機，沖煮品質穩定。",
+    "pros": [
+      "SCA 認證",
+      "容量大",
+      "沖煮溫度穩定"
+    ],
+    "cons": [
+      "體積大",
+      "塑料感重",
+      "價格偏高"
+    ],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "大",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2140,
+    "brand": "Hario",
+    "model": "V60 Dripper (Copper)",
+    "type": "濾杯",
+    "material": "銅",
+    "capacity": "1-4杯",
+    "feature": "錐形/紅銅",
+    "priceLevel": "$$$",
+    "verdict": "V60 的紅銅版本，傳熱極快，適合追求極致控溫者。",
+    "pros": [
+      "傳熱快",
+      "外型美觀",
+      "銅有殺菌特性"
+    ],
+    "cons": [
+      "價格昂貴",
+      "易氧化",
+      "機身燙手"
+    ],
+    "sentiment": [
+      {
+        "name": "質感",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "燙",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "貴",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2141,
+    "brand": "Kalita",
+    "model": "Wave Tsubame Black",
+    "type": "濾杯",
+    "material": "不鏽鋼",
+    "capacity": "1-4杯",
+    "feature": "燕三条製/黑色",
+    "priceLevel": "$$$",
+    "verdict": "燕三条的黑色不鏽鋼版本，質感沉穩。",
+    "pros": [
+      "做工精緻",
+      "外型帥氣",
+      "流速順暢"
+    ],
+    "cons": [
+      "價格昂貴",
+      "易留指紋",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "帥",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2142,
+    "brand": "Origami",
+    "model": "Air L",
+    "type": "濾杯",
+    "material": "AS樹脂",
+    "capacity": "2-6杯",
+    "feature": "折紙錐形/大",
+    "priceLevel": "$$$",
+    "verdict": "Origami L 號的樹脂版，輕巧耐用。",
+    "pros": [
+      "容量大",
+      "耐摔",
+      "輕巧"
+    ],
+    "cons": [
+      "價格高",
+      "質感塑膠",
+      "易刮傷"
+    ],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2143,
+    "brand": "Clever",
+    "model": "Dripper L",
+    "type": "濾杯",
+    "material": "樹脂",
+    "capacity": "800ml",
+    "feature": "浸泡式/大容量",
+    "priceLevel": "$$",
+    "verdict": "Clever 的大容量版本，適合沖煮多人份。",
+    "pros": [
+      "容量大",
+      "操作簡單",
+      "價格合理"
+    ],
+    "cons": [
+      "味道平淡",
+      "體積大",
+      "難以晾乾"
+    ],
+    "sentiment": [
+      {
+        "name": "便",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "大",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2144,
+    "brand": "April",
+    "model": "Paper Filter",
+    "type": "濾杯",
+    "material": "紙",
+    "capacity": "N/A",
+    "feature": "平底/專用濾紙",
+    "priceLevel": "$$",
+    "verdict": "April 濾杯的專用濾紙，確保最佳流速與風味。",
+    "pros": [
+      "流速穩定",
+      "乾淨度高",
+      "與 April 濾杯絕配"
+    ],
+    "cons": [
+      "價格貴",
+      "通用性低",
+      "難買"
+    ],
+    "sentiment": [
+      {
+        "name": "專",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2145,
+    "brand": "Orea",
+    "model": "V3 MK2 Negotiator",
+    "type": "濾杯",
+    "material": "Trogamid",
+    "capacity": "1-2杯",
+    "feature": "平底/通用底座",
+    "priceLevel": "$$$$",
+    "verdict": "Orea V3 的進階版，配備可通用多種濾紙的底座。",
+    "pros": [
+      "可調流速",
+      "通用多種濾紙",
+      "耐摔"
+    ],
+    "cons": [
+      "價格高昂",
+      "配件多",
+      "體積大"
+    ],
+    "sentiment": [
+      {
+        "name": "玩",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2146,
+    "brand": "Fellow",
+    "model": "Stagg EKG White",
+    "type": "溫控壺",
+    "material": "不鏽鋼",
+    "capacity": "900ml",
+    "feature": "細口/白色",
+    "priceLevel": "$$$$",
+    "verdict": "Stagg EKG 的經典白色版本，設計簡約美觀。",
+    "pros": [
+      "顏值極高",
+      "溫控精準",
+      "水流穩定"
+    ],
+    "cons": [
+      "價格高昂",
+      "倒水速度慢",
+      "易髒"
+    ],
+    "sentiment": [
+      {
+        "name": "美",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2147,
+    "brand": "Kalita",
+    "model": "Wave Tsubame Copper L",
+    "type": "濾杯",
+    "material": "銅",
+    "capacity": "4-8杯",
+    "feature": "燕三条製/大",
+    "priceLevel": "$$$$$",
+    "verdict": "紅銅大容量版，極致的收藏品。",
+    "pros": [
+      "極致奢華",
+      "容量大",
+      "工藝精湛"
+    ],
+    "cons": [
+      "價格天價",
+      "易氧化",
+      "機身重"
+    ],
+    "sentiment": [
+      {
+        "name": "奢",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "藏",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2148,
+    "brand": "Brewista",
+    "model": "Artisan Gooseneck 1.2L",
+    "type": "溫控壺",
+    "material": "不鏽鋼",
+    "capacity": "1200ml",
+    "feature": "細口/大容量",
+    "priceLevel": "$$$$",
+    "verdict": "Artisan 系列的最大容量版，適合營業使用。",
+    "pros": [
+      "容量大",
+      "加熱快",
+      "多種預設模式"
+    ],
+    "cons": [
+      "價格高",
+      "體積大",
+      "外型見仁見智"
+    ],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2149,
+    "brand": "Hario",
+    "model": "Buono Drip Kettle",
+    "type": "手沖壺 (直火)",
+    "material": "不鏽鋼",
+    "capacity": "700ml",
+    "feature": "細口/小容量",
+    "priceLevel": "$$",
+    "verdict": "Buono 系列的小容量直火壺，適合單人沖煮。",
+    "pros": [
+      "體積小巧",
+      "可直火加熱",
+      "水流可控"
+    ],
+    "cons": [
+      "容量小",
+      "價格偏高",
+      "手柄細"
+    ],
+    "sentiment": [
+      {
+        "name": "精",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "小",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 2150,
+    "brand": "Kalita",
+    "model": "Pour Over Kettle",
+    "type": "手沖壺 (直火)",
+    "material": "不鏽鋼/木",
+    "capacity": "700ml",
+    "feature": "細口/木柄",
+    "priceLevel": "$$$",
+    "verdict": "Kalita 的木柄細口壺，質感優良。",
+    "pros": [
+      "木柄質感佳",
+      "水流穩定",
+      "外型美觀"
+    ],
+    "cons": [
+      "價格高",
+      "容量小",
+      "木柄易損"
+    ],
+    "sentiment": [
+      {
+        "name": "質感",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  }
 ]
