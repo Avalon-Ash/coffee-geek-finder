@@ -1,0 +1,5582 @@
+[
+  {
+    "id": 1001,
+    "brand": "1Zpresso",
+    "model": "K-Ultra",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "40g",
+    "feature": "七芯錐刀/外調",
+    "priceLevel": "$$$",
+    "verdict": "手磨界的六邊形戰士，外部調節設計直觀好用。",
+    "pros": ["外部調節極直觀", "切削效率高", "風味明亮均衡", "研磨省力"],
+    "cons": ["機身較長重心偏高", "磁吸粉杯偶爾鬆脫", "價格略高"],
+    "sentiment": [
+      {
+        "name": "滿意",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "價位",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "通用",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1002,
+    "brand": "1Zpresso",
+    "model": "ZP6 Special",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "六芯特化/手沖",
+    "priceLevel": "$$$",
+    "verdict": "手沖特化神器，以極致的乾淨度聞名，層次分明。",
+    "pros": ["極少細粉提升乾淨度", "層次感與分離度極強", "調節段數綿密"],
+    "cons": ["完全不適合義式濃縮", "Body 較薄像茶", "經常性缺貨"],
+    "sentiment": [
+      {
+        "name": "驚艷",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "不慣",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "手沖",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1003,
+    "brand": "1Zpresso",
+    "model": "J-Ultra",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "40g",
+    "feature": "鍍鈦錐刀/義式微調",
+    "priceLevel": "$$$",
+    "verdict": "義式手磨的天花板，微調級距極為精細。",
+    "pros": ["微調極其精細（8µm/格）", "磨義式濃縮速度快", "甜感表現優秀"],
+    "cons": ["細粉量相對較多", "機身較重不適合旅行", "手沖風味普通"],
+    "sentiment": [
+      {
+        "name": "專業",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "侷限",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "義式",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1004,
+    "brand": "1Zpresso",
+    "model": "X-Ultra",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "25g",
+    "feature": "七芯錐刀/外調",
+    "priceLevel": "$$",
+    "verdict": "K-Ultra 的小巧版，兼顧便攜與風味，CP 值高。",
+    "pros": ["便攜性佳", "風味接近 K 系列", "外部調節方便"],
+    "cons": ["容量較小", "手大者握感不佳", "調節環手感普通"],
+    "sentiment": [
+      {
+        "name": "愛",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "體積",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "通用",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1005,
+    "brand": "1Zpresso",
+    "model": "Q-Air",
+    "type": "手磨",
+    "material": "塑膠/鋁",
+    "capacity": "15g",
+    "feature": "七芯錐刀/輕量",
+    "priceLevel": "$",
+    "verdict": "極致輕量化旅行磨豆機，刀盤素質優於同級。",
+    "pros": ["極致輕便（鋁+塑膠）", "刀盤素質高於同級", "價格便宜"],
+    "cons": ["容量極小", "塑膠質感略重", "容易產生靜電"],
+    "sentiment": [
+      {
+        "name": "便攜",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "廉價",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "旅行",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1006,
+    "brand": "Comandante",
+    "model": "C40 MK4",
+    "type": "手磨",
+    "material": "高氮鋼/木",
+    "capacity": "40g",
+    "feature": "高氮鋼錐刀/底調",
+    "priceLevel": "$$$$$",
+    "verdict": "手磨的貨幣單位，經典的風味標竿，保值性高。",
+    "pros": ["風味極佳且均衡", "保值性高且做工精良", "調節手感扎實"],
+    "cons": ["價格極貴", "調節在底部不直觀", "磨淺焙豆費力"],
+    "sentiment": [
+      {
+        "name": "信仰",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "肉痛",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "經典",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1007,
+    "brand": "Comandante",
+    "model": "C60 Baracuda",
+    "type": "手磨",
+    "material": "高氮鋼",
+    "capacity": "45g",
+    "feature": "60mm巨型錐刀/旗艦",
+    "priceLevel": "$$$$$",
+    "verdict": "手磨的極限，大刀盤怪獸，研磨速度快且風味醇厚。",
+    "pros": ["研磨速度極快", "風味厚實且Body強勁", "做工與手感精良"],
+    "cons": ["機身極度重", "價格天價", "非常難買"],
+    "sentiment": [
+      {
+        "name": "夢幻",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "重",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "旗艦",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1008,
+    "brand": "Kingrinder",
+    "model": "K6",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "35g",
+    "feature": "七芯錐刀/外調",
+    "priceLevel": "$",
+    "verdict": "極高 CP 值的全能磨豆機，外部調節操作順暢。",
+    "pros": ["價格非常便宜", "全能型風味表現", "外部調節直觀方便"],
+    "cons": ["搭配電鑽使用易滑牙", "握感較粗", "表面處理普通"],
+    "sentiment": [
+      {
+        "name": "超值",
+        "value": 95,
+        "color": "#4ade80"
+      },
+      {
+        "name": "挑",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "實用",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1009,
+    "brand": "Kingrinder",
+    "model": "K4",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "35g",
+    "feature": "鍍鈦錐刀/義式",
+    "priceLevel": "$",
+    "verdict": "K6的義式兄弟，磨義式濃縮時甜感特化。",
+    "pros": ["磨義式效率高", "價格極低廉", "甜感突出"],
+    "cons": ["已停產難買", "細粉偏多影響手沖", "外觀設計普通"],
+    "sentiment": [
+      {
+        "name": "懷念",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "憾",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "義式",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1010,
+    "brand": "Kingrinder",
+    "model": "P0",
+    "type": "手磨",
+    "material": "塑膠",
+    "capacity": "25g",
+    "feature": "不鏽鋼錐刀/入門",
+    "priceLevel": "$",
+    "verdict": "極致入門款，研磨品質優於砍豆機。",
+    "pros": ["價格極便宜", "機身輕巧", "配備不鏽鋼錐刀"],
+    "cons": ["塑膠感重", "內部調節不便", "研磨速度慢"],
+    "sentiment": [
+      {
+        "name": "省",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "慢",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "入門",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1011,
+    "brand": "Kingrinder",
+    "model": "P1",
+    "type": "手磨",
+    "material": "塑膠/鋁",
+    "capacity": "25g",
+    "feature": "不鏽鋼刀",
+    "priceLevel": "$",
+    "verdict": "P0的升級版，刀盤品質略好，適合新手入門。",
+    "pros": ["價格實惠", "刀盤素質尚可", "機身輕便"],
+    "cons": ["塑膠機身握感差", "耐用度有待觀察", "靜電問題"],
+    "sentiment": [
+      {
+        "name": "入",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "廉",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1012,
+    "brand": "Kingrinder",
+    "model": "P2",
+    "type": "手磨",
+    "material": "塑膠/鋁",
+    "capacity": "25g",
+    "feature": "七芯錐刀/內部調",
+    "priceLevel": "$",
+    "verdict": "塑膠機身的 K6 刀盤版，性價比極高。",
+    "pros": ["價格便宜", "七芯刀盤品質高", "研磨速度快"],
+    "cons": ["塑膠機身質感差", "內部調節不便", "靜電現象嚴重"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "廉",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1013,
+    "brand": "Timemore",
+    "model": "C2",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "25g",
+    "feature": "不鏽鋼錐刀",
+    "priceLevel": "$",
+    "verdict": "手沖入門的經典起點，金屬機身手感紮實。",
+    "pros": ["價格便宜好入手", "金屬機身手感佳", "研磨品質足夠日常使用"],
+    "cons": ["塑膠調節鈕質感差", "細粉略多", "研磨速度偏慢"],
+    "sentiment": [
+      {
+        "name": "入",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "穩",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "經典",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1014,
+    "brand": "Timemore",
+    "model": "C3",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "25g",
+    "feature": "S2C 刀盤",
+    "priceLevel": "$",
+    "verdict": "C2的刀盤升級版，切削能力和效率顯著提升。",
+    "pros": ["配備 S2C 刀盤", "研磨速度較快", "價格依然實惠"],
+    "cons": ["內部調節不直觀", "軸承等級普通", "無明顯特色"],
+    "sentiment": [
+      {
+        "name": "好",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "無",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1015,
+    "brand": "Timemore",
+    "model": "C3 ESP",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "25g",
+    "feature": "S2C 刀盤/義式微調",
+    "priceLevel": "$",
+    "verdict": "C3針對義式濃縮設計的微調版本，CP 值高。",
+    "pros": ["價格便宜", "可磨義式濃縮", "切削快"],
+    "cons": ["義式調節段數仍少", "軸承普通", "容量小"],
+    "sentiment": [
+      {
+        "name": "夠用",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "升級",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1016,
+    "brand": "Timemore",
+    "model": "Chestnut X",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "雙段調節/摺疊手柄",
+    "priceLevel": "$$$",
+    "verdict": "泰摩旗艦款，帶有摺疊手柄，但性能與價格略顯尷尬。",
+    "pros": ["質感極佳", "摺疊手柄方便收納", "雙段調節設計"],
+    "cons": ["刀盤表現不如預期", "價格定位尷尬", "性價比不如 K 系列"],
+    "sentiment": [
+      {
+        "name": "帥",
+        "value": 65,
+        "color": "#4ade80"
+      },
+      {
+        "name": "悔",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1017,
+    "brand": "Timemore",
+    "model": "Nano",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "15g",
+    "feature": "錐刀/極小摺疊",
+    "priceLevel": "$$$",
+    "verdict": "極小巧、帶有摺疊手柄的精緻旅行磨。",
+    "pros": ["收納方便", "質感好", "體積極小"],
+    "cons": ["容量太小", "不好握持", "舊款產品"],
+    "sentiment": [
+      {
+        "name": "收",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "難",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1018,
+    "brand": "Timemore",
+    "model": "S3",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "S2C890/外調",
+    "priceLevel": "$$",
+    "verdict": "泰摩的新世代外部調節手磨，刀盤升級。",
+    "pros": ["外部調節方便", "全金屬機身", "配備 S2C890 刀盤"],
+    "cons": ["外型設計見仁見智", "機身稍重", "新品待驗證"],
+    "sentiment": [
+      {
+        "name": "新",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "觀",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1019,
+    "brand": "Kinu",
+    "model": "M47 Classic",
+    "type": "手磨",
+    "material": "不鏽鋼",
+    "capacity": "40g",
+    "feature": "47mm錐刀/無段調",
+    "priceLevel": "$$$$",
+    "verdict": "德國坦克級做工，義式濃縮研磨的標竿之一。",
+    "pros": ["機身極度耐用", "研磨速度快", "無段調整極精細"],
+    "cons": ["機身極重", "價格昂貴", "手沖細粉多"],
+    "sentiment": [
+      {
+        "name": "信賴",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "重",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1020,
+    "brand": "Kinu",
+    "model": "M47 Simplicity",
+    "type": "手磨",
+    "material": "不鏽鋼/塑",
+    "capacity": "40g",
+    "feature": "47mm錐刀/輕量化",
+    "priceLevel": "$$$",
+    "verdict": "Classic 的簡化版，以輕量化為取向，保有刀盤性能。",
+    "pros": ["與 Classic 相同的刀盤", "機身較輕", "無段調整"],
+    "cons": ["含有塑膠部件", "價格仍偏高", "微調學習曲線長"],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "塑",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1021,
+    "brand": "Kinu",
+    "model": "M47 Phoenix",
+    "type": "手磨",
+    "material": "不鏽鋼/塑",
+    "capacity": "40g",
+    "feature": "47mm錐刀/最輕",
+    "priceLevel": "$$$",
+    "verdict": "M47 系列中最輕的版本，適合旅行與戶外使用。",
+    "pros": ["機身輕便", "刀盤品質一致", "價格相對便宜"],
+    "cons": ["塑膠部件多", "耐用度有疑慮", "價格仍高於主流"],
+    "sentiment": [
+      {
+        "name": "入",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "塑",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1022,
+    "brand": "Lido",
+    "model": "OG",
+    "type": "手磨",
+    "material": "塑膠/金屬",
+    "capacity": "70g",
+    "feature": "48mm錐刀/大容量",
+    "priceLevel": "$$$",
+    "verdict": "美式巨獸，超大容量適合多人或大量使用。",
+    "pros": ["研磨速度快", "容量超大", "極致微調能力"],
+    "cons": ["體積巨大", "難以攜帶", "外型設計老派"],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "習",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1023,
+    "brand": "Lido",
+    "model": "3",
+    "type": "手磨",
+    "material": "塑膠/金屬",
+    "capacity": "70g",
+    "feature": "48mm錐刀/便攜",
+    "priceLevel": "$$$",
+    "verdict": "經典不敗，摺疊設計方便露營攜帶。",
+    "pros": ["極度耐用", "研磨快", "容量大"],
+    "cons": ["體積巨大", "難以攜帶", "調節難"],
+    "sentiment": [
+      {
+        "name": "懷",
+        "value": 65,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1024,
+    "brand": "Weber",
+    "model": "HG-2",
+    "type": "手磨",
+    "material": "不鏽鋼",
+    "capacity": "50g",
+    "feature": "83mm巨型錐刀/藝術品",
+    "priceLevel": "$$$$$",
+    "verdict": "手磨的終點站，如同藝術品的收藏級磨豆機。",
+    "pros": ["83mm大錐刀帶來極致風味", "研磨品質極佳", "如同藝術品的設計與做工"],
+    "cons": ["價格極其昂貴", "體積巨大", "操作流程繁瑣"],
+    "sentiment": [
+      {
+        "name": "夢",
+        "value": 95,
+        "color": "#4ade80"
+      },
+      {
+        "name": "窮",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "賞",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1025,
+    "brand": "Weber",
+    "model": "HG-1",
+    "type": "手磨",
+    "material": "不鏽鋼",
+    "capacity": "50g",
+    "feature": "83mm錐刀/經典",
+    "priceLevel": "$$$$$",
+    "verdict": "HG-2前身，經典大刀盤手磨，設計優雅。",
+    "pros": ["大刀盤風味濃郁", "經典設計", "機身穩定"],
+    "cons": ["清潔不易", "研磨調節困難", "體積龐大"],
+    "sentiment": [
+      {
+        "name": "典",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "難",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1026,
+    "brand": "Pietro",
+    "model": "Pro Brewing",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "60g",
+    "feature": "58mm平刀/直立",
+    "priceLevel": "$$$$$",
+    "verdict": "手磨裝平刀的異類，直立操作設計前衛。",
+    "pros": ["平刀帶來的乾淨風味", "獨特的直立操作", "外型設計前衛"],
+    "cons": ["機身大", "施力角度不順手", "價格昂貴"],
+    "sentiment": [
+      {
+        "name": "獨特",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "難",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1027,
+    "brand": "Etzinger",
+    "model": "Etz-I",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "專利錐刀/特殊機構",
+    "priceLevel": "$$$$",
+    "verdict": "獨特調整機構，市場上少見的高品質手磨。",
+    "pros": ["刀盤研磨特殊", "調節方便", "做工好"],
+    "cons": ["價格昂貴", "機身重", "手柄易鬆"],
+    "sentiment": [
+      {
+        "name": "獨特",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1028,
+    "brand": "Mazzer",
+    "model": "Omega",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "47mm錐刀/外調",
+    "priceLevel": "$$$$",
+    "verdict": "義式大廠 Mazzer 的手磨嘗試，做工精良。",
+    "pros": ["做工好", "義式表現佳", "外部調節方便"],
+    "cons": ["價格昂貴", "機身重", "手沖風味普通"],
+    "sentiment": [
+      {
+        "name": "信賴",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "猶豫",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1029,
+    "brand": "Knock",
+    "model": "Aergrind",
+    "type": "手磨",
+    "material": "金屬",
+    "capacity": "25g",
+    "feature": "38mm錐刀/愛樂壓專用",
+    "priceLevel": "$$",
+    "verdict": "專為塞進愛樂壓設計，便攜且堅固。",
+    "pros": ["便攜", "無段調整", "堅固"],
+    "cons": ["容量小", "調整環難用", "刻度難讀"],
+    "sentiment": [
+      {
+        "name": "搭配",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "雜",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1030,
+    "brand": "Porlex",
+    "model": "Mini II",
+    "type": "手磨",
+    "material": "不鏽鋼",
+    "capacity": "20g",
+    "feature": "陶瓷刀/輕量",
+    "priceLevel": "$$",
+    "verdict": "登山露營專用，輕巧不怕水的陶瓷刀磨豆機。",
+    "pros": ["機身極輕", "不怕水可直接水洗", "體積小"],
+    "cons": ["研磨速度慢", "顆粒均勻度差", "陶瓷刀易破"],
+    "sentiment": [
+      {
+        "name": "便攜",
+        "value": 60,
+        "color": "#4ade80"
+      },
+      {
+        "name": "難",
+        "value": 30,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1031,
+    "brand": "Porlex",
+    "model": "Tall II",
+    "type": "手磨",
+    "material": "不鏽鋼",
+    "capacity": "30g",
+    "feature": "陶瓷刀/大容量",
+    "priceLevel": "$$",
+    "verdict": "Mini 長版，容量較大，適合多人旅行使用。",
+    "pros": ["容量較大", "可水洗", "機身輕"],
+    "cons": ["研磨速度慢", "顆粒不均", "機身長"],
+    "sentiment": [
+      {
+        "name": "便攜",
+        "value": 60,
+        "color": "#4ade80"
+      },
+      {
+        "name": "難",
+        "value": 30,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1032,
+    "brand": "Hario",
+    "model": "Skerton Pro",
+    "type": "手磨",
+    "material": "玻璃/塑",
+    "capacity": "100g",
+    "feature": "陶瓷刀/軸心晃",
+    "priceLevel": "$",
+    "verdict": "新手的第一個坑，軸心易晃動導致研磨不均。",
+    "pros": ["價格便宜", "容量大", "玻璃罐易於儲存"],
+    "cons": ["研磨速度極慢", "顆粒極度不均勻", "軸心晃動嚴重"],
+    "sentiment": [
+      {
+        "name": "懷",
+        "value": 40,
+        "color": "#4ade80"
+      },
+      {
+        "name": "痛",
+        "value": 50,
+        "color": "#f87171"
+      },
+      {
+        "name": "無",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1033,
+    "brand": "Hario",
+    "model": "Slim MSS-1",
+    "type": "手磨",
+    "material": "塑膠",
+    "capacity": "24g",
+    "feature": "陶瓷刀/極輕",
+    "priceLevel": "$",
+    "verdict": "極輕便，但研磨品質差，軸心問題嚴重。",
+    "pros": ["機身輕巧", "價格便宜", "可水洗"],
+    "cons": ["研磨速度慢", "顆粒不均勻", "塑膠機身易裂"],
+    "sentiment": [
+      {
+        "name": "便",
+        "value": 50,
+        "color": "#4ade80"
+      },
+      {
+        "name": "難",
+        "value": 40,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1034,
+    "brand": "VSSL",
+    "model": "Java",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "20g",
+    "feature": "錐刀/戶外",
+    "priceLevel": "$$$",
+    "verdict": "外型酷似手電筒，極度堅固的野外專用磨豆機。",
+    "pros": ["極度堅固耐用", "手柄可作為扣環設計", "外型設計帥氣"],
+    "cons": ["價格昂貴", "磨豆品質普通", "機身偏重"],
+    "sentiment": [
+      {
+        "name": "帥",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "戶外",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1035,
+    "brand": "Comandante",
+    "model": "X25 Trailmaster",
+    "type": "手磨",
+    "material": "Polymer",
+    "capacity": "25g",
+    "feature": "聚合物機身/輕量",
+    "priceLevel": "$$$$",
+    "verdict": "C40的戶外輕量版，保留刀盤品質，堅固耐摔。",
+    "pros": ["機身極輕量化", "保留 C40 刀盤品質", "更堅固耐摔"],
+    "cons": ["價格昂貴", "聚合物質感不如木頭", "研磨速度普通"],
+    "sentiment": [
+      {
+        "name": "輕量",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "價位",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "旅行",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1036,
+    "brand": "Timemore",
+    "model": "Sculptor 078",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "80g",
+    "feature": "78mm錐刀/可變速",
+    "priceLevel": "$$$$",
+    "verdict": "Sculptor 系列的錐刀代表，風味厚實均衡。",
+    "pros": ["78mm大錐刀", "研磨速度快", "可變轉速"],
+    "cons": ["機身巨大", "風味不如平刀細膩", "清潔不易"],
+    "sentiment": [
+      {
+        "name": "均衡",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "大",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1101,
+    "brand": "Niche",
+    "model": "Zero",
+    "type": "電磨",
+    "material": "鋁合金/木",
+    "capacity": "50g",
+    "feature": "63mm錐刀/零殘粉",
+    "priceLevel": "$$$$$",
+    "verdict": "錐刀單劑量王者，義式濃縮愛用機。",
+    "pros": ["實測極低殘粉", "工作流順暢", "濃縮咖啡風味醇厚"],
+    "cons": ["手沖風味普通", "價格昂貴", "外型設計特殊"],
+    "sentiment": [
+      {
+        "name": "拜",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "糾結",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "義式",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1102,
+    "brand": "Niche",
+    "model": "Duo",
+    "type": "電磨",
+    "material": "鋁合金/木",
+    "capacity": "50g",
+    "feature": "83mm平刀/雙刀盤",
+    "priceLevel": "$$$$$",
+    "verdict": "Zero 的平刀升級版，可互換錐刀與平刀。",
+    "pros": ["雙刀盤可互換", "平刀風味更乾淨", "工作流佳"],
+    "cons": ["價格更高昂", "換刀盤手續較麻煩", "機身巨大"],
+    "sentiment": [
+      {
+        "name": "嚮往",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "窮",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "觀望",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1103,
+    "brand": "Fellow",
+    "model": "Ode Gen 2",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "80g",
+    "feature": "64mm平刀/手沖專用",
+    "priceLevel": "$$$$",
+    "verdict": "手沖專用顏值機，二代刀盤與除靜電提升研磨品質。",
+    "pros": ["二代刀盤研磨品質高", "具備除靜電功能", "機身設計安靜"],
+    "cons": ["不能研磨義式濃縮", "殘粉量大", "價格偏貴"],
+    "sentiment": [
+      {
+        "name": "滿意",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "侷限",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1104,
+    "brand": "Fellow",
+    "model": "Opus",
+    "type": "電磨",
+    "material": "塑膠",
+    "capacity": "110g",
+    "feature": "六芯錐刀/全能",
+    "priceLevel": "$$",
+    "verdict": "外型出眾的全能型入門電磨，義式手沖皆可。",
+    "pros": ["義式與手沖皆可", "高扭力馬達", "外型設計簡約"],
+    "cons": ["研磨調整複雜", "塑膠感重", "殘粉量大"],
+    "sentiment": [
+      {
+        "name": "受",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "雜",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1105,
+    "brand": "Baratza",
+    "model": "Encore",
+    "type": "電磨",
+    "material": "塑膠",
+    "capacity": "225g",
+    "feature": "40mm錐刀/入門",
+    "priceLevel": "$",
+    "verdict": "萬年入門長青樹，耐用且維修容易。",
+    "pros": ["價格便宜", "維修容易取得零件", "極度耐操"],
+    "cons": ["研磨聲音吵雜", "研磨速度慢", "細粉量多"],
+    "sentiment": [
+      {
+        "name": "實",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "習",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1106,
+    "brand": "Baratza",
+    "model": "Encore ESP",
+    "type": "電磨",
+    "material": "塑膠",
+    "capacity": "230g",
+    "feature": "義式升級版/精細調",
+    "priceLevel": "$$",
+    "verdict": "Encore 的義式專門升級版，增加精細刻度。",
+    "pros": ["可磨義式濃縮", "刻度多", "性價比高"],
+    "cons": ["研磨聲音仍吵雜", "塑膠感重", "容易結塊"],
+    "sentiment": [
+      {
+        "name": "升",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1107,
+    "brand": "Baratza",
+    "model": "Sette 270",
+    "type": "電磨",
+    "material": "塑膠",
+    "capacity": "300g",
+    "feature": "極速/零殘粉",
+    "priceLevel": "$$$",
+    "verdict": "極速出粉，零殘粉設計，但聲音如雷貫耳。",
+    "pros": ["零殘粉設計", "研磨速度極快", "研磨後粉體蓬鬆"],
+    "cons": ["研磨噪音巨大", "變速箱易損壞", "塑膠機身質感一般"],
+    "sentiment": [
+      {
+        "name": "爽",
+        "value": 65,
+        "color": "#4ade80"
+      },
+      {
+        "name": "鳴",
+        "value": 30,
+        "color": "#f87171"
+      },
+      {
+        "name": "擔憂",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1108,
+    "brand": "Baratza",
+    "model": "Vario W+",
+    "type": "電磨",
+    "material": "金屬/塑",
+    "capacity": "300g",
+    "feature": "秤重/54mm平刀",
+    "priceLevel": "$$$$",
+    "verdict": "內建精準秤重功能的家用高階平刀磨豆機。",
+    "pros": ["研磨秤重精準", "平刀風味乾淨", "機身耐用"],
+    "cons": ["調整滑桿需適應", "研磨噪音較大", "價格昂貴"],
+    "sentiment": [
+      {
+        "name": "準",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1109,
+    "brand": "Baratza",
+    "model": "Forte BG",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "54mm平刀/商用等級",
+    "priceLevel": "$$$$$",
+    "verdict": "商用等級的耐用度，適合重度使用的家用場景。",
+    "pros": ["極度耐用", "觸控介面直觀", "風味表現極佳"],
+    "cons": ["價格非常昂貴", "家用體積過大", "機身重"],
+    "sentiment": [
+      {
+        "name": "強",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1110,
+    "brand": "Timemore",
+    "model": "078s",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "78mm平刀/可變速",
+    "priceLevel": "$$$$$",
+    "verdict": "年度話題磨豆機，配備特殊刀盤，風味獨特。",
+    "pros": ["配備特殊 78mm 刀盤", "可變轉速設計", "磁吸出粉口方便"],
+    "cons": ["新品需養刀才能達到最佳風味", "馬達聲音較大", "經常缺貨"],
+    "sentiment": [
+      {
+        "name": "驚",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "等",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "觀",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1111,
+    "brand": "Timemore",
+    "model": "064s",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "64mm平刀/可換刀",
+    "priceLevel": "$$$",
+    "verdict": "078s 的縮小版，平刀入門高 CP 值選擇。",
+    "pros": ["機身小巧", "可換 64mm 刀盤（如 SSP）", "價格合理"],
+    "cons": ["馬達扭力較弱", "需手動校正", "開關質感不佳"],
+    "sentiment": [
+      {
+        "name": "超",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "猶",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1112,
+    "brand": "Turin",
+    "model": "DF64 Gen 2",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "64mm平刀/改裝平台",
+    "priceLevel": "$$$",
+    "verdict": "磨豆機界的改裝平台，可換刀盤，CP值極高。",
+    "pros": ["CP 值極高", "可換裝 SSP 刀盤", "內建除靜電功能"],
+    "cons": ["外型設計不佳", "研磨噪音大", "機身做工粗糙"],
+    "sentiment": [
+      {
+        "name": "癢",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1113,
+    "brand": "Turin",
+    "model": "DF83V",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "83mm平刀/可變速",
+    "priceLevel": "$$$$$",
+    "verdict": "可變速大刀盤，家用暴力美學的代表。",
+    "pros": ["研磨速度極快", "風味強勁", "可調整轉速"],
+    "cons": ["機身巨大", "研磨聲音極吵", "容易噴粉"],
+    "sentiment": [
+      {
+        "name": "震",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "怕",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1114,
+    "brand": "Varia",
+    "model": "VS3 Gen 2",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "慢速/38mm錐刀",
+    "priceLevel": "$$$",
+    "verdict": "慢速研磨的小鋼炮，外型極簡，風味乾淨。",
+    "pros": ["機身小巧", "研磨安靜", "風味乾淨"],
+    "cons": ["研磨速度極慢", "外接電源體積大", "刀盤尺寸小"],
+    "sentiment": [
+      {
+        "name": "喜",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "急",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1115,
+    "brand": "Lagom",
+    "model": "P64",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "64mm平刀/頂級",
+    "priceLevel": "$$$$$",
+    "verdict": "單劑量磨豆機的頂點之一，設計與性能完美結合。",
+    "pros": ["極致做工", "研磨安靜", "風味精準"],
+    "cons": ["價格極其昂貴", "需長時間排隊購買", "市場供應稀少"],
+    "sentiment": [
+      {
+        "name": "夢",
+        "value": 95,
+        "color": "#4ade80"
+      },
+      {
+        "name": "窮",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "賞",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1116,
+    "brand": "Lagom",
+    "model": "Mini",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "48mm錐刀/極簡",
+    "priceLevel": "$$$",
+    "verdict": "最美的小型電動錐刀磨豆機。",
+    "pros": ["機身極小巧", "外型極簡好看", "風味表現優良"],
+    "cons": ["不適合連續研磨", "變壓器體積大", "淺焙豆容易卡豆"],
+    "sentiment": [
+      {
+        "name": "愛",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "擔憂",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1117,
+    "brand": "Eureka",
+    "model": "Specialita",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "55mm平刀/安靜",
+    "priceLevel": "$$$",
+    "verdict": "義式家用標準配備，靜音且耐用。",
+    "pros": ["研磨過程安靜", "機身耐用", "觸控定時方便"],
+    "cons": ["調節鈕太小難以微調", "有殘粉問題", "清潔困難"],
+    "sentiment": [
+      {
+        "name": "穩",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "麻煩",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1118,
+    "brand": "Eureka",
+    "model": "Atom 75",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1200g",
+    "feature": "75mm平刀/極速靜音",
+    "priceLevel": "$$$$$",
+    "verdict": "極速靜音的家用攻頂機，適合重度使用。",
+    "pros": ["研磨速度極快", "研磨過程非常安靜", "風味表現佳"],
+    "cons": ["體積巨大", "仍有殘粉", "價格昂貴"],
+    "sentiment": [
+      {
+        "name": "爽",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "大",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1119,
+    "brand": "Eureka",
+    "model": "Mignon Zero",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "單劑量/吹氣倉",
+    "priceLevel": "$$$",
+    "verdict": "Mignon 系列的單劑量專用版本，配備吹氣倉。",
+    "pros": ["零殘粉設計（需搭配吹氣倉）", "研磨安靜", "機身小巧"],
+    "cons": ["刻度調整難以掌握", "實際仍有少量殘粉", "CP值普通"],
+    "sentiment": [
+      {
+        "name": "便",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "雜",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1120,
+    "brand": "Mahlkonig",
+    "model": "EK43",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1.5kg",
+    "feature": "98mm平刀/商用",
+    "priceLevel": "$$$$$",
+    "verdict": "咖啡店用神機，極致的粒徑分佈與風味表現。",
+    "pros": ["粒徑分佈極好", "研磨速度極快", "機身極度耐用"],
+    "cons": ["體積巨大", "價格極其昂貴", "需校正確保性能"],
+    "sentiment": [
+      {
+        "name": "聖",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "無",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "賞",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1121,
+    "brand": "Mahlkonig",
+    "model": "X54",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "500g",
+    "feature": "54mm平刀/全能",
+    "priceLevel": "$$$",
+    "verdict": "Mahlkonig 的家用全能機，品牌信仰加持。",
+    "pros": ["品牌信仰", "研磨過程安靜", "顆粒均勻度尚可"],
+    "cons": ["刻度調整緩慢", "殘粉問題存在", "價格偏貴"],
+    "sentiment": [
+      {
+        "name": "信",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "失",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1122,
+    "brand": "Kalita",
+    "model": "Next G2",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "60g",
+    "feature": "陶瓷平刀/靜音",
+    "priceLevel": "$$$$$",
+    "verdict": "靜音慢磨，日系風味代表，帶有除靜電功能。",
+    "pros": ["研磨非常安靜", "研磨顆粒圓潤", "具備除靜電功能"],
+    "cons": ["研磨速度緩慢", "價格昂貴", "極淺焙豆研磨吃力"],
+    "sentiment": [
+      {
+        "name": "雅",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "急",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1123,
+    "brand": "Fuji Royal",
+    "model": "R-220",
+    "type": "電磨",
+    "material": "鑄鐵",
+    "capacity": "250g",
+    "feature": "鬼齒刀盤/日系",
+    "priceLevel": "$$$",
+    "verdict": "小富士，鬼齒刀盤帶來的圓潤甜感。",
+    "pros": ["能修飾雜味使口感圓潤", "機身耐用", "殘粉少"],
+    "cons": ["細粉量多", "外型復古不討喜", "價格偏貴"],
+    "sentiment": [
+      {
+        "name": "信賴",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "嫌",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "習",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1124,
+    "brand": "Breville",
+    "model": "SGP (Smart Grinder Pro)",
+    "type": "電磨",
+    "material": "不鏽鋼/塑",
+    "capacity": "450g",
+    "feature": "錐刀/功能全",
+    "priceLevel": "$$",
+    "verdict": "功能最全的入門機，從手沖到濃縮皆可用。",
+    "pros": ["功能模式眾多", "可換把手架方便義式", "價格便宜"],
+    "cons": ["細粉多", "容易結塊", "殘粉嚴重"],
+    "sentiment": [
+      {
+        "name": "便",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "清",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1125,
+    "brand": "Wilfa",
+    "model": "Svart",
+    "type": "電磨",
+    "material": "塑膠/金屬",
+    "capacity": "250g",
+    "feature": "錐刀/北歐手沖",
+    "priceLevel": "$$$",
+    "verdict": "北歐設計，手沖專用，好用實在。",
+    "pros": ["價格合理", "設計美觀", "手沖品質佳"],
+    "cons": ["不能磨義式濃縮", "馬達聲尖銳", "已停產"],
+    "sentiment": [
+      {
+        "name": "懷",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "遺",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1126,
+    "brand": "Turin",
+    "model": "DF54",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "54mm平刀/CP值",
+    "priceLevel": "$$",
+    "verdict": "平刀入門的性價比破壞者，內建除靜電。",
+    "pros": ["價格便宜", "平刀風味乾淨", "內建除靜電"],
+    "cons": ["聲音尖銳", "機身做工普通", "研磨慢"],
+    "sentiment": [
+      {
+        "name": "超",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1127,
+    "brand": "Option-O",
+    "model": "Lagom 01",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "98/102mm大平刀/單劑量",
+    "priceLevel": "$$$$$",
+    "verdict": "家用巨獸，極致大刀盤帶來頂級風味。",
+    "pros": ["極致風味表現", "可換大刀盤", "科技感十足"],
+    "cons": ["價格天價", "體積巨大", "常態缺貨"],
+    "sentiment": [
+      {
+        "name": "夢",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "絕",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "賞",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1128,
+    "brand": "Femobook",
+    "model": "A68",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "40g",
+    "feature": "68mm錐刀/可變速",
+    "priceLevel": "$$$$",
+    "verdict": "台灣設計製造，錐刀風味醇厚甜感佳。",
+    "pros": ["風味甜感重", "做工精細", "轉速可調"],
+    "cons": ["價格高昂", "品牌知名度較低", "變壓器體積大"],
+    "sentiment": [
+      {
+        "name": "支持",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1129,
+    "brand": "Kafatek",
+    "model": "Monolith Flat",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "75mm平刀/零殘粉",
+    "priceLevel": "$$$$$",
+    "verdict": "發燒友的終極目標之一，極致零殘粉與風味。",
+    "pros": ["刀盤對齊完美", "風味極致乾淨", "坦克級做工"],
+    "cons": ["極難買", "價格極貴", "等待時間極長"],
+    "sentiment": [
+      {
+        "name": "神",
+        "value": 95,
+        "color": "#4ade80"
+      },
+      {
+        "name": "窮",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "等",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1130,
+    "brand": "Kafatek",
+    "model": "MC6",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "錐刀/頂級醇厚",
+    "priceLevel": "$$$$$",
+    "verdict": "錐刀機的頂點，帶來傳統義式濃縮的醇厚風味。",
+    "pros": ["口感極度醇厚", "操作工作流簡單", "機身耐用"],
+    "cons": ["極難買", "價格極貴", "外型工藝風"],
+    "sentiment": [
+      {
+        "name": "頂",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "窮",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "賞",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1131,
+    "brand": "Option-O",
+    "model": "Lagom P100",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "80g",
+    "feature": "100mm平刀/變速",
+    "priceLevel": "$$$$$",
+    "verdict": "旗艦級別的 100mm 平刀機，風味極致乾淨。",
+    "pros": ["100mm 大刀盤風味極佳", "可調整轉速", "安靜且低殘粉"],
+    "cons": ["天價", "體積龐大", "等待期長"],
+    "sentiment": [
+      {
+        "name": "神",
+        "value": 95,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "賞",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1132,
+    "brand": "Timemore",
+    "model": "Sculptor 064",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "64mm平刀/可換刀",
+    "priceLevel": "$$$",
+    "verdict": "Sculptor 平刀入門，可換刀盤，高 CP 值。",
+    "pros": ["平刀風味", "可換刀盤", "可變轉速"],
+    "cons": ["馬達力道普通", "研磨聲音尖銳", "需校正"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1133,
+    "brand": "Acaia",
+    "model": "Orbit",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "64mm平刀/Acaia App",
+    "priceLevel": "$$$$$",
+    "verdict": "Acaia 的首款電磨，結合了 App 科技，零殘粉設計。",
+    "pros": ["極低殘粉", "App 智慧連動", "設計極簡美觀"],
+    "cons": ["價格極高昂", "研磨速度普通", "需搭配特定電源"],
+    "sentiment": [
+      {
+        "name": "科技",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "嘗鮮",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1134,
+    "brand": "Turin",
+    "model": "DF83",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "80g",
+    "feature": "83mm平刀/大刀盤",
+    "priceLevel": "$$$$",
+    "verdict": "高 CP 值的大刀盤電磨，帶來極佳的風味層次。",
+    "pros": ["83mm 大刀盤風味強", "價格合理", "可換刀盤"],
+    "cons": ["體積大", "噪音大", "殘粉控制普通"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1135,
+    "brand": "Mazzer",
+    "model": "Mini S",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "600g",
+    "feature": "58mm平刀/商用入門",
+    "priceLevel": "$$$$",
+    "verdict": "義式濃縮入門商用機，穩定耐用，傳統設計。",
+    "pros": ["機身極度耐用", "義式研磨穩定", "品牌信賴"],
+    "cons": ["殘粉多", "不適合單劑量", "體積大"],
+    "sentiment": [
+      {
+        "name": "信賴",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "殘粉",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "義式",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1136,
+    "brand": "Weber",
+    "model": "Key Grinder",
+    "type": "電磨",
+    "material": "鋁合金/木",
+    "capacity": "50g",
+    "feature": "83mm錐刀/慢速",
+    "priceLevel": "$$$$$",
+    "verdict": "Weber 的單劑量錐刀機，外型獨特，慢速研磨。",
+    "pros": ["設計感極強", "慢速研磨風味佳", "極低殘粉"],
+    "cons": ["天價", "研磨速度慢", "體積大"],
+    "sentiment": [
+      {
+        "name": "藝術",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "慢",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "收藏",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1137,
+    "brand": "Lagom",
+    "model": "P40",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "40mm錐刀/便攜",
+    "priceLevel": "$$$",
+    "verdict": "Lagom 的便攜型電磨，提供優質的錐刀風味。",
+    "pros": ["機身輕巧", "錐刀風味濃郁", "研磨品質穩定"],
+    "cons": ["容量小", "價格偏高", "市場供應少"],
+    "sentiment": [
+      {
+        "name": "精緻",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1138,
+    "brand": "1Zpresso",
+    "model": "J Max",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "35g",
+    "feature": "48mm鍍鈦/微調",
+    "priceLevel": "$$$$",
+    "verdict": "J-Ultra 的前身，義式研磨表現優秀，調節精細。",
+    "pros": ["研磨速度快", "刻度精細（8.8µm/格）", "甜感突出"],
+    "cons": ["機身較重", "手沖細粉偏多", "已逐漸停產"],
+    "sentiment": [
+      {
+        "name": "義式",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "過時",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "重",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1139,
+    "brand": "1Zpresso",
+    "model": "K Max",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "35g",
+    "feature": "七芯錐刀/快調",
+    "priceLevel": "$$$$",
+    "verdict": "K 系列的經典款，外部調節快速，手沖義式皆可。",
+    "pros": ["外部調節快", "研磨速度快", "風味均衡"],
+    "cons": ["價格高於 K-Ultra", "外觀不如 Ultra 精緻", "機身稍大"],
+    "sentiment": [
+      {
+        "name": "全能",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1140,
+    "brand": "Helor",
+    "model": "101",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "35g",
+    "feature": "40mm錐刀/極簡",
+    "priceLevel": "$$$",
+    "verdict": "曾經的極簡設計代表，做工扎實，研磨穩定。",
+    "pros": ["外型簡約", "研磨穩定性高", "握感舒適"],
+    "cons": ["調節在底部", "研磨速度普通", "市場已冷門"],
+    "sentiment": [
+      {
+        "name": "極簡",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "過時",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1141,
+    "brand": "Lido",
+    "model": "E-T",
+    "type": "手磨",
+    "material": "塑膠/金屬",
+    "capacity": "70g",
+    "feature": "48mm錐刀/旅行義式",
+    "priceLevel": "$$$$",
+    "verdict": "義式濃縮旅行版本，無段調整設計。",
+    "pros": ["研磨品質高", "無段調整精細", "容量大"],
+    "cons": ["體積大難攜帶", "調節環易滑動", "外型笨重"],
+    "sentiment": [
+      {
+        "name": "品質",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "笨重",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1142,
+    "brand": "Varia",
+    "model": "Hand Grinder",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "38mm錐刀/內調",
+    "priceLevel": "$$",
+    "verdict": "Varia 的入門手磨，外型美觀，握感舒適。",
+    "pros": ["外型簡約美觀", "握感舒適", "價格合理"],
+    "cons": ["內部調節不便", "研磨速度慢", "細粉略多"],
+    "sentiment": [
+      {
+        "name": "設計",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "慢",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1143,
+    "brand": "Timemore",
+    "model": "Chestnut G1",
+    "type": "手磨",
+    "material": "鋁合金/木",
+    "capacity": "30g",
+    "feature": "錐刀/木質",
+    "priceLevel": "$$$",
+    "verdict": "泰摩初代旗艦，木質握柄，質感突出。",
+    "pros": ["木質手柄質感佳", "研磨省力", "外型復古"],
+    "cons": ["調節在底部", "細粉多", "價格偏高"],
+    "sentiment": [
+      {
+        "name": "質感",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "細粉",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1144,
+    "brand": "Orphan Espresso",
+    "model": "Apex",
+    "type": "手磨",
+    "material": "鑄鐵/木",
+    "capacity": "50g",
+    "feature": "平刀/搖桿",
+    "priceLevel": "$$$$$",
+    "verdict": "搖桿式手磨，少見的平刀配置，研磨品質高。",
+    "pros": ["平刀風味乾淨", "研磨穩定", "搖桿省力"],
+    "cons": ["體積巨大", "價格極高", "操作流程複雜"],
+    "sentiment": [
+      {
+        "name": "極客",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "難",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1145,
+    "brand": "1Zpresso",
+    "model": "E-Pro",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "錐刀/內調",
+    "priceLevel": "$$",
+    "verdict": "老款的全能手磨，性能均衡。",
+    "pros": ["性能均衡", "研磨穩定", "做工扎實"],
+    "cons": ["內部調節不便", "已停產", "不如新款 K 系列"],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "舊",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1146,
+    "brand": "Knock",
+    "model": "Feld2",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "40g",
+    "feature": "38mm錐刀/手沖",
+    "priceLevel": "$$$",
+    "verdict": "手沖風味優異的經典手磨，做工精良。",
+    "pros": ["風味乾淨", "做工精良", "研磨手感順暢"],
+    "cons": ["調節環難用", "價格偏高", "刻度難以閱讀"],
+    "sentiment": [
+      {
+        "name": "優雅",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "難用",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1147,
+    "brand": "Staresso",
+    "model": "Discovery",
+    "type": "手磨",
+    "material": "鋁合金/塑",
+    "capacity": "20g",
+    "feature": "錐刀/旅行",
+    "priceLevel": "$",
+    "verdict": "價格極低廉的旅行手磨，適合輕度使用。",
+    "pros": ["價格極低", "輕便", "容量夠用"],
+    "cons": ["研磨品質差", "塑膠感重", "細粉多"],
+    "sentiment": [
+      {
+        "name": "便宜",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "差",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1148,
+    "brand": "Lelit",
+    "model": "Fred PL043MMI",
+    "type": "電磨",
+    "material": "不鏽鋼",
+    "capacity": "250g",
+    "feature": "38mm錐刀/義式",
+    "priceLevel": "$$$",
+    "verdict": "Lelit 專為義式機搭配的小巧電磨，義式入門夠用。",
+    "pros": ["體積小巧", "義式刻度精細", "價格合理"],
+    "cons": ["刀盤小", "研磨速度慢", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "小巧",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "慢",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1149,
+    "brand": "Eureka",
+    "model": "Mignon Notte",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "50mm平刀/入門",
+    "priceLevel": "$$",
+    "verdict": "Mignon 系列最入門款，保留了靜音優勢。",
+    "pros": ["研磨安靜", "機身小巧", "價格低廉"],
+    "cons": ["只有定時研磨", "刻度調整粗略", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "安靜",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "陽春",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1150,
+    "brand": "Baratza",
+    "model": "Virtuoso+",
+    "type": "電磨",
+    "material": "金屬/塑",
+    "capacity": "225g",
+    "feature": "40mm錐刀/數位定時",
+    "priceLevel": "$$$",
+    "verdict": "Encore 的升級版，數位定時與更好的錐刀品質。",
+    "pros": ["研磨品質穩定", "數位定時精準", "維修方便"],
+    "cons": ["價格偏高", "研磨噪音大", "塑膠感重"],
+    "sentiment": [
+      {
+        "name": "升級",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1151,
+    "brand": "Mazzer",
+    "model": "Major V Electronic",
+    "type": "電磨",
+    "material": "鑄鋁",
+    "capacity": "1.8kg",
+    "feature": "83mm平刀/商用",
+    "priceLevel": "$$$$$",
+    "verdict": "Mazzer 旗艦商用機，極速研磨，風味醇厚。",
+    "pros": ["研磨速度極快", "83mm 大平刀風味強", "極度耐用"],
+    "cons": ["體積巨大", "價格天價", "不適合單劑量家用"],
+    "sentiment": [
+      {
+        "name": "極速",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "商用",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1152,
+    "brand": "Mahlkonig",
+    "model": "E65S",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1.2kg",
+    "feature": "65mm平刀/安靜",
+    "priceLevel": "$$$$$",
+    "verdict": "Mahlkonig 的靜音商用機，研磨品質高且操作方便。",
+    "pros": ["研磨極度安靜", "觸控螢幕操作簡單", "65mm 大刀盤"],
+    "cons": ["價格昂貴", "家用體積仍大", "殘粉問題"],
+    "sentiment": [
+      {
+        "name": "靜音",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1153,
+    "brand": "Compak",
+    "model": "K10 Fresh",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "1.7kg",
+    "feature": "68mm錐刀/零殘",
+    "priceLevel": "$$$$$",
+    "verdict": "錐刀商用機代表，風味醇厚，殘粉極低。",
+    "pros": ["錐刀風味醇厚", "研磨效率高", "零殘粉設計"],
+    "cons": ["價格昂貴", "體積巨大", "外型復古"],
+    "sentiment": [
+      {
+        "name": "醇厚",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "大",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1154,
+    "brand": "Eureka",
+    "model": "Helios 80",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1.2kg",
+    "feature": "80mm平刀/極速",
+    "priceLevel": "$$$$$",
+    "verdict": "Eureka 的超高速商用磨，研磨速度極快。",
+    "pros": ["研磨速度極快", "80mm 大刀盤", "觸控螢幕"],
+    "cons": ["價格昂貴", "體積大", "噪音大"],
+    "sentiment": [
+      {
+        "name": "極速",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1155,
+    "brand": "Turin",
+    "model": "DF40",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "40g",
+    "feature": "40mm錐刀/入門",
+    "priceLevel": "$",
+    "verdict": "DF 系列最入門款，錐刀設計，體積小巧。",
+    "pros": ["價格便宜", "體積小巧", "零殘粉設計"],
+    "cons": ["研磨品質普通", "塑膠感重", "研磨速度慢"],
+    "sentiment": [
+      {
+        "name": "入門",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "慢",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1156,
+    "brand": "Eureka",
+    "model": "Mignon Manuale",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "50mm平刀/基礎",
+    "priceLevel": "$$",
+    "verdict": "Mignon 系列的基礎手動版，適合預算有限者。",
+    "pros": ["機身穩定", "研磨安靜", "義式刻度夠用"],
+    "cons": ["無定時功能", "殘粉多", "清潔不易"],
+    "sentiment": [
+      {
+        "name": "基礎",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "陽春",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1157,
+    "brand": "Turin",
+    "model": "DF64E",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "250g",
+    "feature": "64mm平刀/義式定時",
+    "priceLevel": "$$$",
+    "verdict": "DF64 的定時義式版，帶有撥粉器。",
+    "pros": ["義式定時功能", "撥粉器減少殘粉", "可換刀盤"],
+    "cons": ["體積大", "噪音大", "外型笨重"],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "醜",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1158,
+    "brand": "La Marzocco",
+    "model": "Swift",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1.5kg",
+    "feature": "錐刀/自動壓粉",
+    "priceLevel": "$$$$$",
+    "verdict": "自動研磨、自動壓粉的商用機，極致便利。",
+    "pros": ["全自動研磨壓粉", "極度省時省力", "品牌頂級"],
+    "cons": ["天價", "清潔維護複雜", "不適合家用"],
+    "sentiment": [
+      {
+        "name": "極致",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "方便",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1159,
+    "brand": "Turin",
+    "model": "DF75",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "80g",
+    "feature": "75mm平刀/單劑量",
+    "priceLevel": "$$$$",
+    "verdict": "DF 系列大刀盤單劑量機，提供強勁風味。",
+    "pros": ["75mm 大平刀", "價格合理", "單劑量設計"],
+    "cons": ["噪音大", "體積大", "做工粗糙"],
+    "sentiment": [
+      {
+        "name": "強勁",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1160,
+    "brand": "Acaia",
+    "model": "Lunar Grinder",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "40mm錐刀/超靜音",
+    "priceLevel": "$$$$$",
+    "verdict": "Acaia 的靜音單劑量機，專注於極致安靜與精度。",
+    "pros": ["極致安靜", "研磨精度高", "App 連動"],
+    "cons": ["價格天價", "研磨速度慢", "尚未量產"],
+    "sentiment": [
+      {
+        "name": "未來",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "靜音",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1161,
+    "brand": "La Pavoni",
+    "model": "Jolly Doser",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "38mm錐刀/復古",
+    "priceLevel": "$$",
+    "verdict": "復古設計的錐刀電磨，適合搭配復古義式機。",
+    "pros": ["復古造型美觀", "機身耐用", "價格合理"],
+    "cons": ["研磨品質普通", "細粉多", "出粉口易卡粉"],
+    "sentiment": [
+      {
+        "name": "復古",
+        "value": 65,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "舊",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1162,
+    "brand": "Mazzer",
+    "model": "Kony E",
+    "type": "電磨",
+    "material": "鑄鋁",
+    "capacity": "1.3kg",
+    "feature": "63mm錐刀/安靜",
+    "priceLevel": "$$$$$",
+    "verdict": "義式錐刀經典，帶來醇厚口感和極佳穩定性。",
+    "pros": ["錐刀風味醇厚", "研磨穩定", "安靜"],
+    "cons": ["體積大", "價格昂貴", "清潔維護複雜"],
+    "sentiment": [
+      {
+        "name": "醇厚",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "穩",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1163,
+    "brand": "Rancilio",
+    "model": "Kryo 65 OD",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "1kg",
+    "feature": "64mm平刀/低溫",
+    "priceLevel": "$$$$",
+    "verdict": "專為低溫研磨設計，保持咖啡豆最佳風味。",
+    "pros": ["低溫研磨保鮮", "64mm 大刀盤", "義式表現優異"],
+    "cons": ["體積大", "價格高", "清潔不易"],
+    "sentiment": [
+      {
+        "name": "保鮮",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "熱",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1164,
+    "brand": "Acaia",
+    "model": "Pyxis Grinder",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "20g",
+    "feature": "40mm平刀/極小",
+    "priceLevel": "$$$$",
+    "verdict": "Acaia 概念機，極小巧的平刀單劑量機。",
+    "pros": ["體積極小巧", "平刀風味乾淨", "設計精緻"],
+    "cons": ["容量小", "價格極高", "市場少見"],
+    "sentiment": [
+      {
+        "name": "精緻",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "小",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1165,
+    "brand": "Turin",
+    "model": "DF64P",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "64mm平刀/義式",
+    "priceLevel": "$$$",
+    "verdict": "DF64 的義式濃縮專用版，優化出粉結構。",
+    "pros": ["義式濃縮表現好", "零殘粉設計", "可換刀盤"],
+    "cons": ["手沖刻度難調", "噪音大", "外型設計普通"],
+    "sentiment": [
+      {
+        "name": "義式",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1166,
+    "brand": "Wilfa",
+    "model": "Uniform",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "75g",
+    "feature": "58mm平刀/秤重",
+    "priceLevel": "$$$$",
+    "verdict": "北歐設計，內建精密電子秤，研磨品質高。",
+    "pros": ["內建電子秤", "設計美觀", "研磨品質穩定"],
+    "cons": ["價格高", "不能磨義式濃縮", "研磨速度慢"],
+    "sentiment": [
+      {
+        "name": "精準",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1167,
+    "brand": "Baratza",
+    "model": "Vario Home",
+    "type": "電磨",
+    "material": "金屬/塑",
+    "capacity": "300g",
+    "feature": "54mm平刀/家用",
+    "priceLevel": "$$$",
+    "verdict": "Baratza 經典家用平刀機，適合手沖和義式。",
+    "pros": ["風味乾淨", "可調範圍廣", "機身耐用"],
+    "cons": ["無秤重功能", "噪音大", "調節桿易誤觸"],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1168,
+    "brand": "Fellow",
+    "model": "Ode Gen 1",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "80g",
+    "feature": "64mm平刀/舊版",
+    "priceLevel": "$$$",
+    "verdict": "Ode 初代機，需改裝刀盤以獲得最佳風味。",
+    "pros": ["外型美觀", "研磨安靜", "價格便宜"],
+    "cons": ["刀盤品質普通", "靜電嚴重", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "升級",
+        "value": 60,
+        "color": "#4ade80"
+      },
+      {
+        "name": "靜電",
+        "value": 30,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1169,
+    "brand": "Eureka",
+    "model": "Atom 65",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1200g",
+    "feature": "65mm平刀/靜音",
+    "priceLevel": "$$$$",
+    "verdict": "Atom 系列的小型版，兼顧速度與安靜度。",
+    "pros": ["研磨安靜", "65mm 大刀盤", "義式表現優異"],
+    "cons": ["體積大", "價格高", "清潔不易"],
+    "sentiment": [
+      {
+        "name": "安靜",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1170,
+    "brand": "Timemore",
+    "model": "Electric Grinder 02",
+    "type": "電磨",
+    "material": "鋁合金/木",
+    "capacity": "60g",
+    "feature": "40mm錐刀/質感",
+    "priceLevel": "$$",
+    "verdict": "泰摩錐刀電磨，體積小巧，適合手沖入門。",
+    "pros": ["外型簡約", "價格合理", "錐刀風味濃郁"],
+    "cons": ["錐刀易產細粉", "研磨速度普通", "調節在底部"],
+    "sentiment": [
+      {
+        "name": "入門",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "細粉",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1171,
+    "brand": "Fiorenzato",
+    "model": "AllGround",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "250g",
+    "feature": "64mm平刀/通用",
+    "priceLevel": "$$$$",
+    "verdict": "義大利製造的全能家用機，義式和手沖皆可。",
+    "pros": ["一機通用", "64mm 大刀盤", "做工扎實"],
+    "cons": ["價格高昂", "調節不夠精細", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "全能",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1172,
+    "brand": "Rancilio",
+    "model": "Rocky Doserless",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "50mm平刀/耐用",
+    "priceLevel": "$$$",
+    "verdict": "家用機的硬漢代表，極度耐用，適合搭配 Rancilio Silvia。",
+    "pros": ["極度耐用", "機身穩定", "義式表現扎實"],
+    "cons": ["噪音大", "外型老舊", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "耐操",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "舊",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1173,
+    "brand": "Mazzer",
+    "model": "Super Jolly V Pro",
+    "type": "電磨",
+    "material": "鑄鋁",
+    "capacity": "1.1kg",
+    "feature": "64mm平刀/商用",
+    "priceLevel": "$$$$$",
+    "verdict": "Mazzer 經典商用機的進化版，更靜音、更耐用。",
+    "pros": ["極度耐用", "研磨速度快", "靜音設計"],
+    "cons": ["體積大", "價格昂貴", "家用略顯 overkill"],
+    "sentiment": [
+      {
+        "name": "專業",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1174,
+    "brand": "HeyCafe",
+    "model": "HC-600 V2",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "1.2kg",
+    "feature": "64mm平刀/商用",
+    "priceLevel": "$$$",
+    "verdict": "高 CP 值的商用入門機，性能穩定。",
+    "pros": ["價格合理", "64mm 平刀", "穩定性高"],
+    "cons": ["外型普通", "噪音大", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1175,
+    "brand": "Lido",
+    "model": "2",
+    "type": "手磨",
+    "material": "塑膠/金屬",
+    "capacity": "70g",
+    "feature": "48mm錐刀/大容量",
+    "priceLevel": "$$$",
+    "verdict": "Lido 系列的經典機型，堅固耐用，適合手沖。",
+    "pros": ["研磨品質高", "容量大", "做工扎實"],
+    "cons": ["體積巨大", "難以攜帶", "調節複雜"],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "笨重",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1176,
+    "brand": "Orphan Espresso",
+    "model": "Pharos 2.0",
+    "type": "手磨",
+    "material": "鑄鐵/塑",
+    "capacity": "50g",
+    "feature": "68mm錐刀/大刀",
+    "priceLevel": "$$$$",
+    "verdict": "極致大刀盤手磨，研磨速度快且省力。",
+    "pros": ["68mm 大錐刀", "研磨省力", "風味醇厚"],
+    "cons": ["機身笨重", "清潔維護複雜", "價格昂貴"],
+    "sentiment": [
+      {
+        "name": "強勁",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "重",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1177,
+    "brand": "La Pavoni",
+    "model": "Zip",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1kg",
+    "feature": "58mm平刀/商用",
+    "priceLevel": "$$$",
+    "verdict": "La Pavoni 經典商用機，穩定耐用。",
+    "pros": ["機身堅固", "研磨穩定", "價格合理"],
+    "cons": ["外型復古", "噪音大", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "耐用",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1178,
+    "brand": "Eureka",
+    "model": "Mignon Libra",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "秤重/零殘粉",
+    "priceLevel": "$$$$",
+    "verdict": "Mignon 系列的單劑量秤重版，義式極致精準。",
+    "pros": ["內建秤重功能", "零殘粉設計", "研磨精準"],
+    "cons": ["價格昂貴", "秤重反應稍慢", "清潔不易"],
+    "sentiment": [
+      {
+        "name": "精準",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1179,
+    "brand": "Mahlkonig",
+    "model": "K30 Vario Air",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1.5kg",
+    "feature": "65mm平刀/溫控",
+    "priceLevel": "$$$$$",
+    "verdict": "K30 的溫控散熱版，確保研磨時的風味穩定。",
+    "pros": ["溫控散熱佳", "研磨速度快", "靜音設計"],
+    "cons": ["體積巨大", "價格天價", "家用不適用"],
+    "sentiment": [
+      {
+        "name": "專業",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "穩",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1180,
+    "brand": "Turin",
+    "model": "DF64V",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "64mm平刀/變速",
+    "priceLevel": "$$$$",
+    "verdict": "DF64 的可變轉速版本，提供風味微調能力。",
+    "pros": ["可變轉速", "平刀風味乾淨", "可換刀盤"],
+    "cons": ["價格高", "外型普通", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "玩",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1181,
+    "brand": "Baratza",
+    "model": "Encore Pro",
+    "type": "電磨",
+    "material": "塑膠",
+    "capacity": "250g",
+    "feature": "錐刀/手沖優化",
+    "priceLevel": "$$",
+    "verdict": "Encore 的手沖優化版本，錐刀品質更高。",
+    "pros": ["手沖風味提升", "價格合理", "耐用"],
+    "cons": ["研磨噪音大", "不適合義式", "塑膠感重"],
+    "sentiment": [
+      {
+        "name": "手沖",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1182,
+    "brand": "Eureka",
+    "model": "Mignon Filtro",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "50mm平刀/手沖",
+    "priceLevel": "$$",
+    "verdict": "Mignon 系列的手沖專用機，簡化了刻度設計。",
+    "pros": ["機身安靜", "手沖刻度易調", "體積小巧"],
+    "cons": ["不能磨義式濃縮", "殘粉多", "清潔不易"],
+    "sentiment": [
+      {
+        "name": "簡化",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "侷限",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1183,
+    "brand": "1Zpresso",
+    "model": "Q2",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "20g",
+    "feature": "38mm錐刀/極小",
+    "priceLevel": "$$",
+    "verdict": "Q 系列的經典款，極致便攜，適合單杯手沖。",
+    "pros": ["體積極小", "研磨品質穩定", "做工扎實"],
+    "cons": ["容量小", "內部調節", "手柄較短"],
+    "sentiment": [
+      {
+        "name": "便攜",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "小",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1184,
+    "brand": "Cafelat",
+    "model": "Manual Grinder",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "錐刀/Robot專用",
+    "priceLevel": "$$$$",
+    "verdict": "Cafelat Robot 專屬手磨，簡約設計。",
+    "pros": ["設計簡約", "研磨穩定", "義式表現好"],
+    "cons": ["價格昂貴", "調節不直觀", "市場少見"],
+    "sentiment": [
+      {
+        "name": "搭配",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1185,
+    "brand": "Ascaso",
+    "model": "i-Mini i1",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "250g",
+    "feature": "54mm平刀/無殘",
+    "priceLevel": "$$$$",
+    "verdict": "Ascaso 的極簡風格單劑量磨豆機。",
+    "pros": ["外型設計極簡", "零殘粉設計", "無段調節"],
+    "cons": ["價格高昂", "研磨噪音大", "清潔不易"],
+    "sentiment": [
+      {
+        "name": "設計",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1186,
+    "brand": "Eureka",
+    "model": "Mignon XL",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "65mm平刀/靜音",
+    "priceLevel": "$$$$",
+    "verdict": "Mignon 系列的旗艦款，65mm 靜音大刀盤。",
+    "pros": ["65mm 大刀盤", "研磨極度安靜", "義式濃縮表現優異"],
+    "cons": ["價格高昂", "體積較大", "清潔繁瑣"],
+    "sentiment": [
+      {
+        "name": "靜音",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1187,
+    "brand": "Mahlkonig",
+    "model": "Vario Home",
+    "type": "電磨",
+    "material": "金屬/塑",
+    "capacity": "250g",
+    "feature": "54mm平刀/家用",
+    "priceLevel": "$$$",
+    "verdict": "Mahlkonig 授權的家用機，性能穩定。",
+    "pros": ["品牌保證", "研磨穩定", "多種研磨範圍"],
+    "cons": ["塑料感重", "噪音大", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "品牌",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1188,
+    "brand": "Timemore",
+    "model": "C Pro",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "錐刀/內調",
+    "priceLevel": "$$",
+    "verdict": "C 系列的進階版，手沖品質提升，做工精良。",
+    "pros": ["手沖風味乾淨", "做工質感提升", "價格合理"],
+    "cons": ["內部調節不便", "錐刀細粉偏多", "無明顯特色"],
+    "sentiment": [
+      {
+        "name": "好",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "入",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1189,
+    "brand": "RhinoWare",
+    "model": "Compact Grinder",
+    "type": "手磨",
+    "material": "不鏽鋼",
+    "capacity": "20g",
+    "feature": "陶瓷刀/輕便",
+    "priceLevel": "$",
+    "verdict": "極致輕便的旅行手磨，適合戶外使用。",
+    "pros": ["價格便宜", "體積小巧", "可水洗"],
+    "cons": ["研磨速度慢", "陶瓷刀不均勻", "質感普通"],
+    "sentiment": [
+      {
+        "name": "戶外",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "慢",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1190,
+    "brand": "DF",
+    "model": "64V Gen 2",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "64mm平刀/單劑量變速",
+    "priceLevel": "$$$$",
+    "verdict": "DF64V 的二代機，優化了馬達與零殘粉結構。",
+    "pros": ["可變轉速", "優化零殘粉結構", "可換刀盤"],
+    "cons": ["價格昂貴", "噪音仍大", "做工普通"],
+    "sentiment": [
+      {
+        "name": "升級",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "貴",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1191,
+    "brand": "Lagom",
+    "model": "P64 Mark II",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "64mm平刀/雙向馬達",
+    "priceLevel": "$$$$$",
+    "verdict": "P64 的最新版本，增加了馬達雙向功能，減少殘粉。",
+    "pros": ["雙向馬達功能", "研磨精度極高", "極致安靜"],
+    "cons": ["價格頂級", "供貨稀少", "需等待"],
+    "sentiment": [
+      {
+        "name": "頂尖",
+        "value": 95,
+        "color": "#4ade80"
+      },
+      {
+        "name": "窮",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "收藏",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1192,
+    "brand": "Turin",
+    "model": "DF64 Gen 3",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "64mm平刀/靜電優化",
+    "priceLevel": "$$$",
+    "verdict": "DF64 最新改進版，優化了靜電處理和工作流。",
+    "pros": ["靜電處理優異", "CP值高", "可換刀盤"],
+    "cons": ["噪音仍大", "做工普通", "外型笨重"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1193,
+    "brand": "Eureka",
+    "model": "Oro Mignon Single Dose",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "65mm平刀/零殘",
+    "priceLevel": "$$$$$",
+    "verdict": "Eureka 旗艦單劑量機，專注於義式濃縮。",
+    "pros": ["65mm 鑽石刀盤", "極低殘粉", "義式風味強勁"],
+    "cons": ["價格昂貴", "體積大", "清潔複雜"],
+    "sentiment": [
+      {
+        "name": "義式",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "專",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1194,
+    "brand": "Mahlkonig",
+    "model": "X54 Allround Home",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "500g",
+    "feature": "54mm平刀/全能",
+    "priceLevel": "$$$$",
+    "verdict": "Mahlkonig 的家用全能機，義式到手沖皆可。",
+    "pros": ["研磨範圍廣", "品牌信仰", "做工精良"],
+    "cons": ["殘粉多", "價格偏高", "刻度調整緩慢"],
+    "sentiment": [
+      {
+        "name": "全能",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1195,
+    "brand": "Lagom",
+    "model": "Mini Gen 2",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "48mm錐刀/優化",
+    "priceLevel": "$$$$",
+    "verdict": "Mini 的第二代，解決了卡豆和變壓器問題。",
+    "pros": ["機身極小巧", "優化卡豆問題", "研磨品質高"],
+    "cons": ["價格昂貴", "容量小", "不適合連續研磨"],
+    "sentiment": [
+      {
+        "name": "升級",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1196,
+    "brand": "Weber",
+    "model": "Slayer Grinder",
+    "type": "電磨",
+    "material": "金屬/木",
+    "capacity": "50g",
+    "feature": "98mm平刀/Slayer",
+    "priceLevel": "$$$$$",
+    "verdict": "與 Slayer 義式機同級，極致的單劑量體驗。",
+    "pros": ["98mm 大刀盤", "極低殘粉", "設計奢華"],
+    "cons": ["天價", "極難買", "體積大"],
+    "sentiment": [
+      {
+        "name": "頂尖",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "窮",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "收藏",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1197,
+    "brand": "DF",
+    "model": "83 Gen 2",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "80g",
+    "feature": "83mm平刀/優化",
+    "priceLevel": "$$$$",
+    "verdict": "DF83 的第二代，優化了出粉和噪音問題。",
+    "pros": ["83mm 大刀盤", "噪音有所降低", "價格合理"],
+    "cons": ["體積巨大", "外型普通", "仍有殘粉"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "大",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1198,
+    "brand": "Eureka",
+    "model": "Mignon Zero Pro",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "65mm平刀/單劑量",
+    "priceLevel": "$$$$",
+    "verdict": "Mignon 單劑量頂配，具備 65mm 大刀盤。",
+    "pros": ["65mm 大刀盤", "極低殘粉", "研磨安靜"],
+    "cons": ["價格昂貴", "清潔不易", "體積略大"],
+    "sentiment": [
+      {
+        "name": "精準",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1199,
+    "brand": "1Zpresso",
+    "model": "X-Pro",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "七芯錐刀/微調",
+    "priceLevel": "$$$",
+    "verdict": "X-Ultra 的前身，外部調節，性能均衡。",
+    "pros": ["外部調節方便", "性能均衡", "研磨細膩"],
+    "cons": ["調節環手感普通", "已停產", "不如 X-Ultra 精緻"],
+    "sentiment": [
+      {
+        "name": "實用",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "舊",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1200,
+    "brand": "Baratza",
+    "model": "Forte AP",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "54mm平刀/秤重全能",
+    "priceLevel": "$$$$$",
+    "verdict": "Forte 的錐刀版本，全能型旗艦家用機。",
+    "pros": ["錐刀風味醇厚", "秤重精準", "做工極度耐用"],
+    "cons": ["價格極高", "體積大", "噪音大"],
+    "sentiment": [
+      {
+        "name": "強",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1201,
+    "brand": "Varia",
+    "model": "83mm Grinder",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "80g",
+    "feature": "83mm平刀/單劑量",
+    "priceLevel": "$$$$",
+    "verdict": "Varia 推出的 83mm 大刀盤單劑量機，高 CP 值。",
+    "pros": ["83mm 大刀盤風味強", "價格合理", "設計美觀"],
+    "cons": ["噪音較大", "體積大", "殘粉控制普通"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1202,
+    "brand": "Mahlkonig",
+    "model": "Vario W",
+    "type": "電磨",
+    "material": "金屬/塑",
+    "capacity": "250g",
+    "feature": "秤重/無定時",
+    "priceLevel": "$$$",
+    "verdict": "Vario 的秤重版本，無需手動定時。",
+    "pros": ["內建秤重功能", "研磨精準", "多種研磨範圍"],
+    "cons": ["噪音大", "價格偏高", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "準",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1203,
+    "brand": "Compak",
+    "model": "E8 OD",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "1.7kg",
+    "feature": "83mm平刀/商用",
+    "priceLevel": "$$$$$",
+    "verdict": "Compak 的高速商用機，適合大流量咖啡店。",
+    "pros": ["83mm 大平刀", "研磨速度極快", "觸控介面"],
+    "cons": ["體積巨大", "價格昂貴", "噪音大"],
+    "sentiment": [
+      {
+        "name": "極速",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "商用",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1204,
+    "brand": "Eureka",
+    "model": "Mignon Zero Brew",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "手沖優化/單劑量",
+    "priceLevel": "$$$",
+    "verdict": "Mignon 系列專為手沖設計的單劑量機。",
+    "pros": ["手沖風味優化", "零殘粉設計", "研磨安靜"],
+    "cons": ["不能磨義式濃縮", "價格偏高", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "手沖",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1205,
+    "brand": "Ceado",
+    "model": "E37S",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "1.6kg",
+    "feature": "83mm平刀/靜音",
+    "priceLevel": "$$$$$",
+    "verdict": "靜音且高效的商用機，適合對噪音有要求者。",
+    "pros": ["極度安靜", "83mm 大平刀", "研磨速度快"],
+    "cons": ["體積巨大", "價格昂貴", "清潔不易"],
+    "sentiment": [
+      {
+        "name": "靜音",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1206,
+    "brand": "Turin",
+    "model": "DF64S",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "64mm平刀/SSP",
+    "priceLevel": "$$$$",
+    "verdict": "DF64 的 SSP 刀盤標配版，追求極致風味。",
+    "pros": ["內建 SSP 刀盤", "平刀風味乾淨", "單劑量設計"],
+    "cons": ["價格高", "噪音大", "做工普通"],
+    "sentiment": [
+      {
+        "name": "風味",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "貴",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1207,
+    "brand": "MHW-3Bomber",
+    "model": "G1",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "40g",
+    "feature": "錐刀/外調",
+    "priceLevel": "$$",
+    "verdict": "高 CP 值的錐刀手磨，外部調節方便。",
+    "pros": ["外部調節方便", "價格便宜", "研磨速度快"],
+    "cons": ["品控不穩", "細粉多", "塑膠感重"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "廉",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1208,
+    "brand": "Fellow",
+    "model": "Ode Brew Grinder",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "80g",
+    "feature": "64mm平刀/手沖",
+    "priceLevel": "$$$",
+    "verdict": "Ode 的基礎版，適合純手沖玩家。",
+    "pros": ["外型美觀", "手沖品質佳", "價格合理"],
+    "cons": ["不能磨義式濃縮", "殘粉多", "靜電問題"],
+    "sentiment": [
+      {
+        "name": "顏值",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "靜電",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1209,
+    "brand": "Eureka",
+    "model": "Mignon Oro XL",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "65mm平刀/定時",
+    "priceLevel": "$$$$",
+    "verdict": "Oro Mignon 的大容量版本，適用於商用或重度家用。",
+    "pros": ["65mm 大刀盤", "研磨速度快", "靜音設計"],
+    "cons": ["體積大", "價格高", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "強勁",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1210,
+    "brand": "Mahlkonig",
+    "model": "Peak",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1.5kg",
+    "feature": "80mm平刀/雙風扇",
+    "priceLevel": "$$$$$",
+    "verdict": "Mahlkonig 的頂級雙風扇溫控商用機。",
+    "pros": ["80mm 大刀盤", "溫控穩定", "研磨品質極佳"],
+    "cons": ["價格天價", "體積巨大", "家用不適用"],
+    "sentiment": [
+      {
+        "name": "頂尖",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "商用",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1211,
+    "brand": "Lido",
+    "model": "OG V2",
+    "type": "手磨",
+    "material": "塑膠/金屬",
+    "capacity": "70g",
+    "feature": "48mm錐刀/優化",
+    "priceLevel": "$$$$",
+    "verdict": "OG 的升級版，優化了調節機構。",
+    "pros": ["研磨品質高", "容量大", "調節穩定"],
+    "cons": ["體積大", "笨重", "價格高"],
+    "sentiment": [
+      {
+        "name": "升級",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "重",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1212,
+    "brand": "Compak",
+    "model": "E5 OD",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "250g",
+    "feature": "58mm平刀/小巧",
+    "priceLevel": "$$$",
+    "verdict": "Compak 的家用入門機，具備定時功能。",
+    "pros": ["體積小巧", "定時研磨", "價格合理"],
+    "cons": ["噪音大", "殘粉多", "做工普通"],
+    "sentiment": [
+      {
+        "name": "入門",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1213,
+    "brand": "Mazzer",
+    "model": "Mini Electronic",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "600g",
+    "feature": "58mm平刀/定時",
+    "priceLevel": "$$$",
+    "verdict": "Mazzer Mini 的定時版本，經典義式機搭配。",
+    "pros": ["品牌信賴", "定時功能方便", "研磨穩定"],
+    "cons": ["殘粉多", "體積大", "不適合單劑量"],
+    "sentiment": [
+      {
+        "name": "經典",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "殘粉",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1214,
+    "brand": "Vario",
+    "model": "Sette 30",
+    "type": "電磨",
+    "material": "塑膠",
+    "capacity": "300g",
+    "feature": "錐刀/基礎",
+    "priceLevel": "$$",
+    "verdict": "Sette 系列的入門款，保留了高速研磨優勢。",
+    "pros": ["研磨速度快", "價格合理", "零殘粉設計"],
+    "cons": ["噪音巨大", "調節刻度粗略", "塑膠感重"],
+    "sentiment": [
+      {
+        "name": "快",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1215,
+    "brand": "Eureka",
+    "model": "Mignon Perfetto",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "50mm平刀/觸控",
+    "priceLevel": "$$$$",
+    "verdict": "Mignon 系列的觸控旗艦，調節方便。",
+    "pros": ["觸控螢幕精準", "研磨安靜", "機身小巧"],
+    "cons": ["價格高", "殘粉多", "清潔不易"],
+    "sentiment": [
+      {
+        "name": "方便",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1216,
+    "brand": "Mahlkonig",
+    "model": "Guatemala",
+    "type": "電磨",
+    "material": "鑄鐵",
+    "capacity": "500g",
+    "feature": "80mm平刀/商用",
+    "priceLevel": "$$$$$",
+    "verdict": "商用大平刀機，適用於手沖和義式，風味極佳。",
+    "pros": ["80mm 大平刀", "風味極佳", "極度耐用"],
+    "cons": ["體積巨大", "價格昂貴", "噪音大"],
+    "sentiment": [
+      {
+        "name": "風味",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "商用",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1217,
+    "brand": "1Zpresso",
+    "model": "X-Pro Lite",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "錐刀/內調",
+    "priceLevel": "$$",
+    "verdict": "X-Pro 的簡化版，以更親民的價格提供優質研磨。",
+    "pros": ["價格親民", "研磨品質穩定", "做工扎實"],
+    "cons": ["內部調節不便", "細粉偏多", "無外部調節"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "入",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1218,
+    "brand": "Timemore",
+    "model": "Chestnut C1",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "20g",
+    "feature": "錐刀/入門",
+    "priceLevel": "$",
+    "verdict": "C2 的前身，極簡入門手磨，適合輕度使用。",
+    "pros": ["價格便宜", "體積小巧", "做工尚可"],
+    "cons": ["容量小", "內部調節", "研磨慢"],
+    "sentiment": [
+      {
+        "name": "便宜",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "入",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1219,
+    "brand": "Comandante",
+    "model": "C40 Nitro Blade",
+    "type": "手磨",
+    "material": "高氮鋼/木",
+    "capacity": "40g",
+    "feature": "高氮鋼錐刀/舊版",
+    "priceLevel": "$$$$",
+    "verdict": "C40 的舊版刀盤，風味醇厚，做工精良。",
+    "pros": ["風味醇厚", "做工精良", "保值性高"],
+    "cons": ["價格高", "調節在底部", "研磨費力"],
+    "sentiment": [
+      {
+        "name": "經典",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "重",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1220,
+    "brand": "Eureka",
+    "model": "Mignon Specialita XL",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "65mm平刀/大刀盤",
+    "priceLevel": "$$$$",
+    "verdict": "Specialita 的升級版，65mm 大刀盤，研磨更高效。",
+    "pros": ["65mm 大刀盤", "研磨速度快", "靜音設計"],
+    "cons": ["價格高", "體積大", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "升級",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1221,
+    "brand": "Mahlkonig",
+    "model": "EKK43",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "2kg",
+    "feature": "98mm平刀/雙豆倉",
+    "priceLevel": "$$$$$",
+    "verdict": "EK43 的雙豆倉版本，適用於多豆種商用。",
+    "pros": ["雙豆倉方便切換", "極致風味", "研磨速度極快"],
+    "cons": ["體積巨大", "價格昂貴", "不適合家用"],
+    "sentiment": [
+      {
+        "name": "專業",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "商用",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1222,
+    "brand": "Ceado",
+    "model": "E37J",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "300g",
+    "feature": "64mm平刀/家用",
+    "priceLevel": "$$$$",
+    "verdict": "Ceado 的家用靜音機，做工精良。",
+    "pros": ["研磨安靜", "做工精良", "64mm 平刀"],
+    "cons": ["價格高", "體積大", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "靜音",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1223,
+    "brand": "Turin",
+    "model": "DF64S Gen 2",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "64mm平刀/SSP標配",
+    "priceLevel": "$$$$",
+    "verdict": "DF64S 的升級版，進一步優化了零殘粉工作流。",
+    "pros": ["SSP 刀盤標配", "極低殘粉", "平刀風味乾淨"],
+    "cons": ["價格高", "噪音大", "做工普通"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1224,
+    "brand": "Lagom",
+    "model": "P64 Lite",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "64mm平刀/簡化",
+    "priceLevel": "$$$$",
+    "verdict": "P64 的簡化版本，降低了價格和體積。",
+    "pros": ["研磨品質高", "體積小巧", "價格相對合理"],
+    "cons": ["無變速功能", "仍偏貴", "供貨稀少"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1225,
+    "brand": "1Zpresso",
+    "model": "Q-Air Pro",
+    "type": "手磨",
+    "material": "鋁合金/塑",
+    "capacity": "25g",
+    "feature": "錐刀/外部調節",
+    "priceLevel": "$$",
+    "verdict": "Q-Air 的升級版，增加了外部調節環。",
+    "pros": ["外部調節方便", "輕巧便攜", "價格合理"],
+    "cons": ["塑膠感重", "細粉多", "容量小"],
+    "sentiment": [
+      {
+        "name": "便攜",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "入",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1226,
+    "brand": "Timemore",
+    "model": "C40",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "S2C 刀盤/內調",
+    "priceLevel": "$$",
+    "verdict": "泰摩的輕量化手磨，性能均衡，適合日常手沖。",
+    "pros": ["S2C 刀盤品質高", "價格合理", "輕巧"],
+    "cons": ["內部調節不便", "細粉略多", "無特色"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "入",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1227,
+    "brand": "Eureka",
+    "model": "Mignon Brew Pro",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "55mm平刀/手沖",
+    "priceLevel": "$$$",
+    "verdict": "Mignon 系列專為手沖設計的進階機。",
+    "pros": ["手沖風味優異", "研磨安靜", "機身小巧"],
+    "cons": ["不能磨義式濃縮", "價格偏高", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "手沖",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1228,
+    "brand": "Mazzer",
+    "model": "Zircon",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "600g",
+    "feature": "63mm錐刀/商用",
+    "priceLevel": "$$$$$",
+    "verdict": "Mazzer 的頂級錐刀商用機，風味醇厚，適用於義式。",
+    "pros": ["63mm 大錐刀", "風味醇厚", "極度耐用"],
+    "cons": ["價格昂貴", "體積大", "噪音大"],
+    "sentiment": [
+      {
+        "name": "專業",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "商用",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1229,
+    "brand": "Lagom",
+    "model": "P64 Gen 3",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "64mm平刀/極致",
+    "priceLevel": "$$$$$",
+    "verdict": "P64 的最新款，結合雙向馬達與極致精準度。",
+    "pros": ["極致精準", "雙向馬達", "研磨安靜"],
+    "cons": ["價格天價", "供貨稀少", "需等待"],
+    "sentiment": [
+      {
+        "name": "頂尖",
+        "value": 95,
+        "color": "#4ade80"
+      },
+      {
+        "name": "窮",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "收藏",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1230,
+    "brand": "Turin",
+    "model": "DF64 Gen 3",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "64mm平刀/優化",
+    "priceLevel": "$$$",
+    "verdict": "DF64 最新優化版，改善了靜電和殘粉問題。",
+    "pros": ["靜電優化", "CP 值高", "可換刀盤"],
+    "cons": ["噪音仍大", "做工普通", "外型笨重"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1231,
+    "brand": "Fellow",
+    "model": "Opus Plus",
+    "type": "電磨",
+    "material": "塑膠",
+    "capacity": "110g",
+    "feature": "六芯錐刀/升級",
+    "priceLevel": "$$$",
+    "verdict": "Opus 的升級版，提升了刀盤精度與研磨穩定性。",
+    "pros": ["研磨穩定性提升", "義式手沖皆可", "外型設計美觀"],
+    "cons": ["研磨調整複雜", "塑膠感重", "價格偏高"],
+    "sentiment": [
+      {
+        "name": "升級",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "雜",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1232,
+    "brand": "Baratza",
+    "model": "Sette 270 Wi",
+    "type": "電磨",
+    "material": "塑膠",
+    "capacity": "300g",
+    "feature": "錐刀/秤重",
+    "priceLevel": "$$$$",
+    "verdict": "Sette 內建 Acaia 秤重技術的版本，研磨精準。",
+    "pros": ["內建秤重精準", "極速研磨", "零殘粉設計"],
+    "cons": ["噪音巨大", "價格高", "塑膠機身"],
+    "sentiment": [
+      {
+        "name": "準",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "貴",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1233,
+    "brand": "Mignon",
+    "model": "Mignon Specialita Single Dose",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "55mm平刀/零殘",
+    "priceLevel": "$$$$",
+    "verdict": "Specialita 的單劑量版本，專為極低殘粉設計。",
+    "pros": ["零殘粉設計", "研磨安靜", "體積小巧"],
+    "cons": ["價格高", "清潔不易", "需搭配吹氣倉"],
+    "sentiment": [
+      {
+        "name": "便",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1234,
+    "brand": "Compak",
+    "model": "R8",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "2kg",
+    "feature": "83mm錐刀/商用",
+    "priceLevel": "$$$$$",
+    "verdict": "Compak 的頂級錐刀商用機，極致醇厚風味。",
+    "pros": ["83mm 錐刀風味醇厚", "極度耐用", "研磨速度快"],
+    "cons": ["體積巨大", "價格昂貴", "家用不適用"],
+    "sentiment": [
+      {
+        "name": "專業",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "商用",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1235,
+    "brand": "Timemore",
+    "model": "Chestnut C30",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "S2C 刀盤/輕量",
+    "priceLevel": "$$",
+    "verdict": "泰摩 S2C 刀盤的輕量化版本，適合旅行。",
+    "pros": ["S2C 刀盤品質高", "機身輕巧", "價格合理"],
+    "cons": ["塑膠部件多", "內部調節不便", "細粉略多"],
+    "sentiment": [
+      {
+        "name": "旅行",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "入",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1236,
+    "brand": "Varia",
+    "model": "VS4",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "30g",
+    "feature": "40mm平刀/慢速",
+    "priceLevel": "$$$$",
+    "verdict": "VS3 的平刀版本，追求極致乾淨風味。",
+    "pros": ["平刀風味乾淨", "研磨安靜", "設計美觀"],
+    "cons": ["價格高", "研磨速度慢", "配件多"],
+    "sentiment": [
+      {
+        "name": "乾淨",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "慢",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1237,
+    "brand": "Eureka",
+    "model": "Mignon Turbo",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "65mm平刀/高速",
+    "priceLevel": "$$$",
+    "verdict": "Mignon 系列的高速版，研磨速度極快。",
+    "pros": ["65mm 大刀盤", "研磨速度極快", "義式表現優異"],
+    "cons": ["噪音大", "價格偏高", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "快",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 25,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1238,
+    "brand": "Mahlkonig",
+    "model": "K30 Vario Grind by Weight",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1.5kg",
+    "feature": "65mm平刀/秤重",
+    "priceLevel": "$$$$$",
+    "verdict": "K30 的秤重版本，極致精準的商用機。",
+    "pros": ["研磨秤重精準", "研磨速度快", "靜音設計"],
+    "cons": ["價格昂貴", "體積大", "家用不適用"],
+    "sentiment": [
+      {
+        "name": "準",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "專業",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1239,
+    "brand": "Fellow",
+    "model": "Opus Portable",
+    "type": "電磨",
+    "material": "塑膠",
+    "capacity": "50g",
+    "feature": "錐刀/旅行",
+    "priceLevel": "$$",
+    "verdict": "Opus 的旅行便攜版，適合戶外使用。",
+    "pros": ["體積小巧", "價格合理", "義式手沖皆可"],
+    "cons": ["研磨調整複雜", "塑膠感重", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "便攜",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "雜",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1240,
+    "brand": "Turin",
+    "model": "DF64P Gen 2",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "64mm平刀/義式優化",
+    "priceLevel": "$$$",
+    "verdict": "DF64P 的二代機，義式濃縮表現更穩定。",
+    "pros": ["義式濃縮表現好", "零殘粉設計", "可換刀盤"],
+    "cons": ["手沖刻度難調", "噪音大", "外型笨重"],
+    "sentiment": [
+      {
+        "name": "義式",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "吵",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1241,
+    "brand": "Eureka",
+    "model": "Mignon Turbo S",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "65mm平刀/極速",
+    "priceLevel": "$$$$",
+    "verdict": "Turbo 的升級版，65mm 刀盤，高速研磨。",
+    "pros": ["65mm 大刀盤", "研磨速度極快", "義式表現優異"],
+    "cons": ["價格高", "噪音大", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "快",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1242,
+    "brand": "Mahlkonig",
+    "model": "EK43 GBW",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1.5kg",
+    "feature": "98mm平刀/秤重",
+    "priceLevel": "$$$$$",
+    "verdict": "EK43 的秤重版本，極致精準的商用神機。",
+    "pros": ["研磨秤重精準", "極致風味", "研磨速度快"],
+    "cons": ["價格天價", "體積巨大", "家用不適用"],
+    "sentiment": [
+      {
+        "name": "神",
+        "value": 95,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 5,
+        "color": "#f87171"
+      },
+      {
+        "name": "專業",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1243,
+    "brand": "Compak",
+    "model": "E10 Conic OD",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "2kg",
+    "feature": "68mm錐刀/極速",
+    "priceLevel": "$$$$$",
+    "verdict": "Compak 的頂級錐刀商用機，研磨速度極快。",
+    "pros": ["68mm 大錐刀", "研磨速度極快", "風味醇厚"],
+    "cons": ["體積巨大", "價格昂貴", "噪音大"],
+    "sentiment": [
+      {
+        "name": "快",
+        "value": 85,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "商用",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1244,
+    "brand": "Eureka",
+    "model": "Atom Pro",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1.2kg",
+    "feature": "75mm平刀/全能",
+    "priceLevel": "$$$$$",
+    "verdict": "Atom 系列的旗艦全能機，義式手沖皆可。",
+    "pros": ["75mm 大刀盤", "義式手沖通用", "研磨安靜"],
+    "cons": ["價格昂貴", "體積大", "殘粉多"],
+    "sentiment": [
+      {
+        "name": "全能",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1245,
+    "brand": "Turin",
+    "model": "DF83 Elite",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "80g",
+    "feature": "83mm平刀/靜音",
+    "priceLevel": "$$$$$",
+    "verdict": "DF83 的靜音頂級版，改善了噪音問題。",
+    "pros": ["83mm 大刀盤", "噪音大幅降低", "價格合理"],
+    "cons": ["體積巨大", "價格高", "殘粉控制普通"],
+    "sentiment": [
+      {
+        "name": "升級",
+        "value": 75,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1246,
+    "brand": "Lagom",
+    "model": "P64 SE",
+    "type": "電磨",
+    "material": "鋁合金",
+    "capacity": "50g",
+    "feature": "64mm平刀/限量",
+    "priceLevel": "$$$$$",
+    "verdict": "P64 的限量特別版，具備獨特配色與塗層。",
+    "pros": ["研磨品質極高", "外型獨特", "收藏價值高"],
+    "cons": ["價格天價", "極難買到", "功能與 P64 相同"],
+    "sentiment": [
+      {
+        "name": "收藏",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "稀有",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1247,
+    "brand": "1Zpresso",
+    "model": "K Max Pro",
+    "type": "手磨",
+    "material": "鋁合金",
+    "capacity": "40g",
+    "feature": "七芯錐刀/精密",
+    "priceLevel": "$$$$",
+    "verdict": "K Max 的精密升級版，研磨一致性更高。",
+    "pros": ["研磨一致性極高", "外部調節方便", "做工精良"],
+    "cons": ["價格高昂", "體積大", "無明顯升級感"],
+    "sentiment": [
+      {
+        "name": "專",
+        "value": 80,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 15,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1248,
+    "brand": "Eureka",
+    "model": "Mignon Dolce",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "300g",
+    "feature": "50mm平刀/義式",
+    "priceLevel": "$$",
+    "verdict": "Mignon 系列的基礎義式機，適合濃縮咖啡入門。",
+    "pros": ["義式入門夠用", "研磨安靜", "機身小巧"],
+    "cons": ["刻度調整粗略", "殘粉多", "不適合手沖"],
+    "sentiment": [
+      {
+        "name": "入門",
+        "value": 70,
+        "color": "#4ade80"
+      },
+      {
+        "name": "普",
+        "value": 20,
+        "color": "#f87171"
+      },
+      {
+        "name": "義式",
+        "value": 10,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1249,
+    "brand": "Mahlkonig",
+    "model": "E80 Supreme",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "1.2kg",
+    "feature": "80mm平刀/極速",
+    "priceLevel": "$$$$$",
+    "verdict": "Mahlkonig 的頂級高速商用機，研磨速度極快。",
+    "pros": ["80mm 大刀盤", "研磨速度極快", "觸控螢幕"],
+    "cons": ["價格昂貴", "體積巨大", "家用不適用"],
+    "sentiment": [
+      {
+        "name": "極速",
+        "value": 90,
+        "color": "#4ade80"
+      },
+      {
+        "name": "貴",
+        "value": 10,
+        "color": "#f87171"
+      },
+      {
+        "name": "專業",
+        "value": 0,
+        "color": "#94a3b8"
+      }
+    ]
+  },
+  {
+    "id": 1250,
+    "brand": "Turin",
+    "model": "DF64 Gen 1",
+    "type": "電磨",
+    "material": "金屬",
+    "capacity": "50g",
+    "feature": "64mm平刀/改裝舊版",
+    "priceLevel": "$$",
+    "verdict": "DF64 的初代機，需要大量改裝來優化性能。",
+    "pros": ["價格便宜", "可換刀盤", "零殘粉設計"],
+    "cons": ["靜電嚴重", "噪音大", "需自行改裝"],
+    "sentiment": [
+      {
+        "name": "值",
+        "value": 65,
+        "color": "#4ade80"
+      },
+      {
+        "name": "靜電",
+        "value": 30,
+        "color": "#f87171"
+      },
+      {
+        "name": "普",
+        "value": 5,
+        "color": "#94a3b8"
+      }
+    ]
+  }
+]

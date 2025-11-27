@@ -1,0 +1,8 @@
+{
+      "version": "1.0",
+      "files": [
+        "./db_grinders_1.json",
+        "./db_brewers_1.json",
+        "./db_misc_1.json"
+      ]
+    }
