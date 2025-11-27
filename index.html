@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Gear Manager</title>
+    <title>咖啡器材管理器</title>
     
     <!-- Dependencies -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -62,17 +62,17 @@
         const API_MODEL = "gemini-2.5-flash-preview-09-2025";
         const LS_KEY_PREFIX = "CGF_DB_"; 
         
-        // --- FALLBACK CONFIGURATION ---
-        const DEFAULT_CONFIG = {
-            "project": { "title": "通用器材管理器", "version": "v48.0", "item_name_tw": "通用器材" },
+        // --- EMBEDDED CONFIGURATION (Source of truth for UI/Logic) ---
+        const EMBEDDED_CONFIG = {
+            "project": { "title": "咖啡狂器具搜尋器", "version": "v51.0", "item_name_tw": "咖啡器材" },
             "ui_labels": {
-                "header_title": "GEEK MANAGER", "search_placeholder": "Search / AI Expand...", "capacity_label": "容量/尺寸",
-                "feature_label_map": { "磨": "機制", "壺": "壺嘴", "濾": "結構", "秤": "反應", "壓": "壓力" }
+                "header_title": "COFFEE GEEK", "search_placeholder": "搜尋器材 / 讓 AI 擴充...", "capacity_label": "容量/尺寸",
+                "feature_label_map": { "磨": "刀盤/機制", "壺": "壺嘴/控溫", "濾": "結構/流速", "秤": "反應/特性", "壓": "壓力機制" }
             },
             "ai_prompts": {
-                "search_system": "你是一位頂尖的通用器材數據生成師。", "search_prompt_schema": "Schema: {\"brand\":\"String (TW)\",\"model\":\"String (TW)\",\"type\":\"String (TW)\",\"material\":\"String (TW)\",\"capacity\":\"String (TW)\",\"feature\":\"String (TW)\",\"priceLevel\":\"String ($$$)\",\"verdict\":\"String (TW)\",\"pros\":[\"String (TW)\"],\"cons\":[\"String (TW)\"],\"sentiment\":[{\"name\":\"Tag (TW)\",\"value\":Number,\"color\":\"String (#94a3b8)\"}]}. Return ONLY JSON.",
-                "review_title": "AI 毒舌評論", "review_prompt_system": "你是一位極度毒舌且專業的器材評論家，請使用 Markdown 格式，並且必須使用繁體中文。",
-                "recipe_title": "AI 沖煮建議", "recipe_prompt_system": "你是一位專家，請提供針對該器材的具體建議，使用 Markdown 表格來呈現參數，所有文字必須是繁體中文。"
+                "search_system": "你是一位頂尖的咖啡器材數據生成師。", "search_prompt_schema": "Schema: {\"brand\":\"String (TW)\",\"model\":\"String (TW)\",\"type\":\"String (TW)\",\"material\":\"String (TW)\",\"capacity\":\"String (TW)\",\"feature\":\"String (TW)\",\"priceLevel\":\"String ($$$)\",\"verdict\":\"String (TW)\",\"pros\":[\"String (TW)\"],\"cons\":[\"String (TW)\"],\"sentiment\":[{\"name\":\"Tag (TW)\",\"value\":Number,\"color\":\"String (#hex)\"}]}. Return ONLY JSON.",
+                "review_title": "AI 毒舌評論", "review_prompt_system": "你是一位極度毒舌且專業的咖啡器材評論家，請使用 Markdown 格式，並且必須使用繁體中文。",
+                "recipe_title": "AI 沖煮建議", "recipe_prompt_system": "你是一位頂尖的咖啡師，請提供一份適合「中焙」豆子的具體沖煮參數，使用 Markdown 表格來呈現參數，所有文字必須是繁體中文。"
             },
             "db_config": { "manifest_file": "./db_manifest.json" }
         };
@@ -436,7 +436,7 @@
             const [configLoadError, setConfigLoadError] = useState(null);
             const [query, setQuery] = useState("");
             const [filters, setFilters] = useState({ brand: "All", type: "All", capacity: "All" });
-            const [config, setConfig] = useState(null); 
+            const [config, setConfig] = useState(EMBEDDED_CONFIG); // Use EMBEDDED_CONFIG directly
             
             const [keyModal, setKeyModal] = useState(false);
             const [cloudModal, setCloudModal] = useState(false);
@@ -447,23 +447,7 @@
             // --- INIT ---
             useEffect(() => {
                 const init = async () => {
-                    let projectConfig = null;
-                    try {
-                        // 1. Try to fetch external config
-                        const configRes = await fetch(CONFIG_FILE);
-                        if(configRes.ok) {
-                            projectConfig = await configRes.json();
-                        } else {
-                            throw new Error(`HTTP Error ${configRes.status}`);
-                        }
-                    } catch (e) { 
-                        // 2. Fallback to EMBEDDED CONFIG
-                        console.error(`無法載入 ${CONFIG_FILE}，使用內嵌配置。`, e);
-                        projectConfig = EMBEDDED_CONFIG;
-                        setConfigLoadError(`注意：無法載入外部配置檔 (${CONFIG_FILE})，已切換為內建通用配置。請檢查檔案！`);
-                    }
-                    
-                    setConfig(projectConfig);
+                    const projectConfig = EMBEDDED_CONFIG;
                     
                     const projectLSKey = LS_KEY_PREFIX + projectConfig.project.item_name_tw.replace(/\s/g, '');
                     const key = IO.get("GEMINI_KEY");
@@ -509,19 +493,24 @@
             }, [db, config]);
 
 
-            // Filtered Data Logic
+            // Filtered Data Logic (The core logic to fix)
             const filteredData = useMemo(() => {
                 if (!config) return [];
                 let res = db;
+                
+                // 1. Dropdown Filters
                 if (filters.brand !== "All") res = res.filter(i => i.brand === filters.brand);
                 if (filters.type !== "All") res = res.filter(i => i.type === filters.type);
                 if (filters.capacity !== "All") res = res.filter(i => i.capacity === filters.capacity);
-                if (query.trim()) {
-                    const q = query.toLowerCase();
+                
+                // 2. Keyword Filter (The fix for broken keyword search)
+                const q = query.trim();
+                if (q.length > 0) {
+                    const lowerQ = q.toLowerCase();
                     res = res.filter(i => 
-                        (i.brand || "").toLowerCase().includes(q) || 
-                        (i.model || "").toLowerCase().includes(q) || 
-                        (i.type || "").includes(q)
+                        (i.brand || "").toLowerCase().includes(lowerQ) || 
+                        (i.model || "").toLowerCase().includes(lowerQ) || 
+                        (i.type || "").includes(lowerQ) // Assuming type is often already in TW or matching TW Pinyin/English parts
                     );
                 }
                 return res;
@@ -534,7 +523,7 @@
             }), [db]);
 
 
-            // Import Logic
+            // Import Logic (Skipped for brevity)
             const handleImport = (newData) => {
                 if(!newData || !Array.isArray(newData)) return;
                 setDb(prev => {
@@ -665,15 +654,7 @@
             // Main Render Logic
             if(loading) return (
                 React.createElement('div', { className: "min-h-screen bg-[#0c0c0c] flex flex-col items-center justify-center p-8" },
-                    loading && React.createElement('div', { className: "w-12 h-12 border-4 border-yellow-600 rounded-full spin border-t-transparent mb-4" }),
-                    configLoadError && 
-                        React.createElement('div', { className: "bg-red-900/50 border border-red-700 p-6 rounded-xl max-w-xl text-center text-red-300" },
-                            React.createElement('h2', { className: "text-xl font-bold mb-3" }, '配置檔案載入失敗！'),
-                            React.createElement('p', { className: "text-sm" }, configLoadError),
-                            React.createElement('p', { className: "text-xs mt-4 text-red-400" }, '若您在本地端開啟，請確認 `project_config.json` 檔案存在，且與 `index.html` 在同一目錄下。'),
-                            React.createElement('button', { onClick: () => window.location.reload(), className: "mt-4 px-4 py-2 bg-red-700 hover:bg-red-600 rounded text-white text-sm" }, '點擊重試')
-                        )
-                    
+                    React.createElement('div', { className: "w-12 h-12 border-4 border-yellow-600 rounded-full spin border-t-transparent mb-4" })
                 )
             );
 
