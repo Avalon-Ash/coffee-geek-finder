@@ -3,9 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Coffee Geek Finder v41 | Modal Fixed</title>
-    
-    <!-- Dependencies -->
+    <title>Coffee Geek Finder v23 | Import Logic Fixed</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
@@ -13,15 +11,15 @@
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
     
     <style>
-        body { background-color: #0c0c0c; color: #e5e5e5; font-family: system-ui, -apple-system, sans-serif; overflow-x: hidden; }
+        body { background-color: #0c0c0c; color: #e5e5e5; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", sans-serif; overflow-x: hidden; }
         ::-webkit-scrollbar { width: 6px; height: 6px; }
         ::-webkit-scrollbar-track { background: #0c0c0c; }
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #555; }
         
-        .fade-in { animation: fadeIn 0.3s ease-out forwards; }
+        .fade-in { animation: fadeIn 0.4s cubic-bezier(0.4, 0, 0.2, 1); }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        .spin { animation: spin 1s linear infinite; }
+        .spin-slow { animation: spin 2s linear infinite; }
         @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
         
         .tetris-grid {
@@ -32,99 +30,33 @@
             gap: 1.5rem; 
         }
 
-        /* Markdown Styles */
-        .mkd h1, .mkd h2, .mkd h3 { color: #facc15; font-weight: 700; margin-top: 1em; margin-bottom: 0.5em; border-bottom: 1px solid #333; padding-bottom: 0.3em; }
+        .mkd h1, .mkd h2 { color: #facc15; font-weight: 700; margin-top: 1em; margin-bottom: 0.5em; border-bottom: 1px solid #333; padding-bottom: 0.3em; }
         .mkd ul { list-style: disc; padding-left: 1.5em; color: #a8a29e; margin-bottom: 1em; }
         .mkd li { margin-bottom: 0.2em; }
         .mkd strong { color: #fff; font-weight: 600; }
-        .mkd p { margin-bottom: 0.8em; line-height: 1.6; }
-        .mkd table { border-collapse: collapse; width: 100%; margin: 1em 0; font-size: 0.9em; }
-        .mkd th, .mkd td { border: 1px solid #444; padding: 0.5em; text-align: left; }
-        .mkd th { background-color: #222; color: #facc15; }
     </style>
 </head>
 <body>
-    <!-- 主應用程式的根節點 -->
     <div id="root"></div>
 
     <script type="text/babel">
-        const { useState, useEffect, useMemo, useCallback, useRef } = React;
+        const { useState, useEffect, useMemo, useCallback } = React;
 
-        // --- 1. Configuration ---
         const CFG = {
-            LS_KEY: "CGF_DB_V41_FINAL",
-            API_MODEL: "gemini-2.5-flash-preview-09-2025",
-            MANIFEST_FILE: "./db_manifest.json" 
+            LS_KEY: "CGF_DB_V23_FIX",
+            DEFAULT_FILES: ["./db_grinders.json", "./db_brewers.json", "./db_misc.json"]
         };
 
-        // --- 2. Logic Layer ---
         const IO = {
-            get: (k) => { try { return localStorage.getItem(k); } catch { return null; } },
-            set: (k, v) => { try { localStorage.setItem(k, v); return true; } catch { return false; } },
-            del: (k) => { try { localStorage.removeItem(k); } catch {} },
-            
-            genId: (list) => {
-                if (!Array.isArray(list)) return Date.now();
-                return list.reduce((max, item) => Math.max(max, Number(item.id) || 0), 0) + 1;
-            },
-
-            enrich: (raw) => {
-                if (!raw || typeof raw !== 'object') return null;
-                const p = { ...raw };
-                p.id = p.id || Date.now() + Math.random();
-                p.brand = String(p.brand || "Unknown");
-                p.model = String(p.model || "Unknown Model");
-                p.type = String(p.type || "Equipment");
-                p.priceLevel = String(p.priceLevel || "$");
-                p.capacity = String(p.capacity || "N/A");
-                p.feature = String(p.feature || "");
-                p.pros = Array.isArray(p.pros) ? p.pros : [];
-                p.cons = Array.isArray(p.cons) ? p.cons : [];
-                p.sentiment = Array.isArray(p.sentiment) ? p.sentiment : [{ name: "N/A", value: 100, color: "#555" }];
-                p.verdict = p.verdict || "No verdict available.";
+            get: (k) => { try { return localStorage.getItem(k) } catch { return null } },
+            set: (k, v) => { try { localStorage.setItem(k, v) } catch {} },
+            del: (k) => { try { localStorage.removeItem(k) } catch {} },
+            genId: (list) => (list.reduce((m, i) => Math.max(m, parseInt(i.id) || 0), 0) + 1),
+            enrich: (p) => {
+                if(!p.sentiment || !Array.isArray(p.sentiment)) p.sentiment = [{name:"未知", value:100, color:"#555"}];
                 return p;
             },
-
-            parseJSON: (text) => {
-                if (!text) return null;
-                try {
-                    const clean = text.replace(/```json|```/g, '').trim();
-                    const start = clean.indexOf('[');
-                    const end = clean.lastIndexOf(']');
-                    if (start !== -1 && end !== -1) {
-                        return JSON.parse(clean.substring(start, end + 1));
-                    }
-                    return JSON.parse(clean);
-                } catch (e) {
-                    return null;
-                }
-            },
-
-            getSpanClass: (item) => {
-                let score = 0;
-                const pros = item.pros || [];
-                const cons = item.cons || [];
-                const len = (item.verdict || "").length;
-                if (pros.length + cons.length >= 5) score += 2;
-                if (item.priceLevel === "$$$$$") score += 2;
-                else if (item.priceLevel === "$$$$") score += 1;
-                if (len > 25) score += 1;
-                const hash = (parseInt(item.id) || 0) % 3;
-                if (score >= 4) return "col-span-1 md:col-span-2 row-span-2"; 
-                if (score === 3) return hash === 0 ? "col-span-1 md:col-span-2 row-span-1" : "col-span-1 row-span-2";
-                return "col-span-1 row-span-1";
-            },
-
-            getFeatureLabel: (type) => {
-                const t = (type || "").toLowerCase();
-                if(t.includes("磨") || t.includes("grinder")) return "刀盤";
-                if(t.includes("濾") || t.includes("壺") || t.includes("filter")) return "結構";
-                if(t.includes("秤") || t.includes("scale")) return "特性";
-                if(t.includes("壓") || t.includes("press")) return "機制";
-                return "特點";
-            },
-
-            proxyUrl: (url) => {
+            transformUrl: (url) => {
                 const driveRegex = /\/file\/d\/([a-zA-Z0-9_-]+)\//;
                 const match = url.match(driveRegex);
                 if (match && match[1]) {
@@ -134,205 +66,41 @@
             }
         };
 
-        // --- 3. Icons ---
-        const Icon = ({ n, c = "w-4 h-4" }) => {
-            const paths = {
-                search: "m21 21-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z",
-                cloud: "M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242",
-                upload: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12",
-                settings: "M12.22 2h-.44a2 2 0 0 1-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l-.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z",
-                plus: "M12 5v14M5 12h14",
-                trash: "M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2",
-                download: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3",
-                msg: "M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z",
-                chef: "M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 9.08 0A5.11 5.11 0 0 1 18.59 6 4 4 0 0 1 20 13.87V21H6Z M6 17h14",
-                scale: "M6 20h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z M12 14v4 M12 2v4",
-                tag: "M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z M7 7h.01",
-                image: "M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z M12 17a4 4 0 1 0 0-8 4 4 0 0 0 0 8z",
-                up: "M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3",
-                down: "M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3zm7-13h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2h-3",
-                refresh: "M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16",
-                close: "M18 6 6 18 M6 6 18 18"
-            };
-            return <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}><path d={paths[n] || ""}/></svg>;
+        // --- Logic: Visual Weight Calculation ---
+        const getSpanClass = (item) => {
+            let score = 0;
+            const pros = item.pros || [];
+            const cons = item.cons || [];
+            if (pros.length + cons.length >= 5) score += 2;
+            if (item.priceLevel === "$$$$$") score += 2;
+            else if (item.priceLevel === "$$$$") score += 1;
+            if ((item.verdict || "").length > 30) score += 1;
+            
+            if (score >= 4) return "col-span-1 md:col-span-2 row-span-2"; 
+            if (score === 3) return (parseInt(item.id)||0)%2===0 ? "col-span-1 md:col-span-2" : "col-span-1 row-span-2";
+            return "col-span-1";
         };
 
-        // --- 4. Modals (Pure JSX Components) ---
-
-        // 通用 Modal Wrapper
-        const ModalWrapper = ({ title, onClose, children, loading = false, maxWidth = 'max-w-2xl', show = true }) => {
-            if (!show) return null;
-            return (
-                <div
-                    className="fixed inset-0 z-[9000] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4"
-                    onClick={loading ? undefined : onClose}
-                >
-                    <div
-                        className={`bg-[#18181b] border border-[#27272a] rounded-xl w-full ${maxWidth} max-h-[90vh] flex flex-col shadow-2xl overflow-hidden`}
-                        onClick={e => e.stopPropagation()}
-                    >
-                        <div className="p-4 border-b border-[#27272a] bg-[#0c0c0c] flex justify-between items-center shrink-0">
-                            <h3 className="font-bold text-yellow-500 flex items-center gap-2">
-                                <Icon
-                                    n={loading ? "refresh" : "msg"}
-                                    c={`w-5 h-5 ${loading ? "spin" : ""}`}
-                                />
-                                {title}
-                            </h3>
-                            <button
-                                onClick={onClose}
-                                disabled={loading}
-                                className="text-gray-500 hover:text-white text-xl p-1 transition-colors"
-                            >
-                                <Icon n="close" c="w-5 h-5" />
-                            </button>
-                        </div>
-                        {children}
-                    </div>
-                </div>
-            );
+        const Icons = {
+            Search: () => <path d="m21 21-4.3-4.3M11 19a8 8 0 1 0 0-16 8 8 0 0 0 0 16z"/>,
+            Cloud: () => <path d="M4 14.899A7 7 0 1 1 15.71 8h1.79a4.5 4.5 0 0 1 2.5 8.242"/>,
+            Upload: () => <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M17 8l-5-5-5 5M12 3v12"/>,
+            Settings: () => <path d="M12.22 2h-.44a2 2 0 0 1-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.09a2 2 0 0 1-1-1.74v-.47a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z M12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z"/>,
+            Plus: () => <path d="M12 5v14M5 12h14"/>,
+            Trash: () => <path d="M3 6h18M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>,
+            Download: () => <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/>,
+            Msg: () => <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>,
+            Chef: () => <path d="M6 13.87A4 4 0 0 1 7.41 6a5.11 5.11 0 0 1 1.05-1.54 5 5 0 0 1 9.08 0A5.11 5.11 0 0 1 18.59 6 4 4 0 0 1 20 13.87V21H6Z M6 17h14"/>,
+            Refresh: () => <path d="M21 2v6h-6M3 12a9 9 0 0 1 15-6.7L21 8M3 22v-6h6M21 12a9 9 0 0 1-15 6.7L3 16"/>,
+            Scale: () => <path d="M6 20h12a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2H6a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2z M12 14v4 M12 2v4"/>,
+            Tag: () => <path d="M12 2H2v10l9.29 9.29c.94.94 2.48.94 3.42 0l6.58-6.58c.94-.94.94-2.48 0-3.42L12 2Z M7 7h.01"/>
         };
+        const Ico = ({n, c=""}) => <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className={c}>{Icons[n]()}</svg>;
 
-        // AI 評論、Recipe 和錯誤顯示專用 Modal (使用 Markdown)
-        const AIMessageModal = ({ show, title, content, loading, onClose }) => {
-            return (
-                <ModalWrapper show={show} title={title} loading={loading} onClose={onClose} maxWidth="max-w-3xl">
-                    <div className="p-6 overflow-y-auto text-gray-300 mkd flex-grow">
-                        {loading ? (
-                            <div className="flex flex-col items-center py-10">
-                                <div className="w-10 h-10 border-4 border-yellow-600 border-t-transparent rounded-full spin"></div>
-                                <p className="mt-4 text-sm text-gray-400">AI 正在努力生成中...</p>
-                            </div>
-                        ) : (
-                            <div
-                                dangerouslySetInnerHTML={{
-                                    __html: marked.parse(content || "沒有內容。"),
-                                }}
-                            />
-                        )}
-                    </div>
-                </ModalWrapper>
-            );
-        };
-        
-        const SearchResultModal = ({ show, results, onClose, onAdd }) => {
-            return (
-                <ModalWrapper show={show} title={`已找到 ${results?.length || 0} 個網頁結果`} onClose={onClose} maxWidth="max-w-4xl">
-                    <div className="p-6 overflow-y-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 bg-[#0c0c0c] flex-grow">
-                        {(results || []).map(item => (
-                            <div key={item.id} className="bg-[#1f1f22] border border-[#27272a] rounded-lg p-4 flex flex-col gap-2 hover:border-yellow-600/50">
-                                <div className="flex justify-between">
-                                    <span className="text-xs text-yellow-500 font-bold">{item.brand}</span>
-                                    <span className="text-xs text-gray-400">{item.type}</span>
-                                </div>
-                                <h4 className="text-base font-bold text-white">{item.model}</h4>
-                                <p className="text-sm text-gray-400 italic line-clamp-2">"{item.verdict}"</p>
-                                <button 
-                                    onClick={() => onAdd(item)}
-                                    className="mt-auto w-full py-2 bg-emerald-900/30 text-emerald-400 border border-emerald-800 rounded hover:bg-emerald-900/50 text-sm flex items-center justify-center gap-2"
-                                >
-                                    <Icon n="plus" c="w-3 h-3"/> 加入資料庫
-                                </button>
-                            </div>
-                        ))}
-                    </div>
-                </ModalWrapper>
-            );
-        };
-
-        const CloudImportModal = ({ show, onClose, onImport }) => {
-            const [url, setUrl] = useState("");
-            const [loading, setLoading] = useState(false);
-            const [error, setError] = useState("");
-
-            const handleImport = async () => {
-                if (!url.trim()) return;
-                setLoading(true);
-                setError("");
-                const fetchUrl = IO.proxyUrl(url.trim());
-                try {
-                    const res = await fetch(fetchUrl);
-                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
-                    const json = await res.json();
-                    const data = Array.isArray(json) ? json : [json];
-                    if (data.length === 0) throw new Error("Empty JSON");
-                    onImport(data);
-                    onClose();
-                } catch (err) {
-                    setError(`匯入失敗。請檢查網址或權限: ${err.message}`);
-                } finally { setLoading(false); }
-            };
-
-            return (
-                <ModalWrapper show={show} title="雲端匯入" onClose={onClose} maxWidth="max-w-md" loading={loading}>
-                    <div className="p-6 flex-grow flex flex-col">
-                        <input type="text" value={url} onChange={e=>setUrl(e.target.value)} placeholder="貼上 JSON 網址 (支援 Google Drive 轉址)..." className="w-full bg-black border border-[#3f3f46] rounded p-3 text-white text-sm mb-2 focus:border-blue-500 focus:outline-none"/>
-                        {error && <p className="text-red-400 text-sm mb-4">{error}</p>}
-                        <div className="flex justify-end gap-2 mt-auto pt-4 border-t border-[#27272a]/50">
-                            <button onClick={onClose} disabled={loading} className="px-4 py-2 text-gray-400 hover:text-white text-sm">取消</button>
-                            <button onClick={handleImport} disabled={loading} className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded text-sm transition flex items-center gap-2">
-                                {loading && <Icon n="refresh" c="w-4 h-4 spin"/>} 立即匯入
-                            </button>
-                        </div>
-                    </div>
-                </ModalWrapper>
-            );
-        };
-
-        const ApiKeyModal = ({ show, onClose, onSave, initialKey }) => {
-            const [key, setKey] = useState(initialKey);
-            const [error, setError] = useState("");
-
-            const handleSave = () => {
-                if (!key || key.trim().length < 10) {
-                    setError("API Key 長度不足或無效。");
-                    return;
-                }
-                onSave(key.trim());
-            };
-
-            return (
-                <ModalWrapper show={show} title="設定 Gemini API Key" onClose={onClose} maxWidth="max-w-sm">
-                    <div className="p-6 flex-grow flex flex-col">
-                        <p className="text-sm text-gray-400 mb-4">
-                            API Key 用於啟動 <strong>AI 搜尋</strong> 和{" "}
-                            <strong>AI 評論/建議</strong> 功能。
-                        </p>
-                        <input
-                            type="password"
-                            value={key}
-                            onChange={e => {
-                                setKey(e.target.value);
-                                setError("");
-                            }}
-                            className="w-full px-3 py-2 rounded bg-zinc-900 border border-zinc-700 focus:outline-none focus:ring-2 focus:ring-yellow-600 text-sm"
-                            placeholder="輸入你的 Gemini API Key"
-                        />
-                        {error && <p className="text-xs text-red-500 mt-1">{error}</p>}
-                        <div className="mt-4 flex justify-end gap-2 pt-4 border-t border-[#27272a]/50">
-                            <button
-                                onClick={onClose}
-                                className="px-3 py-1.5 text-xs rounded border border-zinc-600 text-zinc-300 hover:bg-zinc-800"
-                            >
-                                取消
-                            </button>
-                            <button
-                                onClick={handleSave}
-                                className="px-3 py-1.5 text-xs rounded bg-yellow-600 hover:bg-yellow-500 text-black font-semibold"
-                            >
-                                儲存
-                            </button>
-                        </div>
-                    </div>
-                </ModalWrapper>
-            );
-        };
-
-        // --- 5. Product Card (Trimmed for brevity) ---
         const PieChart = React.memo(({ data }) => {
             if(!data || !data.length) return null;
-            const total = data.reduce((s, i) => s + (i.value || 0), 0);
-            const items = data.map(i => ({...i, percent: (i.value || 0) / total}));
+            const total = data.reduce((s, i) => s + i.value, 0);
+            const items = data.map(i => ({...i, percent: i.value / total}));
             let cumulativePercent = 0;
             const getCoords = (pct) => [Math.cos(2*Math.PI*pct), Math.sin(2*Math.PI*pct)];
             return (
@@ -345,105 +113,98 @@
                         const [ex, ey] = getCoords(end);
                         const large = slice.percent > 0.5 ? 1 : 0;
                         const d = `M ${sx} ${sy} A 1 1 0 ${large} 1 ${ex} ${ey} L ${ex*0.65} ${ey*0.65} A 0.65 0.65 0 ${large} 0 ${sx*0.65} ${sy*0.65} Z`;
-                        return <path key={i} d={d} fill={slice.color} stroke="#18181b" strokeWidth="0.02" className="hover:opacity-80 transition-opacity"/>;
+                        return <path key={i} d={d} fill={slice.color} stroke="#18181b" strokeWidth="0.02" className="hover:opacity-80 transition"/>;
                     })}
                 </svg>
             );
         });
 
+        const getFeatureLabel = (type) => {
+            if(type.includes("磨")) return "刀盤";
+            if(type.includes("濾") || type.includes("壺")) return "結構";
+            if(type.includes("秤")) return "特性";
+            if(type.includes("壓")) return "機制";
+            return "特點";
+        };
+
         const Card = React.memo(({ item, spanClass, onAI }) => {
             const [menuOpen, setMenuOpen] = useState(false);
-            if (!item) return null;
-
             const isHuge = spanClass.includes('row-span-2') && spanClass.includes('col-span-2');
             const isBig = spanClass.includes('row-span-2') || spanClass.includes('col-span-2');
             
-            // v39 FONT ADJUSTMENT: Base size is now text-base (16px), scale up from there
             const typo = {
-                brand: isHuge ? "text-lg font-black tracking-[0.2em]" : "text-xs font-bold tracking-widest",
-                title: isHuge ? "text-5xl md:text-6xl mt-2 mb-4" : (isBig ? "text-3xl mt-1 mb-2" : "text-xl"),
-                verdict: isHuge ? "text-base" : (isBig ? "text-base" : "text-sm"),
-                listText: isHuge ? "text-base" : "text-xs", // Elevated from text-[10px]
-                btn: isHuge ? "text-sm py-2.5" : "text-xs py-2", // Elevated from text-[10px]
-                featLabel: isHuge ? "text-sm" : "text-xs",
-                feat: isHuge ? "text-lg" : "text-sm"
+                brand: isHuge ? "text-sm font-black tracking-[0.2em]" : (isBig ? "text-xs font-bold tracking-widest" : "text-[10px] font-bold tracking-widest"),
+                title: isHuge ? "text-4xl md:text-5xl mt-2 mb-3" : (isBig ? "text-2xl mt-1 mb-2" : "text-lg"),
+                verdict: isHuge ? "text-base" : (isBig ? "text-sm" : "text-xs"),
+                listTitle: isHuge ? "text-sm mb-2" : "text-[10px] mb-1",
+                listText: isHuge ? "text-sm" : "text-[10px]",
+                btn: isHuge ? "text-xs py-2" : "text-[10px] py-1.5",
+                feat: isHuge ? "text-lg" : "text-xs",
+                featLabel: isHuge ? "text-xs" : "text-[10px]"
             };
 
             const searchUrl = (type) => {
-                const q = encodeURIComponent(`${item.brand || ''} ${item.model || ''}`);
+                const q = encodeURIComponent(`${item.brand} ${item.model}`);
                 return type === 'shopee' ? `https://shopee.tw/search?keyword=${q}` : `https://www.momoshop.com.tw/search/searchShop.jsp?keyword=${q}`;
             };
 
-            const handleImageSearch = () => {
-                const q = encodeURIComponent(`${item.brand || ''} ${item.model || ''} ${item.type || ''}`);
-                window.open(`https://www.google.com/search?tbm=isch&q=${q}`, '_blank');
-            };
-
             return (
-                <div className={`bg-[#18181b] border border-[#27272a] rounded-xl p-5 flex flex-col gap-3 hover:border-yellow-600/50 hover:shadow-2xl transition-all duration-300 relative h-full group ${spanClass}`}>
+                <div className={`bg-[#18181b] border border-[#27272a] rounded-xl p-5 flex flex-col gap-3 group hover:border-yellow-600/50 hover:shadow-2xl transition-all duration-300 relative h-full ${spanClass}`}>
                     <div className="flex justify-between items-start">
-                        <div className="min-w-0 pr-2 flex-1">
+                        <div className="min-w-0 pr-2 w-full">
                             <span className={`text-yellow-500 uppercase block truncate ${typo.brand}`}>{item.brand}</span>
                             <h3 className={`font-bold text-gray-100 leading-none truncate ${typo.title}`}>{item.model}</h3>
                             <div className="flex gap-2 mt-2">
-                                <span className="flex items-center gap-1 bg-[#27272a] text-gray-400 px-2 py-1 rounded border border-[#3f3f46] text-xs">
-                                    <Icon n="tag" c="w-3 h-3"/> {item.type}
+                                <span className="flex items-center gap-1 bg-[#27272a] text-gray-400 px-2 py-1 rounded border border-[#3f3f46] text-[10px]">
+                                    <Ico n="Tag" c="w-3 h-3"/> {item.type}
                                 </span>
-                                <span className="flex items-center gap-1 bg-[#27272a] text-gray-400 px-2 py-1 rounded border border-[#3f3f46] text-xs">
-                                    <Icon n="scale" c="w-3 h-3"/> {item.capacity}
+                                <span className="flex items-center gap-1 bg-[#27272a] text-gray-400 px-2 py-1 rounded border border-[#3f3f46] text-[10px]">
+                                    <Ico n="Scale" c="w-3 h-3"/> {item.capacity}
                                 </span>
                             </div>
                         </div>
-                        <button onClick={handleImageSearch} className="flex items-center gap-1 bg-[#27272a] hover:bg-[#3f3f46] text-gray-400 hover:text-white px-2 py-1.5 rounded border border-[#3f3f46] transition-colors flex-shrink-0" title="Image Search">
-                            <Icon n="image" c="w-4 h-4"/>
-                            <span className={isBig ? "text-xs ml-1" : "hidden"}>Image</span>
-                        </button>
                     </div>
-
                     <div className="bg-[#27272a]/50 p-3 rounded border-l-4 border-yellow-600 flex flex-col gap-1">
-                        <div className="flex justify-between items-center text-xs font-bold tracking-wider text-gray-500 mb-1">
+                        <div className="flex justify-between items-center text-[10px] font-bold tracking-wider text-gray-500 mb-1">
                             <span>GEEK VERDICT</span>
-                            <span className="text-yellow-500 font-mono text-base">{item.priceLevel}</span>
+                            <span className="text-yellow-500 font-mono text-sm">{item.priceLevel}</span>
                         </div>
-                        <p className={`text-gray-300 italic leading-relaxed ${typo.verdict}`}>"{item.verdict}"</p>
+                        <p className={`text-gray-300 italic leading-relaxed ${typo.verdict}`}>"{item.verdict || '暫無評價'}"</p>
                     </div>
-
                     <div className={`grid grid-cols-2 gap-4 flex-grow ${isBig ? 'overflow-auto' : 'overflow-hidden'}`}>
                         <div>
-                            <span className={`text-emerald-500 font-bold block tracking-wide flex items-center gap-1 mb-1 ${typo.listText}`}>
-                                <Icon n="up" c="w-3 h-3"/> 優點
+                            <span className={`text-emerald-500 font-bold block tracking-wide flex items-center gap-1 ${typo.listTitle}`}>
+                                <span>👍</span> PROS
                             </span>
                             <ul className={`space-y-1 text-gray-400 ${typo.listText}`}>
-                                {item.pros.slice(0, isHuge ? 8 : 3).map((p,i)=><li key={i} className="flex items-start"><span className="mr-1.5 text-emerald-500/50">•</span><span className="truncate">{p}</span></li>)}
+                                {(item.pros||[]).slice(0, isHuge ? 8 : (isBig ? 5 : 3)).map((p,i)=><li key={i} className="flex items-start"><span className="mr-1.5 text-emerald-500/50">•</span><span className={isHuge?'':'truncate'}>{p}</span></li>)}
                             </ul>
                         </div>
                         <div>
-                            <span className={`text-rose-500 font-bold block tracking-wide flex items-center gap-1 mb-1 ${typo.listText}`}>
-                                <Icon n="down" c="w-3 h-3"/> 缺點
+                            <span className={`text-rose-500 font-bold block tracking-wide flex items-center gap-1 ${typo.listTitle}`}>
+                                <span>👎</span> CONS
                             </span>
                             <ul className={`space-y-1 text-gray-400 ${typo.listText}`}>
-                                {item.cons.slice(0, isHuge ? 8 : 3).map((c,i)=><li key={i} className="flex items-start"><span className="mr-1.5 text-rose-500/50">•</span><span className="truncate">{c}</span></li>)}
+                                {(item.cons||[]).slice(0, isHuge ? 8 : (isBig ? 5 : 3)).map((c,i)=><li key={i} className="flex items-start"><span className="mr-1.5 text-rose-500/50">•</span><span className={isHuge?'':'truncate'}>{c}</span></li>)}
                             </ul>
                         </div>
                     </div>
-
                     <div className="flex items-center justify-between border-t border-[#27272a] pt-3 mt-auto">
                         <div className={`${isHuge ? 'w-16 h-16' : 'w-12 h-12'} relative flex-shrink-0 mr-4`}>
                             <PieChart data={item.sentiment} />
                         </div>
                         <div className="flex flex-col items-end">
-                            <span className={`text-gray-500 uppercase font-bold ${typo.featLabel}`}>{IO.getFeatureLabel(item.type)}</span>
-                            <span className={`text-gray-200 font-mono border border-[#3f3f46] bg-[#27272a] px-2 py-0.5 rounded ${typo.feat}`}>{item.feature || "N/A"}</span>
+                            <span className={`text-gray-500 uppercase font-bold ${typo.featLabel}`}>{getFeatureLabel(item.type)}</span>
+                            <span className={`text-gray-200 font-mono border border-[#3f3f46] bg-[#27272a] px-2 py-0.5 rounded ${typo.feat}`}>{item.feature}</span>
                         </div>
                     </div>
-
                     <div className="grid grid-cols-2 gap-2 mt-2">
                         <button onClick={()=>onAI('snark', item)} className={`flex items-center justify-center gap-1 bg-indigo-900/20 text-indigo-300 border border-indigo-500/30 rounded hover:bg-indigo-900/40 transition ${typo.btn}`}>
-                            <Icon n="msg" c="w-3 h-3"/> {isHuge ? 'AI 毒舌評論' : 'AI 評論'}
+                            <Ico n="Msg" c="w-3 h-3"/> {isHuge ? 'AI 毒舌' : '毒舌'}
                         </button>
                         <div className="relative">
                             <button onClick={()=>setMenuOpen(!menuOpen)} className={`w-full flex items-center justify-center gap-1 bg-emerald-900/20 text-emerald-300 border border-emerald-500/30 rounded hover:bg-emerald-900/40 transition ${typo.btn}`}>
-                                <Icon n="chef" c="w-3 h-3"/> {isHuge ? 'AI 沖煮建議' : 'AI 沖煮'}
+                                <Ico n="Chef" c="w-3 h-3"/> {isHuge ? 'AI 參數' : '參數'}
                             </button>
                             {menuOpen && (
                                 <div className="absolute bottom-full left-0 w-full mb-1 bg-[#27272a] border border-[#3f3f46] rounded shadow-xl z-20 flex flex-col overflow-hidden">
@@ -453,103 +214,107 @@
                                 </div>
                             )}
                         </div>
-                        <a href={searchUrl('shopee')} target="_blank" className={`flex items-center justify-center gap-1 bg-[#ee4d2d] text-white font-bold rounded hover:opacity-90 transition ${typo.btn}`}>Shopee</a>
+                        <a href={searchUrl('shopee')} target="_blank" className={`flex items-center justify-center gap-1 bg-[#ee4d2d] text-white font-bold rounded hover:opacity-90 transition ${typo.btn}`}>蝦皮</a>
                         <a href={searchUrl('momo')} target="_blank" className={`flex items-center justify-center gap-1 bg-[#d63086] text-white font-bold rounded hover:opacity-90 transition ${typo.btn}`}>MOMO</a>
                     </div>
                 </div>
             );
         });
 
-        // --- 6. Main App ---
+        const CloudImportModal = ({ onClose, onImport }) => {
+            const [url, setUrl] = useState("");
+            const [loading, setLoading] = useState(false);
+            const [error, setError] = useState("");
+
+            const handleImport = async () => {
+                if (!url.trim()) return;
+                setLoading(true);
+                setError("");
+                const fetchUrl = IO.transformUrl(url.trim());
+                try {
+                    const res = await fetch(fetchUrl);
+                    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+                    const json = await res.json();
+                    const data = Array.isArray(json) ? json : [json];
+                    if (data.length === 0) throw new Error("Empty JSON");
+                    onImport(data);
+                    onClose();
+                } catch (err) {
+                    setError("無法讀取。請確認連結權限公開，且檔案為 JSON 格式。");
+                } finally { setLoading(false); }
+            };
+
+            return (
+                <div className="fixed inset-0 z-[60] flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" onClick={onClose}>
+                    <div className="bg-[#18181b] border border-[#27272a] rounded-xl p-6 w-full max-w-md shadow-2xl" onClick={e=>e.stopPropagation()}>
+                        <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Ico n="Cloud" c="w-5 h-5 text-blue-500"/> 雲端匯入</h3>
+                        <input type="text" value={url} onChange={e=>setUrl(e.target.value)} placeholder="Google Drive / GitHub Raw URL..." className="w-full bg-black border border-[#3f3f46] rounded p-3 text-white text-sm mb-2 focus:border-blue-500 focus:outline-none"/>
+                        {error && <p className="text-red-400 text-xs mb-4">{error}</p>}
+                        <div className="flex justify-end gap-2">
+                            <button onClick={onClose} className="px-4 py-2 text-gray-400 hover:text-white text-sm">取消</button>
+                            <button onClick={handleImport} disabled={loading} className="px-4 py-2 bg-blue-600 hover:bg-blue-500 text-white font-bold rounded text-sm transition flex items-center gap-2">
+                                {loading && <Ico n="Refresh" c="w-4 h-4 spin-slow"/>} 載入
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            );
+        };
+
         const App = () => {
             const [db, setDb] = useState([]);
+            const [filteredData, setFilteredData] = useState([]);
             const [loading, setLoading] = useState(true);
             const [query, setQuery] = useState("");
             const [filters, setFilters] = useState({ brand: "All", type: "All", capacity: "All" });
-            
-            // --- 中央 Modal 狀態管理 ---
-            const [modal, setModal] = useState({ 
-                key: false,             // ApiKeyModal
-                cloud: false,           // CloudImportModal
-                searchResults: null,    // SearchResultModal (Array | null)
-                aiMessage: { open: false, title: "", content: "", loading: false } // AIMessageModal
-            });
-            
+            const [modal, setModal] = useState({ open: false, title: "", content: "", loading: false });
+            const [keyModal, setKeyModal] = useState(false);
+            const [cloudModal, setCloudModal] = useState(false);
             const [apiKey, setApiKey] = useState("");
-            // --- 結束中央 Modal 狀態管理 ---
 
             useEffect(() => {
                 const init = async () => {
-                    const key = IO.get("GEMINI_KEY");
-                    if(key) setApiKey(key);
-
-                    const local = IO.get(CFG.LS_KEY);
-                    let initialData = [];
-
-                    if(local) {
+                    const savedKey = IO.get("GEMINI_KEY");
+                    if(savedKey) setApiKey(savedKey);
+                    const savedDB = IO.get(CFG.LS_KEY);
+                    if(savedDB) {
                         try {
-                            const parsed = JSON.parse(local);
+                            const parsed = JSON.parse(savedDB);
                             if(Array.isArray(parsed) && parsed.length) {
-                                initialData = parsed.map(IO.enrich).filter(x=>x);
+                                setDb(parsed.map(IO.enrich));
+                                setLoading(false);
+                                return;
                             }
                         } catch {}
                     }
-
-                    // --- Manifest Load Logic (v40) ---
-                    if (initialData.length === 0) {
-                        try {
-                            const manifestRes = await fetch(CFG.MANIFEST_FILE);
-                            if (!manifestRes.ok) throw new Error("Manifest not found");
-                            
-                            const manifest = await manifestRes.json();
-                            const filesToLoad = manifest.files || [];
-
-                            const promises = filesToLoad.map(file => 
-                                fetch(file).then(res => res.ok ? res.json() : [])
-                            );
-                            const results = await Promise.allSettled(promises);
-                            const validData = results
-                                .filter(r => r.status === 'fulfilled')
-                                .map(r => r.value)
-                                .flat()
-                                .map(IO.enrich)
-                                .filter(x => x);
-
-                            if(validData.length > 0) {
-                                initialData = validData;
-                                IO.set(CFG.LS_KEY, JSON.stringify(validData));
-                            }
-                        } catch (e) {
-                            console.warn("Manifest/Auto-load failed:", e.message);
+                    try {
+                        const fetches = CFG.DEFAULT_FILES.map(f => fetch(f).then(r => r.ok ? r.json() : []));
+                        const results = await Promise.all(fetches);
+                        const merged = results.flat().map(IO.enrich);
+                        if(merged.length) {
+                            setDb(merged);
+                            IO.set(CFG.LS_KEY, JSON.stringify(merged));
                         }
-                    }
-
-                    setDb(initialData);
+                    } catch(e) { console.error(e); }
                     setLoading(false);
                 };
                 init();
             }, []);
 
-            // Persist
             useEffect(() => {
-                if(db.length > 0) IO.set(CFG.LS_KEY, JSON.stringify(db));
-            }, [db]);
-
-            // Filter
-            const filteredData = useMemo(() => {
                 let res = db;
-                if (filters.brand !== "All") res = res.filter(i => i.brand === filters.brand);
-                if (filters.type !== "All") res = res.filter(i => i.type === filters.type);
-                if (filters.capacity !== "All") res = res.filter(i => i.capacity === filters.capacity);
-                if (query.trim()) {
+                if(filters.brand !== "All") res = res.filter(i => i.brand === filters.brand);
+                if(filters.type !== "All") res = res.filter(i => i.type === filters.type);
+                if(filters.capacity !== "All") res = res.filter(i => i.capacity === filters.capacity);
+                if(query) {
                     const q = query.toLowerCase();
                     res = res.filter(i => 
-                        (i.brand || "").toLowerCase().includes(q) || 
-                        (i.model || "").toLowerCase().includes(q) || 
-                        (i.type || "").includes(q)
+                        i.brand.toLowerCase().includes(q) || 
+                        i.model.toLowerCase().includes(q) || 
+                        i.type.includes(q)
                     );
                 }
-                return res;
+                setFilteredData(res);
             }, [db, filters, query]);
 
             const options = useMemo(() => ({
@@ -558,287 +323,105 @@
                 capacity: ["All", ...new Set(db.map(i => i.capacity))].sort()
             }), [db]);
 
-            const handleImport = (newData) => {
-                if(!newData || !Array.isArray(newData)) return;
-                setDb(prev => {
-                    const ids = new Set(prev.map(i => i.id));
-                    const unique = newData.filter(i => !ids.has(i.id)).map(IO.enrich).filter(x=>x);
-                    if(unique.length === 0) return prev;
-                    return [...unique, ...prev];
-                });
+            const handleAI = async (mode, item, extra) => {
+                if(!apiKey) return setKeyModal(true);
+                setModal({ open: true, title: `${item.brand} ${item.model}`, content: "", loading: true });
+                let prompt = "";
+                if(mode === 'snark') prompt = `你是咖啡專家。請用繁體中文、幽默毒舌語氣評論 ${item.brand} ${item.model}。Markdown。`;
+                else if (mode === 'recipe') prompt = `針對 ${item.brand} ${item.model} 提供「${extra}」豆子參數。表格。繁體中文。`;
+                try {
+                    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+                        method: 'POST', headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }] })
+                    });
+                    const data = await res.json();
+                    setModal(prev => ({...prev, content: data.candidates?.[0]?.content?.parts?.[0]?.text || "Error", loading: false}));
+                } catch { setModal(prev => ({...prev, content: "Conn Err", loading: false})); }
             };
 
+            const handleAddSearch = async (e) => {
+                e.preventDefault();
+                if(!query.trim() || !apiKey) return setKeyModal(true);
+                if(!confirm(`AI 搜尋 "${query}"?`)) return;
+                setModal({ open: true, title: "AI Search...", content: "", loading: true });
+                const prompt = `Search coffee gear: "${query}". Return JSON ARRAY. Schema: {"brand":"","model":"","type":"(TW)","material":"","capacity":"","feature":"","priceLevel":"$","verdict":"(TW)","pros":[""],"cons":[""],"sentiment":[{"name":"Tag","value":80,"color":"#4ade80"}]}`;
+                try {
+                    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`, {
+                        method: 'POST', headers: {'Content-Type': 'application/json'},
+                        body: JSON.stringify({ contents: [{ parts: [{ text: prompt }] }], generationConfig: { responseMimeType: "application/json" } })
+                    });
+                    const data = await res.json();
+                    const newItems = JSON.parse(data.candidates?.[0]?.content?.parts?.[0]?.text).map(i => ({...IO.enrich(i), id: IO.genId(db)}));
+                    const merged = [...newItems, ...db];
+                    setDb(merged);
+                    IO.set(CFG.LS_KEY, JSON.stringify(merged));
+                    setModal({ open: false, title: "", content: "", loading: false });
+                    setQuery("");
+                    alert(`Added ${newItems.length} items`);
+                } catch { setModal(prev => ({...prev, content: "Search Failed", loading: false})); }
+            };
+
+            const handleImport = (newData) => {
+                let newDb = [...db];
+                const ids = new Set(newDb.map(i=>i.id));
+                const unique = newData.filter(i=>!ids.has(i.id)).map(IO.enrich);
+                if(unique.length === 0) return alert("No new data");
+                newDb = [...unique, ...newDb];
+                setDb(newDb);
+                IO.set(CFG.LS_KEY, JSON.stringify(newDb));
+                alert(`Imported ${unique.length}`);
+            };
+
+            // FIX: Use Promise.all to read files in parallel and import ONCE
             const handleFileImport = async (e) => {
                 const files = Array.from(e.target.files);
                 if(!files.length) return;
                 
-                const readPromises = files.map(file => new Promise(resolve => {
-                    const r = new FileReader();
-                    r.onload = evt => {
-                        try { resolve(JSON.parse(evt.target.result)); } 
-                        catch { resolve([]); }
+                const readFile = (file) => new Promise((resolve) => {
+                    const reader = new FileReader();
+                    reader.onload = (evt) => {
+                        try {
+                            const json = JSON.parse(evt.target.result);
+                            resolve(Array.isArray(json) ? json : [json]);
+                        } catch { resolve([]); }
                     };
-                    r.readAsText(file);
-                }));
+                    reader.readAsText(file);
+                });
 
-                const rawResults = await Promise.all(readPromises);
-                const flatItems = rawResults.flat().map(IO.enrich).filter(x=>x);
+                const results = await Promise.all(files.map(readFile));
+                const combinedData = results.flat();
                 
-                if(flatItems.length > 0) {
-                    handleImport(flatItems);
-                    alert(`成功匯入 ${flatItems.length} 個項目。`);
-                } else {
-                    alert("未找到有效的資料。");
-                }
-                e.target.value = null;
+                if(combinedData.length > 0) handleImport(combinedData);
+                e.target.value = null; // Reset input
             };
 
-            // Add single item from search results
-            const addItemFromSearch = (item) => {
-                const newItem = { ...item, id: IO.genId(db) };
-                handleImport([newItem]);
-                setModal(p => ({
-                    ...p,
-                    searchResults: (p.searchResults || []).filter(i => i !== item),
-                }));
-            };
-
-            // AI Web Search 執行
-            const handleWebSearch = async (e) => {
-                if (e) e.preventDefault();
-                if (!query.trim()) return;
-
-                // 檢查 Key
-                if (!apiKey) return setModal(p => ({ ...p, key: true }));
-
-                // 開啟「AI 正在搜尋中」的彈窗
-                setModal(p => ({
-                    ...p,
-                    aiMessage: {
-                        open: true,
-                        title: "AI 網頁搜尋中...",
-                        content: "正在透過 Google 搜尋並格式化數據...",
-                        loading: true,
-                    },
-                }));
-
-                const prompt = `
-Search coffee gear: "${query}".
-
-請根據網路搜尋結果，產生一組咖啡器材資料陣列。
-Schema: {"brand":"String (TW)","model":"String (TW)","type":"String (TW)","material":"String (TW)",
-"capacity":"String (TW)","feature":"String (TW)","priceLevel":"String ($$$)","verdict":"String (TW)",
-"pros":["String (TW)"],"cons":["String (TW)"],
-"sentiment":[{"name":"Tag (TW)","value":Number,"color":"String (#hex)"}]}。
-只回傳 JSON 陣列本身，不能有多餘說明文字。
-`.trim();
-
-                try {
-                    const res = await fetch(
-                        `https://generativelanguage.googleapis.com/v1beta/models/${CFG.API_MODEL}:generateContent?key=${apiKey}`,
-                        {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({
-                                contents: [{ parts: [{ text: prompt }] }],
-                                tools: [{ google_search: {} }],
-                                config: { temperature: 0.2 },
-                                systemInstruction: {
-                                    parts: [
-                                        {
-                                            text:
-                                                "You are a professional coffee equipment data generator. " +
-                                                "You MUST ONLY return the requested JSON ARRAY object. " +
-                                                "Ensure all strings (brand, model, type, material, capacity, feature, verdict, pros, cons, sentiment names) " +
-                                                "are in Traditional Chinese, except priceLevel ($$$) and color (#hex).",
-                                        },
-                                    ],
-                                },
-                            }),
-                        }
-                    );
-
-                    if (!res.ok) {
-                        const errData = await res.json();
-                        throw new Error(errData.error?.message || `HTTP ${res.status}`);
-                    }
-
-                    const data = await res.json();
-                    const jsonStr = data.candidates?.[0]?.content?.parts?.[0]?.text;
-                    const parsed = IO.parseJSON(jsonStr);
-
-                    if (!parsed || !Array.isArray(parsed) || parsed.length === 0) {
-                        throw new Error("AI 無法產生有效的 JSON 資料或找不到相關結果。");
-                    }
-
-                    const newItems = parsed
-                        .map(i => IO.enrich(i))
-                        .filter(x => x)
-                        .map(i => ({ ...i, id: IO.genId(db) + Math.random() }));
-
-                    // 關掉 AI 訊息彈窗，改開「搜尋結果」彈窗
-                    setModal(p => ({
-                        ...p,
-                        aiMessage: { open: false, title: "", content: "", loading: false },
-                        searchResults: newItems,
-                    }));
-                } catch (err) {
-                    setModal(p => ({
-                        ...p,
-                        aiMessage: {
-                            open: true,
-                            title: "AI 網頁搜尋失敗",
-                            content: `**錯誤訊息:** ${err.message}`,
-                            loading: false,
-                        },
-                    }));
-                }
-            };
-
-            // AI 評論/建議執行
-            const handleAI = async (mode, item, extra) => {
-                // 檢查 Key
-                if (!apiKey) return setModal(p => ({ ...p, key: true }));
-
-                const initialTitle =
-                    mode === "snark"
-                        ? `AI 毒舌評論: ${item.model}`
-                        : `AI 沖煮建議: ${item.model}`;
-
-                // 開啟 loading 彈窗
-                setModal(p => ({
-                    ...p,
-                    aiMessage: {
-                        open: true,
-                        title: initialTitle,
-                        content: "正在請求 AI 服務...",
-                        loading: true,
-                    },
-                }));
-
-                let prompt = "";
-                let systemInstruction = "";
-
-                if (mode === "snark") {
-                    prompt = `請用繁體中文、幽默毒舌但專業的語氣評論 ${item.brand} ${item.model} (${item.type}，特點: ${item.feature})。
-請根據以下事實進行諷刺：
-優點: ${item.pros.join(", ")}，
-缺點: ${item.cons.join(", ")}。
-指出它的致命缺點，並告訴我它適合什麼樣的受害者(使用者)。`;
-                    systemInstruction =
-                        "你是一位極度毒舌、科學理性務實且具備適度幽默的專業咖啡器材評論家，" +
-                        "所有內容必須使用繁體中文和 Markdown 格式。";
-                } else if (mode === "recipe") {
-                    prompt = `針對 ${item.brand} ${item.model} (${item.type}，特點: ${item.feature})，
-提供一份適合沖煮「${extra}」烘焙豆的具體沖煮參數建議。
-內容必須包含: 沖煮總時長、粉水比、研磨度、水溫、注水手法及總注水克數。
-所有內容請以 Markdown 表格呈現。`;
-                    systemInstruction =
-                        "你是一位頂尖的咖啡師，請以科學理性務實的語氣，使用 Markdown 表格來呈現沖煮參數，所有文字必須是繁體中文。";
-                }
-
-                try {
-                    const res = await fetch(
-                        `https://generativelanguage.googleapis.com/v1beta/models/${CFG.API_MODEL}:generateContent?key=${apiKey}`,
-                        {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: JSON.stringify({
-                                contents: [{ parts: [{ text: prompt }] }],
-                                config: { temperature: 0.8 },
-                                systemInstruction: { parts: [{ text: systemInstruction }] },
-                            }),
-                        }
-                    );
-
-                    if (!res.ok) {
-                        const errData = await res.json();
-                        throw new Error(errData.error?.message || `HTTP ${res.status}`);
-                    }
-
-                    const data = await res.json();
-                    const text = data.candidates?.[0]?.content?.parts?.[0]?.text;
-
-                    if (!text) throw new Error("AI 未能產生回應。");
-
-                    setModal(p => ({
-                        ...p,
-                        aiMessage: {
-                            open: true,
-                            title: initialTitle,
-                            content: text,
-                            loading: false,
-                        },
-                    }));
-                } catch (err) {
-                    setModal(p => ({
-                        ...p,
-                        aiMessage: {
-                            open: true,
-                            title: "AI 呼叫失敗",
-                            content: `**錯誤訊息:** ${err.message}`,
-                            loading: false,
-                        },
-                    }));
-                }
-            };
-
-
-            const handleReset = () => { if(confirm("確定要清除本地資料庫 (Local Storage) 並重新載入嗎？")) { IO.del(CFG.LS_KEY); window.location.reload(); } };
+            const handleReset = () => { if(confirm("Reset all?")) { IO.del(CFG.LS_KEY); window.location.reload(); } };
             const handleExport = () => {
-                const blob = new Blob([JSON.stringify(db, null, 2)], {type: "application/json"});
-                const url = URL.createObjectURL(blob);
                 const a = document.createElement('a');
-                a.href = url; a.download = `coffee_geek_backup.json`;
+                a.href = URL.createObjectURL(new Blob([JSON.stringify(db, null, 2)], {type: "application/json"}));
+                a.download = `coffee_gear_db.json`;
                 a.click();
             };
 
-            const handleKeySave = (key) => {
-                if (key && key.trim().length > 10) { 
-                    IO.set("GEMINI_KEY", key);
-                    setApiKey(key);
-                    setModal(p => ({ ...p, key: false }));
-                } else {
-                    alert("無效的 API Key。");
-                }
-            };
-
-            if(loading && db.length === 0) return <div className="min-h-screen bg-[#0c0c0c] flex items-center justify-center"><div className="w-12 h-12 border-4 border-yellow-600 rounded-full spin border-t-transparent"></div></div>;
-
-            if (db.length === 0) {
-                return (
-                    <>
-                        <WelcomeScreen onFileImport={handleFileImport} onCloudClick={()=>setModal(p=>({...p, cloud:true}))} />
-                        <CloudImportModal show={modal.cloud} onClose={()=>setModal(p=>({...p, cloud:false}))} onImport={handleImport} />
-                    </>
-                );
-            }
+            if(loading && db.length === 0) return <div className="min-h-screen bg-[#0c0c0c] flex items-center justify-center"><div className="w-12 h-12 border-4 border-yellow-600 rounded-full spin-slow border-t-transparent"></div></div>;
 
             return (
-                <div className="min-h-screen bg-[#0c0c0c] pb-20 fade-in text-base">
-                    <nav className="sticky top-0 z-40 bg-[#0c0c0c]/90 backdrop-blur border-b border-[#27272a] px-4 py-3 shadow-lg">
+                <div className="min-h-screen bg-[#0c0c0c] pb-20 fade-in text-sm">
+                    <nav className="sticky top-0 z-40 bg-[#0c0c0c]/90 backdrop-blur border-b border-[#27272a] px-4 py-3">
                         <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
                             <div className="flex items-center gap-2 flex-shrink-0">
-                                <span className="bg-yellow-500 text-black px-2 py-0.5 rounded font-black text-xs">V41</span>
-                                <h1 className="font-bold text-gray-100 tracking-tight text-lg">COFFEE GEEK</h1>
+                                <span className="bg-yellow-500 text-black px-2 py-0.5 rounded font-black text-xs">V23</span>
+                                <h1 className="font-bold text-gray-100 tracking-tight">COFFEE GEEK</h1>
                             </div>
-                            <form onSubmit={handleWebSearch} className="relative w-full max-w-xl group flex gap-2">
-                                <div className="relative flex-1">
-                                    <div className="absolute left-3 top-2.5 text-gray-500"><Icon n="search" c="w-4 h-4"/></div>
-                                    <input 
-                                        type="text" 
-                                        value={query} 
-                                        onChange={e=>setQuery(e.target.value)} 
-                                        placeholder="Search gear..." 
-                                        className="w-full bg-[#18181b] border border-[#27272a] text-gray-200 rounded-lg pl-9 pr-4 py-2 focus:border-yellow-600 focus:outline-none transition-all" 
-                                    />
-                                </div>
-                                <button type="submit" className="flex items-center justify-center p-2 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg transition" title="Search Web"><Icon n="search" c="w-5 h-5"/></button>
+                            <form onSubmit={handleAddSearch} className="relative w-full max-w-xl group">
+                                <div className="absolute left-3 top-2.5 text-gray-500"><Ico n="Search" c="w-4 h-4"/></div>
+                                <input type="text" value={query} onChange={e=>setQuery(e.target.value)} placeholder="Search gear..." className="w-full bg-[#18181b] border border-[#27272a] text-gray-200 rounded-lg pl-9 pr-10 py-2 focus:border-yellow-600 focus:outline-none transition-all" />
+                                <button type="submit" className="absolute right-2 top-1.5 p-1 text-gray-500 hover:text-yellow-500"><Ico n="Plus" c="w-4 h-4"/></button>
                             </form>
                             <div className="flex items-center gap-2 w-full md:w-auto overflow-x-auto pb-1 md:pb-0">
-                                <select className="bg-[#18181b] border border-[#27272a] text-gray-300 rounded px-2 py-2 cursor-pointer focus:outline-none text-sm" value={filters.brand} onChange={e=>setFilters({...filters, brand: e.target.value})}>{options.brand.map(o=><option key={o} value={o}>{o}</option>)}</select>
-                                <select className="bg-[#18181b] border border-[#27272a] text-gray-300 rounded px-2 py-2 cursor-pointer focus:outline-none text-sm" value={filters.type} onChange={e=>setFilters({...filters, type: e.target.value})}>{options.type.map(o=><option key={o} value={o}>{o}</option>)}</select>
-                                <button onClick={()=>setModal(p=>({...p, key:true}))} className={`p-2 rounded border transition ${apiKey ? 'border-green-900 text-green-500 bg-green-900/10' : 'border-[#27272a] text-gray-400 bg-[#18181b] hover:text-white'}`}><Icon n="settings"/></button>
+                                <select className="bg-[#18181b] border border-[#27272a] text-gray-300 rounded px-2 py-2 cursor-pointer focus:outline-none" value={filters.brand} onChange={e=>setFilters({...filters, brand: e.target.value})}>{options.brand.map(o=><option key={o} value={o}>{o}</option>)}</select>
+                                <select className="bg-[#18181b] border border-[#27272a] text-gray-300 rounded px-2 py-2 cursor-pointer focus:outline-none" value={filters.type} onChange={e=>setFilters({...filters, type: e.target.value})}>{options.type.map(o=><option key={o} value={o}>{o}</option>)}</select>
+                                <button onClick={()=>setKeyModal(true)} className={`p-2 rounded border transition ${apiKey ? 'border-green-900 text-green-500 bg-green-900/10' : 'border-[#27272a] text-gray-400 bg-[#18181b] hover:text-white'}`}><Ico n="Settings" c="w-4 h-4"/></button>
                             </div>
                         </div>
                     </nav>
@@ -847,117 +430,66 @@ Schema: {"brand":"String (TW)","model":"String (TW)","type":"String (TW)","mater
                         <div className="flex justify-between items-end mb-4 px-1">
                             <p className="text-gray-500 text-xs font-mono">ITEMS: <span className="text-yellow-500">{filteredData.length}</span></p>
                         </div>
-                        
                         {filteredData.length > 0 ? (
                             <div className="tetris-grid">
-                                {filteredData.map(item => <Card key={item.id} item={item} spanClass={IO.getSpanClass(item)} onAI={handleAI} />)}
+                                {filteredData.map(item => <Card key={item.id} item={item} spanClass={getSpanClass(item)} onAI={handleAI} />)}
                             </div>
                         ) : (
                             <div className="flex flex-col items-center justify-center py-20 text-gray-600 border-2 border-dashed border-[#27272a] rounded-xl">
-                                <Icon n="cloud" c="w-12 h-12 mb-4 opacity-20"/>
-                                <p className="text-lg font-bold text-gray-500 mb-4">NO LOCAL DATA FOUND</p>
-                                <button 
-                                    onClick={handleWebSearch}
-                                    className="px-6 py-3 bg-indigo-600 hover:bg-indigo-500 text-white font-bold rounded-lg shadow-lg transition flex items-center gap-2"
-                                >
-                                    <Icon n="search" c="w-5 h-5"/> Search Web for "{query}"
-                                </button>
+                                <Ico n="Cloud" c="w-12 h-12 mb-4 opacity-20"/>
+                                <p className="text-lg font-bold text-gray-500">NO DATA</p>
+                                <div className="flex gap-4 mt-6">
+                                    <label className="cursor-pointer text-yellow-600 hover:text-yellow-500 flex items-center gap-1 px-4 py-2 border border-yellow-900/30 rounded bg-yellow-900/10 hover:bg-yellow-900/20 transition"><Ico n="Upload" c="w-4 h-4"/> FILE<input type="file" multiple accept=".json" className="hidden" onChange={handleFileImport}/></label>
+                                    <button onClick={()=>setCloudModal(true)} className="text-blue-500 hover:text-blue-400 flex items-center gap-1 px-4 py-2 border border-blue-900/30 rounded bg-blue-900/10 hover:bg-blue-900/20 transition"><Ico n="Cloud" c="w-4 h-4"/> CLOUD</button>
+                                </div>
                             </div>
                         )}
                     </main>
 
-                    <footer className="fixed bottom-0 left-0 w-full bg-[#0c0c0c] border-t border-[#27272a] py-3 px-6 z-30 flex justify-between items-center text-base text-gray-500">
+                    <footer className="fixed bottom-0 left-0 w-full bg-[#0c0c0c] border-t border-[#27272a] py-3 px-6 z-30 flex justify-between items-center text-xs text-gray-500">
                         <div className="flex gap-3">
-                            <button onClick={handleReset} className="hover:text-red-500 flex items-center gap-1 transition text-sm"><Icon n="trash"/> 重設</button>
-                            <button onClick={()=>setModal(p=>({...p, cloud:true}))} className="hover:text-blue-500 flex items-center gap-1 transition text-sm"><Icon n="cloud"/> 雲端匯入</button>
+                            <button onClick={handleReset} className="hover:text-red-500 flex items-center gap-1 transition"><Ico n="Trash" c="w-3 h-3"/> RESET</button>
+                            <button onClick={()=>setCloudModal(true)} className="hover:text-blue-500 flex items-center gap-1 transition"><Ico n="Cloud" c="w-3 h-3"/> URL IMPORT</button>
                         </div>
                         <div className="flex items-center gap-3">
-                            <button onClick={handleExport} className="hover:text-blue-400 flex items-center gap-1 transition text-sm"><Icon n="download"/> 備份</button>
-                            <label className="hover:text-green-400 flex items-center gap-1 cursor-pointer transition text-sm"><Icon n="upload"/> 檔案匯入<input type="file" multiple accept=".json" className="hidden" onChange={handleFileImport}/></label>
+                            <button onClick={handleExport} className="hover:text-blue-400 flex items-center gap-1 transition"><Ico n="Download" c="w-3 h-3"/> BACKUP</button>
+                            <label className="hover:text-green-400 flex items-center gap-1 cursor-pointer transition"><Ico n="Upload" c="w-3 h-3"/> RESTORE<input type="file" multiple accept=".json" className="hidden" onChange={handleFileImport}/></label>
                         </div>
                     </footer>
 
-                    {/* Modals 渲染區 (純 JSX 控制) */}
-                    <AIMessageModal
-                        show={modal.aiMessage.open}
-                        onClose={() =>
-                            setModal(p => ({
-                                ...p,
-                                aiMessage: {
-                                    open: false,
-                                    title: "",
-                                    content: "",
-                                    loading: false,
-                                },
-                            }))
-                        }
-                        title={modal.aiMessage.title}
-                        content={modal.aiMessage.content}
-                        loading={modal.aiMessage.loading}
-                    />
+                    {keyModal && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" onClick={()=>setKeyModal(false)}>
+                            <div className="bg-[#18181b] border border-[#27272a] rounded-xl p-6 w-full max-w-sm shadow-2xl" onClick={e=>e.stopPropagation()}>
+                                <h3 className="text-lg font-bold text-white mb-4 flex items-center gap-2"><Ico n="Settings" c="w-5 h-5"/> API SETUP</h3>
+                                <input type="password" value={apiKey} onChange={e=>setApiKey(e.target.value)} placeholder="Paste Gemini API Key..." className="w-full bg-black border border-[#3f3f46] rounded p-3 text-white mb-4 focus:border-yellow-600 focus:outline-none"/>
+                                <div className="flex justify-end gap-2">
+                                    <button onClick={()=>{IO.set("GEMINI_KEY", apiKey); setKeyModal(false)}} className="px-4 py-2 bg-yellow-600 hover:bg-yellow-500 text-black font-bold rounded transition">SAVE</button>
+                                </div>
+                            </div>
+                        </div>
+                    )}
 
-                    <ApiKeyModal
-                        show={modal.key}
-                        onClose={() => setModal(p => ({ ...p, key: false }))}
-                        onSave={handleKeySave}
-                        initialKey={apiKey}
-                    />
+                    {cloudModal && <CloudImportModal onClose={()=>setCloudModal(false)} onImport={handleImport} />}
 
-                    <CloudImportModal
-                        show={modal.cloud}
-                        onClose={() => setModal(p => ({ ...p, cloud: false }))}
-                        onImport={handleImport}
-                    />
-
-                    <SearchResultModal
-                        show={!!modal.searchResults && modal.searchResults.length > 0}
-                        results={modal.searchResults}
-                        onClose={() => setModal(p => ({ ...p, searchResults: null }))}
-                        onAdd={addItemFromSearch}
-                    />
-                    
-                    {/* The main App component ends here. */}
+                    {modal.open && (
+                        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4" onClick={()=>!modal.loading && setModal({...modal, open:false})}>
+                            <div className="bg-[#18181b] border border-[#27272a] rounded-xl w-full max-w-2xl max-h-[80vh] flex flex-col shadow-2xl overflow-hidden" onClick={e=>e.stopPropagation()}>
+                                <div className="p-4 border-b border-[#27272a] bg-[#0c0c0c] flex justify-between items-center shrink-0">
+                                    <h3 className="font-bold text-yellow-500 flex items-center gap-2"><Ico n={modal.loading?"Refresh":"Cloud"} c={`w-5 h-5 ${modal.loading?'spin-slow':''}`}/> {modal.title || "AI Response"}</h3>
+                                    {!modal.loading && <button onClick={()=>setModal({...modal, open:false})} className="text-gray-500 hover:text-white text-xl">&times;</button>}
+                                </div>
+                                <div className="p-6 overflow-y-auto text-gray-300 mkd">
+                                    {modal.loading ? <div className="flex flex-col items-center py-10 gap-4 opacity-50"><div className="w-10 h-10 border-2 border-yellow-600 border-t-transparent rounded-full spin-slow"></div><p className="font-mono text-xs">PROCESSING...</p></div> : <div dangerouslySetInnerHTML={{__html: marked.parse(modal.content||"")}} />}
+                                </div>
+                            </div>
+                        </div>
+                    )}
                 </div>
             );
         };
 
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
-
-        // --- Welcome Screen Component ---
-        const WelcomeScreen = ({ onFileImport, onCloudClick }) => (
-            <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-[#0c0c0c] text-center space-y-10 fade-in">
-                <div className="space-y-4">
-                    <div className="w-24 h-24 bg-gradient-to-br from-yellow-600 to-yellow-800 rounded-full flex items-center justify-center mx-auto border-4 border-[#27272a] shadow-2xl">
-                        <Icon n="chef" c="w-12 h-12 text-white"/>
-                    </div>
-                    <h1 className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white to-gray-500">COFFEE GEEK</h1>
-                    <p className="text-gray-400 tracking-[0.3em] text-xs uppercase">Equipment Database Manager</p>
-                </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-3xl">
-                    <label className="group cursor-pointer bg-[#18181b] border border-[#27272a] p-8 rounded-2xl hover:border-yellow-600/50 hover:bg-[#1f1f22] transition-all duration-300 flex flex-col items-center gap-4 shadow-lg">
-                        <div className="p-4 bg-[#27272a] rounded-full group-hover:bg-yellow-900/20 transition-colors">
-                            <Icon n="upload" c="w-8 h-8 text-yellow-500"/>
-                        </div>
-                        <div>
-                            <h3 className="text-xl font-bold text-white mb-1">匯入本地 JSON 檔案</h3>
-                            <p className="text-xs text-gray-500">可選取多個檔案</p>
-                        </div>
-                        <input type="file" multiple accept=".json" className="hidden" onChange={onFileImport}/>
-                    </label>
-                    <button onClick={onCloudClick} className="group cursor-pointer bg-[#18181b] border border-[#27272a] p-8 rounded-2xl hover:border-blue-600/50 hover:bg-[#1f1f22] transition-all duration-300 flex flex-col items-center gap-4 shadow-lg">
-                        <div className="p-4 bg-[#27272a] rounded-full group-hover:bg-blue-900/20 transition-colors">
-                            <Icon n="cloud" c="w-8 h-8 text-blue-500"/>
-                        </div>
-                        <div>
-                            <h3 className="text-xl font-bold text-white mb-1">從雲端網址匯入</h3>
-                            <p className="text-xs text-gray-500">從遠端 URL 載入資料</p>
-                        </div>
-                    </button>
-                </div>
-                <div className="text-xs text-gray-600 font-mono pt-10">v41.0 | Modal System Refactored</div>
-            </div>
-        );
     </script>
 </body>
 </html>
