@@ -802,7 +802,7 @@
                             e('h3', { className: "text-xl font-bold text-white mb-1" }, "Import Local JSON"),
                             e('p', { className: "text-xs text-gray-500" }, "Select multiple files")
                         ),
-                        e('input', { type: "file", multiple: true, accept: ".json", className: "hidden", onChange: handleFileImport })
+                        e('input', { type: "file", multiple: true, accept: ".json", className: "hidden", onChange: onFileImport })
                     ),
                     e('button', { onClick: onCloudClick, disabled: isCloudImporting, className: "group cursor-pointer bg-[#18181b] border border-[#27272a] p-8 rounded-2xl hover:border-blue-600/50 hover:bg-[#1f1f22] transition-all duration-300 flex flex-col items-center gap-4 shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:border-[#27272a] disabled:hover:bg-[#18181b]" }, 
                         e('div', { className: "p-4 bg-[#27272a] rounded-full group-hover:bg-blue-900/20 transition-colors" }, 
